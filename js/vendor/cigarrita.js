@@ -59,45 +59,17 @@
          * @param root
          * @param message
          */
-        this.user_alert = function(type,root,message){
+        this.user_alert = function(type){
             var view = null;
             // remove existing
-            if ( root.children().length )
-                root.children().remove();
-            switch ( type ){
-                case 'success':
-                    require(['views/alert-success'],function(AlertSuccess){
-                        view = new AlertSuccess({
-                            message: message
-                        });
-                        if ( view ) root.prepend( view.render().el );
-                    });
-                break;
-                case 'error':
-                    require(['views/alert-error'],function(AlertError){
-                        view = new AlertError({
-                            message: message
-                        });
-                        if ( view ) root.prepend( view.render().el );
-                    });
-                break;    
-                case 'info':
-                require(['views/alert-info'],function(AlertInfo){
-                    view = new AlertInfo({
-                        message: message
-                    });
-                    if ( view ) root.prepend( view.render().el );
-                });
-                break;
-                case 'warning':
-                require(['views/alert-info'],function(AlertWarning){
-                    view = new AlertWarning({
-                        message: message
-                    });
-                    if ( view ) root.prepend( view.render().el );
-                });
-                break;
-            }
+            var type=type?'.'+type:'';
+            setTimeout(function(){
+                $('.alert.'+type).fadeIn(); 
+            },1000);
+
+            setTimeout(function(){
+                $('.alert.'+type).fadeOut();  
+            },5000);
         };
 
         /**

@@ -499,3 +499,60 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/favicon.ico
 ---
+2015/05/27 21:10:46 [error] [php] include(Configuration.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(608): spl_autoload_call()
+#1 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(535): ApiController->actionList()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionIndex()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#14 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/index/configuration
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (608)
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (535)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/05/27 21:12:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "files/file2015-05-24-11-10-34word_yc.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('files/file2015-...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/files/file2015-05-24-11-10-34word_yc.png
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/05/27 21:17:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "files/file2015-05-24-11-10-34word_yc.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('files/file2015-...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/files/file2015-05-24-11-10-34word_yc.png
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/05/27 21:18:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "files/file2015-05-24-11-10-34word_yc.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('files/file2015-...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/files/file2015-05-24-11-10-34word_yc.png
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/05/27 21:23:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "files/file2015-05-24-11-10-34word_yc.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('files/file2015-...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/files/file2015-05-24-11-10-34word_yc.png
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---

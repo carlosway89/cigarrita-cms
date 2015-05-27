@@ -1,11 +1,20 @@
+<?php 
+  $config=Configuration::model()->find();
+  $criteria = new CDbCriteria;
+  $criteria->condition="language = '$config->language' and estado=1 AND is_deleted=0";
+  $criteria->limit = 1000;
+
+  $menu=Menu::model()->findAll($criteria);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Cigarrita Worker - Web Designer & Developer</title>
+	<title><?=$config->title?></title>
 	<meta content="width=device-width, initial-scale=1" name="viewport">
-	<meta name="description" content="Web Design and Develop we build the best web app, desarrollo y diseño web construimos las mejores web app"/>
+	<meta name="description" content="<?=$config->description?>"/>
     <meta name="author" lang="en" content="Cigarrita Worker"/>
     <meta name="keywords" content="aplication, web, software, internet, design, developer, elance, SEO, remote work "/>
     <meta name="robots" content="INDEX,FOLLOW">
@@ -55,22 +64,7 @@
 				<div class="ui secondary pull-right menu">
 				  <a href="javascript:;;" class="menu-side-icon"><i class="align justify icon"></i></a>
 				  <div class=" menu header-options">
-					<a class="item" href="#/services">
-					     Servicios
-					</a>				
-					<a class="item" href="#/projects">
-					     Proyectos
-					</a>	
-					<a class="item" href="#/costumer">
-					    Clientes
-					</a>
-					<a class="item" href="#/contact">
-						Contacto
-					</a>
-					<a class="item" href="#/about">
-						Nosotros
-					</a>
-				  </div>
+					<!--menus-->
 				</div>
 
 			</div>
@@ -82,16 +76,8 @@
 		</div>
 		<?php 
 
-		$criteria = new CDbCriteria;
-		$criteria->condition="language = 'es' and estado=1 AND is_deleted=0";
-		$criteria->limit = 1000;
-		// $criteria->order="ASC"
-
-        $menu=Menu::model()->findAll($criteria);
-
         
 		foreach ($menu as $value) {
-			// print_r($value->attributes['name']);
 		?>
 		<div id="<?=str_replace('/','',$value->attributes['url'])?>" class="<?=$value->attributes['minimal']?'minimal':'external'?>">
 			

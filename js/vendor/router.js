@@ -11,6 +11,7 @@
             routes: {
                'services':'services',
                'projects':'projects',
+               'costumer':'costumer',
                'contact':'contact',
                'about':'about',
                'principal':'principal',
@@ -28,6 +29,11 @@
             projects: function(){
 
               var item='projects';
+              this.scroller(item);              
+            },
+            costumer: function(){
+
+              var item='costumer';
               this.scroller(item);              
             },
             contact: function(){
