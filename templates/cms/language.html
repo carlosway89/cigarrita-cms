@@ -1,0 +1,22 @@
+<h3>Languages</h3>
+<p>Active o Deactive the languages includes in your website</p>
+<br>
+<div class="alert alert-success lang update" style="display:none">
+	<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> Your Operation was Successfully 
+</div>
+<ul class="list-inline text-center" style="display:block">
+	<!-- {{#each this.array_list}} -->
+	<li ng-repeat="lang in language">
+		<a id="{{lang.idlanguage}}" class="estado-lng block" ng-click="save_lang(lang)" href="javascript:;;">
+			<span class="flag-icon flag-icon-squared rounder huge flag-icon-{{lang.flag}}" ng-class="{active: isActive(lang.estado),desactive: !isActive(lang.estado)}" ></span>
+			<br>
+			<label ng-class="{'text-success': isActive(lang.estado),'text-danger': !isActive(lang.estado)}">{{lang.name}}</label>
+		</a>
+		
+	</li>
+	<!-- {{/each}} -->
+
+	<li><a class="new-item" href="javascript:;;" ng-click="show_modal()"><i class="plus circular icon huge plus-gray"></i><br><span>Add New</span></a></li>
+</ul>
+<div id="modal" ng-include="'templates/cms/modal-language.html'">
+</div>

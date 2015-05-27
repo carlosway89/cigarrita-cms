@@ -1,0 +1,501 @@
+2015/05/25 22:23:51 [error] [php] Cannot modify header information - headers already sent by (output started at /var/www/html/cigarrita-angular/protected/components/facebook.php:73) (/var/www/html/cigarrita-angular/protected/controllers/ApiController.php:851)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionTester()
+#1 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#12 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/tester
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (851)
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (288)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-2.1.1.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-2.1.1...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/jquery-2.1.1.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/webfont.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/webfont.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/webfont.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 10:25:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/05/26 10:25:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/webfont.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/webfont.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/webfont.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-2.1.1.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-2.1.1...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/jquery-2.1.1.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/webfont.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/webfont.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/webfont.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 11:53:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-2.1.1.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-2.1.1...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/jquery-2.1.1.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/webfont.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/webfont.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/webfont.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 18:18:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/05/26 19:10:17 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/cigarrita-angular/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): CController->run('tester')
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/tester/ciga...')
+#10 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/api/tester/cigarrita
+---
+2015/05/26 19:10:18 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/cigarrita-angular/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): CController->run('tester')
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/tester/js/v...')
+#10 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/api/tester/js/vendor/app.js?bust=1432660218265
+HTTP_REFERER=http://cigarrita-worker.dev/api/tester/cigarrita
+---
+2015/05/26 19:10:34 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/cigarrita-angular/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): CController->run('tester')
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/tester')
+#10 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/api/tester
+---
+2015/05/26 19:10:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in /var/www/html/cigarrita-angular/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(270): CController->missingAction('js')
+#1 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): CController->run('js')
+#2 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/js/vendor/a...')
+#3 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/js/vendor/app.js?bust=1432660236260
+HTTP_REFERER=http://cigarrita-worker.dev/api/tester
+---
+2015/05/27 10:20:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/05/27 10:20:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
