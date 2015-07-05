@@ -1,17 +1,18 @@
 <?php
 // error_reporting(E_ALL ^ E_NOTICE);
 // error_reporting(0);
-class PanelController extends Controller
+class EditController extends Controller
 {
 	/**
 	 * Declares class-based actions.
 	 */
-	public $layout='//layouts/panel';
+	public $layout='//site/index';
 	
 	public function filters()
 	{
 		return array('accessControl');
 	}
+
 
 	//SI USAS ACCESS RULES DEBES ESPECIFICAR TODAS TUS ACCIONES, ES COMO TENER UNA FLACA
 	public function accessRules()
@@ -19,16 +20,8 @@ class PanelController extends Controller
 		return array(
 			array('allow',
 				'actions'=>array('index'),
-				'users'=>array('@')
-					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
-					),
-			// array('allow',
-			// 	'actions'=>array('index'),
-			// 		'users'=>array('*') 
-			// 		),
-			array('deny',
-					'users'=>array('*'),
-				)
+					'users'=>array('*') 
+					)
 			);
 	}
 
@@ -47,22 +40,6 @@ class PanelController extends Controller
 			),
 		);
 	}
-	public function init() {
-        parent::init();
-        Yii::app()->errorHandler->errorAction= $this->actionError();
-    }
-
-        /**
-        * This is the action to handle external exceptions.
-        */
-    public function actionError(){
-
-    	error_reporting(0);
-
-        
-        $this->render('/panel/index');
-    } 
-
 
 	/**
 	 * This is the default 'index' action that is invoked
@@ -70,10 +47,23 @@ class PanelController extends Controller
 	 */
 	public function actionIndex()
 	{	
-		$this->layout='//layouts/panel';
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		if (Yii::app()->user->getState('iduser')) {
+			$this->render('/site/index');
+		}
+		else{
+			$this->redirect('/login');
+		}
+
+		
+	}
+
+	/**
+	 * This is the action to handle external exceptions.
+	 */
+	public function actionError()
+	{
+
+		echo 'bloqueado';
 	}
 
 

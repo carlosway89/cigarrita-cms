@@ -6,11 +6,24 @@ cigarritaApp.run(function($rootScope,$window) {
   });
   $rootScope.$on( "$routeChangeSuccess", function(event, next, current) {
     $('.panel-content').removeClass('actived ui primary loading button');
+    console.log(next);
+
+    if (next.originalPath=="/pruebas") {
+      console.log('scroll');
+    };
+
   });
 });
 
-cigarritaApp.config(['$routeProvider','FacebookProvider',
-  function($routeProvider,FacebookProvider) {
+cigarritaApp.config(['$routeProvider','$locationProvider','FacebookProvider',
+  function($routeProvider,$locationProvider,FacebookProvider) {
+
+
+    // $locationProvider.html5Mode({
+    //   enabled: true,
+    //   requireBase: false
+    // });
+    
     $routeProvider.
       when('/pages', {
         templateUrl: 'templates/cms/content.html',
@@ -32,9 +45,8 @@ cigarritaApp.config(['$routeProvider','FacebookProvider',
         templateUrl: 'templates/cms/facebook.html',
         controller: 'facebookCtrl'
       }).
-      // when('/language/:phoneId', {
-      //   templateUrl: 'partials/phone-detail.html',
-      //   controller: 'PhoneDetailCtrl'
+      // when('/pruebas',{
+      //   controller: 'contentCtrl'
       // }).
       otherwise({
         redirectTo: '/pages'

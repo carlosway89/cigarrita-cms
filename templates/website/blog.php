@@ -8,19 +8,18 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			{{#each this.post_list}}
+			<!-- {{#each this.post_list}} -->
 			<div class="col-md-12 div-table" >
 			    <div class=" col-md-4 table-cell">
-			      	<img class="img-responsive" src="{{this.image}}">
+			      	<img class="img-responsive" src="{{post.image}}">
 			    </div>
 			    <div class="col-md-8 table-cell">
-			      <h4 class="header no-margin">{{this.header}}</h4>
-			      <div class="description">
-			        {{{this.subheader}}}
-			      </div>
+			      <h4 class="header no-margin">{{post.header}}</h4>
+			      <p  ></p>
+			      <div class="description" ng-bind-html="post.subheader | sanitize"></div>
 			    </div>
 			</div>
-			{{/each}}
+			<!-- {{/each}} -->
 		</div>
 
 	</div>

@@ -2,10 +2,8 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Content','Post','Menu'
   function($scope, Content, Post, Menu, Block, Sort, Language, RunFile, Template, MultiLanguage) {
 
 
-    $(document).on('launch.edition', function(event,model) {
-          console.log('external llamda del post',model);
-          event.stopImmediatePropagation();
-          $(document).off('launch.edition');
+    $(document).on('data.object.launch', function(e) {
+          console.log('external llamda del post');
     });
 
     var contenidos=function(){
@@ -292,289 +290,52 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Content','Post','Menu'
   }]);
 
 
-cigarritaControllers.controller('languageCtrl', ['$scope', 'Language','MultiLanguage',
-  function($scope, Language, MultiLanguage) {
+cigarritaControllers.controller('homeCtrl',['$scope','Content',function($scope,Content){
 
-    $scope.language=Language.query();
 
-    $scope.isActive = function(estado){
-        return estado=="1"?true:false;
-    }
+  $scope.menu = Content.query({
+    language:beans.readCookie('language.initial')
+  },function(data){
 
-    $scope.show_modal=function(){
+    setTimeout(function(){
+        $('#home .transito').css({opacity: 0.0});
+        $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
+        $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+        $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+        var timer = setInterval(nextSlide,slideDuration);
+    },2000);
 
-      $scope.lang=new Language();
+  });
 
-      $('#modal_language')
-        .modal({
-          closable:false,
-          transition:'scale',
-          selector: { 
-            close: '.closing'
+  var fadeDuration=1000;
+  var fadeDuration1=1000;
+  var slideDuration=7000;
+  var currentIndex=1;
+  var nextIndex=1;
+
+    var nextSlide=function(){
+
+          nextIndex =currentIndex+1;
+
+          if(nextIndex > $('#home .transito').length)
+          {
+            nextIndex =1;
           }
-        })
-        .modal('show'); 
+          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
+          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+          $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
+          currentIndex = nextIndex;
 
-      $('#flag_selector').dropdown();
-    }
+    };
 
+  $scope.launchit=function(model){
 
-    $scope.save_lang=function(lang){
+    console.log(model);
 
-      
+    parent.$(parent.document).trigger('launch.edition',model);
 
-      if (!lang.idlanguage) {
-        $("#save_lang").addClass('actived ui primary loading button');
-        var rec = new Language();
-        rec.estado=1;
-        rec.flag=$('#flag').val();
-        rec.min=$('#flag').val();
-        rec = $.extend(rec, lang);
-        rec.$save(function(){
-          var lang= new MultiLanguage({attr:rec.flag});
-          lang.$save();
+  }
 
-          $scope.language.push(rec);
-          $("#save_lang").removeClass('actived ui primary loading button');
-
-          beans.user_alert('lang.new');
-        });         
-
-      }else{
-        var rec = new Language({condition:lang.idlanguage});       
-
-        if (lang.estado==1) {
-          rec.estado=0;
-          lang.estado=0;
-        }else{
-          rec.estado=1;
-          lang.estado=1;
-        }
-
-        rec.$update(function(){
-          beans.user_alert('lang.update');
-        });
-
-
-      }
-
-    }
-
-
-
-  }]);
-
-cigarritaControllers.controller('messageCtrl', ['$scope', 'Model',
-  function($scope, Model) {
-
-    $scope.message = Model.query({model:'form'},function(data){
-      setTimeout(function(){
-        beans.generate_data_table('Listform');
-      },200);
-      
-    });
-
-    
-  }]);
-cigarritaControllers.controller('settingCtrl', ['$scope', 'MyUser','Model',
-  function($scope, MyUser, Model) {
-
-
-
-    $scope.user = MyUser.query(function(data){
-    });
-
-    Model.query({model:'configuration'},function(data){
-      $scope.web=data[0];
-    });
-
-
-    $scope.save_user=function(user){
-
-      $("#btn_save_user").addClass('actived ui primary loading button');
-      if (user.new_password) {
-        user.password=user.new_password;
-      };
-      
-      user.$update(function(){
-          $("#btn_save_user").removeClass('actived ui primary loading button');
-          beans.user_alert('settings');
-
-      });
-
-    }
-    $scope.save_web=function(web){
-      $("#btn_save_web").addClass('actived ui primary loading button');
-      
-      web.$update({model:'configuration',id:web.idconfig},function(){
-          $("#btn_save_web").removeClass('actived ui primary loading button');
-          beans.user_alert('settings');
-      });
-
-    }
-
-    $scope.show_account=true;
-
-    $scope.show_panel=function(type){
-
-
-      if (type=='website') {
-
-        $scope.show_account=false;
-        $scope.show_website=true;
-      }else{
-
-        $scope.show_account=true;
-        $scope.show_website=false;
-
-      }
-
-    }
-
-    
-  }]);
-
-cigarritaControllers.controller('facebookCtrl', ['$scope','Facebook','ApiFace','Json','Model',
-  function($scope, Facebook,ApiFace,Json, Model) {
-
-      /*
-      get all the result from a page https://graph.facebook.com/cigarritaworker
-  
-      reference https://developers.facebook.com/docs/graph-api/reference/page/
-        
-      all the pages managed  Facebook.api('/{{app-name, id or url}}/accounts');
-      */
-
-       // Define user empty data :/
-      $scope.user = {};
-      
-      // Defining user logged status
-      $scope.logged = false;
-      
-      // And some fancy flags to display messages upon user status change
-      $scope.byebye = false;
-      $scope.salutation = false;
-      
-      Json.query(function(data){
-        console.log('Json:',data);
-      });
-
-      ApiFace.query({id:'1431968783721316'},function(data){
-        console.log('ApiFace:',data);
-      });
-      /**
-       * Watch for Facebook to be ready.
-       * There's also the event that could be used
-       */
-      $scope.$watch(
-        function() {
-          return Facebook.isReady();
-        },
-        function(newVal) {
-          if (newVal)
-            $scope.facebookReady = true;
-        }
-      );
-      
-      var userIsConnected = false;
-      
-      Facebook.getLoginStatus(function(response) {
-        if (response.status == 'connected') {
-          // console.log('accessToken',response.authResponse.accessToken);
-          userIsConnected = true;
-          $scope.logged = true;
-              Facebook.api('/me',{accessToken:response.authResponse.accessToken}, function(response) {
-                /**
-                 * Using $scope.$apply since this happens outside angular framework.
-                 */
-                console.log(response);
-
-                // $scope.$apply(function() {
-                //   $scope.user = response;
-                // });
-                
-              });
-
-        }
-      });
-      
-      /**
-       * IntentLogin
-       */
-      $scope.IntentLogin = function() {
-        if(!userIsConnected) {
-          $scope.login();
-        }
-      };
-      
-      /**
-       * Login
-       */
-       $scope.login = function() {
-         Facebook.login(function(response) {
-          if (response.status == 'connected') {
-            $scope.logged = true;
-            $scope.me();
-          }
-        
-        },{scope: 'public_profile,manage_pages'});
-       };
-       
-       /**
-        * me 
-        */
-        $scope.me = function() {
-          Facebook.api('/170064513039636?fields=cover,about,company_overview,mission,founded,emails,location,description,phone,category,posts.limit(5),events.limit(5).fields(cover,name,description,place).since(2014),photos.fields(picture,source),albums.limit(10).fields(name,photos.limit(10).fields(picture,source))', function(response) {
-            /**
-             * Using $scope.$apply since this happens outside angular framework.
-             */
-            console.log(response);
-
-            $scope.$apply(function() {
-              $scope.user = response;
-            });
-            
-          });
-        };
-      
-      /**
-       * Logout
-       */
-      $scope.logout = function() {
-        Facebook.logout(function() {
-          $scope.$apply(function() {
-            $scope.user   = {};
-            $scope.logged = false;  
-          });
-        });
-      }
-      
-      /**
-       * Taking approach of Events :D
-       */
-      $scope.$on('Facebook:statusChange', function(ev, data) {
-        console.log('Status: ', data);
-        if (data.status == 'connected') {
-          $scope.$apply(function() {
-            $scope.salutation = true;
-            $scope.byebye     = false;    
-          });
-        } else {
-          $scope.$apply(function() {
-            $scope.salutation = false;
-            $scope.byebye     = true;
-            
-            // Dismiss byebye message after two seconds
-            // $timeout(function() {
-            //   $scope.byebye = false;
-            // }, 2000)
-          });
-        }
-        
-        
-      });
-
-    
-  }]);
-
+}]);
 

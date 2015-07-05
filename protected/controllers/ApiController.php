@@ -32,12 +32,12 @@ class ApiController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','admin','create','view','form','update','list','upload','runFile','menuSort','multiLanguage','myuser'),
+                'actions'=>array('index','admin','create','view','form','update','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync'),
                 // 'expression'=>'Yii::app()->user->checkAccess("administrador")',
                 'users'=>array('@'),
                 ),
             array('allow',
-                'actions'=>array('index','view','form','list','flag','tester','content'),
+                'actions'=>array('index','view','form','list','flag','tester','content','facebook'),
                 'users'=>array('*'),
                 ),
             array('deny',  // deny all to users
@@ -282,13 +282,123 @@ class ApiController extends Controller
 
             // $array=array();
             // echo $profile_id;
-            $fb=new facebook();
-
-            $response=$fb->getUserFB($profile_id);
-
-            $this->_sendResponse(200, CJSON::encode($response));
 
     }
+
+
+    public function actionFacebook(){
+        $profile_id=$this->uri(2);
+
+        $fb=new facebook();
+
+        $response=$fb->getUserFB($profile_id);
+
+        // $response->event;
+        $this->_sendResponse(200, CJSON::encode($response));
+    }
+    
+    private function saveFBdata($model,$response){
+        
+
+        $id=$response->id;
+
+        $attr=$model::model()->findByPk($id);  
+
+        if ($attr) {
+            $_model=$attr;
+        }
+        else{
+            $_model=new $model();
+        }
+
+        foreach($response as $var=>$value) {
+            
+            if($_model->hasAttribute($var)) {
+                $_model->$var =  is_object($value)?json_encode($value):(is_array($value)?json_encode($value):$value);
+            } 
+
+        }
+
+        if($_model->save()) {
+            return 1;
+        } else {
+            // Errors occurred
+            $msg = "<h1>Error</h1>";
+            $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
+            $msg .= "<ul>";
+            foreach($_model->errors as $attribute=>$attr_errors) {
+                $msg .= "<li>Attribute: $attribute</li>";
+                $msg .= "<ul>";
+                foreach($attr_errors as $attr_error) {
+                    $msg .= "<li>$attr_error</li>";
+                }        
+                $msg .= "</ul>";
+            }
+            $msg .= "</ul>";
+            $this->_sendResponse(500, $msg );
+        }
+    }
+
+    public function actionDataFacebookSync(){
+        $profile_id=$this->uri(2);
+        $type_sync=$this->uri(3)?$this->uri(3):'all';
+
+        $fb=new facebook();
+
+        $response=$fb->getUserFB($profile_id,$type_sync);
+
+        switch ($type_sync) {
+            case 'about':
+                if ($this->saveFBdata("About",$response)) {
+                    echo 1;
+                } 
+            break;
+            case 'contact':
+                if ($this->saveFBdata("Contact",$response)) {
+                    echo 1;
+                }
+            break;
+            case 'feed':
+                $feeds=$response['posts']->data;
+
+                foreach ($feeds as $feeds_key => $feeds_val) {
+                    $this->saveFBdata("Feed",$feeds_val);
+                }
+                echo 1;
+
+            break; 
+            case 'event':
+               $events=$response['events']->data;
+               foreach ($events as $events_key => $events_val) {
+                    $this->saveFBdata("Event",$events_val);
+                }
+                echo 1;
+            break; 
+            case 'gallery':
+                $albums=$response['albums']->data;
+
+                foreach ($albums as $albums_key => $albums_val) {
+                    $photos=$albums_val->photos->data;
+                    $this->saveFBdata("Gallery",$albums_val);
+                    foreach ($photos as $val) {
+                        $val= (object) array_merge((array) $val,array("belong"=>$albums_val->id));
+                        $this->saveFBdata("Gallery",$val);
+                    }
+                    
+                } 
+                echo 1;
+            break;         
+            default:
+              echo 'All';
+              break;
+        }
+
+        
+ 
+
+    }
+
+
 
     public function actionUpload(){
 

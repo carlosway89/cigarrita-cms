@@ -8,7 +8,7 @@
 
 ?>
 <!DOCTYPE html>
-<html>
+<html ng-app="cigarritaWeb">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,18 +21,39 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/semantic.min.css">
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
+	<?php 
+	
+	$url=Yii::app()->request->getPathInfo();
+
+	if($url=='edit'){ ?>
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_edit.css">
+	<?php } ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/flag-icon.min.css">
 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-2.1.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/webfont.js"></script> 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/semantic.js"></script>
 
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/underscore.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/backbone.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/handlebars.js"></script>
-	<script data-main="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/main" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/require.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/cigarrita.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/app.js"></script>
+  	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/router.js"></script>
+
+  	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/controllers/controllers.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modules/animations.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modules/filters.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/models/services.js"></script>
+
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/angular-facebook.js"></script>
 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/outsider.js"></script>
 
@@ -71,20 +92,7 @@
 		</div>
 	</div>
 	<div class="content" >
-		<div id="principal" class="minimal">
-
-		</div>
-		<?php 
-
-        
-		foreach ($menu as $value) {
-		?>
-		<div id="<?=str_replace('/','',$value->attributes['url'])?>" class="<?=$value->attributes['minimal']?'minimal':'external'?>">
-			
-		</div>
-		<?php
-		}
-		?>
+		<div ng-view></div>	
 		
 		<a href="https://plus.google.com/107866117296817349154" class="hidden" rel="publisher">Google+</a>
 	</div>

@@ -1,0 +1,7 @@
+<!-- 
+<div ng-repeat="(key, value) in menu" >
+	{{key}}:{{value}}	
+</div>
+ -->
+ <div id="{{menus.content[0].template}}" ng-repeat="menus in menu" ng-include="'templates/website/'+menus.content[0].template+'.php'">
+</div>

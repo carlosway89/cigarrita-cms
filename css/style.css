@@ -2,7 +2,7 @@
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);*/
 
 html {
-    font-family:'Open Sans', sans-serif;
+    font-family:'Open Sans', sans-serif !important;
     font-size: 13px;
     line-height: 1.9;
     /*color: #333;*/
@@ -11,6 +11,11 @@ html {
     overflow-x:hidden;
 
 }
+
+[data-object] + span{
+	display:none;
+}
+
 .arial{
 	font-family: Arial,sans-serif !important;
 }
@@ -75,6 +80,9 @@ h3 small,
 h4 small,
 .h4 small {
   font-size: 14px;
+}
+.block{
+	display: inline-block;
 }
 .link-portafolio{
 	font-size: 14px;
@@ -274,12 +282,12 @@ a{
 .logo{
 	padding-top: 30px;
 	font-weight: 300;
-	font-family: 'Great Vibes';
+	font-family: 'Great Vibes' !important;
 	font-size: 60px;
 	color:#047BB3;
 }
 .logo small{
-	font-family: 'Lato';
+	font-family: 'Lato' !important;
 	font-size: 20px;
 	color: #777;
 }

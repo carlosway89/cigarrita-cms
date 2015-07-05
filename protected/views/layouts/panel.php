@@ -32,10 +32,10 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jasny-bootstrap.min.js"></script>
 
 
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-animate.min.js"></script>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-route.min.js"></script>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-resource.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
 
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/cigarrita.js"></script>
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>

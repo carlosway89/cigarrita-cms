@@ -22,7 +22,7 @@ class facebook
 	// or create a FacebookSession with a valid access token:
 	
 	
-    function getUserFB($profile_id){
+    function getUserFB($profile_id,$type="all"){
 
       FacebookSession::setDefaultApplication('476476699176242', '174386d2f46e1fabb3dadb1090da4b39');
 
@@ -41,9 +41,42 @@ class facebook
       //170064513039636?fields=cover,about,company_overview,mission,founded,emails,location,description,phone,category,posts.limit(5),events.limit(5).fields(cover,name,description,place).since(2014),photos.fields(picture,source),albums.limit(10).fields(name,photos.limit(10).fields(picture,source))
 
   		// /170064513039636?fields=cover,about,company_overview,mission,founded,emails,location,description,phone,category,posts.limit(5),events.limit(5).fields(cover,name,description,place).since(2014),photos.fields(picture,source),albums.limit(10).fields(name,photos.limit(10).fields(picture,source))&access_token=476476699176242|174386d2f46e1fabb3dadb1090da4b39
+      
+      $about="cover.fields(source),about,company_overview,mission,founded,description,category";
+      $contact="emails,location,phone";
+      $feed="posts.limit(5)";
+      $event="events.limit(5).fields(cover,name,description,place).since(2014)";
+      $gallery="photos.fields(picture,source),albums.limit(10).fields(cover_photo,name,type,description,photos.limit(10).fields(picture,source))";
+
+      switch ($type) {
+        case 'all':
+          $_field="$about,$contact,$feed,$event,$gallery";
+          break;
+        case 'about':
+          $_field="$about";
+        break;
+        case 'contact':
+          $_field="$contact";
+        break;
+        case 'feed':
+          $_field="$feed";
+        break; 
+        case 'event':
+          $_field="$event";
+        break; 
+        case 'gallery':
+          $_field="$gallery";
+        break;         
+        default:
+          $_field="";
+          break;
+      }    
+
+      
+
       try {
         $me = (new FacebookRequest(
-          $session, 'GET', "/$profile_id?fields=cover,about,company_overview,mission,founded,emails,location,description,phone,category,posts.limit(5),events.limit(5).fields(cover,name,description,place).since(2014),photos.fields(picture,source),albums.limit(10).fields(name,photos.limit(10).fields(picture,source))&access_token=476476699176242|174386d2f46e1fabb3dadb1090da4b39"
+          $session, 'GET', "/$profile_id?fields=$_field&access_token=476476699176242|174386d2f46e1fabb3dadb1090da4b39"
         ))->execute()->getGraphObject(GraphUser::className())->asArray();
         // echo $me->getName();
         return $me;
