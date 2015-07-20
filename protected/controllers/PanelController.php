@@ -31,7 +31,7 @@ class PanelController extends Controller
 				)
 			);
 	}
-
+	
 	public function actions()
 	{
 		return array(

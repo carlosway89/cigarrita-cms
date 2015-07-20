@@ -51,6 +51,7 @@
   	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/controllers/controllers.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modules/animations.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modules/filters.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modules/directives.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/models/services.js"></script>
 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/angular-facebook.js"></script>
@@ -60,14 +61,15 @@
 </head>
 <body>
 
-	<div class="header fast-animated clearfix">
+	<div id="external_links"></div>
+	<div class="header fast-animated clearfix" ng-controller="indexCtrl">
 		<div class="line ui page grid page-gray" style="background-color:#F5F5F5">
 			<div class="column">
-				<div class="ui search selection dropdown pull-right">
-					<input id="language_option" name="language" type="hidden">					
+				<div class="ui search selection dropdown pull-right"  language-select="language">
+					<input id="language_option" name="language" type="hidden" value="{{current}}">					
 					<div class="default text">Select Language</div>
 					<i class="dropdown icon"></i>
-					<div class="menu laguage-select" style="z-index: 1000;">
+					<div class="menu laguage-select" style="z-index: 1000;" >
 						<!--Languages Availables-->
 					</div>
 				</div>
@@ -86,6 +88,7 @@
 				  <a href="javascript:;;" class="menu-side-icon"><i class="align justify icon"></i></a>
 				  <div class=" menu header-options">
 					<!--menus-->
+					<a class='item' ng-href='{{link.url}}' ng-repeat="link in links" >{{link.name}}</a>
 				</div>
 
 			</div>

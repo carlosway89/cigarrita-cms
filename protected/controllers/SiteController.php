@@ -19,7 +19,8 @@ class SiteController extends Controller
 		return array(
 			array('allow',
 				'actions'=>array('panel','logout'),
-					'users'=>array('Yii::app()->user->checkAccess("administrador")')
+					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
+					'users'=>array('@')
 					),
 			array('allow',
 				'actions'=>array('index','login','logout'),

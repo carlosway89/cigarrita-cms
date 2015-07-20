@@ -1,16 +1,8 @@
-<!-- 
-<div ng-repeat="(key, value) in menu" >
-	{{key}}:{{value}}	
-</div>
- -->
-<!--  <div id="{{menus.content[0].template}}" ng-repeat="menus in menu" ng-include="'templates/website/'+menus.content[0].template+'.php'">
-</div> -->
-
-<div id="home" ng-repeat="menus in menu | filter:{url.content[0].template:'home'}">
+<div id="home" ng-repeat="menus in menu | filter:{url:'/home'}">
 	<div class="page-gray" style="">
 		<div id="principal_background" style="padding-top:200px;{{menus.content[0].subheader}}">
 			<!-- {{#each this.post_list}} -->
-			<div  data-object="post" class="transito container" style="display:none" ng-class="{active : $first, item : true}" ng-repeat="post in menus.content[0].post">
+			<div  data-object="post" class="transito container" style="display:none"  ng-repeat="post in menus.content[0].post">
 				<div class="col-md-offset-3 col-md-3">
 					<h1 class=" no-margin text-principal">{{post.header}}</h1>					
 				</div>

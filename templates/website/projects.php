@@ -28,7 +28,7 @@
 		    	<div class="">	
 		    		<div class="col-md-12 block"  data-object="post">
 		    			<div class="col-md-9 ipad-ground">
-		    				<img src="{{post.image}}" class="img-responsive" alt="cigarrita-worker">
+		    				<img ng-src="{{post.image}}" class="img-responsive" alt="cigarrita-worker">
 		    			</div>
 		    			<div class="col-md-3">
 		    				<h4>{{post.header}}</h4>

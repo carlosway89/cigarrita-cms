@@ -1,17 +1,28 @@
-cigarritaApp.run(function($rootScope,$window) {
 
-  $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+
+cigarritaApp.run(function($route, $rootScope, $location, $anchorScroll, $routeParams) {
+
+
+  $rootScope.$on( "$viewContentLoaded", function(event) {
     // preloading site launch
   });
 
-  $rootScope.$on( "$routeChangeSuccess", function(event, next, current) {
-    // preloading site remove
+  // $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+  //   $location.hash($routeParams.scrollTo);
+  //   $anchorScroll();  
+  // });
 
-    // if (next.originalPath=="/home") {
-      console.log('scroll',next.originalPath);
-    // };
+   $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+    
+    if($location.hash()){
+      $anchorScroll.yOffset = 100;
+      $anchorScroll();
+    } 
 
   });
+
+
+
 });
 
 cigarritaApp.config(['$routeProvider','$locationProvider',
@@ -24,17 +35,14 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     });
     
     $routeProvider.
-      when('/home', {
-        templateUrl: 'templates/website/ng-view.html',
-        controller: 'homeCtrl'
-      }).
-      when('/edit', {
-        templateUrl: 'templates/website/ng-view.html',
-        controller: 'homeCtrl'
-      }).
       when('/blog', {
-        templateUrl: 'templates/website/blog.php',
-        controller: 'blogCtrl'
+        templateUrl: 'api/template/blog',
+        controller: 'blogCtrl',
+        reloadOnSearch: false
+      }).
+      when('/:link', {
+        templateUrl: 'api/template/view', //router template with api
+        controller: 'homeCtrl'
       }).
       otherwise({
         redirectTo: '/home'

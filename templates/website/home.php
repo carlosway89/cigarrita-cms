@@ -6,7 +6,7 @@
 				<h1 class=" no-margin text-principal">{{post.header}}</h1>					
 			</div>
 			<div class="col-md-6">
-				<img src="{{post.image}}" class="img-responsive" alt="cigarrita-worker">
+				<img ng-src="{{post.image}}" class="img-responsive" alt="cigarrita-worker">
 			</div>
 			
 		</div>

@@ -7,6 +7,7 @@ var cigarritaApp = angular.module('cigarritaWeb', [
   'cigarritaControllers',
   'cigarritaAnimations',
   'cigarritaFilters',
+  'cigarritaDirective',
   'cigarritaServices'
 ]);
 

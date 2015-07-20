@@ -6,6 +6,25 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Content','Post','Menu'
           console.log('external llamda del post',model);
           event.stopImmediatePropagation();
           $(document).off('launch.edition');
+
+
+    });
+
+    $('#website_frame').load(function(){
+
+      var frame=$('#website_frame').contents().find("#external_links").hide();
+
+      // frame.append("<link>");
+      // var css = frame.children(":last");
+      // css.attr({
+      //       rel:  "stylesheet",
+      //       type: "text/css",
+      //       href: "/css/style_edit.css"
+      // });
+
+
+
+
     });
 
     var contenidos=function(){

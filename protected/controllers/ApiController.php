@@ -37,7 +37,7 @@ class ApiController extends Controller
                 'users'=>array('@'),
                 ),
             array('allow',
-                'actions'=>array('index','view','form','list','flag','tester','content','facebook'),
+                'actions'=>array('index','view','form','list','flag','tester','content','facebook','template'),
                 'users'=>array('*'),
                 ),
             array('deny',  // deny all to users
@@ -64,6 +64,15 @@ class ApiController extends Controller
         $uri = explode("/", $url);
 
         return $uri[$i];
+    }
+
+    public function actionTemplate(){
+
+        
+        $template=$this->uri(2);
+        $var="";
+        $this->render("/site/".$template,array("var"=>$var));
+        // echo $id;
     }
 
     public function actionMyuser(){
@@ -430,6 +439,8 @@ class ApiController extends Controller
 
             }
             $this->_sendResponse(200, CJSON::encode($ret));
+         }else{
+            echo 'error';
          }
 
     }
@@ -481,28 +492,68 @@ class ApiController extends Controller
     public function actionContent(){
 
         $criteria = new CDbCriteria;
-        $filter=$this->uri(3);
-        if ($filter!=null) {
-            $condition=$this->uri(2);
+
+        $filter=$this->uri(2);
+
+        $criteria->condition="";
+
+        if ($filter) {
+           
+            $filter=json_decode($filter);
             
-            if (preg_match( '/,/',$condition,$matches)) {
-                $filter=explode(",",$filter);
-                $condition=explode(",",$condition); 
+            if (is_object($filter)) {
                 
-                $string=$condition[0]."='".$filter[0]."'";
-                for ($i=1; $i <count($filter); $i++) { 
-                    $string.=' AND '.$condition[$i]."='".$filter[$i]."'";
+                $_model=new Menu;
+
+                foreach ($filter as $key => $value) {
+                  
+                    if ($key=="like") {
+                        foreach ($value as $key_like => $val_like) {
+                            if($_model->hasAttribute($key_like)) {
+                                $condition[]=$key_like." LIKE '%".$val_like."%'";
+                            }
+                        }                    
+                    }else{
+                        if($_model->hasAttribute($key)) {
+                            $condition[]=$key."='".$value."'";
+                        }
+                    }
+                }       
+
+                $string=$condition[0];
+
+                for ($i=1; $i <count($condition); $i++) { 
+                    $string.=' AND '.$condition[$i];
                 }
                 $criteria->condition=$string;
-            }else{
-                $filter=$condition."='".$filter."'";
-                $criteria->condition=$filter;
             }
+
+            
+
+        }
+
+        
+        // if ($filter!=null) {
+        //     $condition=$this->uri(2);
+            
+        //     if (preg_match( '/,/',$condition,$matches)) {
+        //         $filter=explode(",",$filter);
+        //         $condition=explode(",",$condition); 
+                
+        //         $string=$condition[0]."='".$filter[0]."'";
+        //         for ($i=1; $i <count($filter); $i++) { 
+        //             $string.=' AND '.$condition[$i]."='".$filter[$i]."'";
+        //         }
+        //         $criteria->condition=$string;
+        //     }else{
+        //         $filter=$condition."='".$filter."'";
+        //         $criteria->condition=$filter;
+        //     }
                 
             
-        }
+        // }
         
-        $criteria->condition=$criteria->condition." AND is_deleted=0";
+        // $criteria->condition=$criteria->condition." AND is_deleted=0";
         $criteria->order = 'position ASC';
         $criteria->limit = 1000;
 
@@ -683,39 +734,72 @@ class ApiController extends Controller
         $model=ucfirst($this->uri(2));
         $criteria = new CDbCriteria;
 
-        if ($filter!=null) {
-            $condition=$this->uri(3);
-            if ( preg_match( '/_like/',$condition,$matches)){
-                $condition=explode("_like",$condition); 
-                $filter=$condition[0]." LIKE '%".$filter."%'";
-                $criteria->condition=$filter;
-            }else{
-                if (preg_match( '/,/',$condition,$matches)) {
-                    $filter=explode(",",$filter);
-                    $condition=explode(",",$condition); 
-                    
-                    $string=$condition[0]."='".$filter[0]."'";
-                    for ($i=1; $i <count($filter); $i++) { 
-                        $string.=' AND '.$condition[$i]."='".$filter[$i]."'";
-                    }
-                    $criteria->condition=$string;
-                }else{
-                    $filter=$condition."='".$filter."'";
-                    $criteria->condition=$filter;
-                }
-                
-            }
+        $criteria->condition="";
+
+        // $filter=$this->uri(4);
+
+        if ($filter) {
+           
+            $filter=json_decode($filter);
             
+            if (is_object($filter)) {
+
+                $_model=new $model;
+                foreach ($filter as $key => $value) {
+                  
+                    if ($key=="like") {
+                        foreach ($value as $key_like => $val_like) {
+                            if($_model->hasAttribute($key_like)) {
+                                $condition[]=$key_like." LIKE '%".$val_like."%'";
+                            }
+                        }                    
+                    }else{
+                        if($_model->hasAttribute($key)) {
+                            $condition[]=$key."='".$value."'";
+                        }
+                    }
+                }       
+
+                $string=$condition[0];
+
+                for ($i=1; $i <count($condition); $i++) { 
+                    $string.=' AND '.$condition[$i];
+                }
+
+                $criteria->condition=$string;
+            }
         }
 
-        if ($model=="Menu") {
-            $criteria->condition=$criteria->condition." AND is_deleted=0";
-            $criteria->order = 'position ASC';
-        }
+        // if ($filter!=null) {
+        //     $condition=$this->uri(3);
+        //     if ( preg_match( '/_like/',$condition,$matches)){
+        //         $condition=explode("_like",$condition); 
+        //         $filter=$condition[0]." LIKE '%".$filter."%'";
+        //         $criteria->condition=$filter;
+        //     }else{
+        //         if (preg_match( '/,/',$condition,$matches)) {
+        //             $filter=explode(",",$filter);
+        //             $condition=explode(",",$condition);                     
+        //             $string=$condition[0]."='".$filter[0]."'";
+        //             for ($i=1; $i <count($filter); $i++) { 
+        //                 $string.=' AND '.$condition[$i]."='".$filter[$i]."'";
+        //             }
+        //             $criteria->condition=$string;
+        //         }else{
+        //             $filter=$condition."='".$filter."'";
+        //             $criteria->condition=$filter;
+        //         }                
+        //     }            
+        // }
+
+        // if ($model=="Menu") {
+        //     $criteria->condition=$criteria->condition." AND is_deleted=0";
+        //     $criteria->order = 'position ASC';
+        // }
         
         
         $criteria->limit = 1000;
-        $models=  $model::model()->findAll($criteria);
+        $models=$model::model()->findAll($criteria);
 
 
         if(is_null($models)) {
@@ -729,6 +813,7 @@ class ApiController extends Controller
 
              $this->_sendResponse(200, CJSON::encode($rows));
         }
+
     }
 
     /**

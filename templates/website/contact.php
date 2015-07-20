@@ -11,7 +11,7 @@
 
 			</div>
 			<div class="col-md-8">
-				<img id="background" data-object="content" src="{{menus.content[0].background}}" class="img-responsive" alt="subscribe">
+				<img id="background" data-object="content" ng-src="{{menus.content[0].background}}" class="img-responsive" alt="subscribe">
 			</div>				
 		</div>
 

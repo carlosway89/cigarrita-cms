@@ -10,7 +10,7 @@
 		<div data-object="post" class="col-md-3 col-sm-3 bottom-20 text-center" ng-repeat="post in menus.content[0].post" ng-click="launchit(post)">
 			<div  class="ui raised ">
 			  	<h2 class="font-large text-icon no-margin">
-			  		<img src="{{post.image}}" class="img-responsive img-icon">
+			  		<img ng-src="{{post.image}}" class="img-responsive img-icon">
 			  		{{post.header}}</h2>
 				<p class="p-text text-ligth " ng-bind-html="post.subheader | sanitize"></p>
 			</div>

@@ -24,6 +24,8 @@
 </head>
 <body>
 
+
+
 	<?php echo $content; ?>
 
 

@@ -42,12 +42,22 @@ cigarritaServices
         update:{method:'PUT'}
     });
 })
+// .factory('Content', ['$resource',
+//   function($resource){
+//     return $resource('api/content/language:condition/:language:attr', {
+//         language:"@lang",
+//         condition:"@condition",
+//         attr:"@attr"
+//     }, {
+//       query: {method:'GET', params:{language:'es'}, isArray:true}
+//     });
+//   }])
 .factory('Content', ['$resource',
   function($resource){
-    return $resource('api/content/language/:language', {
-        language:"@lang"
+    return $resource('api/content/:query', {
+        query:"@query"
     }, {
-      query: {method:'GET', params:{language:'es'}, isArray:true}
+      query: {method:'GET', isArray:true}
     });
   }])
 .factory('Sort',function($resource){
@@ -61,6 +71,15 @@ cigarritaServices
         id:"@id"
     },{
         update:{method:'PUT'}
+    });
+})
+.factory('Links',function($resource){
+    
+    return $resource('api/index/menu/:condition/:attr',{
+        condition:"@condition",
+        attr:"@attr"
+    }, {
+      query: {method:'GET', isArray:true}
     });
 })
 .factory('Block',function($resource){
@@ -81,9 +100,10 @@ cigarritaServices
 })
 .factory('Model',function($resource){
     
-    return $resource('api/index/:model/:id',{
+    return $resource('api/index/:model/:id/:query',{
         model:'@model',
-        id:"@id"
+        id:"@id",
+        query:"@query"
     },{
         query: {method:'GET',params:{model:'@model'}, isArray:true},
         update:{method:'PUT'}
