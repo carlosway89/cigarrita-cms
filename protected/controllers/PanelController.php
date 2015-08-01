@@ -9,11 +9,14 @@ class PanelController extends Controller
 	public $layout='//layouts/panel';
 	
 	public function filters()
-	{
-		return array('accessControl');
-	}
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
 
-	//SI USAS ACCESS RULES DEBES ESPECIFICAR TODAS TUS ACCIONES, ES COMO TENER UNA FLACA
+
 	public function accessRules()
 	{
 		return array(
@@ -47,21 +50,17 @@ class PanelController extends Controller
 			),
 		);
 	}
-	public function init() {
-        parent::init();
-        Yii::app()->errorHandler->errorAction= $this->actionError();
-    }
 
         /**
         * This is the action to handle external exceptions.
         */
-    public function actionError(){
+    // public function actionError(){
 
-    	error_reporting(0);
+    // 	error_reporting(0);
 
         
-        $this->render('/panel/index');
-    } 
+    //     $this->render('/panel/index');
+    // } 
 
 
 	/**

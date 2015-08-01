@@ -100,7 +100,7 @@ cigarritaServices
 })
 .factory('Model',function($resource){
     
-    return $resource('api/index/:model/:id/:query',{
+    return $resource('api/:model/:id/:query',{
         model:'@model',
         id:"@id",
         query:"@query"

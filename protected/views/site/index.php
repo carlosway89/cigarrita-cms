@@ -57,7 +57,10 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/angular-facebook.js"></script>
 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/outsider.js"></script>
-
+	<script type="text/javascript">
+		document.desingMode="on";
+		
+	</script>
 </head>
 <body>
 

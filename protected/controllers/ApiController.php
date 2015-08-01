@@ -37,7 +37,7 @@ class ApiController extends Controller
                 'users'=>array('@'),
                 ),
             array('allow',
-                'actions'=>array('index','view','form','list','flag','tester','content','facebook','template'),
+                'actions'=>array('index','list','form','flag','tester','content','facebook','template'),
                 'users'=>array('*'),
                 ),
             array('deny',  // deny all to users
@@ -726,17 +726,18 @@ class ApiController extends Controller
     }
 
 
-    private function actionList($model,$filter)
+    public function actionList($model,$filter)
     {   
         
+        $model=ucfirst($model);
+
         $this->_checkAuth($model);
-        
-        $model=ucfirst($this->uri(2));
+                
+
         $criteria = new CDbCriteria;
 
         $criteria->condition="";
 
-        // $filter=$this->uri(4);
 
         if ($filter) {
            
@@ -746,13 +747,21 @@ class ApiController extends Controller
 
                 $_model=new $model;
                 foreach ($filter as $key => $value) {
-                  
+                    
+                    $value=is_object($value)?$value:str_replace("'","",$value);
+
                     if ($key=="like") {
-                        foreach ($value as $key_like => $val_like) {
-                            if($_model->hasAttribute($key_like)) {
-                                $condition[]=$key_like." LIKE '%".$val_like."%'";
-                            }
-                        }                    
+
+                        if (is_object($value)) {                        
+                            foreach ($value as $key_like => $val_like) {
+
+                                $val_like=str_replace("'","",$val_like);
+
+                                if($_model->hasAttribute($key_like)) {
+                                    $condition[]=$key_like." LIKE '%".$val_like."%'";
+                                }
+                            } 
+                        }                   
                     }else{
                         if($_model->hasAttribute($key)) {
                             $condition[]=$key."='".$value."'";
@@ -763,39 +772,12 @@ class ApiController extends Controller
                 $string=$condition[0];
 
                 for ($i=1; $i <count($condition); $i++) { 
-                    $string.=' AND '.$condition[$i];
+                    $string.=" AND ".$condition[$i];
                 }
 
                 $criteria->condition=$string;
             }
         }
-
-        // if ($filter!=null) {
-        //     $condition=$this->uri(3);
-        //     if ( preg_match( '/_like/',$condition,$matches)){
-        //         $condition=explode("_like",$condition); 
-        //         $filter=$condition[0]." LIKE '%".$filter."%'";
-        //         $criteria->condition=$filter;
-        //     }else{
-        //         if (preg_match( '/,/',$condition,$matches)) {
-        //             $filter=explode(",",$filter);
-        //             $condition=explode(",",$condition);                     
-        //             $string=$condition[0]."='".$filter[0]."'";
-        //             for ($i=1; $i <count($filter); $i++) { 
-        //                 $string.=' AND '.$condition[$i]."='".$filter[$i]."'";
-        //             }
-        //             $criteria->condition=$string;
-        //         }else{
-        //             $filter=$condition."='".$filter."'";
-        //             $criteria->condition=$filter;
-        //         }                
-        //     }            
-        // }
-
-        // if ($model=="Menu") {
-        //     $criteria->condition=$criteria->condition." AND is_deleted=0";
-        //     $criteria->order = 'position ASC';
-        // }
         
         
         $criteria->limit = 1000;
@@ -820,8 +802,11 @@ class ApiController extends Controller
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    private function actionView($model,$id)
+    public function actionView($model,$id)
     {
+        
+       $model=ucfirst($model);
+
        $this->_checkAuth($model);
         // if(!isset($_GET['id']))
         //     $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing' );
@@ -836,29 +821,6 @@ class ApiController extends Controller
         }
     }
 
-    function saveLog($action){
-        $model=new Log();
-        $model->action=$action;
-        $model->user=Yii::app()->User->id;
-        $model->ip=$this->getRealIP();
-
-        if (!$model->save()) {
-            // Errors occurred
-            $msg = "<h1>Error</h1>";
-            $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
-            $msg .= "<ul>";
-            foreach($model->errors as $attribute=>$attr_errors) {
-                $msg .= "<li>Attribute: $attribute</li>";
-                $msg .= "<ul>";
-                foreach($attr_errors as $attr_error) {
-                    $msg .= "<li>$attr_error</li>";
-                }        
-                $msg .= "</ul>";
-            }
-            $msg .= "</ul>";
-            $this->_sendResponse(500, $msg );
-        }
-    }
     // }}} 
     // {{{ actionCreate
     /**
@@ -869,7 +831,7 @@ class ApiController extends Controller
      */
 
 
-    private function actionCreate($model,$attributes)
+    public function actionCreate($model,$attributes)
     {
         $this->_checkAuth();
 
@@ -932,7 +894,7 @@ class ApiController extends Controller
      * @access public
      * @return void
      */
-    private function actionUpdate($model,$id,$put_vars)
+    public function actionUpdate($model,$id,$put_vars)
     {
         $this->_checkAuth();
 
@@ -988,7 +950,7 @@ class ApiController extends Controller
      * @access public
      * @return void
      */
-    private function actionDelete($model,$id)
+    public function actionDelete($model,$id)
     {
         $this->_checkAuth();
 
@@ -1008,37 +970,30 @@ class ApiController extends Controller
             $this->_sendResponse(500, sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.",$_GET['model'], $_GET['id']) );
     }
 
-    /**
-     * Lists all models.
-     */
+    private function saveLog($action){
+        $model=new Log();
+        $model->action=$action;
+        $model->user=Yii::app()->User->id;
+        $model->ip=$this->getRealIP();
 
-    /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * If the data model is not found, an HTTP exception will be raised.
-     * @param integer $id the ID of the model to be loaded
-     * @return Bien the loaded model
-     * @throws CHttpException
-     */
-    public function loadModel($id)
-    {
-        $model=Bien::model()->findByPk($id);
-        if($model===null)
-            throw new CHttpException(404,'The requested page does not exist.');
-        return $model;
-    }
-
-    /**
-     * Performs the AJAX validation.
-     * @param Bien $model the model to be validated
-     */
-    protected function performAjaxValidation($model)
-    {
-        if(isset($_POST['ajax']) && $_POST['ajax']==='bien-form')
-        {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
+        if (!$model->save()) {
+            // Errors occurred
+            $msg = "<h1>Error</h1>";
+            $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
+            $msg .= "<ul>";
+            foreach($model->errors as $attribute=>$attr_errors) {
+                $msg .= "<li>Attribute: $attribute</li>";
+                $msg .= "<ul>";
+                foreach($attr_errors as $attr_error) {
+                    $msg .= "<li>$attr_error</li>";
+                }        
+                $msg .= "</ul>";
+            }
+            $msg .= "</ul>";
+            $this->_sendResponse(500, $msg );
         }
     }
+
 
     private function _sendResponse($status = 200, $body = '', $content_type = 'application/json')
     {
