@@ -296,13 +296,13 @@ class ApiController extends Controller
 
 
     public function actionFacebook(){
+        
         $profile_id=$this->uri(2);
 
-        $fb=new facebook();
+        $fb=new Facebook();
 
         $response=$fb->getUserFB($profile_id);
 
-        // $response->event;
         $this->_sendResponse(200, CJSON::encode($response));
     }
     

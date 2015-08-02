@@ -12,7 +12,7 @@ use Facebook\GraphUser;
 use Facebook\FacebookJavaScriptLoginHelper;
 use Facebook\FacebookCanvasLoginHelper;
 
-class facebook
+class Facebook
 {
 
 	// Use one of the helper classes to get a FacebookSession object.

@@ -6737,3 +6737,521 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/services
 ---
+2015/08/02 08:16:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/webfont.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/webfont.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/webfont.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-2.1.1.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-2.1.1...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/jquery-2.1.1.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/webfont.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/webfont.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/webfont.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/bootstrap.mi...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/semantic.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/semantic.min...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/semantic.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/underscore.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/underscore.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/underscore.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/backbone.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/backbone.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/backbone.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/handlebars.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/handlebars.j...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/handlebars.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/require.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/require.js')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/require.js
+HTTP_REFERER=http://cigarrita-worker.dev/login
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/02 08:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/summernote.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/summe...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/summernote.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.bootstrap.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.bootstrap.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jasny-bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jasny...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jasny-bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/summernote.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/summe...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/summernote.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.bootstrap.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.bootstrap.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jasny-bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jasny...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jasny-bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:22 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(814): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (814)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:16:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/summernote.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/summe...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/summernote.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.bootstrap.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.bootstrap.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jasny-bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jasny...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jasny-bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/summernote.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/summe...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/summernote.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jquery.dataTables.bootstrap.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jquer...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jquery.dataTables.bootstrap.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/vendor/jasny-bootstrap.min.js".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/vendor/jasny...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/vendor/jasny-bootstrap.min.js
+HTTP_REFERER=http://cigarrita-worker.dev/panel
+---
+2015/08/02 08:16:30 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(814): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (814)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:16:47 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(814): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (814)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:18:29 [error] [php] include(facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(301): spl_autoload_call()
+#1 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionFacebook()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (301)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:18:34 [error] [php] include(facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(301): spl_autoload_call()
+#1 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionFacebook()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (301)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:18:34 [error] [php] include(facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(301): spl_autoload_call()
+#1 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionFacebook()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (301)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:21:35 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(815): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (815)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:21:37 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(815): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (815)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:21:38 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(815): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (815)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:38:39 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(815): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (815)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/02 08:38:58 [error] [php] include(Facebook.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(815): spl_autoload_call()
+#1 unknown(0): ApiController->actionView()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/facebook/1431968783721316

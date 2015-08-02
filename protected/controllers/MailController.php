@@ -13,7 +13,6 @@ class MailController extends Controller
 		return array('accessControl');
 	}
 
-	//SI USAS ACCESS RULES DEBES ESPECIFICAR TODAS TUS ACCIONES, ES COMO TENER UNA FLACA
 	public function accessRules()
 	{
 		return array(
