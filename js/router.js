@@ -26,7 +26,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider','FacebookProvider',
     
     $routeProvider.
       when('/pages', {
-        templateUrl: 'templates/cms/content.html',
+        templateUrl: 'api/template/content/cms',
         controller: 'contentCtrl'
       }).
       when('/languages', {

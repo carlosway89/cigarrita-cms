@@ -1,3 +1,4 @@
+
 <div id="home" ng-repeat="menus in menu | filter:{url:'/home'}">
 	<div class="page-gray" style="">
 		<div id="principal_background" style="padding-top:200px;{{menus.content[0].subheader}}">
@@ -7,7 +8,7 @@
 					<h1 class=" no-margin text-principal">{{post.header}}</h1>					
 				</div>
 				<div class="col-md-6">
-					<img ng-src="{{post.image}}" class="img-responsive" alt="cigarrita-worker">
+					<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.image}}" class="img-responsive" alt="cigarrita-worker">
 				</div>
 				
 			</div>
@@ -26,10 +27,10 @@
 		<br>
 		<div class="row">
 			<!-- {{#each this.post_list}} -->
-			<div data-object="post" class="col-md-3 col-sm-3 bottom-20 text-center" ng-repeat="post in menus.content[0].post" ng-click="launchit(post)">
+			<div data-object="post" class="editable col-md-3 col-sm-3 bottom-20 text-center" ng-repeat="post in menus.content[0].post" ng-click="launchit(post)">
 				<div  class="ui raised ">
 				  	<h2 class="font-large text-icon no-margin">
-				  		<img ng-src="{{post.image}}" class="img-responsive img-icon">
+				  		<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.image}}" class="img-responsive img-icon">
 				  		{{post.header}}</h2>
 					<p class="p-text text-ligth " ng-bind-html="post.subheader | sanitize"></p>
 				</div>
@@ -71,7 +72,7 @@
 			    	<div class="">	
 			    		<div class="col-md-12 block"  data-object="post">
 			    			<div class="col-md-9 ipad-ground">
-			    				<img ng-src="{{post.image}}" class="img-responsive" alt="cigarrita-worker">
+			    				<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.image}}" class="img-responsive" alt="cigarrita-worker">
 			    			</div>
 			    			<div class="col-md-3">
 			    				<h4>{{post.header}}</h4>
@@ -102,7 +103,7 @@
 
 				</div>
 				<div class="col-md-8">
-					<img id="background" data-object="content" ng-src="{{menus.content[0].background}}" class="img-responsive" alt="subscribe">
+					<img id="background" data-object="content" ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{menus.content[0].background}}" class="img-responsive" alt="subscribe">
 				</div>				
 			</div>
 

@@ -36,12 +36,12 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     
     $routeProvider.
       when('/blog', {
-        templateUrl: 'api/template/blog',
+        templateUrl: $base_url+'/api/template/blog',
         controller: 'blogCtrl',
         reloadOnSearch: false
       }).
       when('/:link', {
-        templateUrl: 'api/template/view', //router template with api
+        templateUrl: $base_url+'/api/template/view/site', //router template with api
         controller: 'homeCtrl'
       }).
       otherwise({

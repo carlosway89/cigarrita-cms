@@ -15,6 +15,7 @@ var beans=new Beans();
 
 beans.createCookie('language.initial','es',10);
 
+// document.desingMode="on";
 
 /* Controllers */
 

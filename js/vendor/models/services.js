@@ -54,7 +54,7 @@ cigarritaServices
 //   }])
 .factory('Content', ['$resource',
   function($resource){
-    return $resource('api/content/:query', {
+    return $resource($base_url+'/api/content/:query', {
         query:"@query"
     }, {
       query: {method:'GET', isArray:true}
@@ -100,7 +100,7 @@ cigarritaServices
 })
 .factory('Model',function($resource){
     
-    return $resource('api/:model/:id/:query',{
+    return $resource($base_url+'/api/:model/:id/:query',{
         model:'@model',
         id:"@id",
         query:"@query"

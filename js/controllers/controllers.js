@@ -1,5 +1,5 @@
-cigarritaControllers.controller('contentCtrl', ['$scope','Content','Post','Menu','Block','Sort','Language','RunFile','Template', 'MultiLanguage',
-  function($scope, Content, Post, Menu, Block, Sort, Language, RunFile, Template, MultiLanguage) {
+cigarritaControllers.controller('contentCtrl', ['$scope','Model','Post','Menu','Block','Sort','Language','RunFile','Template', 'MultiLanguage',
+  function($scope, Model, Post, Menu, Block, Sort, Language, RunFile, Template, MultiLanguage) {
 
 
     $(document).on('launch.edition', function(event,model) {
@@ -28,7 +28,15 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Content','Post','Menu'
     });
 
     var contenidos=function(){
-      $scope.menu = Content.query({language:beans.readCookie('language.initial')},function(data){
+      var obj_lang={
+      language:beans.readCookie('language.initial')
+    };
+
+    $scope.menu = Model.query({
+      model:'content',
+      // id:'query',
+      query:JSON.stringify(obj_lang)
+    },function(data){
 
         if (!data[0]) {
           $scope.webmaster=true;

@@ -70,8 +70,9 @@ class ApiController extends Controller
 
         
         $template=$this->uri(2);
+        $type=$this->uri(3);
         $var="";
-        $this->render("/site/".$template,array("var"=>$var));
+        $this->render("/$type/".$template,array("var"=>$var));
         // echo $id;
     }
 
@@ -274,7 +275,7 @@ class ApiController extends Controller
     }
     public function actionTester(){
 
-            $profile_id=$this->uri(2);
+            // $profile_id=$this->uri(2);
             // $connection = Yii::app()->db;//get connection
             // $dbSchema = $connection->schema;
             // //or $connection->getSchema();
@@ -291,18 +292,34 @@ class ApiController extends Controller
 
             // $array=array();
             // echo $profile_id;
+        
+        // Create DOM from URL or file
+        $html = new HTMLDOM();
+
+        $html=$html->get("http://www.cigarrita-worker.com");
+
+        // Find all images
+        var_dump($html);
+        // foreach($html->find('img') as $element)
+        //        echo $element->src . '<br>';
+
+
 
     }
 
 
     public function actionFacebook(){
-        
+
+        //url cigarrita-worker.com/api/facebook/{id_facebook}/data
+        //ex. cigarrita-worker.com/api/faceboob/1431968783721316/data
+
         $profile_id=$this->uri(2);
 
         $fb=new Facebook();
 
         $response=$fb->getUserFB($profile_id);
 
+        // $this->_getObjectEncoded();
         $this->_sendResponse(200, CJSON::encode($response));
     }
     

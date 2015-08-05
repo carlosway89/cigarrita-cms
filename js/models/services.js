@@ -44,9 +44,11 @@ cigarritaServices
 })
 .factory('Content', ['$resource',
   function($resource){
-    return $resource('api/content/language/:language', {
-        language:"@lang"
-    }, {
+    return $resource('api/content/:id/:query',{
+        model:'@model',
+        id:"@id",
+        query:"@query"
+    },{
       query: {method:'GET', params:{language:'es'}, isArray:true}
     });
   }])
@@ -81,9 +83,10 @@ cigarritaServices
 })
 .factory('Model',function($resource){
     
-    return $resource('api/index/:model/:id',{
+    return $resource('api/:model/:id/:query',{
         model:'@model',
-        id:"@id"
+        id:"@id",
+        query:"@query"
     },{
         query: {method:'GET',params:{model:'@model'}, isArray:true},
         update:{method:'PUT'}

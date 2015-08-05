@@ -23,18 +23,13 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/semantic.min.css">
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
-	<?php 
-	
-	$url=Yii::app()->request->getPathInfo();
-
-	if($url=='edit'){ ?>
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_edit.css">
-	<?php } ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/flag-icon.min.css">
 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-
+	<script type="text/javascript">
+		var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
+	</script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
@@ -57,10 +52,8 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/angular-facebook.js"></script>
 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/outsider.js"></script>
-	<script type="text/javascript">
-		document.desingMode="on";
-		
-	</script>
+	
+	
 </head>
 <body>
 
