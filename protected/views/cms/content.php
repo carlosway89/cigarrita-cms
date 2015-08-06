@@ -68,7 +68,7 @@
 			  <div class='form-group' ng-if='content.user_admin'>
 			    <label for='url' class='col-sm-2 control-label'>Minimal</label>
 			    <div class='col-sm-9'>
-			        <div id="content_toogle_minimal" class="ui toggle checkbox" style="margin-top: 8px;">
+			        <div id="content_toogle_minimal" class="ui toggle checkbox" style="margin-top: 8px;" check-select="content" check-attribute="minimal">
 					    <input id="minimal" class="form-values" name="public" type="checkbox">
 					    <label style="line-height: 0.2em;">Deactive / Active</label>
 					</div>
@@ -89,7 +89,7 @@
 		    		<div class="new-uploading" style="">
 		    			<div id="fileinput_media" class="fileinput fileinput-new" data-name="background">
 						  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;display:block !important">
-						    <img id="background_file" ng-src="{{block.background}}" alt="Select New Image">
+						    <img id="background_file" src="{{block.background}}" alt="Select New Image">
 						  </div>
 						  <!-- <div class="fileinput-preview fileinput-exists thumbnail" ng-show="block.background?true:false" style="max-width: 200px; max-height: 150px;">
 						  </div> -->
@@ -121,7 +121,7 @@
 			  <div class="form-group">
 			  	<label for='estado' class='col-sm-2 control-label'>State</label>
 			  	<div class='col-sm-9'>
-				  	<div id="content_toogle_estado" class="ui toggle checkbox" style="margin-top: 8px;">
+				  	<div id="content_toogle_estado" class="ui toggle checkbox" style="margin-top: 8px;" check-select="content" check-attribute="estado">
 					    <input id="estado" class="form-values" name="public" type="checkbox" ng-model="content.estado">
 					    <label style="line-height: 0.2em;">Deactive / Active</label>
 					</div>
@@ -240,7 +240,7 @@
 		        <div class="form-group">
 		          <label for='estado' class='col-sm-2 control-label'>State</label>
 		          <div class='col-sm-9'>
-		            <div id="post_togle" class="ui toggle checkbox" style="margin-top: 8px;">
+		            <div id="post_togle" class="ui toggle checkbox" style="margin-top: 8px;" check-select="post" check-attribute="estado">
 		              <input id="estado" class="form-values post" type="checkbox" ng-model="post.estado">
 		              <label style="line-height: 0.2em;">Deactive / Active</label>
 		            </div>

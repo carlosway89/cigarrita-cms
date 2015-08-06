@@ -1,5 +1,5 @@
 
-<div id="home" ng-repeat="menus in menu | filter:{url:'/home'}">
+<div id="home" ng-repeat="menus in menu | filter:{url:'/home'}" class="">
 	<div class="page-gray" style="">
 		<div id="principal_background" style="padding-top:200px;{{menus.content[0].subheader}}">
 			<!-- {{#each this.post_list}} -->
@@ -21,11 +21,11 @@
 	<div class="container page-content  page-white " style="padding-top:20px;min-height: 800px;">
 		<br>
 		<div class="col-md-12">
-			<h1 id="header" data-object="content" class="font-huge text-center no-margin" ng-click="launchit(menus.content[0])" >{{menus.content[0].header}}</h1>
-			<h2 id="subheader" data-object="content" class="font-huge text-center no-margin" ng-click="launchit(menus.content[0])" ><small>{{menus.content[0].subheader}}</small></h2>
+			<h1 data-id="header" data-object="content" class="font-huge text-center no-margin" ng-click="launchit(menus.content[0])" >{{menus.content[0].header}}</h1>
+			<h2 data-id="subheader" data-object="content" class="font-huge text-center no-margin" ng-click="launchit(menus.content[0])" ><small>{{menus.content[0].subheader}}</small></h2>
 		</div>
 		<br>
-		<div class="row">
+		<div class="row" data-id="posts">
 			<!-- {{#each this.post_list}} -->
 			<div data-object="post" class="editable col-md-3 col-sm-3 bottom-20 text-center" ng-repeat="post in menus.content[0].post" ng-click="launchit(post)">
 				<div  class="ui raised ">
@@ -44,8 +44,8 @@
 
 	<div class="ui four column doubling page grid page-content  page-gray " style="padding-top:20px;min-height: 560px;">
 		<div class="row">
-			<h1 id="header"  data-object="content" class="font-huge text-center no-margin">{{menus.content[0].header}}s</h1>
-			<h2 id="subheader"  data-object="content" class="font-huge text-center"><small>{{menus.content[0].subheader}}</small></h2>
+			<h1 data-id="header"  data-object="content" class="font-huge text-center no-margin">{{menus.content[0].header}}s</h1>
+			<h2 data-id="subheader"  data-object="content" class="font-huge text-center"><small>{{menus.content[0].subheader}}</small></h2>
 		</div>
 		<div class="row">
 			<div id="carousel-slider" class="carousel slide" data-ride="carousel" >
@@ -94,16 +94,16 @@
 		<div class="container">
 			<div class="col-md-12">
 				<div class="col-md-4">
-					<h1 id="header"  data-object="content" class="font-huge text-center no-margin">{{menus.content[0].header}}</h1>
+					<h1 data-id="header"  data-object="content" class="font-huge text-center no-margin">{{menus.content[0].header}}</h1>
 					<div class="alert alert-success" style="display:none">
 						<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> your message was sent
 					</div>
-					<div id="subheader"  data-object="content" ng-bind-html="menus.content[0].subheader | sanitize">
+					<div data-id="subheader"  data-object="content" ng-bind-html="menus.content[0].subheader | sanitize">
 					</div>
 
 				</div>
 				<div class="col-md-8">
-					<img id="background" data-object="content" ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{menus.content[0].background}}" class="img-responsive" alt="subscribe">
+					<img data-id="background" data-object="content" ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{menus.content[0].background}}" class="img-responsive" alt="subscribe">
 				</div>				
 			</div>
 
@@ -140,7 +140,7 @@
 			<br>
 			<div class="container ">
 				<div class="ui horizontal list">	
-					<div id="header"  data-object="content" class="item" ng-click="launchit(menus.content[0])"> {{menus.content[0].header}}</div>
+					<div data-id="header"  data-object="content" class="item" ng-click="launchit(menus.content[0])"> {{menus.content[0].header}}</div>
 				</div>
 			</div>
 			<br>

@@ -115,26 +115,27 @@ cigarritaDirective.directive('checkSelect',function($parse){ //Step 1
           // require : 'ngModel',            //Step 2
           link: function (scope, element, attrs, ngModel) {
 
-              var collection = attrs.checkSelect,
-                    model = attrs.selectModel,
-                    getter= $parse(model),
-                    setter= getter.assign;
+              var collection = attrs.checkSelect;
+                    // ,
+                    // model = attrs.selectModel,
+                    // getter= $parse(model),
+                    // setter= getter.assign;
 
                     
                 $(element).checkbox();
                   
 
-                scope.$watch(model,function(data){
-                    
+                scope.$watch(collection,function(data){
+                    // console.log(data);
                     if(angular.isObject(data)){      
-                        $(element).checkbox(scope[attrs.checkModel][attrs.checkAttribute]==1?'check':'uncheck');
+                        $(element).checkbox(scope[attrs.checkSelect][attrs.checkAttribute]==1?'check':'uncheck');
 
                         $(element).checkbox({
                               onChecked: function() {
-                                scope[attrs.checkModel][attrs.checkAttribute]=1;
+                                scope[attrs.checkSelect][attrs.checkAttribute]=1;
                               },
                               onUnchecked: function() {
-                                scope[attrs.checkModel][attrs.checkAttribute]=0;
+                                scope[attrs.checkSelect][attrs.checkAttribute]=0;
                               }
                           });
 

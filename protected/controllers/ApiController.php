@@ -296,12 +296,11 @@ class ApiController extends Controller
         // Create DOM from URL or file
         $html = new HTMLDOM();
 
-        $html=$html->get("http://www.cigarrita-worker.com");
+        $url=Yii::app()->getBaseUrl(true)."/api/template/view/site";
+        $html=$html->get($url);
 
-        // Find all images
-        var_dump($html);
-        // foreach($html->find('img') as $element)
-        //        echo $element->src . '<br>';
+        foreach($html->find('[data-id="subheader"]') as $element)
+               echo "elemento: ".$element. '<br>';
 
 
 
