@@ -8,6 +8,10 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'CIGARRITA',
+	'language'=>'en',
+	'sourceLanguage'=>'en',
+	'charset'=>'utf-8',
+	'theme'=>'design',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -56,6 +60,7 @@ return array(
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
+		        array('api/safe_delete', 'pattern'=>'api/safe/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
 		        // Other controllers
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

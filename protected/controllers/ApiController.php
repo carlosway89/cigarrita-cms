@@ -37,7 +37,7 @@ class ApiController extends Controller
                 'users'=>array('@'),
                 ),
             array('allow',
-                'actions'=>array('index','list','form','flag','tester','content','facebook','template'),
+                'actions'=>array('index','list','view','form','flag','tester','content','facebook','template'),
                 'users'=>array('*'),
                 ),
             array('deny',  // deny all to users
@@ -50,7 +50,8 @@ class ApiController extends Controller
 
         if (!Yii::app()->user->id) {
             if ($model!="Post" and $model!="Menu" and $model!="Language" and $model!="Content" ) {
-                $this->_sendResponse(401,'Not Allowed');
+                $msg=array("error"=>401,"message"=>"Not Allowed");
+                $this->_sendResponse(401,CJSON::encode($msg));
             }
         }       
 
@@ -294,15 +295,41 @@ class ApiController extends Controller
             // echo $profile_id;
         
         // Create DOM from URL or file
-        $html = new HTMLDOM();
+        // $html = new HTMLDOM();
 
-        $url=Yii::app()->getBaseUrl(true)."/api/template/view/site";
-        $html=$html->get($url);
+        // $url=Yii::app()->getBaseUrl(true)."/api/template/view/site";
+        // $html=$html->get($url);
 
-        foreach($html->find('[data-id="subheader"]') as $element)
-               echo "elemento: ".$element. '<br>';
+        // foreach($html->find('[data-id="subheader"]') as $element)
+        //        echo "elemento: ".$element. '<br>';
+
+        $criteria = new CDbCriteria;
+
+       
+
+        $criteria->with = array(
+            'menuSubMenus.idsubMenu' => array(
+                // 'together' => true,
+                'select' => false,
+            ),
+        );
 
 
+        $model = Menu::model()->findAll($criteria);
+
+
+        $array=array();
+
+        foreach($model as $value)
+        {   
+
+            foreach($value->menuSubMenus as $post)
+            {   
+                $array[]=$post->idsubMenu;
+            }
+        }
+
+        echo CJSON::encode($array);
 
     }
 
@@ -548,28 +575,7 @@ class ApiController extends Controller
 
         }
 
-        
-        // if ($filter!=null) {
-        //     $condition=$this->uri(2);
-            
-        //     if (preg_match( '/,/',$condition,$matches)) {
-        //         $filter=explode(",",$filter);
-        //         $condition=explode(",",$condition); 
-                
-        //         $string=$condition[0]."='".$filter[0]."'";
-        //         for ($i=1; $i <count($filter); $i++) { 
-        //             $string.=' AND '.$condition[$i]."='".$filter[$i]."'";
-        //         }
-        //         $criteria->condition=$string;
-        //     }else{
-        //         $filter=$condition."='".$filter."'";
-        //         $criteria->condition=$filter;
-        //     }
-                
-            
-        // }
-        
-        // $criteria->condition=$criteria->condition." AND is_deleted=0";
+
         $criteria->order = 'position ASC';
         $criteria->limit = 1000;
 
@@ -700,45 +706,47 @@ class ApiController extends Controller
 
         $called=$_SERVER['REQUEST_METHOD'];
 
-        switch ($called) {
-            case 'GET':
-                if ($this->uri(4)) {
-                    $this->actionList($model,$this->uri(4)); 
-                }else{
-                    if ($this->uri(3)) {
-                        $this->actionView($model,$this->uri(3));
-                    }
-                    else{                        
-                       $this->actionList($model,null); 
-                    }
+        echo 'Not Allowed';
+
+        // switch ($called) {
+        //     case 'GET':
+        //         if ($this->uri(4)) {
+        //             $this->actionList($model,$this->uri(4)); 
+        //         }else{
+        //             if ($this->uri(3)) {
+        //                 $this->actionView($model,$this->uri(3));
+        //             }
+        //             else{                        
+        //                $this->actionList($model,null); 
+        //             }
                     
-                }                
+        //         }                
                 
-                break;
+        //         break;
 
-            case 'POST':
+        //     case 'POST':
 
-                    $requestBody = Yii::app()->request->getRawBody();
+        //             $requestBody = Yii::app()->request->getRawBody();
 
-                    $parsedRequest = CJSON::decode($requestBody);
+        //             $parsedRequest = CJSON::decode($requestBody);
                   
-                    $this->actionCreate($model,$parsedRequest);
+        //             $this->actionCreate($model);
                 
-                break;
-            case 'PUT':
+        //         break;
+        //     case 'PUT':
 
-                $requestBody = Yii::app()->request->getRawBody();
+        //         $requestBody = Yii::app()->request->getRawBody();
 
-                $parsedRequest = CJSON::decode($requestBody);
-                $this->actionUpdate($model,$this->uri(3),$parsedRequest);
-            case 'DELETE':
+        //         $parsedRequest = CJSON::decode($requestBody);
+        //         $this->actionUpdate($model,$this->uri(3));
+        //     case 'DELETE':
               
-                $this->actionDelete($model,$this->uri(3));
+        //         $this->actionDelete($model,$this->uri(3));
             
-            break;
-            default:
-                break;
-        }
+        //     break;
+        //     default:
+        //         break;
+        // }
     }
 
 
@@ -803,13 +811,12 @@ class ApiController extends Controller
         if(is_null($models)) {
              $this->_sendResponse(200, sprintf('No items where found for model <b>%s</b>', $_GET['model']) );
         } else {
-             $rows = array();
-             foreach($models as $model){
-                $rows[] = $model->attributes;
-             }
+             // $rows = array();
+             // foreach($models as $model){
+             //    $rows[] = $model->attributes;
+             // }
                  
-
-             $this->_sendResponse(200, CJSON::encode($rows));
+             $this->_sendResponse(200, CJSON::encode($models));
         }
 
     }
@@ -833,7 +840,8 @@ class ApiController extends Controller
         if(is_null($model)) {
             $this->_sendResponse(404, 'No Item found with id '.$_GET['id']);
         } else {
-            $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model->attributes));
+            $this->_sendResponse(200, CJSON::encode($model));
+            // $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model->attributes));
         }
     }
 
@@ -847,11 +855,16 @@ class ApiController extends Controller
      */
 
 
-    public function actionCreate($model,$attributes)
+    public function actionCreate($model)
     {
         $this->_checkAuth();
 
-        $modelo=$model;
+        $model=ucfirst($model);
+
+        $requestBody = Yii::app()->request->getRawBody();
+
+        $attributes = CJSON::decode($requestBody);
+
         $model = new $model();  
 
         
@@ -910,13 +923,17 @@ class ApiController extends Controller
      * @access public
      * @return void
      */
-    public function actionUpdate($model,$id,$put_vars)
+    public function actionUpdate($model,$id)
     {
         $this->_checkAuth();
 
         // Get PUT parameters
         // parse_str(file_get_contents('php://input'), $put_vars);
-        $modelo=$model;
+        $model=ucfirst($model);
+
+        $requestBody = Yii::app()->request->getRawBody();
+
+        $put_vars = CJSON::decode($requestBody);
         
         $model = $model::model()->findByPk($id);    
 
@@ -969,6 +986,8 @@ class ApiController extends Controller
     public function actionDelete($model,$id)
     {
         $this->_checkAuth();
+
+        $model=ucfirst($model); 
 
         $model = $model::model()->findByPk($id);   
 
