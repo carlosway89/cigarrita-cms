@@ -1,23 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "menu_sub_menu".
+ * This is the model class for table "post_has_attributes".
  *
- * The followings are the available columns in table 'menu_sub_menu':
- * @property integer $idsub_menu
- * @property integer $idmenu
- * @property integer $id_menu_submenu
+ * The followings are the available columns in table 'post_has_attributes':
+ * @property integer $post_idpost
+ * @property integer $attributes_idattributes
+ * @property integer $id_post_has_attributes
  *
  * The followings are the available model relations:
- * @property Menu $idmenu0
- * @property SubMenu $idsubMenu
+ * @property Attributes $attributesIdattributes
+ * @property Post $postIdpost
  */
-class MenuSubMenu extends CActiveRecord
+class PostHasAttributes extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return MenuSubMenu the static model class
+	 * @return PostHasAttributes the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +29,7 @@ class MenuSubMenu extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'menu_sub_menu';
+		return 'post_has_attributes';
 	}
 
 	/**
@@ -40,10 +40,11 @@ class MenuSubMenu extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idsub_menu, idmenu', 'numerical', 'integerOnly'=>true),
+			array('post_idpost, attributes_idattributes', 'required'),
+			array('post_idpost, attributes_idattributes', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idsub_menu, idmenu, id_menu_submenu', 'safe', 'on'=>'search'),
+			array('post_idpost, attributes_idattributes, id_post_has_attributes', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,8 +56,8 @@ class MenuSubMenu extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idmenu0' => array(self::BELONGS_TO, 'Menu', 'idmenu'),
-			'idsubMenu' => array(self::BELONGS_TO, 'SubMenu', 'idsub_menu'),
+			'attributesIdattributes' => array(self::BELONGS_TO, 'Attributes', 'attributes_idattributes'),
+			'postIdpost' => array(self::BELONGS_TO, 'Post', 'post_idpost'),
 		);
 	}
 
@@ -66,9 +67,9 @@ class MenuSubMenu extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idsub_menu' => 'Idsub Menu',
-			'idmenu' => 'Idmenu',
-			'id_menu_submenu' => 'Id Menu Submenu',
+			'post_idpost' => 'Post Idpost',
+			'attributes_idattributes' => 'Attributes Idattributes',
+			'id_post_has_attributes' => 'Id Post Has Attributes',
 		);
 	}
 
@@ -83,9 +84,9 @@ class MenuSubMenu extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idsub_menu',$this->idsub_menu);
-		$criteria->compare('idmenu',$this->idmenu);
-		$criteria->compare('id_menu_submenu',$this->id_menu_submenu);
+		$criteria->compare('post_idpost',$this->post_idpost);
+		$criteria->compare('attributes_idattributes',$this->attributes_idattributes);
+		$criteria->compare('id_post_has_attributes',$this->id_post_has_attributes);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -1,24 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "event".
+ * This is the model class for table "category".
  *
- * The followings are the available columns in table 'event':
- * @property string $id
- * @property string $start_time
- * @property string $cover
- * @property string $description
- * @property string $name
- * @property string $place
- * @property string $end_time
- * @property string $ticket_uri
+ * The followings are the available columns in table 'category':
+ * @property string $category
+ * @property string $tag
+ *
+ * The followings are the available model relations:
+ * @property Block[] $blocks
+ * @property Post[] $posts
  */
-class Event extends CActiveRecord
+class Category extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Event the static model class
+	 * @return Category the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -30,7 +28,7 @@ class Event extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'event';
+		return 'category';
 	}
 
 	/**
@@ -41,12 +39,12 @@ class Event extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			// array('id, start_time, cover, description, name, place, ticket_uri', 'required'),
-			array('id, ticket_uri', 'length', 'max'=>300),
-			array('end_time', 'safe'),
+			array('category, tag', 'required'),
+			array('category', 'length', 'max'=>10),
+			array('tag', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, start_time, cover, description, name, place, end_time, ticket_uri', 'safe', 'on'=>'search'),
+			array('category, tag', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,6 +56,8 @@ class Event extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'blocks' => array(self::HAS_MANY, 'Block', 'category'),
+			'posts' => array(self::HAS_MANY, 'Post', 'category'),
 		);
 	}
 
@@ -67,14 +67,8 @@ class Event extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'start_time' => 'Start Time',
-			'cover' => 'Cover',
-			'description' => 'Description',
-			'name' => 'Name',
-			'place' => 'Place',
-			'end_time' => 'End Time',
-			'ticket_uri' => 'Ticket Uri',
+			'category' => 'Category',
+			'tag' => 'Tag',
 		);
 	}
 
@@ -89,14 +83,8 @@ class Event extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('start_time',$this->start_time,true);
-		$criteria->compare('cover',$this->cover,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('place',$this->place,true);
-		$criteria->compare('end_time',$this->end_time,true);
-		$criteria->compare('ticket_uri',$this->ticket_uri,true);
+		$criteria->compare('category',$this->category,true);
+		$criteria->compare('tag',$this->tag,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

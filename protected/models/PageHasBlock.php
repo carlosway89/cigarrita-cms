@@ -1,24 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "gallery".
+ * This is the model class for table "page_has_block".
  *
- * The followings are the available columns in table 'gallery':
- * @property string $id
- * @property string $type
- * @property string $picture
- * @property string $source
- * @property string $name
- * @property string $description
- * @property string $belong
- * @property string $cover_photo
+ * The followings are the available columns in table 'page_has_block':
+ * @property integer $page_idpage
+ * @property integer $block_idblock
+ * @property integer $id_page_has_block
+ *
+ * The followings are the available model relations:
+ * @property Block $blockIdblock
+ * @property Page $pageIdpage
  */
-class Gallery extends CActiveRecord
+class PageHasBlock extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Gallery the static model class
+	 * @return PageHasBlock the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -30,7 +29,7 @@ class Gallery extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'gallery';
+		return 'page_has_block';
 	}
 
 	/**
@@ -41,13 +40,11 @@ class Gallery extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			// array('id, type, picture, source, name, description, cover_photo', 'required'),
-			array('id, picture, source, belong, cover_photo', 'length', 'max'=>300),
-			array('type', 'length', 'max'=>100),
-			array('name', 'length', 'max'=>200),
+			array('page_idpage, block_idblock', 'required'),
+			array('page_idpage, block_idblock', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, type, picture, source, name, description, belong, cover_photo', 'safe', 'on'=>'search'),
+			array('page_idpage, block_idblock, id_page_has_block', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +56,8 @@ class Gallery extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'blockIdblock' => array(self::BELONGS_TO, 'Block', 'block_idblock'),
+			'pageIdpage' => array(self::BELONGS_TO, 'Page', 'page_idpage'),
 		);
 	}
 
@@ -68,14 +67,9 @@ class Gallery extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'type' => 'Type',
-			'picture' => 'Picture',
-			'source' => 'Source',
-			'name' => 'Name',
-			'description' => 'Description',
-			'belong' => 'Belong',
-			'cover_photo' => 'Cover Photo',
+			'page_idpage' => 'Page Idpage',
+			'block_idblock' => 'Block Idblock',
+			'id_page_has_block' => 'Id Page Has Block',
 		);
 	}
 
@@ -90,14 +84,9 @@ class Gallery extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('type',$this->type,true);
-		$criteria->compare('picture',$this->picture,true);
-		$criteria->compare('source',$this->source,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('belong',$this->belong,true);
-		$criteria->compare('cover_photo',$this->cover_photo,true);
+		$criteria->compare('page_idpage',$this->page_idpage);
+		$criteria->compare('block_idblock',$this->block_idblock);
+		$criteria->compare('id_page_has_block',$this->id_page_has_block);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

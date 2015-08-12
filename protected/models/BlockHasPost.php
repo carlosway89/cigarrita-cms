@@ -1,20 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "template".
+ * This is the model class for table "block_has_post".
  *
- * The followings are the available columns in table 'template':
- * @property string $name
- * @property integer $idtemplate
- * @property integer $estado
- * @property string $code
+ * The followings are the available columns in table 'block_has_post':
+ * @property integer $block_idblock
+ * @property integer $post_idpost
+ * @property integer $id_block_has_post
+ *
+ * The followings are the available model relations:
+ * @property Block $blockIdblock
+ * @property Post $postIdpost
  */
-class Template extends CActiveRecord
+class BlockHasPost extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Template the static model class
+	 * @return BlockHasPost the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +29,7 @@ class Template extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'template';
+		return 'block_has_post';
 	}
 
 	/**
@@ -37,13 +40,11 @@ class Template extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, code', 'required'),
-			array('estado', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>200),
-			array('code', 'length', 'max'=>600),
+			array('block_idblock, post_idpost', 'required'),
+			array('block_idblock, post_idpost', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('name, idtemplate, estado, code', 'safe', 'on'=>'search'),
+			array('block_idblock, post_idpost, id_block_has_post', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +56,8 @@ class Template extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'blockIdblock' => array(self::BELONGS_TO, 'Block', 'block_idblock'),
+			'postIdpost' => array(self::BELONGS_TO, 'Post', 'post_idpost'),
 		);
 	}
 
@@ -64,10 +67,9 @@ class Template extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'name' => 'Name',
-			'idtemplate' => 'Idtemplate',
-			'estado' => 'Estado',
-			'code' => 'Code',
+			'block_idblock' => 'Block Idblock',
+			'post_idpost' => 'Post Idpost',
+			'id_block_has_post' => 'Id Block Has Post',
 		);
 	}
 
@@ -82,10 +84,9 @@ class Template extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('idtemplate',$this->idtemplate);
-		$criteria->compare('estado',$this->estado);
-		$criteria->compare('code',$this->code,true);
+		$criteria->compare('block_idblock',$this->block_idblock);
+		$criteria->compare('post_idpost',$this->post_idpost);
+		$criteria->compare('id_block_has_post',$this->id_block_has_post);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

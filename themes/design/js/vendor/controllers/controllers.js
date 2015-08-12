@@ -2,7 +2,7 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
 
 
     var obj_lang={
-      estado:1
+      state:1
     };
 
     Model.query({
@@ -21,7 +21,7 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
     });
 
     var obj_link={
-      estado:1,
+      state:1,
       language:beans.readCookie('language.initial')
     };
 
@@ -51,12 +51,12 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','Links','$rootSco
 
   var obj={
     language:beans.readCookie('language.initial'),
-    estado:1,
-    minimal:1,
+    state:1,
+    idpage:1,
     is_deleted:0
   };
 
-  $scope.menu = Content.query({
+  $scope.page = Content.query({
     query:JSON.stringify(obj)
   },function(data){
 

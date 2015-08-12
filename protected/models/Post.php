@@ -5,15 +5,18 @@
  *
  * The followings are the available columns in table 'post':
  * @property integer $idpost
- * @property string $background
- * @property string $image
+ * @property string $category
  * @property string $header
  * @property string $subheader
- * @property string $link
- * @property integer $estado
+ * @property string $source
+ * @property string $language
+ * @property integer $state
+ * @property integer $is_deleted
  *
  * The followings are the available model relations:
- * @property ContentPost[] $contentPosts
+ * @property BlockHasPost[] $blockHasPosts
+ * @property Category $category0
+ * @property PostHasAttributes[] $postHasAttributes
  */
 class Post extends CActiveRecord
 {
@@ -43,12 +46,13 @@ class Post extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			// array('idpost', 'required'),
-			array('estado', 'numerical', 'integerOnly'=>true),
-			array('background, image, header, subheader, link', 'length', 'max'=>700),
+			array('idpost, category', 'required'),
+			array('idpost, state, is_deleted', 'numerical', 'integerOnly'=>true),
+			array('category, language', 'length', 'max'=>10),
+			array('header, subheader, source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idpost, background, image, header, subheader, link, estado', 'safe', 'on'=>'search'),
+			array('idpost, category, header, subheader, source, language, state, is_deleted', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,7 +64,9 @@ class Post extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'contentPosts' => array(self::HAS_MANY, 'ContentPost', 'idpost'),
+			'blockHasPosts' => array(self::HAS_MANY, 'BlockHasPost', 'post_idpost'),
+			'category0' => array(self::BELONGS_TO, 'Category', 'category'),
+			'postHasAttributes' => array(self::HAS_MANY, 'PostHasAttributes', 'post_idpost'),
 		);
 	}
 
@@ -71,12 +77,13 @@ class Post extends CActiveRecord
 	{
 		return array(
 			'idpost' => 'Idpost',
-			'background' => 'Background',
-			'image' => 'Image',
+			'category' => 'Category',
 			'header' => 'Header',
 			'subheader' => 'Subheader',
-			'link' => 'Link',
-			'estado' => 'Estado',
+			'source' => 'Source',
+			'language' => 'Language',
+			'state' => 'State',
+			'is_deleted' => 'Is Deleted',
 		);
 	}
 
@@ -92,12 +99,13 @@ class Post extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idpost',$this->idpost);
-		$criteria->compare('background',$this->background,true);
-		$criteria->compare('image',$this->image,true);
+		$criteria->compare('category',$this->category,true);
 		$criteria->compare('header',$this->header,true);
 		$criteria->compare('subheader',$this->subheader,true);
-		$criteria->compare('link',$this->link,true);
-		$criteria->compare('estado',$this->estado);
+		$criteria->compare('source',$this->source,true);
+		$criteria->compare('language',$this->language,true);
+		$criteria->compare('state',$this->state);
+		$criteria->compare('is_deleted',$this->is_deleted);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

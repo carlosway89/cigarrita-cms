@@ -5,16 +5,16 @@
  *
  * The followings are the available columns in table 'menu':
  * @property integer $idmenu
- * @property string $name
  * @property string $url
- * @property integer $estado
- * @property string $language
- * @property integer $minimal
+ * @property string $name
+ * @property string $type
+ * @property integer $state
  * @property integer $position
  * @property integer $is_deleted
- *
- * The followings are the available model relations:
- * @property MenuSubMenu[] $menuSubMenus
+ * @property string $language
+ * @property integer $page
+ * @property integer $parent_id
+ * @property string $source
  */
 class Menu extends CActiveRecord
 {
@@ -44,13 +44,13 @@ class Menu extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			// array('estado, minimal, position', 'required'),
-			array('estado, minimal, position, is_deleted', 'numerical', 'integerOnly'=>true),
-			array('name, url', 'length', 'max'=>45),
-			array('language', 'length', 'max'=>4),
+			array('idmenu, state, position, is_deleted, page, parent_id', 'numerical', 'integerOnly'=>true),
+			array('url, name', 'length', 'max'=>100),
+			array('type, language', 'length', 'max'=>10),
+			array('source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idmenu, name, url, estado, language, minimal, position, is_deleted', 'safe', 'on'=>'search'),
+			array('idmenu, url, name, type, state, position, is_deleted, language, page, parent_id, source', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,7 +62,6 @@ class Menu extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'menuSubMenus' => array(self::HAS_MANY, 'MenuSubMenu', 'idmenu'),
 		);
 	}
 
@@ -73,13 +72,16 @@ class Menu extends CActiveRecord
 	{
 		return array(
 			'idmenu' => 'Idmenu',
-			'name' => 'Name',
 			'url' => 'Url',
-			'estado' => 'Estado',
-			'language' => 'Language',
-			'minimal' => 'Minimal',
+			'name' => 'Name',
+			'type' => 'Type',
+			'state' => 'State',
 			'position' => 'Position',
 			'is_deleted' => 'Is Deleted',
+			'language' => 'Language',
+			'page' => 'Page',
+			'parent_id' => 'Parent',
+			'source' => 'Source',
 		);
 	}
 
@@ -95,13 +97,16 @@ class Menu extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idmenu',$this->idmenu);
-		$criteria->compare('name',$this->name,true);
 		$criteria->compare('url',$this->url,true);
-		$criteria->compare('estado',$this->estado);
-		$criteria->compare('language',$this->language,true);
-		$criteria->compare('minimal',$this->minimal);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('type',$this->type,true);
+		$criteria->compare('state',$this->state);
 		$criteria->compare('position',$this->position);
 		$criteria->compare('is_deleted',$this->is_deleted);
+		$criteria->compare('language',$this->language,true);
+		$criteria->compare('page',$this->page);
+		$criteria->compare('parent_id',$this->parent_id);
+		$criteria->compare('source',$this->source,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

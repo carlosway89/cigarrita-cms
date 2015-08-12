@@ -1,23 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "feed".
+ * This is the model class for table "page".
  *
- * The followings are the available columns in table 'feed':
- * @property string $id
- * @property string $message
- * @property string $picture
- * @property string $link
- * @property string $description
- * @property string $type
+ * The followings are the available columns in table 'page':
+ * @property integer $idpage
+ * @property string $name
+ * @property integer $is_deleted
+ * @property integer $state
  * @property string $source
+ *
+ * The followings are the available model relations:
+ * @property PageHasBlock[] $pageHasBlocks
  */
-class Feed extends CActiveRecord
+class Page extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Feed the static model class
+	 * @return Page the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +30,7 @@ class Feed extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'feed';
+		return 'page';
 	}
 
 	/**
@@ -40,13 +41,12 @@ class Feed extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			// array('id, message, picture, link, description, type, source', 'required'),
-			array('id', 'length', 'max'=>50),
-			array('picture, link, source', 'length', 'max'=>300),
-			array('type', 'length', 'max'=>20),
+			array('idpage, is_deleted, state', 'numerical', 'integerOnly'=>true),
+			array('name', 'length', 'max'=>100),
+			array('source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, message, picture, link, description, type, source', 'safe', 'on'=>'search'),
+			array('idpage, name, is_deleted, state, source', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,6 +58,7 @@ class Feed extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'pageHasBlocks' => array(self::HAS_MANY, 'PageHasBlock', 'page_idpage'),
 		);
 	}
 
@@ -67,12 +68,10 @@ class Feed extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'message' => 'Message',
-			'picture' => 'Picture',
-			'link' => 'Link',
-			'description' => 'Description',
-			'type' => 'Type',
+			'idpage' => 'Idpage',
+			'name' => 'Name',
+			'is_deleted' => 'Is Deleted',
+			'state' => 'State',
 			'source' => 'Source',
 		);
 	}
@@ -88,12 +87,10 @@ class Feed extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('message',$this->message,true);
-		$criteria->compare('picture',$this->picture,true);
-		$criteria->compare('link',$this->link,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('idpage',$this->idpage);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('is_deleted',$this->is_deleted);
+		$criteria->compare('state',$this->state);
 		$criteria->compare('source',$this->source,true);
 
 		return new CActiveDataProvider($this, array(

@@ -9,6 +9,7 @@
  * @property string $logo
  * @property string $description
  * @property string $language
+ * @property string $analytic_id
  */
 class Configuration extends CActiveRecord
 {
@@ -38,14 +39,14 @@ class Configuration extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, logo, description, language', 'required'),
-			array('title', 'length', 'max'=>100),
+			array('title, logo, description, language, analytic_id', 'required'),
+			array('title, analytic_id', 'length', 'max'=>100),
 			array('logo', 'length', 'max'=>200),
 			array('description', 'length', 'max'=>400),
 			array('language', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idconfig, title, logo, description, language', 'safe', 'on'=>'search'),
+			array('idconfig, title, logo, description, language, analytic_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +72,7 @@ class Configuration extends CActiveRecord
 			'logo' => 'Logo',
 			'description' => 'Description',
 			'language' => 'Language',
+			'analytic_id' => 'Analytic',
 		);
 	}
 
@@ -90,6 +92,7 @@ class Configuration extends CActiveRecord
 		$criteria->compare('logo',$this->logo,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('language',$this->language,true);
+		$criteria->compare('analytic_id',$this->analytic_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -1,27 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "content".
+ * This is the model class for table "block".
  *
- * The followings are the available columns in table 'content':
- * @property integer $idcontent
- * @property string $tipo
- * @property string $background
+ * The followings are the available columns in table 'block':
+ * @property integer $idblock
+ * @property string $category
  * @property string $header
  * @property string $subheader
- * @property string $template
- * @property string $idmenu
- * @property integer $estado
+ * @property integer $is_deleted
+ * @property integer $state
+ * @property string $language
+ * @property string $source
  *
  * The followings are the available model relations:
- * @property ContentPost[] $contentPosts
+ * @property Category $category0
+ * @property BlockHasPost[] $blockHasPosts
+ * @property PageHasBlock[] $pageHasBlocks
  */
-class Content extends CActiveRecord
+class Block extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Content the static model class
+	 * @return Block the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -33,7 +35,7 @@ class Content extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'content';
+		return 'block';
 	}
 
 	/**
@@ -44,12 +46,13 @@ class Content extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			// array('idcontent', 'required'),
-			array('estado', 'numerical', 'integerOnly'=>true),
-			array('tipo, background, header, subheader, template, idmenu', 'length', 'max'=>700),
+			// array('idblock, category', 'required'),
+			array('idblock, is_deleted, state', 'numerical', 'integerOnly'=>true),
+			array('category, language', 'length', 'max'=>10),
+			array('header, subheader, source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idcontent, tipo, background, header, subheader, template, idmenu, estado', 'safe', 'on'=>'search'),
+			array('idblock, category, header, subheader, is_deleted, state, language, source', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +64,9 @@ class Content extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'contentPosts' => array(self::HAS_MANY, 'ContentPost', 'idcontent'),
+			'category0' => array(self::BELONGS_TO, 'Category', 'category'),
+			'blockHasPosts' => array(self::HAS_MANY, 'BlockHasPost', 'block_idblock'),
+			'pageHasBlocks' => array(self::HAS_MANY, 'PageHasBlock', 'block_idblock'),
 		);
 	}
 
@@ -71,14 +76,14 @@ class Content extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idcontent' => 'Idcontent',
-			'tipo' => 'Tipo',
-			'background' => 'Background',
+			'idblock' => 'Idblock',
+			'category' => 'Category',
 			'header' => 'Header',
 			'subheader' => 'Subheader',
-			'template' => 'template',
-			'idmenu' => 'Idmenu',
-			'estado' => 'Estado',
+			'is_deleted' => 'Is Deleted',
+			'state' => 'State',
+			'language' => 'Language',
+			'source' => 'Source',
 		);
 	}
 
@@ -93,14 +98,14 @@ class Content extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idcontent',$this->idcontent);
-		$criteria->compare('tipo',$this->tipo,true);
-		$criteria->compare('background',$this->background,true);
+		$criteria->compare('idblock',$this->idblock);
+		$criteria->compare('category',$this->category,true);
 		$criteria->compare('header',$this->header,true);
 		$criteria->compare('subheader',$this->subheader,true);
-		$criteria->compare('template',$this->template,true);
-		$criteria->compare('idmenu',$this->idmenu,true);
-		$criteria->compare('estado',$this->estado);
+		$criteria->compare('is_deleted',$this->is_deleted);
+		$criteria->compare('state',$this->state);
+		$criteria->compare('language',$this->language,true);
+		$criteria->compare('source',$this->source,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

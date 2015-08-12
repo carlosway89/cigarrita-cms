@@ -546,7 +546,7 @@ class ApiController extends Controller
             
             if (is_object($filter)) {
                 
-                $_model=new Menu;
+                $_model=new Page;
 
                 foreach ($filter as $key => $value) {
                   
@@ -576,46 +576,38 @@ class ApiController extends Controller
         }
 
 
-        $criteria->order = 'position ASC';
+        // $criteria->order = 'position ASC';
+
         $criteria->limit = 1000;
 
-        $model=Menu::model()->findAll($criteria);
+        $model=Page::model()->with('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost')->findAll($criteria);
 
-            foreach ($model as $key_menu=>$menu) {
-                // $array[]=$menu->attributes;
+        $array=array();
 
-                $array[]=array_merge($menu->attributes,array("user_admin"=>Yii::app()->user->checkAccess("webmaster")));
+        foreach($model as $value)
+        {   
 
-                $temp_content=array();
+            foreach($value->pageHasBlocks as $key_block => $has_block)
+            {   
+                $array[]=$has_block->blockIdblock->attributes;
 
-                $content=Content::model()->findAll(array("condition"=>"idmenu =  $menu->idmenu"));
-                foreach ($content as $key_content=>$content) {
-                    $temp_post=array();
-                    $temp_content[]=$content->attributes;
-
-                    $post=Post::model()->findAll(array("condition"=>"idcontent =  $content->idcontent"));
-
-                    foreach ($post as $post) {
-                        $temp_post[]=$post->attributes;
-                        
-                    }
-                    $temp_post=array('post'=>$temp_post);
+                // $temp_post=array();
+                $subarray=array();
                 
-                    $temp_content[$key_content]=array_merge($temp_content[$key_content],$temp_post);
+                foreach ($has_block->blockIdblock->blockHasPosts as $key_post => $has_post) {
+
+                    $subarray[]=$has_post->postIdpost->attributes;
+
                 }
-               
-                $temp_content=array('content'=>$temp_content);
-                
-                $array[$key_menu]=array_merge($array[$key_menu],$temp_content);
-                 
 
+                // $temp_post=array('posts'=>$subarray);
+
+                $array[$key_block]=array_merge($array[$key_block],array('posts'=>$subarray));
             }
-            
-            
-            header('Content-type: application/json');
 
-            // print_r($array);
-            echo CJSON::encode($array);
+        }
+    
+        $this->_sendResponse(200, CJSON::encode($array));
     }
 
     public function actionFlag(){
@@ -800,10 +792,15 @@ class ApiController extends Controller
                 }
 
                 $criteria->condition=$string;
+
+                if ($_model->hasAttribute("position")) {
+                    $criteria->order="position";
+                }
             }
         }
         
-        
+
+       
         $criteria->limit = 1000;
         $models=$model::model()->findAll($criteria);
 
