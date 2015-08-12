@@ -2,11 +2,6 @@
 
 cigarritaApp.run(function($route, $rootScope, $location, $anchorScroll, $routeParams) {
 
-
-  $rootScope.$on( "$viewContentLoaded", function(event) {
-    // preloading site launch
-  });
-
   // $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
   //   $location.hash($routeParams.scrollTo);
   //   $anchorScroll();  
@@ -14,41 +9,29 @@ cigarritaApp.run(function($route, $rootScope, $location, $anchorScroll, $routePa
 
    $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
     
-    if($location.hash()){
-      $anchorScroll.yOffset = 100;
-      $anchorScroll();
-    } 
+    // console.log('change', oldRoute);
+
+    route=oldRoute.params;
+    if (route) {
+      var link="/"+route.link;
+    }else{
+      var link=oldRoute.originalPath;
+    }
+
+    var item=$('.header-options').find("[href^='"+link+"']");
+
+    setTimeout(function(){
+      item.trigger('click');
+    },1000);    
 
   });
 
-
+  $rootScope.$on( "$viewContentLoaded", function(event) {
+    // preloading site launch
+  });
 
 });
 
-cigarritaApp.config(['$routeProvider','$locationProvider',
-  function($routeProvider,$locationProvider) {
-
-
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    });
-    
-    $routeProvider.
-      when('/blog', {
-        templateUrl: $base_url+'/api/template/blog',
-        controller: 'blogCtrl',
-        reloadOnSearch: false
-      }).
-      when('/:link', {
-        templateUrl: $base_url+'/api/template/view/site', //router template with api
-        controller: 'homeCtrl'
-      }).
-      otherwise({
-        redirectTo: '/home'
-      });
-
-  }]);
 
 
 

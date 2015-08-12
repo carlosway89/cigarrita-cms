@@ -591,7 +591,7 @@ class ApiController extends Controller
             {   
                 $array[]=$has_block->blockIdblock->attributes;
 
-                // $temp_post=array();
+                
                 $subarray=array();
                 
                 foreach ($has_block->blockIdblock->blockHasPosts as $key_post => $has_post) {
@@ -599,8 +599,6 @@ class ApiController extends Controller
                     $subarray[]=$has_post->postIdpost->attributes;
 
                 }
-
-                // $temp_post=array('posts'=>$subarray);
 
                 $array[$key_block]=array_merge($array[$key_block],array('posts'=>$subarray));
             }

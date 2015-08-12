@@ -5,7 +5,8 @@
 var cigarritaDirective = angular.module('cigarritaDirective', ['ngResource']);
 
 
-cigarritaDirective.directive('languageSelect',function($parse){ //Step 1
+cigarritaDirective
+.directive('languageSelect',function($parse){ //Step 1
 
     return {
           // require : 'ngModel',            //Step 2
@@ -15,17 +16,6 @@ cigarritaDirective.directive('languageSelect',function($parse){ //Step 1
 
                 $(element).dropdown();
 
-                // $(element).change(function(){                //Step 1
-                //     var col = scope[collection],
-                //         val = $(element).val();              //Step 2
-
-                //     for(var i=0,len=col.length;i<len;i++){
-                //         if(val == col[i][valueProperty]){    //Step 3
-                //             setter(scope,col[i]);            //Step 4
-                //             break;
-                //         }
-                //     }
-                // });
 
                 scope.$watch(collection,function(data){
                     
@@ -46,4 +36,69 @@ cigarritaDirective.directive('languageSelect',function($parse){ //Step 1
               
           }
     }
+})
+.directive('menuLinks', function ($location,$rootScope) {
+    return {
+        // restrict: 'E',
+        link: function(scope, element, attrs) {
+            
+            var links=attrs.menuLinks;
+
+            if (links=="scroll") {
+
+              element.attr("target", "_self");
+
+              $(element).on('click',function(event){
+                
+                
+                event.preventDefault();
+
+                var current_path=$location.path();
+                var current_link=$('.header-options').find("[href^='"+current_path+"']");
+                
+                
+
+                var is_self=current_link.attr('target');
+
+                
+                $('.header-options a').removeClass('active');
+
+                var url=$(element).attr('href');
+                
+                $(element).addClass('active');
+
+
+                if (!is_self) {
+                  
+                  $location.path(url).replace();
+                  scope.$apply();
+
+                } else{
+                    url=url.replace('/','');
+
+                    var div_target=$('#'+url);
+
+                    $('html, body').stop().animate({
+                        scrollTop: div_target.offset().top
+                    }, 1500);
+                  
+                }
+                
+              });
+            }else{
+
+              $(element).on('click',function(event){
+
+                $('.header-options a').removeClass('active');
+                
+                $(element).addClass('active');
+
+              });
+
+            }
+
+            
+
+        }
+    };
 });

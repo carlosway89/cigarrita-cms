@@ -42,6 +42,33 @@
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/cigarrita.js"></script>
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/app.js"></script>
   	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/router.js"></script>
+  	<script type="text/javascript">
+
+		cigarritaApp.config(['$routeProvider','$locationProvider',
+		  function($routeProvider,$locationProvider) {
+
+		    $locationProvider.html5Mode({
+		      enabled: true,
+		      requireBase: false
+		    });
+		    
+		    $routeProvider.
+		      when('/blog', {
+		        templateUrl: $base_url+'/api/template/blog/site',
+		        controller: 'blogCtrl',
+		        reloadOnSearch: false
+		      }).
+		      when('/:link', {
+		        templateUrl: $base_url+'/api/template/view/site', //router template with api
+		        controller: 'homeCtrl'
+		      }).
+		      otherwise({
+		        redirectTo: '/home'
+		      });
+
+		  }]);
+
+  	</script>
 
   	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/controllers/controllers.js"></script>
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modules/animations.js"></script>
@@ -83,8 +110,9 @@
 				<div class="ui secondary pull-right menu">
 				  <a href="javascript:;;" class="menu-side-icon"><i class="align justify icon"></i></a>
 				  <div class=" menu header-options">
-					<!--menus-->
-					<a class='item' ng-href='{{link.url}}' ng-repeat="link in links" >{{link.name}}</a>
+					<!--menus -->
+					<!--use target="_self" to -->
+					<a class='item' ng-href='{{link.url}}' ng-repeat="link in links" menu-links="{{link.type}}">{{link.name}}</a>
 				</div>
 
 			</div>
