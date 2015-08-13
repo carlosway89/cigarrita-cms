@@ -34,14 +34,11 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
     
 
 }]);
-cigarritaControllers.controller('homeCtrl',['$scope','Content','Links','$rootScope',function($scope,Content,Links,$rootScope){
+cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$routeParams',function($scope,Content,$route,$routeParams){
 
 
-  // $scope.links=Links.query({
-  //     condition:'estado,language',
-  //     attr:'1,'+beans.readCookie('language.initial')
-  // });
   
+  var pageid = $route.current.$$route.pageid;
 
   var fadeDuration=1000;
   var fadeDuration1=1000;
@@ -52,7 +49,7 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','Links','$rootSco
   var obj={
     language:beans.readCookie('language.initial'),
     state:1,
-    idpage:1,
+    idpage:pageid,
     is_deleted:0
   };
 
@@ -99,33 +96,35 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','Links','$rootSco
 
   $scope.launchit=function(model){
 
-    console.log(model);
+    // console.log(model);
 
-    parent.$(parent.document).trigger('launch.edition',model);
+    // parent.$(parent.document).trigger('launch.edition',model);
 
   }
 
 }]);
 
-cigarritaControllers.controller('blogCtrl',['$scope','Content','Language',function($scope,Content,Language){
+cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$route',function($scope,Content,Language,$route){
 
+  var pageid = $route.current.$$route.pageid;
+
+  var obj={
+    language:beans.readCookie('language.initial'),
+    state:1,
+    idpage:pageid,
+    is_deleted:0
+  };
 
   $scope.blog = Content.query({
-    language:beans.readCookie('language.initial'),
-    condition:',estado,minimal',
-    attr:',1,0'
-  },function(data){
-
-
-
+    query:JSON.stringify(obj)
   });
 
 
   $scope.launchit=function(model){
 
-    console.log(model);
+    // console.log(model);
 
-    parent.$(parent.document).trigger('launch.edition',model);
+    // parent.$(parent.document).trigger('launch.edition',model);
 
   }
 

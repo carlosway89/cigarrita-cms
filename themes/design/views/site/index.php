@@ -43,7 +43,7 @@
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/app.js"></script>
   	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/router.js"></script>
   	<script type="text/javascript">
-
+  		
 		cigarritaApp.config(['$routeProvider','$locationProvider',
 		  function($routeProvider,$locationProvider) {
 
@@ -53,14 +53,25 @@
 		    });
 		    
 		    $routeProvider.
-		      when('/blog', {
-		        templateUrl: $base_url+'/api/template/blog/site',
-		        controller: 'blogCtrl',
+		    <?php 
+		    foreach ($menu as $value) {
+
+  				if ($value->type=="new") {
+		    ?>
+		      when('<?=$value->url?>', {
+		        templateUrl: $base_url+'/api/template/<?=$value->name?>/site',
+		        controller: 'pageCtrl',
+		        pageid: <?=$value->page?>,
 		        reloadOnSearch: false
 		      }).
+		    <?php 
+				}
+			}
+		    ?>
 		      when('/:link', {
 		        templateUrl: $base_url+'/api/template/view/site', //router template with api
-		        controller: 'homeCtrl'
+		        controller: 'homeCtrl',
+		        pageid: 1
 		      }).
 		      otherwise({
 		        redirectTo: '/home'
@@ -80,6 +91,7 @@
 
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/outsider.js"></script>
 	
+
 	
 </head>
 <body>

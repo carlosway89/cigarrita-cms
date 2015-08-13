@@ -79,7 +79,7 @@ cigarritaDirective
                     var div_target=$('#'+url);
 
                     $('html, body').stop().animate({
-                        scrollTop: div_target.offset().top
+                        scrollTop: div_target.offset().top - 100
                     }, 1500);
                   
                 }

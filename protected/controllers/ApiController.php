@@ -70,7 +70,7 @@ class ApiController extends Controller
     public function actionTemplate(){
 
         
-        $template=$this->uri(2);
+        $template=strtolower($this->uri(2));
         $type=$this->uri(3);
         $var="";
         $this->render("/$type/".$template,array("var"=>$var));
@@ -539,6 +539,8 @@ class ApiController extends Controller
         $filter=$this->uri(2);
 
         $criteria->condition="";
+        
+        $criteria->limit = 1000;
 
         if ($filter) {
            
@@ -549,17 +551,36 @@ class ApiController extends Controller
                 $_model=new Page;
 
                 foreach ($filter as $key => $value) {
+
+                    $value=is_object($value)?$value:str_replace("'","",$value);
                   
                     if ($key=="like") {
-                        foreach ($value as $key_like => $val_like) {
-                            if($_model->hasAttribute($key_like)) {
-                                $condition[]=$key_like." LIKE '%".$val_like."%'";
-                            }
-                        }                    
+                        if (is_object($value)) {                        
+                            foreach ($value as $key_like => $val_like) {
+
+                                $val_like=str_replace("'","",$val_like);
+
+                                if($_model->hasAttribute($key_like)) {
+                                    $condition[]=$key_like." LIKE '%".$val_like."%'";
+                                }
+                            } 
+                        }                      
                     }else{
-                        if($_model->hasAttribute($key)) {
-                            $condition[]=$key."='".$value."'";
+                        if ($key=="position") {
+                            $criteria->order = 'position ASC';
+                        }else{
+                            if ($key=="limit") {
+                                if (is_object($value)) {
+                                    $criteria->limit = ' 1 , 10 ';
+                                }else
+                                    $criteria->limit = is_int($value)?$value:1000;
+                            }else{
+                                if($_model->hasAttribute($key)) {
+                                    $condition[]=$key."='".$value."'";
+                                }
+                            }
                         }
+                        
                     }
                 }       
 
@@ -576,9 +597,9 @@ class ApiController extends Controller
         }
 
 
-        // $criteria->order = 'position ASC';
+        
 
-        $criteria->limit = 1000;
+        
 
         $model=Page::model()->with('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost')->findAll($criteria);
 
@@ -739,77 +760,109 @@ class ApiController extends Controller
         // }
     }
 
+    public static function class_exists($className) {
+        return file_exists(Yii::getPathOfAlias('application.models').DIRECTORY_SEPARATOR.$className.'.php');
+    }
 
     public function actionList($model,$filter)
     {   
         
         $model=ucfirst($model);
-
         $this->_checkAuth($model);
-                
 
-        $criteria = new CDbCriteria;
-
-        $criteria->condition="";
-
-
-        if ($filter) {
-           
-            $filter=json_decode($filter);
+        if ($this->class_exists($model)) {
             
-            if (is_object($filter)) {
+            $criteria = new CDbCriteria;
 
-                $_model=new $model;
-                foreach ($filter as $key => $value) {
-                    
-                    $value=is_object($value)?$value:str_replace("'","",$value);
+            $criteria->condition="";
 
-                    if ($key=="like") {
+            $criteria->limit = 1000;
 
-                        if (is_object($value)) {                        
-                            foreach ($value as $key_like => $val_like) {
+            if ($filter) {
+               
+                $filter=json_decode($filter);
+                
+                if (is_object($filter)) {
 
-                                $val_like=str_replace("'","",$val_like);
+                    $_model=new $model;
+                    foreach ($filter as $key => $value) {
+                        
+                        $value=is_object($value)?$value:str_replace("'","",$value);
 
-                                if($_model->hasAttribute($key_like)) {
-                                    $condition[]=$key_like." LIKE '%".$val_like."%'";
+                        if ($key=="like") {
+
+                            if (is_object($value)) {                        
+                                foreach ($value as $key_like => $val_like) {
+
+                                    $val_like=str_replace("'","",$val_like);
+
+                                    if($_model->hasAttribute($key_like)) {
+                                        $condition[]=$key_like." LIKE '%".$val_like."%'";
+                                    }
+                                } 
+                            }                   
+                        }else{
+                            if ($key=="orderby") {
+                                if (is_object($value)) {
+                                    $order=$value->order?$value->order:1;
+                                    $type=$value->type=="DESC"?$value->type:"ASC";
+                                    if($_model->hasAttribute($order)) {
+                                        $criteria->order = "$order $type";
+                                    }
+                                }else{
+                                   if($_model->hasAttribute($value)) {
+                                        $criteria->order = "$value ASC";
+                                    } 
+                                }                            
+                            }else{
+                                if ($key=="limit") {
+                                    if (is_object($value)) {
+                                        $start=(int)$value->start?$value->start:1;
+                                        $limit=(int)$value->limit?$value->limit:10;
+                                        $criteria->limit =$limit;
+                                        $criteria->offset=$start;
+                                    }else{
+                                        $value=(int)$value;
+                                        $criteria->limit = is_int($value)?$value:1000;
+                                    }                                    
+                                }else{
+                                    if($_model->hasAttribute($key)) {
+                                        $condition[]=$key."='".$value."'";
+                                    }
                                 }
-                            } 
-                        }                   
-                    }else{
-                        if($_model->hasAttribute($key)) {
-                            $condition[]=$key."='".$value."'";
+                            }
+                            
                         }
+                    }       
+
+                    $string=$condition[0];
+
+                    for ($i=1; $i <count($condition); $i++) { 
+                        $string.=" AND ".$condition[$i];
                     }
-                }       
 
-                $string=$condition[0];
+                    $criteria->condition=$string;
 
-                for ($i=1; $i <count($condition); $i++) { 
-                    $string.=" AND ".$condition[$i];
-                }
-
-                $criteria->condition=$string;
-
-                if ($_model->hasAttribute("position")) {
-                    $criteria->order="position";
+                    if ($_model->hasAttribute("position")) {
+                        $criteria->order="position";
+                    }
                 }
             }
-        }
-        
+            
 
-       
-        $criteria->limit = 1000;
-        $models=$model::model()->findAll($criteria);
+           
+            $models=$model::model()->findAll($criteria);
+
+        }else{
+            $models=array("error"=>401,"message"=>"doesn't exits such a model");            
+        }
+
+        
 
 
         if(is_null($models)) {
              $this->_sendResponse(200, sprintf('No items where found for model <b>%s</b>', $_GET['model']) );
         } else {
-             // $rows = array();
-             // foreach($models as $model){
-             //    $rows[] = $model->attributes;
-             // }
                  
              $this->_sendResponse(200, CJSON::encode($models));
         }

@@ -972,3 +972,363 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/services
 ---
+2015/08/12 19:36:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+---
+2015/08/12 19:36:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+---
+2015/08/12 19:42:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:11:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:11:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:11:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/12 20:11:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:12:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:14:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:16:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/12 20:16:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('about')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/about
+HTTP_REFERER=http://cigarrita-worker.dev/about
+---
+2015/08/13 11:16:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/13 11:16:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/13 11:20:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/13 11:21:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/13 11:21:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/13 11:23:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/13 11:24:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/13 11:25:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/13 11:26:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "blog".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blog')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/blog
+---
+2015/08/13 11:27:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "services".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('services')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/services
+---
+2015/08/13 11:28:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "services".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('services')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/services
+---
+2015/08/13 11:31:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "services".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('services')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/services
+---
+2015/08/13 11:32:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "services".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('services')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/services
+---
+2015/08/13 12:25:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:26:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:26:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:26:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:27:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:27:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:28:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:29:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:29:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:30:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 12:33:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "post".' in /var/www/html/cigarrita-angular/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(270): CController->missingAction('post')
+#1 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): CController->run('post')
+#2 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/post/{query...')
+#3 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/post/%7Bquery:%22all%22%7D
+---
+2015/08/13 12:34:07 [error] [php] include(Content.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(839): spl_autoload_call()
+#1 unknown(0): ApiController->actionList()
+#2 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/content/query/%7Bget:%22all%22%7D
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (839)
+in /var/www/html/cigarrita-angular/index.php (13)
+2015/08/13 12:38:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projects
+---
+2015/08/13 13:11:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "post".' in /var/www/html/cigarrita-angular/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(270): CController->missingAction('post')
+#1 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): CController->run('post')
+#2 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/post/query')
+#3 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/post/query/
+---
+2015/08/13 13:16:18 [error] [php] include(Content.php): failed to open stream: No such file or directory (/var/www/html/cigarrita-angular/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 /var/www/html/cigarrita-angular/protected/controllers/ApiController.php(770): class_exists()
+#2 unknown(0): ApiController->actionList()
+#3 /var/www/html/cigarrita-angular/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#4 /var/www/html/cigarrita-angular/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(133): ApiController->runAction()
+#7 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /var/www/html/cigarrita-angular/yii/framework/web/filters/CInlineFilter.php(58): ApiController->filterAccessControl()
+#10 /var/www/html/cigarrita-angular/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(291): CFilterChain->run()
+#12 /var/www/html/cigarrita-angular/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#13 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#14 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /var/www/html/cigarrita-angular/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/content/query/%7B%22get%22:%22all%22%7D
+in /var/www/html/cigarrita-angular/protected/controllers/ApiController.php (770)
+in /var/www/html/cigarrita-angular/index.php (13)
