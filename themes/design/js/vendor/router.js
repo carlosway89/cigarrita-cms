@@ -9,16 +9,18 @@ cigarritaApp.run(function($route, $rootScope, $location, $anchorScroll, $routePa
 
    $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
     
-    // console.log('change', oldRoute);
+    // console.log('change',newRoute, oldRoute);
 
     route=oldRoute.params;
-    if (route) {
+    
+    if (!$.isEmptyObject(route)) {
       var link="/"+route.link;
     }else{
       var link=oldRoute.originalPath;
     }
 
     var item=$('.header-options').find("[href^='"+link+"']");
+
 
     setTimeout(function(){
       item.trigger('click');

@@ -6,7 +6,7 @@ var cigarritaDirective = angular.module('cigarritaDirective', ['ngResource']);
 
 
 cigarritaDirective
-.directive('languageSelect',function($parse){ //Step 1
+.directive('languageSelect',function($parse,$rootScope){ //Step 1
 
     return {
           // require : 'ngModel',            //Step 2
@@ -33,11 +33,20 @@ cigarritaDirective
 
                     }
                 });
+
+                $(element).on('change',function(event){
+                    var value=$(element).find('input').val();
+                    beans.createCookie('language.initial',value,10);
+                    
+                    $rootScope.$broadcast('language.changed');
+                    
+                    
+                });
               
           }
     }
 })
-.directive('menuLinks', function ($location,$rootScope) {
+.directive('menuLinks', function($location,$rootScope) {
     return {
         // restrict: 'E',
         link: function(scope, element, attrs) {
@@ -86,14 +95,22 @@ cigarritaDirective
                 
               });
             }else{
+              if (links=="new_scroll") {
+                var current_path=$location.path();
 
-              $(element).on('click',function(event){
+              }else{
 
-                $('.header-options a').removeClass('active');
-                
-                $(element).addClass('active');
+                $(element).on('click',function(event){
 
-              });
+                  $('.header-options a').removeClass('active');
+                  
+                  $(element).addClass('active');
+
+                });
+
+              }
+
+              
 
             }
 

@@ -549,6 +549,7 @@ class ApiController extends Controller
             if (is_object($filter)) {
                 
                 $_model=new Page;
+                $_block=new Block;
 
                 foreach ($filter as $key => $value) {
 
@@ -561,24 +562,16 @@ class ApiController extends Controller
                                 $val_like=str_replace("'","",$val_like);
 
                                 if($_model->hasAttribute($key_like)) {
-                                    $condition[]=$key_like." LIKE '%".$val_like."%'";
+                                    $condition[]="t.".$key_like." LIKE '%".$val_like."%'";
                                 }
                             } 
                         }                      
                     }else{
-                        if ($key=="position") {
-                            $criteria->order = 'position ASC';
+                        if($_model->hasAttribute($key)) {
+                            $condition[]="t.".$key."='".$value."'";
                         }else{
-                            if ($key=="limit") {
-                                if (is_object($value)) {
-                                    $criteria->limit = ' 1 , 10 ';
-                                }else
-                                    $criteria->limit = is_int($value)?$value:1000;
-                            }else{
-                                if($_model->hasAttribute($key)) {
-                                    $condition[]=$key."='".$value."'";
-                                }
-                            }
+                            if($_block->hasAttribute($key))
+                                $condition[]="blockIdblock.".$key."='".$value."'";                                
                         }
                         
                     }
@@ -596,12 +589,11 @@ class ApiController extends Controller
 
         }
 
+        $criteria->with=array('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost');
 
-        
+        $criteria->together = true; 
 
-        
-
-        $model=Page::model()->with('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost')->findAll($criteria);
+        $model=Page::model()->findAll($criteria);
 
         $array=array();
 
@@ -854,7 +846,7 @@ class ApiController extends Controller
             $models=$model::model()->findAll($criteria);
 
         }else{
-            $models=array("error"=>401,"message"=>"doesn't exits such a model");            
+            $models=array("error"=>204,"message"=>"doesn't exits such a model");            
         }
 
         

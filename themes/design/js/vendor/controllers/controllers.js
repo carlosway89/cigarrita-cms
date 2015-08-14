@@ -10,31 +10,34 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
       id:'query',
       query:JSON.stringify(obj_lang)
     },function(data){
-        // $('#language_panel_option').on('change',function(event){
-        //   var value=$(this).val();
-        //   beans.createCookie('language.initial',value,10);
-        //   contenidos();
-        // });
-
       $scope.current=beans.readCookie('language.initial');
       $scope.language=data;
     });
 
-    var obj_link={
-      state:1,
-      language:beans.readCookie('language.initial')
-    };
+    
+    var links=function(){
+      var obj_link={
+        state:1,
+        language:beans.readCookie('language.initial')
+      };
 
-    $scope.links=Model.query({
-      model:'menu',
-      id:'query',
-      query:JSON.stringify(obj_link)
+      $scope.links=Model.query({
+          model:'menu',
+          id:'query',
+          query:JSON.stringify(obj_link)
+      });
+    }
+    
+    links();
+
+    $scope.$on('language.changed', function() {
+        links();
     });
 
     
 
 }]);
-cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$routeParams',function($scope,Content,$route,$routeParams){
+cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootScope',function($scope,Content,$route,$rootScope){
 
 
   
@@ -46,36 +49,38 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$routeP
   var currentIndex=1;
   var nextIndex=1;
 
-  var obj={
-    language:beans.readCookie('language.initial'),
-    state:1,
-    idpage:pageid,
-    is_deleted:0
-  };
-
-  $scope.page = Content.query({
-    query:JSON.stringify(obj)
-  },function(data){
 
 
+  var page=function(){
+    
+    var obj={
+      language:beans.readCookie('language.initial'),
+      state:1,
+      idpage:pageid,
+      is_deleted:0
+    };
 
-    setTimeout(function(){
-        $('#home .transito').css({opacity: 0.0});
-        $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
-        $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-        $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-        var timer = setInterval(nextSlide,slideDuration);
-    },2000);
+    $scope.page = Content.query({
+      query:JSON.stringify(obj)
+    },function(data){
+      setTimeout(function(){
+          $('#home .transito').css({opacity: 0.0});
+          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
+          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+          var timer = setInterval(nextSlide,slideDuration);
+      },2000);
+
+    });
+
+  }
+
+  page();
 
 
-
+  $scope.$on('language.changed', function() {
+      page();
   });
-
-
-
-
-
-
 
 
     var nextSlide=function(){
