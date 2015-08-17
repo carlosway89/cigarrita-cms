@@ -12,6 +12,7 @@
  * @property string $language
  * @property integer $state
  * @property integer $is_deleted
+ * @property string $date_created
  *
  * The followings are the available model relations:
  * @property BlockHasPost[] $blockHasPosts
@@ -46,13 +47,12 @@ class Post extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idpost, category', 'required'),
-			array('idpost, state, is_deleted', 'numerical', 'integerOnly'=>true),
+			array('state, is_deleted', 'numerical', 'integerOnly'=>true),
 			array('category, language', 'length', 'max'=>10),
-			array('header, subheader, source', 'safe'),
+			array('header, subheader, source, date_created', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idpost, category, header, subheader, source, language, state, is_deleted', 'safe', 'on'=>'search'),
+			array('idpost, category, header, subheader, source, language, state, is_deleted, date_created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -84,6 +84,7 @@ class Post extends CActiveRecord
 			'language' => 'Language',
 			'state' => 'State',
 			'is_deleted' => 'Is Deleted',
+			'date_created' => 'Date Created',
 		);
 	}
 
@@ -106,6 +107,7 @@ class Post extends CActiveRecord
 		$criteria->compare('language',$this->language,true);
 		$criteria->compare('state',$this->state);
 		$criteria->compare('is_deleted',$this->is_deleted);
+		$criteria->compare('date_created',$this->date_created,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

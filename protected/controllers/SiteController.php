@@ -58,12 +58,9 @@ class SiteController extends Controller
 		// $criteria = new CDbCriteria;
 		// $criteria->limit = 1000;
   //       $menu=Menu::model()->findAll($criteria);
-		if (Yii::app()->user->id) {
-			$this->layout='//site/editor';
-			$this->render('editor');
-		}else{
-			$this->render('index');
-		}
+		
+		$this->render('index');
+		
 		
 	}
 

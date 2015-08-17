@@ -25,7 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flag-icon.min.css">
 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
@@ -35,13 +35,13 @@
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/webfont.js"></script> 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/semantic.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script> 
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>
 
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/cigarrita.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/app.js"></script>
-  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/router.js"></script>
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/cigarrita.js"></script>
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/app.js"></script>
+  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/router.js"></script>
   	<script type="text/javascript">
   		
 		cigarritaApp.config(['$routeProvider','$locationProvider',
@@ -69,7 +69,7 @@
 			}
 		    ?>
 		      when('/:link', {
-		        templateUrl: $base_url+'/api/template/view/site', //router template with api
+		        templateUrl: $base_url+'/api/template/home/site', //router template with api
 		        controller: 'homeCtrl',
 		        pageid: 1
 		      }).
@@ -81,15 +81,13 @@
 
   	</script>
 
-  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/controllers/controllers.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modules/animations.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modules/filters.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modules/directives.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/models/services.js"></script>
-
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/angular-facebook.js"></script>
-
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/outsider.js"></script>
+  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/controllers/controllers.js"></script>
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/animations.js"></script>
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/filters.js"></script>
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/directives.js"></script>
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/models/services.js"></script>
+	
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
 	
 
 	

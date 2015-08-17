@@ -588,8 +588,9 @@ class ApiController extends Controller
             
 
         }
-
-        $criteria->with=array('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost');
+        // $criteria->with=array('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost');
+        $criteria->with=array('pageHasBlocks.blockIdblock.category0.posts');
+        
 
         $criteria->together = true; 
 
@@ -607,9 +608,17 @@ class ApiController extends Controller
                 
                 $subarray=array();
                 
-                foreach ($has_block->blockIdblock->blockHasPosts as $key_post => $has_post) {
+                foreach ($has_block->blockIdblock->category0->posts as $key_post => $has_post) {
 
-                    $subarray[]=$has_post->postIdpost->attributes;
+                    $subarray[]=$has_post->attributes;
+
+                    //if has extra attributes
+                    foreach ($has_post->postHasAttributes as $key_attr => $has_attr) { 
+                        $attr=$has_attr->attributesIdattributes;                     
+                        $subarray[$key_post]=array_merge($subarray[$key_post],array($attr->key=>$attr->value));                        
+
+                    }
+                    //end extra attributes
 
                 }
 
@@ -617,7 +626,7 @@ class ApiController extends Controller
             }
 
         }
-    
+
         $this->_sendResponse(200, CJSON::encode($array));
     }
 
