@@ -54,7 +54,15 @@ cigarritaDirective
       var repeat="block in page | filter:{category:'"+attrs.elementBlock+"'}";
       attrs.$set('ngRepeat', repeat);
       attrs.$set('elementBlock', null);
+
+      // $(element).find('#subheader,#header').attr("contenteditable",true);
+      
       $compile(element)(scope);
+
+     
+
+      
+
     }
   };
 })
@@ -66,7 +74,12 @@ cigarritaDirective
       var repeat="post in block.posts";
       attrs.$set('ngRepeat', repeat);
       attrs.$set('elementPost', null);
+      
+      // var classes=$(element).attr('class');
+      // $('<div class="'+classes+' text-center" style="padding: 25px;width: 100%;"><a id="new" href="javascript:;;" class="block list-content plus-gray text-info" ><i class="plus icon huge"></i><br><label class="">Add New</label></a></div>').insertAfter(element);
+
       $compile(element)(scope);
+
     }
   };
 })

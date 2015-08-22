@@ -4,93 +4,29 @@
 
 var cigarritaDirective = angular.module('cigarritaDirective', ['ngResource']);
 
-cigarritaDirective.directive('bootstrapSummer',function($parse){ //Step 1
+
+cigarritaDirective
+.directive('languageSelect',function($parse,$rootScope){ //Step 1
 
     return {
           // require : 'ngModel',            //Step 2
           link: function (scope, element, attrs, ngModel) {
 
-              $(element).summernote({
-                height: 200,
-                  toolbar: [
-                    //[groupname, [button list]]
-                    ['inser',['link']],
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']],
-                    ['misc',['codeview']]
-                  ]
-              });
-
-              
-             // $('#summernote').summernote({
-             //      height: 200,
-             //      onImageUpload: function(files, editor, welEditable) {
-             //          sendFile(files[0], editor, welEditable);
-             //      }
-             //  });
-             //  function sendFile(file, editor, welEditable) {
-             //      data = new FormData();
-             //      data.append("file", file);
-             //      $.ajax({
-             //          data: data,
-             //          type: "POST",
-             //          url: "Your URL POST (php)",
-             //          cache: false,
-             //          contentType: false,
-             //          processData: false,
-             //          success: function(url) {
-             //              editor.insertImage(welEditable, url);
-             //          }
-             //      });
-             //  }
-
-
-
-              
-          }
-    }
-});
-
-cigarritaDirective.directive('languageSelect',function($parse){ //Step 1
-
-    return {
-          // require : 'ngModel',            //Step 2
-          link: function (scope, element, attrs, ngModel) {
-
-              var collection = attrs.languageSelect,
-                    model = attrs.selectModel,
-                    getter= $parse(model),
-                    setter= getter.assign;
+              var collection = attrs.languageSelect;
 
                 $(element).dropdown();
 
-                // $(element).change(function(){                //Step 1
-                //     var col = scope[collection],
-                //         val = $(element).val();              //Step 2
 
-                //     for(var i=0,len=col.length;i<len;i++){
-                //         if(val == col[i][valueProperty]){    //Step 3
-                //             setter(scope,col[i]);            //Step 4
-                //             break;
-                //         }
-                //     }
-                // });
-                
-                scope.$watch(model,function(data){
+                scope.$watch(collection,function(data){
                     
-                    if(angular.isObject(data)){      
-                        
-                        $(element).dropdown().dropdown('setting', {
-                            onChange: function (value) {
-                                scope.$parent[attrs.ngModel] = value;
-                                scope.$parent.$apply();
-                            }
-                        });
-
+                    if(angular.isObject(data)){  
+                     
+                      var view=$(element).find('.menu.laguage-select');
+                      view.empty();
+                      
+                      angular.forEach(data, function(item, key) {
+                        view.append('<div class="item" data-value="'+item.min+'"><i class="flag-icon-'+item.flag+' flag-icon"></i> '+item.name+'</div>');
+                      });
                       setTimeout(function(){
                         $(element).dropdown();
                       },100);
@@ -98,125 +34,230 @@ cigarritaDirective.directive('languageSelect',function($parse){ //Step 1
                     }
                 });
 
-                 scope.$watch(collection,function(data){
-                   
-                   if (data) {
-                    console.log(data,attrs.ngModel);
-                   };
-
-                 });
+                $(element).on('change',function(event){
+                    var value=$(element).find('input').val();
+                    beans.createCookie('language.initial',value,10);
+                    
+                    $rootScope.$broadcast('language.changed');
+                    
+                    
+                });
               
           }
     }
-});
-cigarritaDirective.directive('checkSelect',function($parse){ //Step 1
+})
+.directive('elementBlock', function ($compile) {
+  return {
+    terminal: true, // prevent ng-repeat from compiled twice
+    priority: 1002, // must higher than ng-repeat
+    link: function (scope, element, attrs) {
+      var repeat="block in page | filter:{category:'"+attrs.elementBlock+"'}";
+      attrs.$set('ngRepeat', repeat);
+      attrs.$set('elementBlock', null);
 
-    return {
-          // require : 'ngModel',            //Step 2
-          link: function (scope, element, attrs, ngModel) {
+      // $(element).find('#subheader,#header').attr("contenteditable",true);
+      $compile(element)(scope);
+      
 
-              var collection = attrs.checkSelect;
-                    // ,
-                    // model = attrs.selectModel,
-                    // getter= $parse(model),
-                    // setter= getter.assign;
+    }
+  };
+})
+.directive('elementPost', function ($compile) {
+  return {
+    terminal: true, // prevent ng-repeat from compiled twice
+    priority: 1001, // must higher than ng-repeat
+    link: function (scope, element, attrs) {
+      var repeat="post in block.posts";
+      attrs.$set('ngRepeat', repeat);
+      attrs.$set('elementPost', null);
+      
+      var classes=$(element).attr('class');
+      $('<div class="'+classes+' text-center inline-add"><a id="new" href="javascript:;;" class="plus-gray" ><span>+</span><label>Add New</label></a></div>').insertAfter(element);
 
-                    
-                $(element).checkbox();
+      $compile(element)(scope);
+
+    }
+  };
+})
+.directive('elementObject', function ($compile,$rootScope) {
+  return {
+    link: function (scope, element, attrs) {
+      
+      // console.log(element);
+      var $data_model=[];
+      scope.$watch(attrs.elementObject,function(data){
+        if(angular.isObject(data)){ 
+          $data_model=data;
+        }
+      });
+
+      element.hover(
+        function() {
+
+          element.append("<div class='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
+          
+
+          setTimeout(function(){
+              
+              element.find(".editing-inline").on('click',function(event){
+
+                event.stopImmediatePropagation();
+
+                $('.inline-saver').remove();
+                element.addClass('editable-mode');
+                element.find('[contenteditable]').attr('contenteditable','true');
+                element.find('[contenteditable]:first-child').focus();
+                  
+                element.append("<div class='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>");
+               
+                
+              });
+
+              element.find(".inline-closing").on('click',function(event){
+
+                event.stopImmediatePropagation();
+
+                element.removeClass('editable-mode');
+
+                element.find('[contenteditable]').attr('contenteditable','false');
+                                               
+
+                $('.inline-saver').remove();
+
+              });
+
+              element.find(".inline-saving").on('click',function(event){
+
+                event.stopImmediatePropagation();
+
+                var type=attrs.elementObject;
+                $rootScope.$broadcast('inline.saving.'+type,$data_model);                
+
+                $(".inline-saving").addClass('success').html('&#x2713;');
+                $(".inline-closing").remove();
+
+                setTimeout(function(){
+                  element.removeClass('editable-mode');
+                  
+                  element.find('[contenteditable]').attr('contenteditable','false');
                   
 
-                scope.$watch(collection,function(data){
-                    // console.log(data);
-                    if(angular.isObject(data)){      
-                        $(element).checkbox(scope[attrs.checkSelect][attrs.checkAttribute]==1?'check':'uncheck');
+                  $('.inline-saver').remove();
 
-                        $(element).checkbox({
-                              onChecked: function() {
-                                scope[attrs.checkSelect][attrs.checkAttribute]=1;
-                              },
-                              onUnchecked: function() {
-                                scope[attrs.checkSelect][attrs.checkAttribute]=0;
-                              }
-                          });
+                },2000);                
+              });
+          },100);
 
-                    }
+      }, function() {
+          element.find( "div.inline-editors" ).remove();
+        }
+      );
+
+      
+
+
+
+    }
+  };
+})
+.directive('contenteditable', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ctrl) {
+      // view -> model
+
+      if (ctrl) {
+        element.bind('blur', function() {
+          // console.log(ctrl,element.html());
+          scope.$apply(function() {
+            var value=element.html();
+            value=value.replace("<div class='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>", ""); 
+            value=value.replace("<div class='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>","");
+            ctrl.$setViewValue(value);
+          });
+        });
+      };
+
+      // model -> view
+      // ctrl.$render = function() {
+      //   element.html(ctrl.$viewValue);
+      // };
+
+      // load init value from DOM
+      // ctrl.$render();
+    }
+  };
+})
+.directive('menuLinks', function($location,$rootScope) {
+    return {
+        // restrict: 'E',
+        link: function(scope, element, attrs) {
+            
+            var links=attrs.menuLinks;
+
+            if (links=="scroll") {
+
+              element.attr("target", "_self");
+
+              $(element).on('click',function(event){
+                
+                
+                event.preventDefault();
+
+                var current_path=$location.path();
+                var current_link=$('.header-options').find("[href^='"+current_path+"']");
+                
+                
+
+                var is_self=current_link.attr('target');
+
+                
+                $('.header-options a').removeClass('active');
+
+                var url=$(element).attr('href');
+                
+                $(element).addClass('active');
+
+
+                if (!is_self) {
+                  
+                  $location.path(url).replace();
+                  scope.$apply();
+
+                } else{
+                    url=url.replace('/','');
+
+                    var div_target=$('#'+url);
+
+                    $('html, body').stop().animate({
+                        scrollTop: div_target.offset().top - 100
+                    }, 1500);
+                  
+                }
+                
+              });
+            }else{
+              if (links=="new_scroll") {
+                var current_path=$location.path();
+
+              }else{
+
+                $(element).on('click',function(event){
+
+                  $('.header-options a').removeClass('active');
+                  
+                  $(element).addClass('active');
+
                 });
 
-                
+              }
 
               
-          }
-    }
-});
-cigarritaDirective.directive('imageUpload',function($parse){ //Step 1
 
-    return {
-          // require : 'ngModel',            //Step 2
-          link: function (scope, element, attrs, ngModel) {
+            }
 
-              var collection = attrs.imageUpload,
-                    model = attrs.selectModel,
-                    getter= $parse(model),
-                    setter= getter.assign;
-
-            $(element)
-            .fileinput();
             
 
-            $(element).find('#input').on('change',function(event){
-                  
-                event.stopImmediatePropagation();
-                var files = event.target.files || event.dataTransfer.files;
-              
-                var img=files[0];
-                
-                var data = new FormData();
-
-                data.append('images',img);
-
-                // var serverUrl = 'https://api.parse.com/1/files/' + img.name;
-                var serverUrl = 'api/upload'; 
-                var imagen=$(element).find('.fileinput-preview.thumbnail');
-
-                 // scope.$parent[attrs.ngModel] = 'prueba'; 
-                 // $scope.$parent.$eval(attr.ngModel)
-                 // scope.$parent.$apply();
-
-                // console.debug(scope.attrs.ngModel);
-                    $.ajax({
-                      type: "POST",
-                      beforeSend: function(request) {
-                        imagen.addClass('ui button loading');
-                      },
-                      url: serverUrl,
-                      data: data,
-                      processData: false,
-                      contentType: false,
-                      xhr: function(){
-                        // get the native XmlHttpRequest object
-                        var xhr = $.ajaxSettings.xhr() ;
-                        // set the onprogress event handler
-                        xhr.upload.onprogress = function(evt){ console.log('progress:', evt.loaded/evt.total*100) } ;
-                        // set the onload event handler
-                        xhr.upload.onload = function(){ console.log('DONE!') } ;
-                        // return the customized object
-                        return xhr ;
-                      },
-                      success: function(data) {     
-
-                        scope[attrs.imageModel][attrs.imageAttribute] = data.url;                 
-                        // scope.$parent[attrs.ngModel] = data.url; 
-                        // scope.$parent.$apply();
-                        $(element).find('img').attr('src',data.url);
-                        imagen.removeClass('ui button loading');           
-                      }
-                    });
-
-
-          });
-
-
-              
-          }
-    }
+        }
+    };
 });

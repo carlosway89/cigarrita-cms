@@ -7,8 +7,10 @@
  * @property string $key
  * @property string $value
  * @property integer $idattributes
+ * @property integer $idpost
  *
  * The followings are the available model relations:
+ * @property Post $idpost0
  * @property PostHasAttributes[] $postHasAttributes
  */
 class Attributes extends CActiveRecord
@@ -39,11 +41,12 @@ class Attributes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('idpost', 'numerical', 'integerOnly'=>true),
 			array('key', 'length', 'max'=>100),
 			array('value', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('key, value, idattributes', 'safe', 'on'=>'search'),
+			array('key, value, idattributes, idpost', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +58,7 @@ class Attributes extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'postHasAttributes' => array(self::HAS_MANY, 'PostHasAttributes', 'attributes_idattributes'),
+			'idpost0' => array(self::BELONGS_TO, 'Post', 'idpost'),
 		);
 	}
 
@@ -68,6 +71,7 @@ class Attributes extends CActiveRecord
 			'key' => 'Key',
 			'value' => 'Value',
 			'idattributes' => 'Idattributes',
+			'idpost' => 'Idpost',
 		);
 	}
 
@@ -85,6 +89,7 @@ class Attributes extends CActiveRecord
 		$criteria->compare('key',$this->key,true);
 		$criteria->compare('value',$this->value,true);
 		$criteria->compare('idattributes',$this->idattributes);
+		$criteria->compare('idpost',$this->idpost);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

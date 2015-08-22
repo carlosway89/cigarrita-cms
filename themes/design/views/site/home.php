@@ -3,15 +3,16 @@
 	<div class="page-gray" style="">
 		<div id="principal_background" style="padding-top:200px;{{block.source}}">
 			<!-- {{#each this.posts_list}} -->
-			<div  data-object="post" class="transito container" style="display:none"  element-post>
+			<div  element-object="post" class="transito container" style="display:none"  element-post>
 				<div class="col-md-offset-3 col-md-3">
-					<h1 class=" no-margin text-principal">{{post.header}}</h1>					
+					<h1 class="no-margin text-principal" contenteditable="false" ng-model="post.header">{{post.header}}</h1>					
 				</div>
 				<div class="col-md-6">
 					<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive" alt="cigarrita-worker">
 				</div>
 				
 			</div>
+
 			<!-- {{/each}}	 -->
 		</div>
 	</div>
@@ -21,20 +22,20 @@
 	<div class="container page-content  page-white " style="padding-top:20px;min-height: 800px;">
 		<br>
 		<div class="col-md-12">
-			<h1 data-id="header" data-object="content" class="font-huge text-center no-margin" >{{block.header}}</h1>
-			<h2 data-id="subheader" data-object="content" class="font-huge text-center no-margin" ><small>{{block.subheader}}</small></h2>
+			<h1 data-id="header" element-object="block" class="font-huge text-center no-margin" ><span contenteditable="false" ng-model="block.header">{{block.header}}</span></h1>
+			<h2 data-id="subheader" class="font-huge text-center no-margin" element-object="block" ><small contenteditable="false" ng-model="block.subheader">{{block.subheader}}</small></h2>
 		</div>
 		<br>
 		<div class="row" data-id="posts">
 			<!-- {{#each this.posts_list}} -->
-			<div data-object="post" class="editable col-md-3 col-sm-3 bottom-20 text-center" element-post >
-				<div  class="ui raised ">
-				  	<h2 class="font-large text-icon no-margin">
-				  		<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive img-icon">
-				  		{{post.header}}</h2>
-					<p class="p-text text-ligth " ng-bind-html="post.subheader | sanitize"></p>
-				</div>
+			<div element-object="post" class="col-md-3 col-sm-3 bottom-20 text-center" element-post >
+				
+				<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive img-icon">
+			  	<h2 contenteditable="false" ng-model="post.header" class="font-large text-icon no-margin">{{post.header}}</h2>
+				<p contenteditable="false" ng-model="post.subheader" class="p-text text-ligth " ng-bind-html="post.subheader | sanitize"></p>
+				
 			</div>
+			
 			<!-- {{/each}}	 -->
 		</div>
 	</div>
@@ -44,8 +45,8 @@
 
 	<div class="ui four column doubling page grid page-content  page-gray " style="padding-top:20px;min-height: 560px;">
 		<div class="row">
-			<h1 data-id="header"  data-object="content" class="font-huge text-center no-margin">{{block.header}}s</h1>
-			<h2 data-id="subheader"  data-object="content" class="font-huge text-center"><small>{{block.subheader}}</small></h2>
+			<h1 data-id="header"  element-object="block" class="font-huge text-center no-margin"><span contenteditable="false" ng-model="block.header">{{block.header}}</span></h1>
+			<h2 data-id="subheader" element-object="block" class="font-huge text-center"><small contenteditable="false" ng-model="block.subheader"  >{{block.subheader}}</small></h2>
 		</div>
 		<div class="row">
 			<div id="carousel-slider" class="carousel slide" data-ride="carousel" >
@@ -70,13 +71,13 @@
 			  	<!-- {{#each this.posts_list}} -->
 			    <div class="item " element-post ng-class="{active : $first}">
 			    	<div class="">	
-			    		<div class="col-md-12 block"  data-object="post">
+			    		<div class="col-md-12 block"  element-object="post">
 			    			<div class="col-md-9 ipad-ground">
 			    				<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive" alt="cigarrita-worker">
 			    			</div>
 			    			<div class="col-md-3">
-			    				<h4>{{post.header}}</h4>
-			    				<div ng-bind-html="post.subheader | sanitize"></div>
+			    				<h4 contenteditable="false" ng-model="post.header">{{post.header}}</h4>
+			    				<div contenteditable="false" ng-model="post.subheader" ng-bind-html="post.subheader | sanitize"></div>
 			    			</div>
 			    		</div>	
 			    	</div>		    	
@@ -94,25 +95,25 @@
 		<div class="container">
 			<div class="col-md-12">
 				<div class="col-md-4">
-					<h1 data-id="header"  data-object="content" class="font-huge text-center no-margin">{{block.header}}</h1>
+					<h1 data-id="header" element-object="block" class="font-huge text-center no-margin"><span contenteditable="false" ng-model="block.header">{{block.header}}</span></h1>
 					<div class="alert alert-success" style="display:none">
 						<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> your message was sent
 					</div>
-					<div data-id="subheader"  data-object="content" ng-bind-html="block.subheader | sanitize">
+					<div data-id="subheader" contenteditable="false" ng-model="block.subheader" element-object="block" ng-bind-html="block.subheader | sanitize">
 					</div>
 
 				</div>
 				<div class="col-md-8">
-					<img data-id="background" data-object="content" ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{block.source}}" class="img-responsive" alt="subscribe">
+					<img data-id="background" ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{block.source}}" class="img-responsive" alt="subscribe">
 				</div>				
 			</div>
 
 		</div>
 		<br>
 		<!-- {{#each this.posts_list}} -->
-		<div class="container" data-object="post" element-post>
+		<div class="container" element-object="post" element-post>
 			<div class="col-md-12"  >
-				<p class="font-large text-light text-center" style="padding-top:10px">{{post.subheader}}</p>
+				<p contenteditable="false" ng-model="post.subheader" class="font-large text-light text-center" style="padding-top:10px">{{post.subheader}}</p>
 			</div>  
 		</div>
 		<br>  	
@@ -125,10 +126,10 @@
 		<div class="container">
 			<div class="row">
 				<!-- {{#each this.posts_list}} -->
-				<div class="col-md-3" element-post >
+				<div class="col-md-3" element-object="post" element-post >
 					<br>
-						<h2 class="text-white" >{{post.header}}</h2>
-						<p  ng-bind-html="post.subheader | sanitize"></p>
+						<h2 contenteditable="false" ng-model="post.header"  class="text-white" >{{post.header}}</h2>
+						<p  contenteditable="false" ng-model="post.subheader" ng-bind-html="post.subheader | sanitize"></p>
 						
 					<br>
 				</div>
@@ -140,7 +141,7 @@
 			<br>
 			<div class="container ">
 				<div class="ui horizontal list">	
-					<div data-id="header"  data-object="content" class="item" > {{block.header}}</div>
+					<div data-id="header"  element-object="block" class="item" ><span ng-model="block.header" contenteditable="false">{{block.header}}</span></div>
 				</div>
 			</div>
 			<br>

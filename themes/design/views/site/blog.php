@@ -16,7 +16,7 @@
 			    <div class="col-md-8 table-cell">
 			      <h4 class="header no-margin">{{post.header}}</h4>
 			      <p  ></p>
-			      <div class="description" ng-bind-html="post.subheader | sanitize"></div>
+			      <div class="subheader description" ng-bind-html="post.subheader | sanitize"></div>
 			    </div>
 			</div>
 			<!-- {{/each}} -->

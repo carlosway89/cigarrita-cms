@@ -28,6 +28,12 @@
 
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script> 
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
+
+	<!--[Cigarrita Angular Path]-->
 	<script type="text/javascript">
 		var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
 	</script>
@@ -36,9 +42,7 @@
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script> 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>
+	
 
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/cigarrita.js"></script>
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/app.js"></script>
@@ -82,13 +86,15 @@
 
   	</script>
 
-  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/controllers/controllers.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/animations.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/filters.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/directives.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/models/services.js"></script>
+  	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/controllers/controllers.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/modules/animations.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/modules/filters.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/modules/directives.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/models/services.js"></script>
 	
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
+	<!--[/cigarrita Angular Path]-->
+
+
 	
 
 	

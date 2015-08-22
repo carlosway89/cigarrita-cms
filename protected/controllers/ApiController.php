@@ -612,13 +612,13 @@ class ApiController extends Controller
 
                     $subarray[]=$has_post->attributes;
 
-                    //if has extra attributes
-                    foreach ($has_post->postHasAttributes as $key_attr => $has_attr) { 
-                        $attr=$has_attr->attributesIdattributes;                     
+                    /* [if has extra attributes] */
+                    foreach ($has_post->attributes0 as $key_attr => $has_attr) { 
+                        $attr=$has_attr;                     
                         $subarray[$key_post]=array_merge($subarray[$key_post],array($attr->key=>$attr->value));                        
 
                     }
-                    //end extra attributes
+                    /* [end extra attributes] */
 
                 }
 

@@ -720,6 +720,8 @@ i.inverted.google.icon{
 }
 .font-huge >small{
 	font-size: 1.5rem !important;
+	display: block;
+	padding: 20px;
 }
 .ui.corner.label .text {
     font-size: 1em;

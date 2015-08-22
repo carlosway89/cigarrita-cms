@@ -15,6 +15,7 @@
  * @property string $date_created
  *
  * The followings are the available model relations:
+ * @property Attributes[] $attributes
  * @property BlockHasPost[] $blockHasPosts
  * @property Category $category0
  * @property PostHasAttributes[] $postHasAttributes
@@ -64,9 +65,9 @@ class Post extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'attributes0' => array(self::HAS_MANY, 'Attributes', 'idpost'),
 			'blockHasPosts' => array(self::HAS_MANY, 'BlockHasPost', 'post_idpost'),
 			'category0' => array(self::BELONGS_TO, 'Category', 'category'),
-			'postHasAttributes' => array(self::HAS_MANY, 'PostHasAttributes', 'post_idpost'),
 		);
 	}
 
