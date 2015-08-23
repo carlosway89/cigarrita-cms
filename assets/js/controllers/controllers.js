@@ -1,4 +1,4 @@
-cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model',function($scope,Language,Links,Model){
+cigarritaControllers.controller('indexCtrl',['$scope','$compile','$http','Model',function($scope,$compile,$http,Model){
 
 
     var obj_lang={
@@ -34,84 +34,20 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
         links();
     });
 
-    
-
-}]);
-cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootScope','Model',function($scope,Content,$route,$rootScope,Model){
-
-
-  
-  var pageid = $route.current.$$route.pageid;
-
-  var fadeDuration=1000;
-  var fadeDuration1=1000;
-  var slideDuration=7000;
-  var currentIndex=1;
-  var nextIndex=1;
-
-
-
-  var page=function(){
-    
-    var obj={
-      language:beans.readCookie('language.initial'),
-      state:1,
-      idpage:pageid,
-      is_deleted:0
-    };
-
-    $scope.page = Content.query({
-      query:JSON.stringify(obj)
-    },function(data){
-      setTimeout(function(){
-          $('#home .transito').css({opacity: 0.0});
-          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
-          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-          var timer = setInterval(nextSlide,slideDuration);
-      },2000);
-
-    });
-
-  }
-
-  page();
-
-  
-  $scope.saving=function(){
-    console.log('saving');
-  }
-
-
-  $scope.$on('language.changed', function() {
-      page();
-  });
-
-
-    var nextSlide=function(){
-
-          nextIndex =currentIndex+1;
-
-          if(nextIndex > $('#home .transito').length)
-          {
-            nextIndex =1;
-          }
-          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
-          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-          $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
-          currentIndex = nextIndex;
-
-    };
-
     $scope.$on('inline.saving.block', function(event,data) {
         console.log(data);
         $scope.save_block(data);
     });
+    
     $scope.$on('inline.saving.post', function(event,data) {
         console.log(data);
         $scope.save_post(data);
     });
+
+    // $scope.call_modal=function(){
+
+
+    // }
 
     
     $scope.save_post = function(post){
@@ -168,6 +104,119 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       }
     }
 
+    
+
+}]);
+cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootScope','$compile','$http','Model',function($scope,Content,$route,$rootScope,$compile,$http,Model){
+
+
+
+  var pageid = $route.current.$$route.pageid;
+
+  var fadeDuration=1000;
+  var fadeDuration1=1000;
+  var slideDuration=7000;
+  var currentIndex=1;
+  var nextIndex=1;
+
+
+
+  var page=function(){
+    
+    var obj={
+      language:beans.readCookie('language.initial'),
+      state:1,
+      idpage:pageid,
+      is_deleted:0
+    };
+
+    $scope.page = Content.query({
+      query:JSON.stringify(obj)
+    },function(data){
+      setTimeout(function(){
+          $('#home .transito').css({opacity: 0.0});
+          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
+          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+          var timer = setInterval(nextSlide,slideDuration);
+      },2000);
+
+    });
+
+  }
+
+  page();
+
+  
+  $scope.save_external=function(model){
+    console.log('saving');
+
+    if (model.idblock) {
+      var type="block";  
+    }else{
+      var type="post"; 
+    }
+
+    $rootScope.$broadcast('inline.saving.'+type,model); 
+  }
+
+
+  $scope.$on('language.changed', function() {
+      page();
+  });
+
+
+    var nextSlide=function(){
+
+          nextIndex =currentIndex+1;
+
+          if(nextIndex > $('#home .transito').length)
+          {
+            nextIndex =1;
+          }
+          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
+          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+          $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
+          currentIndex = nextIndex;
+
+    };
+
+
+    $http.get($base_url+'/api/template/modal/cms').then(function(response) {
+        var elemento=$('[ng-view]');
+        elemento.append(response.data);
+        // $compile(document.getElementById('modal_post'))($scope);
+      });
+
+    $scope.$on('show.modal', function(event,data) {
+
+        console.log(data);
+        $scope.posting={
+          state:0,
+          source:''
+        };
+
+        setTimeout(function(){
+          $scope.posting=data;
+          console.log($scope.posting);
+          $compile(document.getElementById('modal_post'))($scope);
+          $('#modal_post').find('img').attr('src',data.source);
+          $('#modal_post')
+          // .modal({
+          //   // closable:false,
+          //   detachable:false,
+          //   // transition:'scale',
+          //   selector: { 
+          //     close: '.closing'
+          //   }
+          // })
+          .modal('show'); 
+        },100);
+
+        
+
+    });
 
 
 

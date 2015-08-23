@@ -94,23 +94,47 @@ cigarritaDirective
       element.hover(
         function() {
 
-          element.append("<div class='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
+          element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
           
+          // $compile(document.getElementById('inline-editors'))(scope);
 
-          setTimeout(function(){
+          // setTimeout(function(){
               
               element.find(".editing-inline").on('click',function(event){
 
                 event.stopImmediatePropagation();
 
-                $('.inline-saver').remove();
+                $('#inline-saver').remove();
                 element.addClass('editable-mode');
                 element.find('[contenteditable]').attr('contenteditable','true');
-                element.find('[contenteditable]:first-child').focus();
+                // element.find('[contenteditable]:last-child').focus();
                   
-                element.append("<div class='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>");
-               
+                element.append("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>");
                 
+                $compile(document.getElementById('inline-saver'))(scope);
+
+                // console.log(element.height());
+
+                var plus=element.height() - 200;
+
+                if (attrs.elementObject=="block") {
+                  var new_position=element.offset().top - 100;
+                }else{
+                  var new_position=element.offset().top + plus;
+                }
+
+                
+
+                $('html, body').animate({
+                    scrollTop: new_position
+                }, 1500);
+                
+              });
+
+              element.find(".editing-external").on('click',function(event){
+
+                  $rootScope.$broadcast('show.modal',$data_model);
+
               });
 
               element.find(".inline-closing").on('click',function(event){
@@ -122,7 +146,7 @@ cigarritaDirective
                 element.find('[contenteditable]').attr('contenteditable','false');
                                                
 
-                $('.inline-saver').remove();
+                $('#inline-saver').remove();
 
               });
 
@@ -142,14 +166,14 @@ cigarritaDirective
                   element.find('[contenteditable]').attr('contenteditable','false');
                   
 
-                  $('.inline-saver').remove();
+                  $('#inline-saver').remove();
 
                 },2000);                
               });
-          },100);
+          // },100);
 
       }, function() {
-          element.find( "div.inline-editors" ).remove();
+          element.find( "div#inline-editors" ).remove();
         }
       );
 
@@ -171,8 +195,8 @@ cigarritaDirective
           // console.log(ctrl,element.html());
           scope.$apply(function() {
             var value=element.html();
-            value=value.replace("<div class='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>", ""); 
-            value=value.replace("<div class='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>","");
+            value=value.replace("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>", ""); 
+            value=value.replace("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>","");
             ctrl.$setViewValue(value);
           });
         });

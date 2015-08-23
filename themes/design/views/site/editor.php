@@ -19,24 +19,43 @@
     <meta name="keywords" content="aplication, web, software, internet, design, developer, elance, SEO, remote work "/>
     <meta name="robots" content="INDEX,FOLLOW">
 
+    <!--[Cigarrita Styles]-->
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/css/inline-tools.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flag-icon.min.css">
+    <!--[/end Styles]-->
+
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/semantic.min.css">
+
+	
+
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/semantic.min.css"> 
+
+	
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
+	
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/css/style_edit.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flag-icon.min.css">
-
+	
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script> 
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
+	
+	
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>
+	
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
 
+	
 	<!--[Cigarrita Angular Path]-->
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/inline-tools.js"></script>
+
 	<script type="text/javascript">
 		var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
 	</script>
+	
+	
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
@@ -107,7 +126,7 @@
 			<div class="column">
 				<div class="ui search selection dropdown pull-right"  language-select="language">
 					<input id="language_option" name="language" type="hidden" value="{{current}}">					
-					<div class="default text">Select Language</div>
+					<div class="default text">Select Language </div>
 					<i class="dropdown icon"></i>
 					<div class="menu laguage-select" style="z-index: 1000;" >
 						<!--Languages Availables-->

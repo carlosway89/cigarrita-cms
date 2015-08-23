@@ -56,7 +56,7 @@
 	border: 1px dashed rgba(0, 0, 0, 0.2);
 	background-color: rgba(0, 0, 0, 0.04);
 }
-.inline-editors{
+#inline-editors{
 	position:absolute;
 	z-index: 1000;
 	left:50%;
@@ -65,7 +65,7 @@
 
 
 }
-.inline-editors span{
+#inline-editors span{
 	font-size: 20px;	
 	width:70px;
 	text-align: center;
@@ -74,7 +74,7 @@
 
 }
 
-.inline-editors span:first-child{
+#inline-editors span:first-child{
 	display:inline-block;
 	padding:5px;
 	font-weight: 100;
@@ -82,23 +82,23 @@
 	border-radius: 5px 0px 0px 5px;
 	
 }
-.inline-editors span:last-child{
+#inline-editors span:last-child{
 	display:inline-block;
 	padding:5px;
 	font-weight: 400;
 	background-color: #479459;
 	border-radius: 0px 5px 5px 0px;
 }
-.editable-mode .inline-editors{
+.editable-mode #inline-editors{
 	display:none;
 }
-.inline-saver{
+#inline-saver{
 	left:0;
 	position:absolute;
 	z-index: 1000;
 	font-size: 16px !important;
 }
-.inline-saver span{
+#inline-saver span{
 	font-size: 16px;	
 	width:70px;
 	text-align: center;
@@ -108,7 +108,7 @@
 
 }
 
-.inline-saver span:first-child{
+#inline-saver span:first-child{
 	display:inline-block;
 	padding:5px;
 	font-weight: 100;
@@ -118,7 +118,7 @@
 	border-radius: 0px 0px 0px 5px;
 	
 }
-.inline-saver span:last-child{
+#inline-saver span:last-child{
 	display:inline-block;
 	padding:5px;
 	font-weight: 400;
