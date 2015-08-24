@@ -8398,3 +8398,1547 @@ Stack trace:
 REQUEST_URI=/themes/design/img/ipad.png
 HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
 ---
+2015/08/23 20:17:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:22:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:28:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:28:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:28:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:28:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:28:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:30:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:33:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:33:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:36:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:38:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:39:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:39:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:40:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:40:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:42:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:44:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:49:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:49:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:50:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:52:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:53:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:56:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 20:57:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 21:00:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 21:06:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 21:20:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 21:21:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/23 21:31:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 08:35:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/24 08:35:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/24 08:35:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 08:36:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 08:36:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 10:40:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 10:42:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 10:51:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 10:53:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 10:53:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:00:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:01:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:04:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:06:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:08:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:09:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:12:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:16:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:16:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:19:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:19:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:22:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:25:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:26:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:33:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:40:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/24 11:40:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:41:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:41:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:44:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:54:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 11:55:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:01:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:04:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:05:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:10:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:12:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:18:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:20:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:33:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:42:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:45:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:46:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:46:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 12:52:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:00:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:01:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:03:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:31:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:34:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:34:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:37:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/home
+---
+2015/08/24 13:37:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:41:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 13:43:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:35:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "files/file2015-04-10-21-36-34Be-Proactive.jpg".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('files/file2015-...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/files/file2015-04-10-21-36-34Be-Proactive.jpg
+HTTP_REFERER=http://cigarrita-worker.dev/blog
+---
+2015/08/24 14:35:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "files/file2015-04-10-21-29-4375969_558313060875267_1428882545_n.jpg".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('files/file2015-...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/files/file2015-04-10-21-29-4375969_558313060875267_1428882545_n.jpg
+HTTP_REFERER=http://cigarrita-worker.dev/blog
+---
+2015/08/24 14:37:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:42:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:51:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/jasny-bootstrap.min.css".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/jasny-boots...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/jasny-bootstrap.min.css
+HTTP_REFERER=http://cigarrita-worker.dev/editor
+---
+2015/08/24 14:51:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:52:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/jasny-bootstrap.min.css".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/jasny-boots...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/jasny-bootstrap.min.css
+HTTP_REFERER=http://cigarrita-worker.dev/editor
+---
+2015/08/24 14:52:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:53:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:54:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:55:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:57:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:58:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 14:59:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 15:02:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 15:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:35:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:37:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:37:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:41:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:41:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:46:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:49:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:50:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:51:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:53:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:55:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 17:57:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 18:04:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 18:06:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 18:06:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 18:08:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 18:11:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 18:12:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:21:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:30:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:39:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:41:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:43:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:47:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:51:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:53:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:54:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:56:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 20:58:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:03:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:11:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:14:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:15:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:19:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:20:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:20:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:21:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:24:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:25:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:26:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:27:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:29:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:32:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:34:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:36:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:38:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:49:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:52:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:54:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 21:57:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:02:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:04:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:07:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:11:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:18:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:24:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:26:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:32:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:33:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:40:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:42:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:46:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:52:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:53:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:56:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 22:58:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---
+2015/08/24 23:03:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/design/img/ipad.png".' in /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/cigarrita-angular/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/design/i...')
+#1 /var/www/html/cigarrita-angular/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/html/cigarrita-angular/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/design/img/ipad.png
+HTTP_REFERER=http://cigarrita-worker.dev/themes/design/css/style.css
+---

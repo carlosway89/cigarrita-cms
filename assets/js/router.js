@@ -13,6 +13,8 @@ cigarritaApp.run(function($rootScope,$window) {
     };
 
   });
+
+        
 });
 
 cigarritaApp.config(['$routeProvider','$locationProvider','FacebookProvider',

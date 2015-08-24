@@ -25,32 +25,29 @@
     <!--[/end Styles]-->
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css">
-
-	
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/semantic.min.css"> 
-
-	
-	
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/semantic.min.css">	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
 	
-	
+	<!--[Cigarrita Styles]-->
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/css/jasny-bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/summernote/summernote/v0.6.16/dist/summernote.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/css/style_edit.css">
-	
+	<!--[/End Styles]-->
+
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script> 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
-	
-	
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>
-	
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>	
+	<!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>	-->
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
 
 	
 	<!--[Cigarrita Angular Path]-->
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/inline-tools.js"></script>
-
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/jasny-bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/summernote/summernote/v0.6.16/dist/summernote.min.js"></script> 
+	
 	<script type="text/javascript">
 		var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
 	</script>
@@ -60,11 +57,11 @@
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
   	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
-
+  	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/angular-summernote.js"></script>
 	
 
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/cigarrita.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/app.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/app.js"></script>
   	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/router.js"></script>
   	<script type="text/javascript">
   		

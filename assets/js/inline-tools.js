@@ -1611,7 +1611,7 @@ $.extend( $.easing, {
 
 ;(function ( $, window, document, undefined ) {
 
-$.fn.modal = function(parameters) {
+$.fn.modal_cw = function(parameters) {
   var
     $allModules = $(this),
     $window     = $(window),
@@ -1639,8 +1639,8 @@ $.fn.modal = function(parameters) {
     .each(function() {
       var
         settings    = ( $.isPlainObject(parameters) )
-          ? $.extend(true, {}, $.fn.modal.settings, parameters)
-          : $.extend({}, $.fn.modal.settings),
+          ? $.extend(true, {}, $.fn.modal_cw.settings, parameters)
+          : $.extend({}, $.fn.modal_cw.settings),
 
         selector        = settings.selector,
         className       = settings.className,
@@ -1737,7 +1737,7 @@ $.fn.modal = function(parameters) {
         },
 
         refreshSelectors: function() {
-          $otherModals = $module.siblings(selector.modal);
+          $otherModals = $module.siblings(selector.modal_cw);
           $allModals   = $otherModals.add($module);
         },
 
@@ -1785,7 +1785,7 @@ $.fn.modal = function(parameters) {
             }
           },
           click: function(event) {
-            if( $(event.target).closest(selector.modal).size() === 0 ) {
+            if( $(event.target).closest(selector.modal_cw).size() === 0 ) {
               module.debug('Dimmer clicked, hiding all modals');
               if(settings.allowMultiple) {
                 module.hide();
@@ -1990,7 +1990,7 @@ $.fn.modal = function(parameters) {
             module.hideDimmer();
             $allModals
               .filter(':visible')
-                .modal('hide modal', callback)
+                .modal_cw('hide modal_cw', callback)
             ;
           }
         },
@@ -2004,7 +2004,7 @@ $.fn.modal = function(parameters) {
             module.debug('Hiding other modals');
             $otherModals
               .filter(':visible')
-                .modal('hide modal', callback)
+                .modal_cw('hide modal_cw', callback)
             ;
           }
         },
@@ -2328,10 +2328,10 @@ $.fn.modal = function(parameters) {
   ;
 };
 
-$.fn.modal.settings = {
+$.fn.modal_cw.settings = {
 
-  name          : 'Modal',
-  namespace     : 'modal',
+  name          : 'Modal_cw',
+  namespace     : 'modal_cw',
 
   debug         : false,
   verbose       : true,
@@ -2363,7 +2363,7 @@ $.fn.modal.settings = {
     close    : '.closing, .actions .button',
     approve  : '.actions .positive, .actions .approve, .actions .ok',
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
-    modal    : '.ui.modal'
+    modal_cw    : '.ui.modal_cw'
   },
   error : {
     dimmer    : 'UI Dimmer, a required component is not included in this page',

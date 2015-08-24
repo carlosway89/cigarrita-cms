@@ -9,6 +9,7 @@ var cigarritaApp = angular.module('cigarritaWeb', [
   'cigarritaFilters',
   'cigarritaDirective',
   'cigarritaServices'
+  // 'summernote'
 ]);
 
 var beans=new Beans();

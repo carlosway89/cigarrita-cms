@@ -189,3 +189,26 @@
 }
 /*end*/
 
+.ui.loading.btn {
+    position: relative;
+    cursor: default;
+    background-color: #FFF!important;
+    color: transparent!important;
+    -webkit-transition: all 0s linear;
+    -moz-transition: all 0s linear;
+    transition: all 0s linear;
+}
+.ui.loading.btn:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: url(../images/loader-mini.gif) 50% 50% no-repeat;
+}
+.ui.success.btn{
+  background-color: #479459!important;
+  color:#fff !important;
+  border-color: #479459!important;
+}

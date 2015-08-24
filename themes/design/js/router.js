@@ -7,6 +7,7 @@ cigarritaApp.run(function($route, $rootScope, $location, $anchorScroll, $routePa
   //   $anchorScroll();  
   // });
 
+
    $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
     
     // console.log('change',newRoute, oldRoute);

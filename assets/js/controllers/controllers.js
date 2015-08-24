@@ -1,4 +1,4 @@
-cigarritaControllers.controller('indexCtrl',['$scope','$compile','$http','Model',function($scope,$compile,$http,Model){
+cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$http','Model',function($rootScope,$scope,$compile,$http,Model){
 
 
     var obj_lang={
@@ -34,34 +34,93 @@ cigarritaControllers.controller('indexCtrl',['$scope','$compile','$http','Model'
         links();
     });
 
-    $scope.$on('inline.saving.block', function(event,data) {
-        console.log(data);
-        $scope.save_block(data);
+    $scope.handle_saving=function(action){
+      var btn=$('#save_external');
+      var btn_close=$('#close_modal');
+      
+      if (action=="click") {
+        btn_close.attr('disabled','disabled').hide();
+        btn.attr('disabled','disabled').addClass('ui loading');
+      }else{
+        if (action=="saved") {
+          var text=btn.html();
+          btn.removeClass('ui loading').addClass('ui success').html('&#x2713;');
+          setTimeout(function(){
+              $rootScope.$broadcast('close.modal'); 
+              btn.html(text);
+              btn_close.removeAttr('disabled').show();
+              btn.removeAttr('disabled').removeClass('ui success');
+          },1000);          
+        }else{
+          $rootScope.$broadcast('close.modal'); 
+          btn_close.removeAttr('disabled').show();
+          btn.removeAttr('disabled').removeClass('ui loading');
+        }
+      }
+
+    }
+
+    var listener_block=$scope.$on('inline.saving.block', function(event,data) {
+        // console.log(event,data);
+        // handle event only if it was not defaultPrevented
+      // $scope.$$listeners['inline.saving.block']=[];
+
+      // if(event.defaultPrevented) {
+      //   return;
+      // }
+      // // mark event as "not handle in children scopes"
+      // event.preventDefault();
+      
+      $scope.save_block(data);
+      $scope.handle_saving('click');
+
+      // $scope.eventReceived = true;
+      // listener_block();
+
+      
+        
+        
     });
     
-    $scope.$on('inline.saving.post', function(event,data) {
-        console.log(data);
-        $scope.save_post(data);
+    var listener_post=$scope.$on('inline.saving.post', function(event,data) {
+
+      // console.log(event,$scope);
+
+      // $scope.$$listeners['inline.saving.post']=[];
+      
+
+      // handle event only if it was not defaultPrevented
+      // mark event as "not handle in children scopes"
+      // event.preventDefault();
+
+      // console.log($scope);
+      
+      $scope.save_post(data);
+      $scope.handle_saving('click');
+
+      // listener_post();
+        
     });
 
-    // $scope.call_modal=function(){
 
 
-    // }
 
     
     $scope.save_post = function(post){
 
         if(!post.idpost){
-            var record = new Post();
-            
-
             var record = new Model({
               model:'post'
             });
 
             record = $.extend(record, post);
-            record.$save(function(){
+            record.$save(function(record){
+              for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
+                if ($scope.$$childTail.page[i].category==record.category) {
+                  $scope.$$childTail.page[i].posts.push(record);
+                };                
+              };
+              $scope.handle_saving('saved');
             });
 
         }else{
@@ -73,6 +132,7 @@ cigarritaControllers.controller('indexCtrl',['$scope','$compile','$http','Model'
 
             record = $.extend(record, post);
             record.$update(function(){
+              $scope.handle_saving('saved');
             });
         }
     }
@@ -87,6 +147,7 @@ cigarritaControllers.controller('indexCtrl',['$scope','$compile','$http','Model'
           rec_block = $.extend(rec_block, block);
 
           rec_block.$save(function(data){
+            $scope.handle_saving('saved');
           });
           
 
@@ -99,6 +160,7 @@ cigarritaControllers.controller('indexCtrl',['$scope','$compile','$http','Model'
 
           rec_block = $.extend(rec_block, block);
           rec_block.$update(function(){
+            $scope.handle_saving('saved');
           });
           
       }
@@ -136,8 +198,8 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       setTimeout(function(){
           $('#home .transito').css({opacity: 0.0});
           $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
-          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+          // $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+          // $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
           var timer = setInterval(nextSlide,slideDuration);
       },2000);
 
@@ -148,14 +210,17 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
   page();
 
   
-  $scope.save_external=function(model){
-    console.log('saving');
+  $scope.save_external=function(model,$event){
+
+    $event.stopImmediatePropagation();
 
     if (model.idblock) {
       var type="block";  
     }else{
       var type="post"; 
     }
+
+    model.subheader=$scope.editable[0].innerHTML;
 
     $rootScope.$broadcast('inline.saving.'+type,model); 
   }
@@ -175,8 +240,8 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
             nextIndex =1;
           }
           $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
-          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+          // $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+          // $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
           $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
           currentIndex = nextIndex;
 
@@ -186,36 +251,51 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
     $http.get($base_url+'/api/template/modal/cms').then(function(response) {
         var elemento=$('[ng-view]');
         elemento.append(response.data);
-        // $compile(document.getElementById('modal_post'))($scope);
-      });
+    });
+
+    $scope.options = {
+        height: 100,
+        toolbar: [
+          //[groupname, [button list]]
+          ['inser',['link','picture']],
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['font', ['strikethrough', 'superscript', 'subscript']],
+          ['fontsize', ['fontsize']],  
+          ['height', ['height']],      
+          ['color', ['color']],  
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['misc',['codeview']]          
+        ]
+      };
 
     $scope.$on('show.modal', function(event,data) {
 
-        console.log(data);
+        // console.log(data);
         $scope.posting={
-          state:0,
+          state:1,
           source:''
         };
+        
 
         setTimeout(function(){
           $scope.posting=data;
-          console.log($scope.posting);
-          $compile(document.getElementById('modal_post'))($scope);
           $('#modal_post').find('img').attr('src',data.source);
+          $scope.text_subheader=data.subheader;
+          $compile(document.getElementById('modal_post'))($scope);
+          // console.log($scope.posting);
+          
+
           $('#modal_post')
-          // .modal({
-          //   // closable:false,
-          //   detachable:false,
-          //   // transition:'scale',
-          //   selector: { 
-          //     close: '.closing'
-          //   }
-          // })
-          .modal('show'); 
+          .modal_cw('show');           
+
         },100);
 
         
 
+    });
+
+    $scope.$on('close.modal',function(){
+      $('#modal_post').modal_cw('hide');
     });
 
 
@@ -552,14 +632,14 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Model','Post','Menu','
       $scope.post=post;
 
       $('#modal_post')
-        .modal({
+        .modal_cw({
           closable:false,
           transition:'scale',
           selector: { 
             close: '.closing'
           }
         })
-        .modal('show'); 
+        .modal_cw('show'); 
 
 
 
@@ -596,14 +676,14 @@ cigarritaControllers.controller('languageCtrl', ['$scope', 'Model','MultiLanguag
       $scope.lang=new Language();
 
       $('#modal_language')
-        .modal({
+        .modal_cw({
           closable:false,
           transition:'scale',
           selector: { 
             close: '.closing'
           }
         })
-        .modal('show'); 
+        .modal_cw('show'); 
 
       $('#flag_selector').dropdown();
     }
