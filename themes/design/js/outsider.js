@@ -4,7 +4,7 @@ WebFont.load({
     }
 });
 
-$('.ui.dropdown').dropdown();
+// $('.ui.dropdown').dropdown();
 $('#header').height($('#navegador').height());
 $('#navegador').affix({ offset: { top: $('#navegador').offset.top } });
 

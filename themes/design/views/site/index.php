@@ -6,6 +6,8 @@
 
   $menu=Menu::model()->findAll($criteria);
 
+  $theme=Yii::app()->theme->baseUrl;
+  $request=Yii::app()->request->baseUrl;
 ?>
 <!DOCTYPE html>
 <html ng-app="cigarritaWeb">
@@ -19,78 +21,22 @@
     <meta name="keywords" content="aplication, web, software, internet, design, developer, elance, SEO, remote work "/>
     <meta name="robots" content="INDEX,FOLLOW">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="<?=$theme;?>/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?=$theme;?>/css/semantic.min.css">
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flag-icon.min.css">
+	<link rel="stylesheet" type="text/css" href="<?=$theme;?>/css/style.css">
 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="<?=$theme;?>/js/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script> 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
+	<script type="text/javascript" src="<?=$theme;?>/js/webfont.js"></script> 
+	<script type="text/javascript" src="<?=$theme;?>/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?=$theme;?>/js/semantic.js"></script>
+	<script type="text/javascript" src="<?=$theme;?>/js/outsider.js"></script>
 	
-	<!--[/cigarrita Angular Path]-->
-	<script type="text/javascript">
-		var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
-	</script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
-
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/cigarrita.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/app.js"></script>
-  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/router.js"></script>
-  	<script type="text/javascript">
-  		
-		cigarritaApp.config(['$routeProvider','$locationProvider',
-		  function($routeProvider,$locationProvider) {
-
-		    $locationProvider.html5Mode({
-		      enabled: true,
-		      requireBase: false
-		    });
-		    
-		    $routeProvider.
-		    <?php 
-		    foreach ($menu as $value) {
-
-  				if ($value->type=="new") {
-		    ?>
-		      when('<?=$value->url?>', {
-		        templateUrl: $base_url+'/api/template/<?=$value->name?>/site',
-		        controller: 'pageCtrl',
-		        pageid: <?=$value->page?>,
-		        reloadOnSearch: false
-		      }).
-		    <?php 
-				}
-			}
-		    ?>
-		      when('/:link', {
-		        templateUrl: $base_url+'/api/template/home/site', //router template with api
-		        controller: 'homeCtrl',
-		        pageid: 1
-		      }).
-		      otherwise({
-		        redirectTo: '/home'
-		      });
-
-		  }]);
-
-  	</script>
-
-  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/controllers/controllers.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/animations.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/filters.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modules/directives.js"></script>
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/models/services.js"></script>
-	
-	<!--[/cigarrita Angular Path]-->
+	<!--[/cigarrita Angular Web]-->
+	<?php include($request."assets/js_index.php"); ?>	
+	<!--[/cigarrita Angular Web]-->
 
 	
 	
@@ -134,12 +80,12 @@
 		</div>
 	</div>
 	<div class="content" >
-		<div ng-view></div>	
-		
+		<div ng-view></div>			
 		<a href="https://plus.google.com/107866117296817349154" class="hidden" rel="publisher">Google+</a>
 	</div>
 	
 	
+	<?php if($config->analytic_id){?>
 	<script>
 	  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -148,10 +94,8 @@
 
 	  // ga('create', '<?=$config->analytic_id?>', 'auto');
 	  // ga('send', 'pageview');
-	  
-	  
-
 	</script>
+	<?php } ?>
 
 	
 </body>

@@ -60,7 +60,7 @@ return array(
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
-		        array('api/safe_delete', 'pattern'=>'api/safe/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
+		        array('api/safeDelete', 'pattern'=>'api/<model:\w+>/safe/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
 		        // Other controllers
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

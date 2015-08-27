@@ -6,6 +6,8 @@
 
   $menu=Menu::model()->findAll($criteria);
 
+  $theme=Yii::app()->theme->baseUrl;
+  $request=Yii::app()->request->baseUrl;
 ?>
 <!DOCTYPE html>
 <html ng-app="cigarritaWeb">
@@ -19,95 +21,26 @@
     <meta name="keywords" content="aplication, web, software, internet, design, developer, elance, SEO, remote work "/>
     <meta name="robots" content="INDEX,FOLLOW">
 
-    <!--[Cigarrita Styles]-->
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/css/inline-tools.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flag-icon.min.css">
-    <!--[/end Styles]-->
+    
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/semantic.min.css">	
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $theme; ?>/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $theme; ?>/css/semantic.min.css">	
+	<link rel="stylesheet" type="text/css" href="<?php echo $theme; ?>/css/style.css">
 	
 	<!--[Cigarrita Styles]-->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/css/jasny-bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/summernote/summernote/v0.6.16/dist/summernote.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/css/style_edit.css">
-	<!--[/End Styles]-->
+    <?php include($request."assets/css_editor.php"); ?>
+    <!--[/End Styles]-->
 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo $theme; ?>/js/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script> 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>	
-	<!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>	-->
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
+	<script type="text/javascript" src="<?php echo $theme; ?>/js/webfont.js"></script> 
+	<script type="text/javascript" src="<?php echo $theme; ?>/js/bootstrap.min.js"></script>	
+	<!--<script type="text/javascript" src="<?php echo $theme; ?>/js/semantic.js"></script>	-->
+	<script type="text/javascript" src="<?php echo $theme; ?>/js/outsider.js"></script>
 
 	
-	<!--[Cigarrita Angular Path]-->
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/inline-tools.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/jasny-bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/summernote/summernote/v0.6.16/dist/summernote.min.js"></script> 
-	
-	<script type="text/javascript">
-		var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
-	</script>
-	
-	
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
-  	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/angular-summernote.js"></script>
-	
-
-	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/cigarrita.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/app.js"></script>
-  	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/router.js"></script>
-  	<script type="text/javascript">
-  		
-		cigarritaApp.config(['$routeProvider','$locationProvider',
-		  function($routeProvider,$locationProvider) {
-
-		    $locationProvider.html5Mode({
-		      enabled: true,
-		      requireBase: false
-		    });
-		    
-		    $routeProvider.
-		    <?php 
-		    foreach ($menu as $value) {
-
-  				if ($value->type=="new") {
-		    ?>
-		      when('<?=$value->url?>', {
-		        templateUrl: $base_url+'/api/template/<?=$value->name?>/site',
-		        controller: 'pageCtrl',
-		        pageid: <?=$value->page?>,
-		        reloadOnSearch: false
-		      }).
-		    <?php 
-				}
-			}
-		    ?>
-		      when('/:link', {
-		        templateUrl: $base_url+'/api/template/home/site', //router template with api
-		        controller: 'homeCtrl',
-		        pageid: 1
-		      }).
-		      otherwise({
-		        redirectTo: '/home'
-		      });
-
-		  }]);
-
-  	</script>
-
-  	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/controllers/controllers.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/modules/animations.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/modules/filters.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/modules/directives.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/js/models/services.js"></script>
-	
+	<!--[Cigarrita Angular Path]-->	
+	<?php include($request."assets/js_editor.php"); ?>
 	<!--[/cigarrita Angular Path]-->
 
 
@@ -153,24 +86,7 @@
 	</div>
 	<div class="content" >
 		<div ng-view></div>	
-		
-		<a href="https://plus.google.com/107866117296817349154" class="hidden" rel="publisher">Google+</a>
 	</div>
-	
-	
-	<script>
-	  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  // ga('create', '<?=$config->analytic_id?>', 'auto');
-	  // ga('send', 'pageview');
-	  
-	  
-
-	</script>
-
 	
 </body>
 </html>

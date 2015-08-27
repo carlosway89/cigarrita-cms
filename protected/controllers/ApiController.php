@@ -32,7 +32,7 @@ class ApiController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','admin','create','view','form','update','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync'),
+                'actions'=>array('index','admin','create','view','form','update','safeDelete','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync'),
                 // 'expression'=>'Yii::app()->user->checkAccess("administrador")',
                 'users'=>array('@'),
                 ),
@@ -550,6 +550,7 @@ class ApiController extends Controller
                 
                 $_model=new Page;
                 $_block=new Block;
+                $_post=new Post;
 
                 foreach ($filter as $key => $value) {
 
@@ -567,12 +568,16 @@ class ApiController extends Controller
                             } 
                         }                      
                     }else{
-                        if($_model->hasAttribute($key)) {
+
+                        if($_model->hasAttribute($key))
                             $condition[]="t.".$key."='".$value."'";
-                        }else{
-                            if($_block->hasAttribute($key))
-                                $condition[]="blockIdblock.".$key."='".$value."'";                                
-                        }
+
+                        if($_block->hasAttribute($key))
+                            $condition[]="blockIdblock.".$key."='".$value."'";
+
+                        if ($_post->hasAttribute($key)) 
+                            $condition[]="posts.".$key."='".$value."'";
+                          
                         
                     }
                 }       
@@ -1032,6 +1037,7 @@ class ApiController extends Controller
      * @access public
      * @return void
      */
+
     public function actionDelete($model,$id)
     {
         $this->_checkAuth();
@@ -1052,6 +1058,37 @@ class ApiController extends Controller
             echo 1;
         else
             $this->_sendResponse(500, sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.",$_GET['model'], $_GET['id']) );
+    }
+
+    // {{{ actionSafeDelete
+    /**
+     * Deletes a single item
+     * 
+     * @access public
+     * @return void
+     */
+    public function actionSafeDelete($model,$id)
+    {
+
+        // $this->_checkAuth();
+
+        $model=ucfirst($model);
+        
+        $model = $model::model()->findByPk($id); 
+
+        $model->is_deleted="1";
+
+        // Was a model found?
+        if(is_null($model)) {
+            // No, raise an error
+            $this->_sendResponse(400, sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",$_GET['model'], $_GET['id']) );
+        }
+
+        // Delete Safe model
+        if($model->save()) {
+            $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model->attributes) );
+        }
+
     }
 
     private function saveLog($action){
