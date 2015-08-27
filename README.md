@@ -7,7 +7,7 @@ The Cigarrita API can be installed with [Composer](https://getcomposer.org/). Ad
 ```json
 {
     "require": {
-        "cigarrita-worker/cigarrita-api": "*"
+        "cigarrita-worker/cigarrita-api": "dev-master"
     }
 }
 ```
