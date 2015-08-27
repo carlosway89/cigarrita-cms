@@ -1,0 +1,8 @@
+{
+    "name": "cigarrita-api",
+    "description": "Cigarrita Api With AngularJs and YII PHP",
+    "require": {
+        "php": ">=5.3.0",
+        "another-vendor/package": "1.*"
+    }
+}
