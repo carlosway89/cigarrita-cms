@@ -122,8 +122,8 @@ cigarritaDirective
 
                 $('#inline-saver').remove();
                 element.addClass('editable-mode');
-                element.find('[contenteditable]').attr('contenteditable','true');
-                // element.find('[contenteditable]:last-child').focus();
+                element.find('[element-editable]').attr('contenteditable','true');
+                // element.find('[element-editable]:last-child').focus();
                   
                 element.append("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>");
                 
@@ -159,7 +159,7 @@ cigarritaDirective
 
                 element.removeClass('editable-mode');
 
-                element.find('[contenteditable]').attr('contenteditable','false');
+                element.find('[element-editable]').attr('contenteditable','false');
                                                
 
                 $('#inline-saver').remove();
@@ -179,7 +179,7 @@ cigarritaDirective
                 setTimeout(function(){
                   element.removeClass('editable-mode');
                   
-                  element.find('[contenteditable]').attr('contenteditable','false');
+                  element.find('[element-editable]').attr('contenteditable','false');
                   
 
                   $('#inline-saver').remove();
@@ -200,16 +200,18 @@ cigarritaDirective
     }
   };
 })
-.directive('contenteditable', function() {
+.directive('elementEditable', function() {
   return {
-    require: 'ngModel',
-    restrict: 'E',
+    restrict: 'EA',
+    require: '^?ngModel',
     link: function(scope, element, attrs, ctrl) {
       // view -> model
 
       if (ctrl) {
         element.bind('blur', function() {
+          
           // console.log(ctrl,element.html());
+
           scope.$apply(function() {
             var value=element.html();
             value=value.replace("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>", ""); 
@@ -302,59 +304,6 @@ cigarritaDirective
         }
     };
 })
-// .directive('bootstrapSummer',function($parse){ //Step 1
-
-//     return {
-//           // require : 'ngModel',            //Step 2
-//           link: function (scope, element, attrs) {
-
-
-//               // $(element).summernote({
-//               //   height: 100,
-//               //     toolbar: [
-//               //       //[groupname, [button list]]
-//               //       ['inser',['link']],
-//               //       ['style', ['bold', 'italic', 'underline', 'clear']],
-//               //       ['font', ['strikethrough', 'superscript', 'subscript']],
-//               //       ['fontsize', ['fontsize']],
-//               //       ['color', ['color']],
-//               //       ['para', ['ul', 'ol', 'paragraph']],
-//               //       ['height', ['height']],
-//               //       ['misc',['codeview']]
-//               //     ]
-//               // });
-
-//               // $(element).code('somevalue');
-
-              
-//              // $('#summernote').summernote({
-//              //      height: 200,
-//              //      onImageUpload: function(files, editor, welEditable) {
-//              //          sendFile(files[0], editor, welEditable);
-//              //      }
-//              //  });
-//              //  function sendFile(file, editor, welEditable) {
-//              //      data = new FormData();
-//              //      data.append("file", file);
-//              //      $.ajax({
-//              //          data: data,
-//              //          type: "POST",
-//              //          url: "Your URL POST (php)",
-//              //          cache: false,
-//              //          contentType: false,
-//              //          processData: false,
-//              //          success: function(url) {
-//              //              editor.insertImage(welEditable, url);
-//              //          }
-//              //      });
-//              //  }
-
-
-
-              
-//           }
-//     }
-// })
 .directive('imageUpload',function($parse){ //Step 1
 
     return {

@@ -37,10 +37,6 @@
 	<!--[/cigarrita Angular Web]-->
 	<?php include($request."assets/js_index.php"); ?>	
 	<!--[/cigarrita Angular Web]-->
-
-	
-	
-
 	
 </head>
 <body>

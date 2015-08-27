@@ -1,3 +1,75 @@
+var modal_options=function($scope,$http,$compile){
+
+  $scope.save_external=function(model,$event){
+
+    $event.stopImmediatePropagation();
+
+    if (model.idblock) {
+      var type="block";  
+    }else{
+      var type="post"; 
+    }
+
+    model.subheader=$scope.editable[0].innerHTML;
+
+    $rootScope.$broadcast('inline.saving.'+type,model); 
+  }
+
+
+    $http.get($base_url+'/api/template/modal/cms').then(function(response) {
+          var elemento=$('[ng-view]');
+          // $(response.data).insertAfter(elemento);
+          elemento.append(response.data);
+    });
+  
+
+  $scope.options = {
+      height: 100,
+      toolbar: [
+        //[groupname, [button list]]
+        ['inser',['link','picture']],
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],  
+        ['height', ['height']],      
+        ['color', ['color']],  
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['misc',['codeview']]          
+      ]
+  };
+
+  $scope.$on('show.modal', function(event,data) {
+
+      // console.log(data);
+      $scope.posting={
+        state:1,
+        source:''
+      };
+      
+
+      setTimeout(function(){
+        $scope.posting=data;
+        $('#modal_post').find('img').attr('src',data.source);
+        $scope.text_subheader=data.subheader;
+        $compile(document.getElementById('modal_post'))($scope);
+        // console.log($scope.posting);
+        
+
+        $('#modal_post')
+        .modal_cw('show');           
+
+      },100);
+
+      
+
+  });
+
+  $scope.$on('close.modal',function(){
+    $('#modal_post').modal_cw('hide');
+  });
+
+}
+
 cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$http','Model',function($rootScope,$scope,$compile,$http,Model){
 
 
@@ -61,44 +133,19 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
     }
 
     var listener_block=$scope.$on('inline.saving.block', function(event,data) {
-        // console.log(event,data);
-        // handle event only if it was not defaultPrevented
-      // $scope.$$listeners['inline.saving.block']=[];
-
-      // if(event.defaultPrevented) {
-      //   return;
-      // }
-      // // mark event as "not handle in children scopes"
-      // event.preventDefault();
       
       $scope.save_block(data);
       $scope.handle_saving('click');
-
-      // $scope.eventReceived = true;
-      // listener_block();
-
-      
         
         
     });
     
     var listener_post=$scope.$on('inline.saving.post', function(event,data) {
 
-      // console.log(event,$scope);
-
-      // $scope.$$listeners['inline.saving.post']=[];
-      
-
-      // handle event only if it was not defaultPrevented
-      // mark event as "not handle in children scopes"
-      // event.preventDefault();
-
-      // console.log($scope);
       
       $scope.save_post(data);
       $scope.handle_saving('click');
 
-      // listener_post();
         
     });
 
@@ -209,100 +256,33 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
   page();
 
-  
-  $scope.save_external=function(model,$event){
-
-    $event.stopImmediatePropagation();
-
-    if (model.idblock) {
-      var type="block";  
-    }else{
-      var type="post"; 
-    }
-
-    model.subheader=$scope.editable[0].innerHTML;
-
-    $rootScope.$broadcast('inline.saving.'+type,model); 
-  }
-
-
   $scope.$on('language.changed', function() {
       page();
   });
 
+  var nextSlide=function(){
 
-    var nextSlide=function(){
+        nextIndex =currentIndex+1;
 
-          nextIndex =currentIndex+1;
+        if(nextIndex > $('#home .transito').length)
+        {
+          nextIndex =1;
+        }
+        $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
+        // $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
+        // $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
+        $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
+        currentIndex = nextIndex;
 
-          if(nextIndex > $('#home .transito').length)
-          {
-            nextIndex =1;
-          }
-          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
-          // $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          // $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-          $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
-          currentIndex = nextIndex;
-
-    };
-
-
-    $http.get($base_url+'/api/template/modal/cms').then(function(response) {
-        var elemento=$('[ng-view]');
-        elemento.append(response.data);
-    });
-
-    $scope.options = {
-        height: 100,
-        toolbar: [
-          //[groupname, [button list]]
-          ['inser',['link','picture']],
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['font', ['strikethrough', 'superscript', 'subscript']],
-          ['fontsize', ['fontsize']],  
-          ['height', ['height']],      
-          ['color', ['color']],  
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['misc',['codeview']]          
-        ]
-      };
-
-    $scope.$on('show.modal', function(event,data) {
-
-        // console.log(data);
-        $scope.posting={
-          state:1,
-          source:''
-        };
-        
-
-        setTimeout(function(){
-          $scope.posting=data;
-          $('#modal_post').find('img').attr('src',data.source);
-          $scope.text_subheader=data.subheader;
-          $compile(document.getElementById('modal_post'))($scope);
-          // console.log($scope.posting);
-          
-
-          $('#modal_post')
-          .modal_cw('show');           
-
-        },100);
-
-        
-
-    });
-
-    $scope.$on('close.modal',function(){
-      $('#modal_post').modal_cw('hide');
-    });
+  };
+  
+  modal_options($scope,$http,$compile);
 
 
 
 }]);
 
-cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$route',function($scope,Content,Language,$route){
+cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$route','$http','$compile',function($scope,Content,Language,$route,$http,$compile){
 
   var pageid = $route.current.$$route.pageid;
 
@@ -326,6 +306,8 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
   $scope.$on('language.changed', function() {
       page();
   });
+
+  modal_options($scope,$http,$compile);
 
 
 }]);
