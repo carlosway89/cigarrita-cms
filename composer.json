@@ -1,5 +1,5 @@
 {
-    "name": "cigarrita",
+    "name": "cigarrita-worker/cigarrita-api",
     "type": "api",
     "description": "Cigarrita Api With AngularJs and YII PHP",
     "homepage": "https://cigarrita-worker.com",
