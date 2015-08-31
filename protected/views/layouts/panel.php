@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="<?=$this->action->id!='index'?'overflow-y:scroll !important':''?>">
 
 <head>
   
@@ -15,6 +15,9 @@
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/bootstrap/bootstrap.css" /> 
   
+  <!-- Cigarrita core CSS -->
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/css/flag-icon.min.css" />
+
   <!-- MaterializeCSS -->
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/materialize/materialize.css" /> 
   
@@ -27,6 +30,11 @@
     <!-- Base Styling  -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/app/app.v1.css" />
 
+    <style type="text/css">
+      input.counter_char + .character-counter{
+          display: none;
+      }
+    </style>
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,7 +46,6 @@
 
 </head>
 <body>	
-
 	<!-- Preloader -->
     <div class="loading-container">
 
@@ -63,44 +70,32 @@
 	<aside class="left-panel collapsed">
     		
             <div class="user text-center">
-                  <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/images/avtar/cigarrita-pet.jpg" class="img-circle" alt="...">
-                  <h4 class="user-name">Carlos Manay</h4>
+                  <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/images/avtar/cigarrita-pet.jpg" class="img-circle" alt="cigarrita worker">
+                  <h4 class="user-name"><?php echo Yii::app()->user->getState('fullname');?></h4>
             </div>
-            
-            
             
             <nav class="navigation">
             	<ul class="list-unstyled">
-                	<li><a href="<?=Yii::app()->request->url?>"><i class="fa fa-bookmark-o"></i><span class="nav-label">Dashboard</span></a></li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-comment-o"></i> <span class="nav-label">Widgets &amp; Apps</span></a>
+                	<li class="active"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel"><i class="fa fa-laptop"></i><span class="nav-label">Dashboard</span></a></li>
+                    <li class="has-submenu"><a href="#"><i class="fa fa-file-o"></i> <span class="nav-label">Web &amp; Pages</span></a>
                     	<ul class="list-unstyled">
-                        	<li><a href="email.html">Email</a></li>
-                            <li><a href="timeline.html">Timeline</a></li>
-                            <li><a href="calendar.html">Calendar</a></li>
-                            <li><a href="notes.html">Notes</a></li>
-                            <li><a href="file-browser.html">File Browser</a></li>
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages">Web Pages</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users">Web Users</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config">Web Configuration</a></li>
                         </ul>
                     </li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-code"></i> <span class="nav-label">Charts</span></a>
+                    <li class="has-submenu"><a href="#"><i class="fa fa-link"></i> <span class="nav-label">Menus &amp; Links</span></a>
                     	<ul class="list-unstyled">
-                        	<li><a href="chart-variants.html">Chart Variants</a></li>
-                            <li><a href="gauges.html">Gauges</a></li>
-                            <li><a href="vector-maps.html">Vector Maps</a></li>
-                            <li><a href="range-selector.html">Range Selector</a></li>
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links">Menus / links</a></li>
                         </ul>
                     </li>
-                    <li class="has-submenu active"><a href="#"><i class="fa fa-star-o"></i> <span class="nav-label">Plugins &amp; More</span></a>
+                    <li class="has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label">Facebook &amp; Sync</span></a>
                     	<ul class="list-unstyled">
-                        	<li><a href="404.html">404 Page</a></li>
-                        	<li><a href="invoice.html">Invoice</a></li>
-                            <li><a href="elfinder.html">File Manager</a></li>
-                            <li><a href="google-maps.html">Google Maps</a></li>
-                            <li><a href="signin.html">Signin</a></li>
-                            <li><a href="signup.html">Signup</a></li>
-                            <li><a href="search.html">Search</a></li>
-                            <li><a href="full-screen.html">Full Screen</a></li>
-                            <li class="active"><a href="blank.html">Blank Page</a></li>
-                            
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#feeds">Feeds</a></li>
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#events">Events</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#gallery">Gallery</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#contact">Contact</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#about">About</a></li>                            
                         </ul>
                     </li>
                 </ul>
@@ -121,82 +116,84 @@
             
             
             <nav class=" navbar-default hidden-xs" role="navigation">
+              <?php 
+
+                $model_language=Language::model()->findAll();
+
+              ?>
                 <ul class="nav navbar-nav">
                 <li><a href="<?=Yii::app()->getBaseUrl(true)?>" target="_blank">Live Website</a></li>
                 <li class="dropdown">
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">Languages <span class="caret"></span></a>
                   <ul role="menu" class="dropdown-menu">
-                    <li><a href="#">Español</a></li>
-                    <li><a href="#">English</a></li>
-                    <li><a href="#">Deutsch</a></li>
+                    <?php foreach ($model_language as $key => $value) {
+                    ?>
+                    <li>
+                      <a href="#"><?=$value->name?> 
+                        <div class="switch">
+                          <label>
+                            Off
+                            <input type="checkbox" data-value="<?=$value->min?>" <?=$value->estado?'checked="checked"':''?>>
+                            <span class="lever"></span>
+                            On
+                          </label>
+                        </div>
+                      </a>
+                    </li>
+                    <?php } ?>
                     <li class="divider"></li>
-                    <li><a href="#">+ Add New Language</a></li>
+                    <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language">+ Add New Language</a></li>
                   </ul>
                 </li>
               </ul>
             </nav>
             
             <ul class="nav-toolbar">
-            	<li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-comments-o"></i> <span class="badg bg-warning">7</span></a>
+              <?php 
+                $criteria = new CDbCriteria;
+
+                $criteria->order="date DESC";
+                $criteria->limit="5";
+                $criteria->condition="state<>'new'";
+
+                $model_message=Form::model()->findAll($criteria);
+
+                $msgs=Form::model()->count("state <> 'new' ");
+
+              ?>
+            	<li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-comments-o"></i> <span class="badg bg-warning"><?=$msgs?></span></a>
                 	<div class="dropdown-menu md arrow pull-right panel panel-default arrow-top-right messages-dropdown">
                         <div class="panel-heading">
                       	Messages
                         </div>
                         
                         <div class="list-group">
+                            <?php 
+
                             
-                            <a href="#" class="list-group-item">
-                            <div class="media">
-                              <div class="user-status busy pull-left">
-                              <img class="media-object img-circle pull-left" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/images/avtar/user2.png" alt="user#1" width="40">
+
+                            foreach ($model_message as $key => $value) {
+                            ?>
+                            <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="list-group-item">
+                              <div class="media">
+                                <div class="media-body">
+                                  <h6 class="text-info"><?=$value->email?></h6>
+                                  <h6 class="media-heading"><?=$value->subject?></h6>
+                                  <small class="text-muted"><?=$value->date?></small>
+                                </div>
                               </div>
-                              <div class="media-body">
-                                <h6 class="media-heading">Lorem ipsum dolor sit consect....</h6>
-                                <small class="text-muted">23 Sec ago</small>
-                              </div>
-                            </div>
                             </a>
-                            <a href="#" class="list-group-item">
-                            <div class="media">
-                              <div class="user-status offline pull-left">
-                              <img class="media-object img-circle pull-left" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/images/avtar/user3.png" alt="user#1" width="40">
-                              </div>
-                              <div class="media-body">
-                                <h6 class="media-heading">Nunc elementum, enim vitae</h6>
-                                <small class="text-muted">23 Sec ago</small>
-                              </div>
-                            </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                            <div class="media">
-                              <div class="user-status invisibled pull-left">
-                              <img class="media-object img-circle pull-left" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/images/avtar/user4.png" alt="user#1" width="40">
-                              </div>
-                              <div class="media-body">
-                                <h6 class="media-heading">Praesent lacinia, arcu eget</h6>
-                                <small class="text-muted">23 Sec ago</small>
-                              </div>
-                            </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                            <div class="media">
-                              <div class="user-status online pull-left">
-                              <img class="media-object img-circle pull-left" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/images/avtar/user5.png" alt="user#1" width="40">
-                              </div>
-                              <div class="media-body">
-                                <h6 class="media-heading">In mollis blandit tempor.</h6>
-                                <small class="text-muted">23 Sec ago</small>
-                              </div>
-                            </div>
-                            </a>
+                            <?php } ?>
                             
-                            <a href="#" class="btn btn-info btn-flat btn-block">View All Messages</a>
+                            <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="btn btn-info btn-flat btn-block">View All Messages</a>
 
                         </div>
                         
                     </div>
                 </li>
-              <li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="badg">3</span></a>
+              <li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
+                <span class="badg">1</span>
+              </a>
                 	<div class="dropdown-menu arrow pull-right md panel panel-default arrow-top-right notifications">
                         <div class="panel-heading">
                       	Notification
@@ -204,54 +201,10 @@
                         
                         <div class="list-group">
                             
-                            <a href="#" class="list-group-item">
-                              <p>Installing App v1.2.1<small class="pull-right text-muted">45% Done</small></p>
-                              <div class="progress progress-xs no-margn progress-striped active">
-                                <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                  <span class="sr-only">45% Complete</span>
-                                </div>
-                              </div>
+                            <a href="http://cigarrita-worker.com/contact" target="_blank" class="list-group-item">
+                              Welcome to the CMS Cigarrita Worker, keep you update or in contact with us clicking here
                             </a>
                             
-                            <a href="#" class="list-group-item">
-                            Fusce dapibus molestie tincidunt. Quisque facilisis libero eget justo iaculis
-                            </a>
-                            
-                            <a href="#" class="list-group-item">
-                              <p>Server Status</p>
-                              <div class="progress progress-xs no-margn">
-                                <div class="progress-bar progress-bar-success" style="width: 35%">
-                                  <span class="sr-only">35% Complete (success)</span>
-                                </div>
-                                <div class="progress-bar progress-bar-warning" style="width: 20%">
-                                  <span class="sr-only">20% Complete (warning)</span>
-                                </div>
-                                <div class="progress-bar progress-bar-danger" style="width: 10%">
-                                  <span class="sr-only">10% Complete (danger)</span>
-                                </div>
-                              </div>
-                            </a>
-                            
-                            
-                            
-                            <a href="#" class="list-group-item">
-                              <div class="media">
-                                <span class="label label-danger media-object img-circle pull-left">Danger</span>
-                                <div class="media-body">
-                                  <h6 class="media-heading">Lorem ipsum dolor sit consect..</h6>
-                                </div>
-                              </div>
-                            </a>
-                            
-                            
-                            <a href="#" class="list-group-item">
-                              <p>Server Status</p>
-                              <div class="progress progress-xs no-margn">
-                                <div style="width: 60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-info">
-                                  <span class="sr-only">60% Complete (warning)</span>
-                                </div>
-                              </div>
-                						</a>
                             
 
                         </div>
@@ -265,8 +218,8 @@
                         </div>
                         <div class="panel-body text-center">
                         	<div class="row">
-                            	<div class="col-xs-6 col-sm-4"><a href="#" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn">Messages</p></a></div>
-                                <div class="col-xs-6 col-sm-4"><a href="#" class="text-purple"><span class="h2"><i class="fa fa-calendar-o"></i></span><p class="text-gray no-margn">Page Config</p></a></div>
+                            	<div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn">Messages</p></a></div>
+                                <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config" class="text-purple"><span class="h2"><i class="fa fa-file-text-o"></i></span><p class="text-gray no-margn">Page Config</p></a></div>
                                 
                                 <div class="col-xs-12 visible-xs-block"><hr></div>
                                 
@@ -309,6 +262,12 @@
     <!-- Bootstrap -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/bootstrap/bootstrap.min.js"></script>
     
+    <!-- DataTables -->
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/jquery.dataTables.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/jquery.dataTables.bootstrap.js"></script>
+
     <!-- Materialize -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/materialize/materialize.min.js"></script>
     
@@ -324,7 +283,9 @@
     
     <!-- NanoScroll -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
-    
+    <!-- Cigarrita JQuery -->
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/cigarrita.js" type="text/javascript"></script>
+
     <!-- Custom JQuery -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/app/custom.js" type="text/javascript"></script>
     

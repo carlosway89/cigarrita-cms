@@ -32,12 +32,12 @@ class ApiController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','admin','create','view','form','update','safeDelete','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync'),
+                'actions'=>array('index','admin','create','view','update','safeDelete','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync'),
                 // 'expression'=>'Yii::app()->user->checkAccess("administrador")',
                 'users'=>array('@'),
                 ),
             array('allow',
-                'actions'=>array('index','list','view','form','flag','tester','content','facebook','template'),
+                'actions'=>array('index','list','view','formContact','flag','tester','content','facebook','template','checkStatus'),
                 'users'=>array('*'),
                 ),
             array('deny',  // deny all to users
@@ -56,6 +56,20 @@ class ApiController extends Controller
         }       
 
         
+    }
+
+    public function actionCheckStatus(){
+
+        
+
+        if (!Yii::app()->user->id) {
+            $model=array('status'=>'logout');
+        }else{
+            $model=array('status'=>'ok');
+        }
+
+        $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model) );
+
     }
 
     public function uri($i){
@@ -620,7 +634,8 @@ class ApiController extends Controller
                     /* [if has extra attributes] */
                     foreach ($has_post->attributes0 as $key_attr => $has_attr) { 
                         $attr=$has_attr;                     
-                        $subarray[$key_post]=array_merge($subarray[$key_post],array($attr->key=>$attr->value));                        
+                        $attr_val=CJSON::decode($attr->value)!=null?CJSON::decode($attr->value):$attr->value;
+                        $subarray[$key_post]=array_merge($subarray[$key_post],array($attr->key=>$attr_val));                        
 
                     }
                     /* [end extra attributes] */
@@ -666,7 +681,7 @@ class ApiController extends Controller
         return $_SERVER['REMOTE_ADDR'];
     }
 
-    public function actionForm(){
+    public function actionFormContact(){
 
         $requestBody = Yii::app()->request->getRawBody();
 

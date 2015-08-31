@@ -99,7 +99,8 @@
 					<div class="alert alert-success" style="display:none">
 						<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> your message was sent
 					</div>
-					<div data-id="subheader" element-editable ng-model="block.subheader" element-object="block" ng-bind-html="block.subheader | sanitize">
+					<div data-id="subheader" element-object="block" >
+						<span element-editable ng-model="block.subheader"  ng-bind-html="block.subheader | sanitize" element-form></span>
 					</div>
 
 				</div>

@@ -10,7 +10,7 @@
  * @property string $ip_address
  * @property string $country_name
  * @property string $browser
- * @property string $device
+ * @property string $state
  * @property string $date
  */
 class Form extends CActiveRecord
@@ -44,10 +44,10 @@ class Form extends CActiveRecord
 			// array('date', 'required'),
 			array('email', 'length', 'max'=>100),
 			array('subject', 'length', 'max'=>400),
-			array('ip_address, country_name, browser, device', 'length', 'max'=>300),
+			array('ip_address, country_name, browser, state', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idform, email, subject, ip_address, country_name, browser, device, date', 'safe', 'on'=>'search'),
+			array('idform, email, subject, ip_address, country_name, browser, state, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,7 +74,7 @@ class Form extends CActiveRecord
 			'ip_address' => 'Ip Address',
 			'country_name' => 'Country Name',
 			'browser' => 'Browser',
-			'device' => 'Device',
+			'state' => 'State',
 			'date' => 'Date',
 		);
 	}
@@ -96,7 +96,7 @@ class Form extends CActiveRecord
 		$criteria->compare('ip_address',$this->ip_address,true);
 		$criteria->compare('country_name',$this->country_name,true);
 		$criteria->compare('browser',$this->browser,true);
-		$criteria->compare('device',$this->device,true);
+		$criteria->compare('state',$this->device,true);
 		$criteria->compare('date',$this->date,true);
 
 		return new CActiveDataProvider($this, array(

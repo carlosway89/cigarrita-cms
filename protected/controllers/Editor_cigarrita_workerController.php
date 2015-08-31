@@ -1,7 +1,7 @@
 <?php
 // error_reporting(E_ALL ^ E_NOTICE);
 // error_reporting(0);
-class EditorController extends Controller
+class Editor_cigarrita_workerController extends Controller
 {
 	/**
 	 * Declares class-based actions.
@@ -47,8 +47,8 @@ class EditorController extends Controller
 	{
 
 		if (Yii::app()->user->id) {
-			$this->layout='//site/editor';
-			$this->render('/site/editor');
+			$this->layout='//site/editor_cigarrita_worker';
+			$this->render('/site/editor_cigarrita_worker');
 		}else{
 			$this->redirect(array('/site/index'));
 		}

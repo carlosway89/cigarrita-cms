@@ -34,6 +34,20 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
         links();
     });
 
+    $scope.$on('form.contact.saving',function(event,contact_model){
+
+      var record = new Model({
+          model:'formContact'
+      });
+
+      // console.log(contact_model);
+      record = $.extend(record, contact_model);
+      record.$save(function(record){
+        console.log(record);
+      });
+
+    })
+
     
 
 }]);
@@ -48,7 +62,6 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
   var slideDuration=7000;
   var currentIndex=1;
   var nextIndex=1;
-
 
 
   var page=function(){

@@ -19,10 +19,9 @@ $(window).load(function() {
 $(function(){
 
 	
-	/*$('.dropdown-menu').click(function(event){
+	$('.dropdown-menu a').click(function(event){
 	  event.stopPropagation();
-	});*/
-	
+	});
 	
 	
 	
@@ -185,9 +184,13 @@ $(function(){
 	
 	
 	
+	/********************************
+	Character Counter
+	********************************/
 	
-	
-	
+	$(document).ready(function() {
+      $('input.counter_char, textarea.counter_char').characterCounter();
+    });
 	
 	
 	/********************************
@@ -197,6 +200,10 @@ $(function(){
 		$('html, body').animate({scrollTop : 0},800);
 		return false;
 	});
+
+	/********************************
+	Run DataTable of the List
+	********************************/
 	
 	
 	

@@ -18,7 +18,7 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<meta name="description" content="<?=$config->description?>"/>
     <meta name="author" lang="en" content="Cigarrita Worker"/>
-    <meta name="keywords" content="aplication, web, software, internet, design, developer, elance, SEO, remote work "/>
+    <meta name="keywords" content="<?=$config->keywords?>"/>
     <meta name="robots" content="INDEX,FOLLOW">
 
     

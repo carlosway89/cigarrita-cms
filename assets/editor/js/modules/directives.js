@@ -304,6 +304,22 @@ cigarritaDirective
         }
     };
 })
+.directive('elementForm', function ($compile) {
+  return {
+    link: function (scope, element, attrs) {
+      
+      setTimeout(function(){
+
+        element.find('form').submit(function(event){
+          event.preventDefault();
+        });
+
+      });
+
+
+    }
+  };
+})
 .directive('imageUpload',function($parse){ //Step 1
 
     return {

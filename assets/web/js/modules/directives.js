@@ -83,6 +83,34 @@ cigarritaDirective
     }
   };
 })
+.directive('elementForm', function ($compile,$rootScope) {
+  return {
+    link: function (scope, element, attrs) {
+      
+      setTimeout(function(){
+
+        element.find('form').submit(function(event){
+          event.preventDefault();
+          var target=element.find('form');
+
+          var contact_model={
+            email:target.find('#email').val(),
+            subject:target.find('#subject').val()
+          }
+
+          setTimeout(function(){
+            $rootScope.$broadcast('form.contact.saving',contact_model);
+          },1000);
+
+          
+        });
+
+      });
+
+
+    }
+  };
+})
 .directive('menuLinks', function($location,$rootScope) {
     return {
         // restrict: 'E',

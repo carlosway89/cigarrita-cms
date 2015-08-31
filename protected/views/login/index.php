@@ -15,24 +15,27 @@
 
                         <form class="form-login" method="POST">
                         	<div class="col-md-offset-4 col-md-4 box">
-                        		<h2 class="title" style="margin-top:0px"><i class="glyphicon glyphicon-user txt-warning"></i> Sign In</h2>
-                        		<hr>
+                        		
                                 <?php if(Yii::app()->user->hasFlash('error')){ ?>
                                 <div class="alert alert-danger">
                                     <?php echo Yii::app()->user->getFlash('error'); ?>
                                 </div>
                                 <?php } ?>
-                        		<h4>Username</h4>                        		
-                        		<input class="form-control" name="LoginForm[username]" type="text" placeholder="UserName">                        		
-                        		<h4>Password</h4>                        		
-                        		<input class="form-control" name="LoginForm[password]" type="password" placeholder="Password">                        		
+
+                                <div class="input-field col s12">
+                                  <input placeholder="UserName" id="user_name" type="text" name="LoginForm[username]" class="">
+                                  <label for="user_name">UserName</label>
+                                </div>        
+                                <div class="input-field col s12">
+                                  <input placeholder="UserName" id="password" name="LoginForm[password]" type="password" placeholder="Password" class="">
+                                  <label for="password">Password</label>
+                                </div>                		                       		
                         		<br>
-                                <div class="checkbox">
-                                    <label>
-                                      <input type="checkbox" name="LoginForm[rememberMe]"> Remember me 30 days
-                                    </label>
+                                <div class="col s12 checkbox">
+                                    <input type="checkbox" class="filled-in" id="filled-in-box" name="LoginForm[rememberMe]" />
+                                    <label for="filled-in-box">Remember me 30 days</label>
                                 </div>
-                        		<button class="btn btn-info btn-md pull-right" type="submit">Login</button>
+                        		<button class="btn btn-info btn-md pull-right  red darken-1" type="submit">Login</button>
                         		<br><br>
                         	</div>
                         </form>

@@ -61,7 +61,8 @@ return array(
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/safeDelete', 'pattern'=>'api/<model:\w+>/safe/<id:\d+>', 'verb'=>'DELETE'),
-		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
+		        array('api/formContact', 'pattern'=>'api/formContact', 'verb'=>'POST'),
+		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),		        
 		        // Other controllers
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

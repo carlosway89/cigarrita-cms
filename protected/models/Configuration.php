@@ -10,6 +10,8 @@
  * @property string $description
  * @property string $language
  * @property string $analytic_id
+ * @property string $keywords
+ * @property integer $is_installed
  */
 class Configuration extends CActiveRecord
 {
@@ -39,14 +41,16 @@ class Configuration extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, logo, description, language, analytic_id', 'required'),
+			array('title, logo, description, language, analytic_id, keywords, is_installed', 'required'),
+			array('is_installed', 'numerical', 'integerOnly'=>true),
 			array('title, analytic_id', 'length', 'max'=>100),
-			array('logo', 'length', 'max'=>200),
+			// array('logo', 'length', 'max'=>200),
+			array('logo', 'file', 'types'=>'jpg, gif, png', 'safe' => false, 'allowEmpty'=>true,'on' => 'update'),
 			array('description', 'length', 'max'=>400),
 			array('language', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idconfig, title, logo, description, language, analytic_id', 'safe', 'on'=>'search'),
+			array('idconfig, title, description, language, analytic_id, keywords, is_installed', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +77,8 @@ class Configuration extends CActiveRecord
 			'description' => 'Description',
 			'language' => 'Language',
 			'analytic_id' => 'Analytic',
+			'keywords' => 'Keywords',
+			'is_installed' => 'Is Installed',
 		);
 	}
 
@@ -93,6 +99,8 @@ class Configuration extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('language',$this->language,true);
 		$criteria->compare('analytic_id',$this->analytic_id,true);
+		$criteria->compare('keywords',$this->keywords,true);
+		$criteria->compare('is_installed',$this->is_installed);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

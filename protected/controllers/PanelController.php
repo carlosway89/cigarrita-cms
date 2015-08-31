@@ -21,7 +21,7 @@ class PanelController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index'),
+				'actions'=>array('index','language','config','users','messages','pages','links','facebook'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
 					),
@@ -51,6 +51,100 @@ class PanelController extends Controller
 		);
 	}
 
+
+	public function actionLanguage(){
+		
+		$model=Language::model()->findAll();
+
+
+		$this->render('//language/admin',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionUsers(){
+		
+		$model=User::model()->findAll();
+
+
+		$this->render('//user/admin',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionMessages(){
+		
+		$model=Form::model()->findAll();
+
+
+		$this->render('message',array(
+			'model'=>$model,
+		));
+	}
+	public function actionPages(){
+		
+		$model=Page::model()->findAll();
+
+
+		$this->render('//page/admin',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionLinks(){
+		
+		$model=Menu::model()->findAll();
+
+
+		$this->render('//menu/admin',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionFacebook(){
+		
+		$model=Post::model()->findAll();
+
+
+		$this->render('facebook',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionConfig(){
+		
+		$model=Configuration::model()->findByPk(1);
+
+		if(isset($_POST['Configuration']))
+		{	
+			
+
+			$model->attributes=$_POST['Configuration'];
+
+			
+			if($model->save()){	
+				$new_name_logo = rand(1000,9999).time(); // rand(1000,9999) optional
+				$new_name_logo = 'files/'.md5($new_name_logo).'.jpg'; //optional
+				$model->logo=CUploadedFile::getInstance($model,'logo');
+				if ( (is_object($model->logo) && get_class($model->logo)==='CUploadedFile')){
+					$model->logo->saveAs($new_name_logo);
+					$model->logo=$new_name_logo;
+					$model->save();	
+				}					
+								
+				$message="Successfully Updated";
+				$this->redirect(array('config','message'=>$message));
+			}
+				
+		}
+
+
+		$this->render('//configuration/update',array(
+			'model'=>$model,
+		));
+	}
+
+
         /**
         * This is the action to handle external exceptions.
         */
@@ -72,6 +166,7 @@ class PanelController extends Controller
 		$this->layout='//layouts/panel';
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+
 		$this->render('index');
 	}
 

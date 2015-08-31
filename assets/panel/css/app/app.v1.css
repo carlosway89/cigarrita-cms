@@ -1553,3 +1553,24 @@ Just For Demo / Showcase
 	    padding-bottom: 98%;
 	}
 }
+
+.dataTables_filter > label{
+	float:right;
+}
+
+.dataTables_length > label > select{
+	display:block !important;
+	height: 3rem;
+}
+.dataTables_paginate > ul{
+	float:right;
+	display:block;
+}
+.dataTables_paginate > ul li{
+	display: block;
+	height: inherit;
+	font-size: 1.5rem;
+}
+.dataTables_paginate > ul li.disabled a,.dataTables_paginate > ul li.disabled a:hover{
+	background-color: rgba(0, 0, 0, 0.2);
+}

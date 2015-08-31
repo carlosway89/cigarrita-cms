@@ -8,7 +8,7 @@
    		<div class="alert alert-success post" style="display:none">
 			<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> Your Operation was Successfully 
 		</div>      
-      <form id='save_post' class='form-horizontal' role='form'>
+      <div id='save_post' class='form-horizontal'>
         <div class='form-group'>
           <label for='header' class='col-sm-2 control-label'>Header</label>
           <div class='col-sm-5'>
@@ -57,13 +57,13 @@
         <div class='form-group'>
           <div class='col-sm-offset-2 col-sm-10'>
           	<div class="alert alert-success post" style="display:none">
-				<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> Your Operation was Successfully 
-			</div>
+      				<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> Your Operation was Successfully 
+      			</div>
             <button id="save_external" type='button' ng-click="save_external(posting,$event)" class='btn btn-primary saving'>Save Content</button>
             <button id='close_modal' type='button' class='btn btn-default closing' style='margin-left:20px'>Close</button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>	

@@ -1,4 +1,8 @@
-var modal_options=function($scope,$http,$compile){
+var modal_options=function($scope,$http,$compile,$rootScope){
+
+
+
+  
 
   $scope.save_external=function(model,$event){
 
@@ -213,6 +217,26 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
       }
     }
 
+    $scope.check_status=function(){
+      
+
+     $.addBeat('transmition-check',function(){
+      
+          $.ajax({
+              type: 'GET',
+              url: $base_url+'/api/checkStatus',
+              success: function (data) {
+                  if (data.status=="logout") {
+                    window.top.location.reload();
+                  }        
+              }
+          });
+
+      },60000);
+    }
+
+    $scope.check_status();
+
     
 
 }]);
@@ -276,7 +300,7 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
   };
   
-  modal_options($scope,$http,$compile);
+  modal_options($scope,$http,$compile,$rootScope);
 
 
 
@@ -307,7 +331,7 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
       page();
   });
 
-  modal_options($scope,$http,$compile);
+  modal_options($scope,$http,$compile,$rootScope);
 
 
 }]);
