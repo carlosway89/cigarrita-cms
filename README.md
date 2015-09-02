@@ -13,12 +13,11 @@ The Cigarrita API can be installed with [Composer](https://getcomposer.org/). Ad
 ```
 
 Intp the Root folder create a folder called "THEMES" there paste your folder of your web with your files required (HTML,CSS,JS, etc).
+
 ex: [root_folder]/themes/{{design_name}} .
 
-Open you console and place it to the root_folder.
+Open you console and place it to the root_folder and type the follow code.
 
-
-type the follow code
 ``` ./cigarrita theming ```
 
 ###READY TO PLAY WITH !!!
