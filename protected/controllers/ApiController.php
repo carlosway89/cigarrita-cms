@@ -78,7 +78,7 @@ class ApiController extends Controller
         $url=Yii::app()->request->getPathInfo();
         $uri = explode("/", $url);
 
-        return $uri[$i];
+        return isset($uri[$i])?$uri[$i]:false;
     }
 
     public function actionTemplate(){

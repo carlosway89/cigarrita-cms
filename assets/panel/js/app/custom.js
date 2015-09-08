@@ -18,10 +18,27 @@ $(window).load(function() {
 
 $(function(){
 
+	$(window).on('hashchange',function(){
+		location_hash();
+	})
+
+	var location_hash=function(){
+		if (location.hash) {
+	        var tabid = location.hash.substr(1);
+	        $('a[href="#' + tabid + '"]').parents('.tab-pane:hidden').each(function(){
+	            var tabid = $(this).attr("id");
+	            $('a[href="#' + tabid + '"]').click();    
+	        });            
+	        $('a[href="#' + tabid + '"]').click();
+	    }
+		
+		$('.dropdown-menu a').click(function(event){
+		  event.stopPropagation();
+		});
+	}
+
+	location_hash();
 	
-	$('.dropdown-menu a').click(function(event){
-	  event.stopPropagation();
-	});
 	
 	
 	
@@ -190,6 +207,11 @@ $(function(){
 	
 	$(document).ready(function() {
       $('input.counter_char, textarea.counter_char').characterCounter();
+
+      $('.delete-link').click(function(event){
+      	if(!confirm('Are you sure you want to delete this item?')) return false;
+      });
+
     });
 	
 	

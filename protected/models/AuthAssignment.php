@@ -1,23 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "user".
+ * This is the model class for table "AuthAssignment".
  *
- * The followings are the available columns in table 'user':
- * @property integer $iduser
- * @property string $username
- * @property string $password
- * @property integer $estado
- * @property integer $is_deleted
- * @property string $full_name
- * @property string $email
+ * The followings are the available columns in table 'AuthAssignment':
+ * @property string $itemname
+ * @property string $userid
+ * @property string $iduser
+ * @property string $bizrule
+ * @property string $data
+ *
+ * The followings are the available model relations:
+ * @property AuthItem $itemname0
  */
-class User extends CActiveRecord
+class AuthAssignment extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return User the static model class
+	 * @return AuthAssignment the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +30,7 @@ class User extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'user';
+		return 'AuthAssignment';
 	}
 
 	/**
@@ -40,12 +41,12 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('full_name, email', 'required'),
-			array('is_deleted, estado ', 'numerical', 'integerOnly'=>true),
-			array('username, password', 'length', 'max'=>45),
+			array('itemname, userid', 'required'),
+			array('itemname, userid', 'length', 'max'=>64),
+			array('bizrule, data', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('iduser, username, password, estado, full_name, email', 'safe', 'on'=>'search'),
+			array('itemname, userid, bizrule, data', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +58,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'auth' => array(self::HAS_MANY, 'AuthAssignment', 'iduser'),
+			'itemname0' => array(self::BELONGS_TO, 'AuthItem', 'itemname'),
 		);
 	}
 
@@ -67,13 +68,11 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'iduser' => 'Iduser',
-			'username' => 'Username',
-			'password' => 'Password',
-			'estado' => 'Estado',
-			'full_name' => 'Full Name',
-			'email' => 'Email',
-			'is_deleted' => 'Deleted',
+			'itemname' => 'Itemname',
+			'userid' => 'userid',
+			'iduser' => 'id User',
+			'bizrule' => 'Bizrule',
+			'data' => 'Data',
 		);
 	}
 
@@ -88,13 +87,11 @@ class User extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('iduser',$this->iduser);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('estado',$this->estado);
-		$criteria->compare('full_name',$this->full_name,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('is_deleted',$this->is_deleted,true);
+		$criteria->compare('itemname',$this->itemname,true);
+		$criteria->compare('userid',$this->userid,true);
+		$criteria->compare('iduser',$this->iduser,true);
+		$criteria->compare('bizrule',$this->bizrule,true);
+		$criteria->compare('data',$this->data,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

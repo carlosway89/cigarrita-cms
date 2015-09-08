@@ -1574,3 +1574,27 @@ Just For Demo / Showcase
 .dataTables_paginate > ul li.disabled a,.dataTables_paginate > ul li.disabled a:hover{
 	background-color: rgba(0, 0, 0, 0.2);
 }
+.embed-panel{
+  position: relative;
+  padding-top: 25px;
+  height: 0px;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.errorMessage {
+    color: #A94442;
+    background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-default {
+    color: #333 !important;
+    background-color: #FFF !important;
+    border: 1px solid #CCC !important;
+    box-shadow: none !important;
+}

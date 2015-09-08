@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-12">
@@ -53,12 +52,18 @@
 
 								<div class="row">
 									<?php echo $form->labelEx($model,'language Default'); ?>
-									<?php echo $form->textField($model,'language',array('size'=>5,'maxlength'=>5)); ?>
+									<select name="Configuration[language]" class="browser-default">
+									<?php foreach ($language as $key => $value) {
+									?>
+									<option <?=$model->language==$value->min?'selected':''?> value="<?=$value->min?>" ><?=$value->name?></option>
+									<?php
+									}?>
+									</select>
 									<?php echo $form->error($model,'language'); ?>
 								</div>
 
 								<div class="row">
-									<?php echo $form->labelEx($model,'Google analytic'); ?>
+									<?php echo $form->labelEx($model,'Google Analytic ID'); ?>
 									<?php echo $form->textField($model,'analytic_id',array('size'=>60,'maxlength'=>100)); ?>
 									<?php echo $form->error($model,'analytic_id'); ?>
 								</div>

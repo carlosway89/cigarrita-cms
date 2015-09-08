@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid embed-panel">
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
@@ -28,7 +28,7 @@
 									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?'Enable':'Disable'?></td>
 									<td>
 										<a href="#"><i class="fa fa-eye text-info"></i> Change State</a>&nbsp;&nbsp;
-										<a href="#" class="text-danger"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="#" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
 									</td>
 								</tr>
 								<?php } ?>

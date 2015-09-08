@@ -1,4 +1,4 @@
-<div class="container-fluid ">
+<div class="container-fluid embed-panel">
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
@@ -24,14 +24,14 @@
 								?>
 								<tr>
 									<td><?=$value->email?></td>
-									<td style="width:20%"><?=$value->subject?></td>
+									<td style="width:20%"><?=substr($value->subject, 0, 30)."..."?></td>
 									<td><?=$value->date?></td>
 									<td><?=$value->country_name?></td>
-									<td><span class="text-info"><?=$value->state?></span></td>
+									<td><span class="text-warning"><?=$value->state?></span></td>
 									<td>
-										<a href="#" class="text-success"><i class="fa fa-mail-forward "></i> Reply</a>&nbsp;&nbsp;
-										<a href="#" class="text-info"><i class="fa fa-eye "></i> See</a>&nbsp;&nbsp;
-										<a href="#" class="text-danger"><i class="fa fa-trash-o "></i> Delete</a>
+										
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="text-info"><i class="fa fa-eye "></i> See</a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$value->idform?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
 									</td>
 								</tr>
 								<?php } ?>

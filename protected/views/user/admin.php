@@ -1,5 +1,4 @@
-
-<div class="container-fluid embed-page">
+<div class="container-fluid embed-panel">
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
@@ -9,27 +8,38 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Add User</button>
+						<br><br>
 						<table id="userList" class="hoverable centered">
 							<thead>
 								<tr>
 						            <th data-field="name">Email</th>
 						            <th data-field="flag">User</th>
 						            <th data-field="state">Full Name</th>
+						            <th data-field="state">Type</th>
 						            <th data-field="state">State</th>
 						            <th>Options</th>
 						        </tr>
 							</thead>
 							<tbody>
-								<?php foreach ($model as $key => $value) {
+								<?php foreach ($list as $key => $value) {
 								?>
 								<tr>
 									<td><?=$value->email?></td>
 									<td><?=$value->username?></td>
+
 									<td><?=$value->full_name?></td>
+									<td>
+									<?php 
+										foreach ($value->auth as $value_auth) {
+											echo $value_auth->itemname;
+										}
+									?>
+									</td>
 									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?'Enable':'Disable'?></td>
 									<td>
-										<a href="#" class="text-info"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
-										<a href="#" class="text-danger"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users/<?=$value->iduser?>" class="text-info"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/user/<?=$value->iduser?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
 									</td>
 								</tr>
 								<?php } ?>
@@ -40,6 +50,23 @@
 
 		</div>	
 	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New User</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->renderPartial('//user/_form', 
+			array(
+					'model'=>$model
+				)
+			); 
+		?>
+      </div>
+    </div>
 </div>
 
 <script type="text/javascript">

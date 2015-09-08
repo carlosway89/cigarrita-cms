@@ -91,11 +91,11 @@
                     </li>
                     <li class="has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label">Facebook &amp; Sync</span></a>
                     	<ul class="list-unstyled">
-                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#feeds">Feeds</a></li>
-                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#events">Events</a></li>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#gallery">Gallery</a></li>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#contact">Contact</a></li>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#about">About</a></li>                            
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#feeds" target="_self">Feeds</a></li>
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#events" target="_self">Events</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#gallery" target="_self">Gallery</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#contact" target="_self">Contact</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#about" target="_self">About</a></li>                            
                         </ul>
                     </li>
                 </ul>
@@ -154,11 +154,11 @@
 
                 $criteria->order="date DESC";
                 $criteria->limit="5";
-                $criteria->condition="state<>'new'";
+                $criteria->condition="state='new' AND is_deleted='0'";
 
                 $model_message=Form::model()->findAll($criteria);
 
-                $msgs=Form::model()->count("state <> 'new' ");
+                $msgs=Form::model()->count("state = 'new' AND is_deleted='0'");
 
               ?>
             	<li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-comments-o"></i> <span class="badg bg-warning"><?=$msgs?></span></a>
@@ -174,11 +174,11 @@
 
                             foreach ($model_message as $key => $value) {
                             ?>
-                            <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="list-group-item">
+                            <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="list-group-item">
                               <div class="media">
                                 <div class="media-body">
                                   <h6 class="text-info"><?=$value->email?></h6>
-                                  <h6 class="media-heading"><?=$value->subject?></h6>
+                                  <h6 class="media-heading"><?=substr($value->subject, 0, 30)."..."?></h6>
                                   <small class="text-muted"><?=$value->date?></small>
                                 </div>
                               </div>

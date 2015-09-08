@@ -7,7 +7,7 @@ class themeCommand extends CConsoleCommand {
  	public function run() {
 
         
-        echo 'console works fine';
+        echo "console works fine \n";
  		
  	}
 

@@ -8,21 +8,33 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-						<a href="" class="btn btn-info">Add Menu</a>
+						 <div class="dropdown col-sm-2">
+		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Languages <span class="caret"></span></a>
+		                  <ul class="dropdown-menu">
+		                    <?php foreach ($language as $key => $value) {
+		                    ?>
+		                    <li>
+		                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->min?> "><?=$value->name?> 
+		                      </a>
+		                    </li>
+		                    <?php } ?>
+		                  </ul>
+		                </div>
+		                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Add Menu</button>
 						<br><br>
 						<table id="menulList" class="hoverable centered">
 							<thead>
 								<tr>
 						            <th data-field="name">Name</th>
 						            <th data-field="flag">Page</th>
-						            <th data-field="name">Url</th>
-						            <th data-field="name">Type</th>
+						            <th data-field="url">Url</th>
+						            <th data-field="type">Type</th>
 						            <th data-field="state">State</th>
 						            <th>Options</th>
 						        </tr>
 							</thead>
 							<tbody>
-								<?php foreach ($model as $key => $value) {
+								<?php foreach ($list as $key => $value) {
 								?>
 								<tr>
 									<td><?=$value->name?></td>
@@ -31,9 +43,8 @@
 									<td><?=$value->type?></td>
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 									<td>
-										<a href="#" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
-										<a href="#"><i class="fa fa-eye text-info"></i> Change State</a>&nbsp;&nbsp;
-										<a href="#" class="text-danger"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
 									</td>
 								</tr>
 								<?php } ?>
@@ -45,6 +56,29 @@
 		</div>	
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Link/menu</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->renderPartial('//menu/_form', 
+			array(
+					'model'=>$model,
+					'language'=>$language,
+					'lang'=>$lang
+				)
+			); 
+		?>
+      </div>
+    </div>
+</div>
+
+
+
 
 <script type="text/javascript">
 	

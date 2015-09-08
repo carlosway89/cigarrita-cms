@@ -12,7 +12,7 @@ class PanelController extends Controller
     {
         return array(
             'accessControl', // perform access control for CRUD operations
-            'postOnly + delete', // we only allow deletion via POST request
+            // 'postOnly + delete', // we only allow deletion via POST request
         );
     }
 
@@ -21,7 +21,7 @@ class PanelController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','links','facebook'),
+				'actions'=>array('index','language','config','users','messages','pages','links','facebook','delete'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
 					),
@@ -51,6 +51,15 @@ class PanelController extends Controller
 		);
 	}
 
+	public function uri($i){
+
+        // $url=Yii::app()->request->url;
+        $url=Yii::app()->request->getPathInfo();
+        $uri = explode("/", $url);
+
+        return isset($uri[$i])?$uri[$i]:false;
+    }
+
 
 	public function actionLanguage(){
 		
@@ -62,24 +71,92 @@ class PanelController extends Controller
 		));
 	}
 
-	public function actionUsers(){
+	public function actionUsers($id=null){
 		
-		$model=User::model()->findAll();
+		$model=new User();
+		$message=null;
+		$list=null;
+		$criteria = new CDbCriteria;
 
+		if ($id!=null) {
+			$model=User::model()->findByPk($id);
+			$render='//user/update';
 
-		$this->render('//user/admin',array(
+		}
+
+		if(isset($_POST['User']))
+		{	
+			
+			$pass=$model->password;
+			$model->attributes=$_POST['User'];
+			$model->estado=$model->estado=='on'?1:0;
+			
+			
+
+			$model->password=$pass==$model->password?$model->password:md5($model->password);
+
+			
+			if($model->save()){									
+				$message="Successfully Updated";
+				
+			}
+				
+		}
+		if ($id==null) {
+			$criteria->with=array('auth');
+			if (!Yii::app()->user->checkAccess("webmaster")) {
+				$criteria->condition="is_deleted='0' and auth.itemname!='webmaster'";
+			}else{
+				$criteria->condition="is_deleted='0'";
+			}
+			
+        	$criteria->together = true; 
+
+			$list=User::model()->findAll($criteria);
+			$render='//user/admin';
+		}
+
+		
+		
+
+		
+
+		$this->render($render,array(
 			'model'=>$model,
+			'message'=>$message,
+			'list'=>$list,
+
 		));
 	}
 
-	public function actionMessages(){
+	public function actionMessages($id=null){
+
+
+		if ($id==null) {
+			$model=Form::model()->findAll("is_deleted='0'");	
+
+			$this->render('message',array(
+				'model'=>$model,
+			));
+			
+		}else{
+			$model=Form::model()->findByPk($id);
+
+			if ($model->state=="new") {
+				$model->state="seen";
+				$model->save();
+			}
+			
+
+			$this->render('message_single',array(
+				'model'=>$model,
+			));
+		}
 		
-		$model=Form::model()->findAll();
+		
 
 
-		$this->render('message',array(
-			'model'=>$model,
-		));
+		
 	}
 	public function actionPages(){
 		
@@ -93,17 +170,111 @@ class PanelController extends Controller
 
 	public function actionLinks(){
 		
-		$model=Menu::model()->findAll();
+		$lang=$this->uri(2)?$this->uri(2):"es";
+		
+		$language=Language::model()->findAll("estado=1");
+		
+		$model=new Menu();
 
+		$message=null;
+		$list=null;
 
-		$this->render('//menu/admin',array(
-			'model'=>$model,
+		
+
+		if (is_numeric($lang)) {
+			$id=$lang;
+
+			$model=Menu::model()->findByPk($id);
+
+			$render='//menu/menu';
+
+		}
+
+		if(isset($_POST['Menu']))
+		{	
+			
+			$model->attributes=$_POST['Menu'];
+			$model->state=$model->state=='on'?1:0;
+
+			
+			if($model->save()){									
+				$message="Successfully Updated";
+				
+			}
+				
+		}
+
+		if (!is_numeric($lang)){
+			
+			$list=Menu::model()->findAll("is_deleted='0' AND language = '".$lang."'");
+			$render='//menu/admin';
+			
+		}
+
+		
+
+		$this->render($render,array(
+				'model'=>$model,
+				'language'=>$language,
+				'message'=>$message,
+				'list'=>$list,
+				'lang'=>!is_numeric($lang)?$lang:'es'
 		));
+
 	}
+
+	public function actionDelete(){
+		
+		$_model=$this->uri(2);
+		$id=$this->uri(3);
+
+
+		$model=ucfirst($_model);
+
+		$model=$model::model()->findByPk($id);
+
+		$model->is_deleted=1;
+
+		
+		if($model->save()){						
+			switch ($_model) {
+				case 'menu':
+					$link='links';
+					break;
+				case 'user':
+					$link='users';
+					break;
+				case 'form':
+					$link='messages';
+					break;				
+				default:
+					$link=$_model;
+					break;
+			}
+
+			$this->redirect(array('//panel/'.$link.'/'));
+		}else{
+			print_r($model->errors);
+		}
+			
+
+		
+        
+	}
+
 
 	public function actionFacebook(){
 		
-		$model=Post::model()->findAll();
+
+		$criteria = new CDbCriteria;
+
+		$criteria->with=array('attributes0');
+        
+
+        $criteria->together = true; 
+
+
+		$model=Post::model()->findAll($criteria);
 
 
 		$this->render('facebook',array(
@@ -114,6 +285,8 @@ class PanelController extends Controller
 	public function actionConfig(){
 		
 		$model=Configuration::model()->findByPk(1);
+
+		$language=Language::model()->findAll("estado=1");
 
 		if(isset($_POST['Configuration']))
 		{	
@@ -141,6 +314,7 @@ class PanelController extends Controller
 
 		$this->render('//configuration/update',array(
 			'model'=>$model,
+			'language'=>$language
 		));
 	}
 

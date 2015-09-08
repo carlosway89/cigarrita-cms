@@ -11,6 +11,7 @@
  * @property string $country_name
  * @property string $browser
  * @property string $state
+ * @property string $is_deleted
  * @property string $date
  */
 class Form extends CActiveRecord
@@ -44,6 +45,7 @@ class Form extends CActiveRecord
 			// array('date', 'required'),
 			array('email', 'length', 'max'=>100),
 			array('subject', 'length', 'max'=>400),
+			array('is_deleted', 'numerical', 'integerOnly'=>true),
 			array('ip_address, country_name, browser, state', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
