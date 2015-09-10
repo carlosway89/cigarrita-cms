@@ -21,7 +21,7 @@ class PanelController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','links','facebook','delete'),
+				'actions'=>array('index','language','config','users','messages','pages','posts','links','facebook','delete'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
 					),
@@ -158,6 +158,61 @@ class PanelController extends Controller
 
 		
 	}
+	public function actionPosts(){
+
+		$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
+
+		$language=Language::model()->findAll("estado=1");
+
+		$category=Category::model()->findAll();
+
+		$model=new Post();
+
+		$message=null;
+		$list=null;
+
+		
+		if (is_numeric($lang)) {
+			$id=$lang;
+
+			$model=Post::model()->findByPk($id);
+
+			$render='//post/update';
+
+		}
+		if(isset($_POST['Post']))
+		{	
+			
+			$model->attributes=$_POST['Post'];
+			$model->state=$model->state=='on'?1:0;
+
+			
+			if($model->save()){									
+				$message="Successfully Updated";
+				
+			}
+				
+		}
+		if (!is_numeric($lang)){
+			
+			$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."'");
+			$render='//post/admin';
+			
+		}
+
+		$this->render($render,array(
+			'list'=>$list,
+			'model'=>$model,
+			'message'=>$message,
+			'category'=>$category,
+			'language'=>$language,
+		));
+		
+		
+
+
+		
+	}
 	public function actionPages(){
 		
 		$model=Page::model()->findAll();
@@ -170,9 +225,12 @@ class PanelController extends Controller
 
 	public function actionLinks(){
 		
-		$lang=$this->uri(2)?$this->uri(2):"es";
+		$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
 		
 		$language=Language::model()->findAll("estado=1");
+
+		$page=Page::model()->findAll("state=1");
+		$block=Block::model()->findAll("state=1");
 		
 		$model=new Menu();
 
@@ -215,6 +273,8 @@ class PanelController extends Controller
 
 		$this->render($render,array(
 				'model'=>$model,
+				'page'=>$page,
+				'block'=>$block,
 				'language'=>$language,
 				'message'=>$message,
 				'list'=>$list,
@@ -246,6 +306,9 @@ class PanelController extends Controller
 					break;
 				case 'form':
 					$link='messages';
+					break;
+				case 'post':
+					$link='posts';
 					break;				
 				default:
 					$link=$_model;
@@ -266,19 +329,20 @@ class PanelController extends Controller
 	public function actionFacebook(){
 		
 
-		$criteria = new CDbCriteria;
 
-		$criteria->with=array('attributes0');
-        
-
-        $criteria->together = true; 
-
-
-		$model=Post::model()->findAll($criteria);
+		$model_about=Post::model()->findAll("category='fb_about'");
+		$model_feed=Post::model()->findAll("category='fb_feed'");
+		$model_contact=Post::model()->findAll("category='fb_contact'");
+		$model_events=Post::model()->findAll("category='fb_events'");
+		$model_gallery=Post::model()->findAll("category='fb_gallery'");
 
 
 		$this->render('facebook',array(
-			'model'=>$model,
+			'model_about'=>$model_about,
+			'model_feeds'=>$model_about,
+			'model_contact'=>$model_about,
+			'model_events'=>$model_about,
+			'model_gallery'=>$model_gallery
 		));
 	}
 

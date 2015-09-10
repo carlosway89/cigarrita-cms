@@ -80,6 +80,7 @@
                     <li class="has-submenu"><a href="#"><i class="fa fa-file-o"></i> <span class="nav-label">Web &amp; Pages</span></a>
                     	<ul class="list-unstyled">
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages">Web Pages</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Web Posts</a></li>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users">Web Users</a></li>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config">Web Configuration</a></li>
                         </ul>
@@ -161,7 +162,15 @@
                 $msgs=Form::model()->count("state = 'new' AND is_deleted='0'");
 
               ?>
-            	<li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-comments-o"></i> <span class="badg bg-warning"><?=$msgs?></span></a>
+            	<li class="dropdown">
+                <a href="#" data-toggle="dropdown">
+                  <i class="fa fa-comments-o"></i> 
+                  <?php
+                    if ($msgs!=0) {
+                  ?>
+                  <span class="badg bg-warning"><?=$msgs?></span>
+                  <?php }?>
+                </a>
                 	<div class="dropdown-menu md arrow pull-right panel panel-default arrow-top-right messages-dropdown">
                         <div class="panel-heading">
                       	Messages
@@ -170,7 +179,16 @@
                         <div class="list-group">
                             <?php 
 
-                            
+                            if ($msgs==0) {
+                              ?>
+                              <div class="media">
+                                <div class="media-body">
+                                  <h6 class="text-center">0 new messages</h6>
+                                </div>
+                              </div>
+
+                            <?php
+                            }
 
                             foreach ($model_message as $key => $value) {
                             ?>

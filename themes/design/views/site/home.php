@@ -3,7 +3,7 @@
 	<div class="page-gray" style="">
 		<div id="principal_background" style="padding-top:200px;{{block.source}}">
 			<!-- {{#each this.posts_list}} -->
-			<div  element-object="post" class="transito container" style="display:none"  element-post>
+			<div  element-object="post" data-type="slider" class="transito container" style="display:none"  element-post>
 				<div class="col-md-offset-3 col-md-3">
 					<h1 class="no-margin text-principal" element-editable ng-model="post.header">{{post.header}}</h1>					
 				</div>

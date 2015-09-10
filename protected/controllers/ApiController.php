@@ -9,7 +9,7 @@ class ApiController extends Controller
     // public $layout='//layouts/column2';
     private $format = 'json';
 
-    private $language_initial='es';
+    private $language_initial='en';
 
     private $uri=null;
     /**
@@ -317,33 +317,7 @@ class ApiController extends Controller
         // foreach($html->find('[data-id="subheader"]') as $element)
         //        echo "elemento: ".$element. '<br>';
 
-        $criteria = new CDbCriteria;
-
-       
-
-        $criteria->with = array(
-            'menuSubMenus.idsubMenu' => array(
-                // 'together' => true,
-                'select' => false,
-            ),
-        );
-
-
-        $model = Menu::model()->findAll($criteria);
-
-
-        $array=array();
-
-        foreach($model as $value)
-        {   
-
-            foreach($value->menuSubMenus as $post)
-            {   
-                $array[]=$post->idsubMenu;
-            }
-        }
-
-        echo CJSON::encode($array);
+        echo 'prueba';
 
     }
 
@@ -355,6 +329,7 @@ class ApiController extends Controller
 
         $profile_id=$this->uri(2);
 
+        // echo $profile_id;
         $fb=new Facebook();
 
         $response=$fb->getUserFB($profile_id);

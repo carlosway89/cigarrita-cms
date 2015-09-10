@@ -1,6 +1,6 @@
 <?php		
 	if (isset($message)) {
-		echo "<h5 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h5><br>";
+		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h6><br>";
 	}
 
 	if (isset($lang)) {
@@ -34,15 +34,22 @@
 
 		<div class="row">
 			<?php echo $form->labelEx($model,'type'); ?>
-			<select name="Menu[type]" class="browser-default">
-				<option value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll To</option>
-				<option value="new" <?=$model->type=='new'?'selected':''?> >New Tab</option>
+			<select id="type_page" name="Menu[type]" class="browser-default">
+				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll To</option>
+				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >New Tab</option>
 			</select>
 			<?php echo $form->error($model,'type'); ?>
 		</div>
 		<div class="row">
 			<?php echo $form->labelEx($model,'page'); ?>
-			<?php echo $form->textField($model,'page'); ?>
+			<select name="Menu[page]" class="browser-default">
+			<?php foreach ($page as $val_pag) {
+			 ?>			 
+			 	<option <?=$model->page==$val_pag->idpage?'selected':''?> value="<?=$val_pag->idpage?>"><?=$val_pag->name?></option>	 
+			<?php	
+			}?>
+			</select>
+			
 			<?php echo $form->error($model,'page'); ?>
 		</div>
 

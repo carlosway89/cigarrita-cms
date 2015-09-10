@@ -16,6 +16,12 @@
 
 
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/cigarrita.js"></script>
+<script type="text/javascript">
+  var beans=new Beans();
+
+  beans.createCookie('language.initial',"<?=$config->language?>",10);
+  
+</script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/app.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/router.js"></script>
 <script type="text/javascript">

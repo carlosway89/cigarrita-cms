@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-12">
@@ -9,13 +8,12 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-						<?php echo $this->renderPartial('//menu/_form', 
+						<?php echo $this->renderPartial('//post/_form', 
 							array(
 									'model'=>$model,
-									'page'=>$page,
-									'block'=>$block,
+									'message'=>$message,
+									'category'=>$category,
 									'language'=>$language,
-									'message'=>$message
 								)
 							); 
 						?>
@@ -25,6 +23,3 @@
 		</div>	
 	</div>
 </div>
-
-
-

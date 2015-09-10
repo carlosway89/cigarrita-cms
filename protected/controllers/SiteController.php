@@ -53,13 +53,16 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		// $criteria = new CDbCriteria;
-		// $criteria->limit = 1000;
-  //       $menu=Menu::model()->findAll($criteria);
 		
-		$this->render('index');
+		$is_instaled=Configuration::model()->findByPk(1)->is_installed;
+		if ($is_instaled) {
+			$this->render('index');
+		}else{
+			$this->layout='main';
+			$this->render('//panel/installation');
+			echo 'instalation....';
+		}
+		
 		
 		
 	}

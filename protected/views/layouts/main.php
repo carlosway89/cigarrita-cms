@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Cigarrita Worker - Log In</title>
+	<title>Cigarrita Worker - CMS</title>
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<meta name="description" content="Web Design and Develop, desarrollo y diseño web"/>
     <meta name="author" content="Cigarrita Worker"/>

@@ -106,11 +106,20 @@ cigarritaDirective
           $data_model=data;
         }
       });
+      var type=element.attr('data-type');
+
+      
 
       element.hover(
         function() {
 
-          element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
+          if (type=='slider') {
+            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
+          
+          }else{
+            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
+          
+          }
           
           // $compile(document.getElementById('inline-editors'))(scope);
 
@@ -334,57 +343,58 @@ cigarritaDirective
             $(element).fileinput();
             
 
-          //   $(element).find('#input').on('change',function(event){
+            $(element).find('#input').on('change',function(event){
                   
-          //       event.stopImmediatePropagation();
-          //       var files = event.target.files || event.dataTransfer.files;
+                event.stopImmediatePropagation();
+                var files = event.target.files || event.dataTransfer.files;
               
-          //       var img=files[0];
+                var img=files[0];
                 
-          //       var data = new FormData();
+                var data = new FormData();
 
-          //       data.append('images',img);
+                data.append('images',img);
 
-          //       // var serverUrl = 'https://api.parse.com/1/files/' + img.name;
-          //       var serverUrl = 'api/upload'; 
-          //       var imagen=$(element).find('.fileinput-preview.thumbnail');
+                // var serverUrl = 'https://api.parse.com/1/files/' + img.name;
+                var serverUrl = 'api/upload'; 
+                var imagen=$(element).find('.fileinput-new.thumbnail');
 
-          //        // scope.$parent[attrs.ngModel] = 'prueba'; 
-          //        // $scope.$parent.$eval(attr.ngModel)
-          //        // scope.$parent.$apply();
+                 // scope.$parent[attrs.ngModel] = 'prueba'; 
+                 // $scope.$parent.$eval(attr.ngModel)
+                 // scope.$parent.$apply();
 
-          //       // console.debug(scope.attrs.ngModel);
-          //           $.ajax({
-          //             type: "POST",
-          //             beforeSend: function(request) {
-          //               imagen.addClass('ui button loading');
-          //             },
-          //             url: serverUrl,
-          //             data: data,
-          //             processData: false,
-          //             contentType: false,
-          //             xhr: function(){
-          //               // get the native XmlHttpRequest object
-          //               var xhr = $.ajaxSettings.xhr() ;
-          //               // set the onprogress event handler
-          //               xhr.upload.onprogress = function(evt){ console.log('progress:', evt.loaded/evt.total*100) } ;
-          //               // set the onload event handler
-          //               xhr.upload.onload = function(){ console.log('DONE!') } ;
-          //               // return the customized object
-          //               return xhr ;
-          //             },
-          //             success: function(data) {     
+                // console.debug(scope.attrs.ngModel);
+                    $.ajax({
+                      type: "POST",
+                      beforeSend: function(request) {
+                        imagen.addClass('ui button loading');
+                      },
+                      url: serverUrl,
+                      data: data,
+                      processData: false,
+                      contentType: false,
+                      xhr: function(){
+                        // get the native XmlHttpRequest object
+                        var xhr = $.ajaxSettings.xhr() ;
+                        // set the onprogress event handler
+                        xhr.upload.onprogress = function(evt){ console.log('progress:', evt.loaded/evt.total*100) } ;
+                        // set the onload event handler
+                        xhr.upload.onload = function(){ console.log('DONE!') } ;
+                        // return the customized object
+                        return xhr ;
+                      },
+                      success: function(data) {     
 
-          //               scope[attrs.imageModel][attrs.imageAttribute] = data.url;                 
-          //               // scope.$parent[attrs.ngModel] = data.url; 
-          //               // scope.$parent.$apply();
-          //               $(element).find('img').attr('src',data.url);
-          //               imagen.removeClass('ui button loading');           
-          //             }
-          //           });
+                        scope['posting']['source'] = data.url;                 
+                        // scope.$parent[attrs.ngModel] = data.url; 
+                        // scope.$parent.$apply();
+                        $(element).find('img').attr('src',data.url);
+                        $(element).find('img').removeClass('ng-hide');
+                        imagen.removeClass('ui button loading');           
+                      }
+                    });
 
 
-          // });
+          });
 
 
               

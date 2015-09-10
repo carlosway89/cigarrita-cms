@@ -10,6 +10,12 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
 
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/cigarrita.js"></script>
+<script type="text/javascript">
+  var beans=new Beans();
+
+  beans.createCookie('language.initial',"<?=$config->language?>",10);
+  
+</script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/app.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/router.js"></script>
 <script type="text/javascript">

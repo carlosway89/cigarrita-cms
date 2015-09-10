@@ -25,6 +25,7 @@
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 									<td><?=$value->source?></td>
 									<td>
+										<a href="#" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;
 										<a href="#" class="text-danger"><i class="fa fa-trash-o "></i> Delete</a>
 									</td>
 								</tr>

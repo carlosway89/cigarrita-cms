@@ -68,6 +68,8 @@
         <?php echo $this->renderPartial('//menu/_form', 
 			array(
 					'model'=>$model,
+					'page'=>$page,
+					'block'=>$block,
 					'language'=>$language,
 					'lang'=>$lang
 				)

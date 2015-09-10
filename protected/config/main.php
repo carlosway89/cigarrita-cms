@@ -36,6 +36,13 @@ return array(
 
 	// application components
 	'components'=>array(
+		'db'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=cigarritaworker_v2',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '150189',
+			'charset' => 'utf8',
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -62,6 +69,7 @@ return array(
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/safeDelete', 'pattern'=>'api/<model:\w+>/safe/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/formContact', 'pattern'=>'api/formContact', 'verb'=>'POST'),
+		        array('api/upload', 'pattern'=>'api/upload', 'verb'=>'POST'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),		        
 		        // Other controllers
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
@@ -75,13 +83,7 @@ return array(
 		// ),
 		// uncomment the following to use a MySQL database
 		
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=cigarritaworker_v2',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '150189',
-			'charset' => 'utf8',
-		),
+		
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

@@ -11,9 +11,7 @@ var cigarritaApp = angular.module('cigarritaWeb', [
   'cigarritaServices'
 ]);
 
-var beans=new Beans();
 
-beans.createCookie('language.initial','es',10);
 
 // document.desingMode="on";
 

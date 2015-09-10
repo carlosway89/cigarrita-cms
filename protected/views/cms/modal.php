@@ -1,7 +1,7 @@
 <div id="modal_post" class="ui small modal_cw">
   <i class="close icon closing">&#x2716;</i>
   <div class="header">
-    Post Detail
+    Detail
   </div>
   <div class="content">
     <div class="description">
@@ -28,9 +28,9 @@
                   <span class="btn btn-default btn-file">
                     <span class="fileinput-new">Upload image</span>
                     <span class="fileinput-exists">Change</span>
-                    <input id="background_modal_input" type="file" name="image" ng-model="posting.source">
+                    <input id="input" type="file" name="image" ng-model="posting.source">
                 </span>
-                  <a href="javascript:;;"  class="btn btn-default"  ng-show="posting.source?true:false">Remove</a>
+                  <!-- <a href="javascript:;;"  class="btn btn-default"  ng-show="posting.source?true:false">Remove</a> -->
                 </div>
               </div>
             </div>  

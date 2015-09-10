@@ -1,5 +1,5 @@
 <?php 
-  $config=Configuration::model()->find();
+  $config=Configuration::model()->findByPk(1);
   $criteria = new CDbCriteria;
   $criteria->condition="language = '$config->language' and state=1 AND is_deleted=0";
   $criteria->limit = 1000;
@@ -10,7 +10,7 @@
   $request=Yii::app()->request->baseUrl;
 ?>
 <!DOCTYPE html>
-<html ng-app="cigarritaWeb">
+<html ng-app="cigarritaWeb" lang="<?=$config->language?>">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
