@@ -39,6 +39,41 @@ $(function(){
 
 	location_hash();
 	
+	$('.lang-switch').on('change',function(event){
+
+		var $this=$(event.currentTarget);
+		
+
+		var new_state=$this.attr('checked')!=undefined?0:1; //contrarie to the current state
+		var id=$this.attr('data-id'); //contrarie to the current state
+
+		$this.attr('disabled','disabled');
+
+		var serverUrl = $baseURL+'/change/'+id;
+
+
+
+		var data = new FormData();
+
+        data.append('estado',new_state);
+
+		$.ajax({
+          type: "POST",
+          url: serverUrl,
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(data) {     
+          	setTimeout(function(){
+          		$this.removeAttr('disabled');
+          	},1000);
+          	
+          }
+        });
+
+		console.log($this.attr('checked'));
+
+	})
 	
 	
 	

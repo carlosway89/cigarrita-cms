@@ -119,7 +119,7 @@
             <nav class=" navbar-default hidden-xs" role="navigation">
               <?php 
 
-                $model_language=Language::model()->findAll();
+                $model_language=Language::model()->findAll("is_deleted='0'");
 
               ?>
                 <ul class="nav navbar-nav">
@@ -134,7 +134,7 @@
                         <div class="switch">
                           <label>
                             Off
-                            <input type="checkbox" data-value="<?=$value->min?>" <?=$value->estado?'checked="checked"':''?>>
+                            <input class="lang-switch" type="checkbox" data-value="<?=$value->min?>" data-id="<?=$value->idlanguage?>" <?=$value->estado?'checked="checked"':''?>>
                             <span class="lever"></span>
                             On
                           </label>
@@ -143,7 +143,7 @@
                     </li>
                     <?php } ?>
                     <li class="divider"></li>
-                    <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language">+ Add New Language</a></li>
+                    <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language#modal_language">+ Add New Language</a></li>
                   </ul>
                 </li>
               </ul>
@@ -303,7 +303,9 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
     <!-- Cigarrita JQuery -->
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/cigarrita.js" type="text/javascript"></script>
-
+  <script type="text/javascript">
+     var $baseURL="<?=Yii::app()->getBaseUrl(true)?>/panel";
+  </script>
     <!-- Custom JQuery -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/app/custom.js" type="text/javascript"></script>
     

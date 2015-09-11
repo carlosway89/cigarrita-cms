@@ -628,7 +628,7 @@ class ApiController extends Controller
     public function actionFlag(){
 
         
-        $dir=$_SERVER['DOCUMENT_ROOT'].'/flags/4x3';
+        $dir=$_SERVER['DOCUMENT_ROOT'].'/assets/editor/flags/4x3';
 
         $files = scandir($dir);
         $rows = array();

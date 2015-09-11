@@ -1,6 +1,9 @@
 <?php
 // Pass session data over.
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
+// session_start();
  
 // Include the required dependencies.
 require_once( 'vendor/autoload.php' );
@@ -11,6 +14,18 @@ use Facebook\FacebookRedirectLoginHelper;
 use Facebook\GraphUser;
 use Facebook\FacebookJavaScriptLoginHelper;
 use Facebook\FacebookCanvasLoginHelper;
+
+// use Facebook\FacebookSession;
+// use Facebook\FacebookRedirectLoginHelper;
+// use Facebook\FacebookRequest;
+use Facebook\FacebookResponse;
+use Facebook\FacebookSDKException;
+use Facebook\FacebookRequestException;
+use Facebook\FacebookAuthorizationException;
+use Facebook\GraphObject;
+use Facebook\Entities\AccessToken;
+use Facebook\HttpClients\FacebookCurlHttpClient;
+use Facebook\HttpClients\FacebookHttpable;
 
 class Facebook
 {
@@ -32,10 +47,10 @@ class Facebook
      // $request = new FacebookRequest($session, 'GET', '/me');
       // $response = $request->execute();
       // $graphObject = $response->getGraphObject();
-    //   $session = new FacebookSession('1fc89210bcc967bbfacea34ce1f887da');
-    	// get all events from page ex. /170064513039636/events?since=2010&until=now&&fields=cover,name,description,place
-      //get acces token information user as well /me/accounts
-    //   // Get the GraphUser object for the current user:
+      //   $session = new FacebookSession('1fc89210bcc967bbfacea34ce1f887da');
+      	// get all events from page ex. /170064513039636/events?since=2010&until=now&&fields=cover,name,description,place
+        //get acces token information user as well /me/accounts
+      //   // Get the GraphUser object for the current user:
 
       //query to get all the public information
       //170064513039636?fields=cover,about,company_overview,mission,founded,emails,location,description,phone,category,posts.limit(5),events.limit(5).fields(cover,name,description,place).since(2014),photos.fields(picture,source),albums.limit(10).fields(name,photos.limit(10).fields(picture,source))
@@ -91,6 +106,53 @@ class Facebook
         echo " with message: " . $e->getMessage();
 
         // Some other error occurred
+      }
+
+    }
+
+    function loginFB($config){
+
+      FacebookSession::setDefaultApplication('476476699176242', '174386d2f46e1fabb3dadb1090da4b39');
+      
+      // login helper with redirect_uri
+      $base_url=Yii::app()->getBaseUrl(true)."/panel/facebook";
+
+      $helper = new FacebookRedirectLoginHelper($base_url);
+
+      try {
+        $session = $helper->getSessionFromRedirect();
+      } catch( FacebookRequestException $ex ) {
+        // When Facebook returns an error
+      } catch( Exception $ex ) {
+        // When validation fails or other local issues
+      }
+      // see if we have a session
+      if ( isset( $session ) ) {
+        // graph api request for user data
+        $request = new FacebookRequest( $session, 'GET', '/me?fields=id,name,accounts' );
+        $response = $request->execute();
+        // get response
+        $graphObject = $response->getGraphObject();
+           $fbid = $graphObject->getProperty('id');              // To Get Facebook ID
+           $fbfullname = $graphObject->getProperty('name'); // To Get Facebook full name
+           $fbpages = $graphObject->getProperty('accounts');   
+           // $singlePage  = $fbpages['data']['0'];
+           // $pageID = $singlePage['id'];
+           
+       /* ---- Session Variables -----*/
+           // Yii::app()->user->setState('FBID',$fbid);  
+            $config->id_facebook_page=json_encode($fbpages);
+            $config->id_facebook=$fbid;
+           $config->save();
+
+
+        //checkuser($fuid,$ffname,$femail);
+        // header("Location: $base_url");
+           return $base_url;
+      } else {
+          $loginUrl = $helper->getLoginUrl(array('scope' => 'manage_pages'));
+          return $loginUrl;
+       // header("Location: ".$loginUrl);
       }
 
     }

@@ -21,7 +21,7 @@ class PanelController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','posts','links','facebook','delete'),
+				'actions'=>array('index','language','config','users','messages','pages','posts','links','facebook','delete','change'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
 					),
@@ -60,17 +60,333 @@ class PanelController extends Controller
         return isset($uri[$i])?$uri[$i]:false;
     }
 
+    public function flags(){
 
-	public function actionLanguage(){
+        
+        $dir=$_SERVER['DOCUMENT_ROOT'].'/assets/editor/flags/4x3';
+
+        $files = scandir($dir);
+        $rows = array();
+
+        $country=array("ad"=>"Andorra",
+          "ae"=>"United Arab Emirates",
+          "af"=>"Afghanistan",
+          "ag"=>"Antigua",
+          "ai"=>"Anguilla",
+          "al"=>"Albania",
+          "am"=>"Armenia",
+          "an"=>"Netherlands Antilles",
+          "ao"=>"Angola",
+          "ar"=>"Argentina",
+          "as"=>"American Samoa",
+          "at"=>"Austria",
+          "au"=>"Australia",
+          "aw"=>"Aruba",
+          "ax"=>"Aland Islands",
+          "az"=>"Azerbaijan",
+          "ba"=>"Bosnia",
+          "bb"=>"Barbados",
+          "bd"=>"Bangladesh",
+          "be"=>"Belgium",
+          "bf"=>"Burkina Faso",
+          "bg"=>"Bulgaria",
+          "bh"=>"Bahrain",
+          "bi"=>"Burundi",
+          "bj"=>"Benin",
+          "bm"=>"Bermuda",
+          "bn"=>"Brunei",
+          "bo"=>"Bolivia",
+          "br"=>"Brazil",
+          "bs"=>"Bahamas",
+          "bt"=>"Bhutan",
+          "bv"=>"Bouvet Island",
+          "bw"=>"Botswana",
+          "by"=>"Belarus",
+          "bz"=>"Belize",
+          "ca"=>"Canada",
+          "cc"=>"Cocos Islands",
+          "cd"=>"Congo",
+          "cf"=>"Central African Republic",
+          "cg"=>"Congo Brazzaville",
+          "ch"=>"Switzerland",
+          "ci"=>"Cote lioire",
+          "ck"=>"Cook Islands",
+          "cl"=>"Chile",
+          "cm"=>"Cameroon",
+          "cn"=>"China",
+          "co"=>"Colombia",
+          "cr"=>"Costa Rica",
+          "cs"=>"Serbia",
+          "cu"=>"Cuba",
+          "cv"=>"Cape Verde",
+          "cx"=>"Christmas Island",
+          "cy"=>"Cyprus",
+          "cz"=>"Czech Republic",
+          "de"=>"Germany",
+          "dj"=>"Djibouti",
+          "dk"=>"Denmark",
+          "dm"=>"Dominica",
+          "do"=>"Dominican Republic",
+          "dz"=>"Algeria",
+          "ec"=>"Ecuador",
+          "ee"=>"Estonia",
+          "eg"=>"Egypt",
+          "eh"=>"Western Sahara",
+          "er"=>"Eritrea",
+          "es"=>"Spain",
+          "et"=>"Ethiopia",
+          "eu"=>"European Union",
+          "fi"=>"Finland",
+          "fj"=>"Fiji",
+          "fk"=>"Falkland Islands",
+          "fm"=>"Micronesia",
+          "fo"=>"Faroe Islands",
+          "fr"=>"France",
+          "ga"=>"Gabon",
+          "gb"=>"England",
+          "gd"=>"Grenada",
+          "ge"=>"Georgia",
+          "gf"=>"French Guiana",
+          "gh"=>"Ghana",
+          "gi"=>"Gibraltar",
+          "gl"=>"Greenland",
+          "gm"=>"Gambia",
+          "gn"=>"Guinea",
+          "gp"=>"Guadeloupe",
+          "gq"=>"Equatorial Guinea",
+          "gr"=>"Greece",
+          "gs"=>"Sandwich Islands",
+          "gt"=>"Guatemala",
+          "gu"=>"Guam",
+          "gw"=>"Guinea-Bissau",
+          "gy"=>"Guyana",
+          "hk"=>"Hong Kong",
+          "hm"=>"Heard Island",
+          "hn"=>"Honduras",
+          "hr"=>"Croatia",
+          "ht"=>"Haiti",
+          "hu"=>"Hungary",
+          "id"=>"Indonesia",
+          "ie"=>"Ireland",
+          "il"=>"Israel",
+          "in"=>"India",
+          "io"=>"Indian Ocean Territory",
+          "iq"=>"Iraq",
+          "ir"=>"Iran",
+          "is"=>"Iceland",
+          "it"=>"Italy",
+          "jm"=>"Jamaica",
+          "jo"=>"Jordan",
+          "jp"=>"Japan",
+          "ke"=>"Kenya",
+          "kg"=>"Kyrgyzstan",
+          "kh"=>"Cambodia",
+          "ki"=>"Kiribati",
+          "km"=>"Comoros",
+          "kn"=>"Saint Kitts and Nevis",
+          "kp"=>"North Korea",
+          "kr"=>"South Korea",
+          "kw"=>"Kuwait",
+          "ky"=>"Cayman Islands",
+          "kz"=>"Kazakhstan",
+          "la"=>"Laos",
+          "lb"=>"Lebanon",
+          "lc"=>"Saint Lucia",
+          "li"=>"Liechtenstein",
+          "lk"=>"Sri Lanka",
+          "lr"=>"Liberia",
+          "ls"=>"Lesotho",
+          "lt"=>"Lithuania",
+          "lu"=>"Luxembourg",
+          "lv"=>"Latvia",
+          "ly"=>"Libya",
+          "ma"=>"Morocco",
+          "mc"=>"Monaco",
+          "md"=>"Moldova",
+          "me"=>"Montenegro",
+          "mg"=>"Madagascar",
+          "mh"=>"Marshall Islands",
+          "mk"=>"MacEdonia",
+          "ml"=>"Mali",
+          "ar"=>"Burma",
+          "mn"=>"Mongolia",
+          "mo"=>"MacAu",
+          "mp"=>"Northern Mariana Islands",
+          "mq"=>"Martinique",
+          "mr"=>"Mauritania",
+          "ms"=>"Montserrat",
+          "mt"=>"Malta",
+          "mu"=>"Mauritius",
+          "mv"=>"Mallies",
+          "mw"=>"Malawi",
+          "mx"=>"Mexico",
+          "my"=>"Malaysia",
+          "mz"=>"Mozambique",
+          "na"=>"Namibia",
+          "nc"=>"New Caledonia",
+          "ne"=>"Niger",
+          "nf"=>"Norfolk Island",
+          "ng"=>"Nigeria",
+          "ni"=>"Nicaragua",
+          "nl"=>"Netherlands",
+          "no"=>"Norway",
+          "np"=>"Nepal",
+          "nr"=>"Nauru",
+          "nu"=>"Niue",
+          "nz"=>"New Zealand",
+          "om"=>"Oman",
+          "pa"=>"Panama",
+          "pe"=>"Peru",
+          "pf"=>"French Polynesia",
+          "pg"=>"New Guinea",
+          "ph"=>"Philippines",
+          "pk"=>"Pakistan",
+          "pl"=>"Poland",
+          "pm"=>"Saint Pierre",
+          "pn"=>"Pitcairn Islands",
+          "pr"=>"Puerto Rico",
+          "ps"=>"Palestine",
+          "pt"=>"Portugal",
+          "pw"=>"Palau",
+          "py"=>"Paraguay",
+          "qa"=>"Qatar",
+          "re"=>"Reunion",
+          "ro"=>"Romania",
+          "rs"=>"Serbia",
+          "ru"=>"Russia",
+          "rw"=>"Rwanda",
+          "sa"=>"Saudi Arabia",
+          "sb"=>"Solomon Islands",
+          "sc"=>"Seychelles",
+          "sd"=>"Sudan",
+          "se"=>"Sweden",
+          "sg"=>"Singapore",
+          "sh"=>"Saint Helena",
+          "si"=>"Slovenia",
+          "sj"=>"Svalbard, I flag Jan Mayen",
+          "sk"=>"Slovakia",
+          "sl"=>"Sierra Leone",
+          "sm"=>"San Marino",
+          "sn"=>"Senegal",
+          "so"=>"Somalia",
+          "sr"=>"Suriname",
+          "st"=>"Sao Tome",
+          "sv"=>"El Salvador",
+          "sy"=>"Syria",
+          "sz"=>"Swaziland",
+          "tc"=>"Caicos Islands",
+          "td"=>"Chad",
+          "tf"=>"French Territories",
+          "tg"=>"Togo",
+          "th"=>"Thailand",
+          "tj"=>"Tajikistan",
+          "tk"=>"Tokelau",
+          "tl"=>"Timorleste",
+          "tm"=>"Turkmenistan",
+          "tn"=>"Tunisia",
+          "to"=>"Tonga",
+          "tr"=>"Turkey",
+          "tt"=>"Trinidad",
+          "tv"=>"Tuvalu",
+          "tw"=>"Taiwan",
+          "tz"=>"Tanzania",
+          "ua"=>"Ukraine",
+          "ug"=>"Uganda",
+          "um"=>"Us Minor Islands",
+          "us"=>"United States",
+          "uy"=>"Uruguay",
+          "uz"=>"Uzbekistan",
+          "va"=>"Vatican City",
+          "vc"=>"Saint Vincent",
+          "ve"=>"Venezuela",
+          "vg"=>"British Virgin Islands",
+          "vi"=>"Us Virgin Islands",
+          "vn"=>"Vietnam",
+          "vu"=>"Vanuatu",
+          "wf"=>"Wallis and Futuna",
+          "ws"=>"Samoa",
+          "ye"=>"Yemen",
+          "yt"=>"Mayotte",
+          "za"=>"South Africa",
+          "zm"=>"Zambia",
+          "zw"=>"Zimbabwe");
+
+        foreach ($files as $key => $value) {
+            if ( $value!="." && $value!="..") {
+                // $rows[] = 'value';
+               $value=str_replace('.svg', '', $value);
+               $rows[] = ['name'=>$value,'flag'=>$country[$value]];
+            }
+            
+        }                 
+
+        return $rows;
+        // $this->_sendResponse(200, CJSON::encode($rows));
+
+    }
+
+	public function actionLanguage($id=null){
 		
-		$model=Language::model()->findAll();
+		
+		$list=null;
+		
+		$message=null;
+		$model=new Language();
+		
+		$flags=$this->flags();
+
+		if (is_numeric($id)) {
+
+			$model=Language::model()->findByPk($id);
+
+			$render='//language/update';
+
+		}
+
+		if(isset($_POST['Language']))
+		{	
+			
+			$model->attributes=$_POST['Language'];
+			$model->estado=$model->estado=='on'?1:0;
+			$model->min=$model->flag;
+
+			
+			if($model->save()){									
+				$message="Successfully Updated";
+				
+			}
+				
+		}
+
+		if (!is_numeric($id)) {
+
+			$list=Language::model()->findAll("is_deleted='0'");
+
+			$render='//language/admin';
+
+		}
 
 
-		$this->render('//language/admin',array(
+		
+		$this->render($render,array(
 			'model'=>$model,
+			'list'=>$list,
+			'flags'=>$flags,
+			'message'=>$message
 		));
 	}
 
+	public function actionChange($id=null){
+
+		$model=Language::model()->findByPk($id);
+
+		if (isset($_POST['estado'])) {
+			$model->estado=$_POST['estado'];
+			$model->save();
+		}
+
+
+	}
 	public function actionUsers($id=null){
 		
 		$model=new User();
@@ -162,7 +478,7 @@ class PanelController extends Controller
 
 		$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
 
-		$language=Language::model()->findAll("estado=1");
+		$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
 		$category=Category::model()->findAll();
 
@@ -227,7 +543,7 @@ class PanelController extends Controller
 		
 		$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
 		
-		$language=Language::model()->findAll("estado=1");
+		$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
 		$page=Page::model()->findAll("state=1");
 		$block=Block::model()->findAll("state=1");
@@ -329,20 +645,32 @@ class PanelController extends Controller
 	public function actionFacebook(){
 		
 
+		
 
 		$model_about=Post::model()->findAll("category='fb_about'");
 		$model_feed=Post::model()->findAll("category='fb_feed'");
 		$model_contact=Post::model()->findAll("category='fb_contact'");
 		$model_events=Post::model()->findAll("category='fb_events'");
 		$model_gallery=Post::model()->findAll("category='fb_gallery'");
+		
+		$config=Configuration::model()->findByPk(1);
 
+		if(isset($_POST['login']) || isset($_GET['code']) )
+		{
+			$facebook = new Facebook();
+			
+    		$redirect=$facebook->loginFB($config);
+    		$this->redirect($redirect);
+		}		
+    	
 
 		$this->render('facebook',array(
 			'model_about'=>$model_about,
 			'model_feeds'=>$model_about,
 			'model_contact'=>$model_about,
 			'model_events'=>$model_about,
-			'model_gallery'=>$model_gallery
+			'model_gallery'=>$model_gallery,
+			'config'=>$config
 		));
 	}
 
@@ -350,7 +678,7 @@ class PanelController extends Controller
 		
 		$model=Configuration::model()->findByPk(1);
 
-		$language=Language::model()->findAll("estado=1");
+		$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
 		if(isset($_POST['Configuration']))
 		{	

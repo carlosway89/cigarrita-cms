@@ -46,7 +46,7 @@ class Configuration extends CActiveRecord
 			array('title, analytic_id', 'length', 'max'=>100),
 			// array('logo', 'length', 'max'=>200),
 			array('logo', 'file', 'types'=>'jpg, gif, png', 'safe' => false, 'allowEmpty'=>true,'on' => 'update'),
-			array('description', 'length', 'max'=>400),
+			array('description,id_facebook,id_facebook_page', 'length', 'max'=>400),
 			array('language', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -79,6 +79,8 @@ class Configuration extends CActiveRecord
 			'analytic_id' => 'Analytic',
 			'keywords' => 'Keywords',
 			'is_installed' => 'Is Installed',
+			'id_facebook' => 'ID Facebook User',
+			'id_facebook_page' => 'ID Facebook page',
 		);
 	}
 
@@ -101,6 +103,8 @@ class Configuration extends CActiveRecord
 		$criteria->compare('analytic_id',$this->analytic_id,true);
 		$criteria->compare('keywords',$this->keywords,true);
 		$criteria->compare('is_installed',$this->is_installed);
+		$criteria->compare('id_facebook',$this->id_facebook);
+		$criteria->compare('id_facebook_page',$this->id_facebook_page);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -39,7 +39,7 @@ class Language extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			// array('min', 'required'),
-			array('estado', 'numerical', 'integerOnly'=>true),
+			array('estado, is_deleted', 'numerical', 'integerOnly'=>true),
 			array('min', 'length', 'max'=>4),
 			array('name, flag', 'length', 'max'=>45),
 			// The following rule is used by search().
@@ -70,6 +70,7 @@ class Language extends CActiveRecord
 			'name' => 'Name',
 			'flag' => 'Flag',
 			'estado' => 'Estado',
+			'is_deleted' => 'Is Delete',
 		);
 	}
 
@@ -89,6 +90,7 @@ class Language extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('flag',$this->flag,true);
 		$criteria->compare('estado',$this->estado);
+		$criteria->compare('is_deleted',$this->is_deleted);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
