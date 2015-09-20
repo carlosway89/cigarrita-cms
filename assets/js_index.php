@@ -1,7 +1,18 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/css/flag-icon.min.css">
 
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.min.js"></script> -->
+<script>
+  if(!window.jQuery)
+  {
+     var script = document.createElement('script');
+     script.type = "text/javascript";
+     script.src = "https://code.jquery.com/jquery-2.1.0.min.js";
+     document.getElementsByTagName('head')[0].appendChild(script);
+  }
+</script>
 <!--[/cigarrita Angular Path]-->
 <script type="text/javascript">
+
 	var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
 </script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>

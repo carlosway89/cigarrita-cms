@@ -78,7 +78,8 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
 
 
     var obj_lang={
-      state:1
+      state:1,
+      is_deleted:0
     };
 
     Model.query({
@@ -94,6 +95,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
     var links=function(){
       var obj_link={
         state:1,
+        is_deleted:0,
         language:beans.readCookie('language.initial')
       };
 

@@ -27,7 +27,7 @@
 	</div>
 	<div class="row">
 
-			<?php echo $form->labelEx($model,'state'); ?>
+			<?php echo $form->labelEx($model,'estado'); ?>
 			<div class="switch">
               <label>
                 Off
@@ -36,7 +36,7 @@
                 On
               </label>
             </div>
-			<?php echo $form->error($model,'state'); ?>
+			<?php echo $form->error($model,'estado'); ?>
 		</div>
 
 	<div class="row">

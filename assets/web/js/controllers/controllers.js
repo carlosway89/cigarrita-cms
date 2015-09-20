@@ -2,7 +2,8 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
 
 
     var obj_lang={
-      state:1
+      state:1,
+      is_deleted:0
     };
 
     Model.query({
@@ -18,6 +19,7 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
     var links=function(){
       var obj_link={
         state:1,
+        is_deleted:0,
         language:beans.readCookie('language.initial')
       };
 
@@ -39,11 +41,19 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
       var record = new Model({
           model:'formContact'
       });
-
+      
+      var alert=$('#alert-msg');
       // console.log(contact_model);
       record = $.extend(record, contact_model);
       record.$save(function(record){
-        console.log(record);
+
+        alert.fadeOut();
+        setTimeout(function(){
+            alert.fadeIn();
+        },1000);
+
+        // console.log(record);
+
       });
 
     })

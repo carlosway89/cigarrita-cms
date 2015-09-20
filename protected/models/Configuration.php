@@ -41,7 +41,7 @@ class Configuration extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, logo, description, language, analytic_id, keywords, is_installed', 'required'),
+			array('title, logo, description, language, keywords, is_installed', 'required'),
 			array('is_installed', 'numerical', 'integerOnly'=>true),
 			array('title, analytic_id', 'length', 'max'=>100),
 			// array('logo', 'length', 'max'=>200),

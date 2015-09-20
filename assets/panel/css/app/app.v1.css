@@ -1598,3 +1598,10 @@ Just For Demo / Showcase
     border: 1px solid #CCC !important;
     box-shadow: none !important;
 }
+
+.page-has-block{
+	border: 1px solid rgba(0,0,0,0.4);
+	border-radius: 10px;
+	padding: 10px;
+	margin: 5px;
+}

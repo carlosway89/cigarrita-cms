@@ -72,8 +72,12 @@ cigarritaDirective
       attrs.$set('elementPost', null);
       
       var classes=$(element).attr('class');
-      $('<div class="'+classes+' text-center inline-add"><a id="new" data-category="'+scope.block.category+'" href="javascript:;;" class="plus-gray" ><span>+</span><label>Add New</label></a></div>').insertAfter(element);
 
+      var show=element.attr('data-add-hide');
+
+      if (!show) {
+        $('<div class="'+classes+' text-center inline-add"><a id="new" data-category="'+scope.block.category+'" href="javascript:;;" class="plus-gray" ><span>+</span><label>Add New</label></a></div>').insertAfter(element);
+      }
       
       $compile(element)(scope);
       
@@ -108,6 +112,7 @@ cigarritaDirective
       });
       var type=element.attr('data-type');
 
+      console.log(scope);
       
 
       element.hover(

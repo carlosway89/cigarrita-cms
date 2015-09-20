@@ -529,14 +529,66 @@ class PanelController extends Controller
 
 		
 	}
-	public function actionPages(){
+	public function actionPages($id=null){
 		
-		$model=Page::model()->findAll();
+		
+		$model=new Page();
 
+		$message=null;
+		$list=null;
 
-		$this->render('//page/admin',array(
+		if (Yii::app()->user->checkAccess("webmaster")) {
+			
+
+			if (is_numeric($id)) {
+
+				$model=Page::model()->findByPk($id);
+				
+				$root=$_SERVER['DOCUMENT_ROOT'];
+				$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+				// $file = new SplFileObject($root.'/themes/design/views/site/home'.'.php','w+');
+
+				$model->source=$source;
+
+				$render='//page/update';
+
+			}
+
+			if(isset($_POST['Page']))
+			{	
+				
+				$model->attributes=$_POST['Page'];
+				$model->state=$model->state=='on'?1:0;
+				$model->source="";
+				
+				if($model->save()){									
+					$message="Successfully Updated";
+					$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+					$model->source=$source;
+				}
+					
+			}
+		}
+		else{
+			// $list=Page::model()->findAll("is_deleted='0'");
+			$render='//page/admin';
+			// $this->redirect(array('panel/pages'));
+		}
+
+		if (!is_numeric($id)){
+			
+			$list=Page::model()->findAll("is_deleted='0'");
+			$render='//page/admin';
+			
+		}
+
+		$this->render($render,array(
+			'list'=>$list,
 			'model'=>$model,
+			'message'=>$message,
 		));
+
+		
 	}
 
 	public function actionLinks(){
@@ -625,6 +677,12 @@ class PanelController extends Controller
 					break;
 				case 'post':
 					$link='posts';
+					break;
+				case 'page':
+					$link='pages';
+					break;	
+				case 'block':
+					$link='pages';
 					break;				
 				default:
 					$link=$_model;
@@ -688,15 +746,29 @@ class PanelController extends Controller
 
 			
 			if($model->save()){	
-				$new_name_logo = rand(1000,9999).time(); // rand(1000,9999) optional
-				$new_name_logo = 'files/'.md5($new_name_logo).'.jpg'; //optional
+				
 				$model->logo=CUploadedFile::getInstance($model,'logo');
 				if ( (is_object($model->logo) && get_class($model->logo)==='CUploadedFile')){
+					$type=$model->logo->getType();
+					switch ($type) {
+						case 'image/jpeg':
+							$type=".jpg";
+							break;
+						case 'image/png':
+							$type=".png";
+							break;
+						case 'image/gif':
+							$type=".gif";
+							break;
+					}
+					$new_name_logo = rand(1000,9999).time(); // rand(1000,9999) optional
+					$new_name_logo = 'files/'.md5($new_name_logo).$type; //optional
+
 					$model->logo->saveAs($new_name_logo);
 					$model->logo=$new_name_logo;
 					$model->save();	
-				}					
-								
+				}				
+
 				$message="Successfully Updated";
 				$this->redirect(array('config','message'=>$message));
 			}

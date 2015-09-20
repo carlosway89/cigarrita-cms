@@ -55,6 +55,13 @@
 	border-radius: 20px;
 	border: 1px dashed rgba(0, 0, 0, 0.2);
 	background-color: rgba(0, 0, 0, 0.04);
+	text-align: center !important;
+	position: relative;
+	z-index: 20000;
+	text-decoration: none !important;
+}
+.inline-add a{
+	text-decoration: none !important;	
 }
 #inline-editors{
 	position:absolute;

@@ -90,6 +90,37 @@
 			var beans=new Beans();
 	        beans.generate_data_table('menulList');
 	        
+	        var select_type=function(){
+
+				if ($('select#type_page option#scroll_page').is(':selected')) {
+					$('#url_page').show();
+					$('#Menu_url').val("/"+$("#url_page option:selected").text());
+				}else{
+					$('#url_page').hide();
+					$('#Menu_url').val("/"+$("#page_name option:selected").text());
+				}
+			}
+
+			select_type();
+
+			$("select#type_page").on('change',function(){
+				select_type();
+			});
+
+			$("select#page_name").on('change',function(){
+				if (!$('select#type_page option#scroll_page').is(':selected')) {
+					$('#Menu_url').val("/"+$("#page_name option:selected").text());
+				}
+				
+			});
+
+			$("select#url_page").on('change',function(){
+				if ($('select#type_page option#scroll_page').is(':selected')) {
+					$('#Menu_url').val("/"+$("#url_page option:selected").text());
+				}
+				
+			});
+		
 	    },200);
 	};
 	

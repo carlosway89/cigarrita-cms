@@ -563,10 +563,15 @@ class ApiController extends Controller
 
                         if($_block->hasAttribute($key))
                             $condition[]="blockIdblock.".$key."='".$value."'";
-
-                        if ($_post->hasAttribute($key)) 
-                            $condition[]="posts.".$key."='".$value."'";
-                          
+                       
+                        // if ($_post->hasAttribute($key)) {
+                        //     if ($key!="language") {
+                        //        $condition[]="posts.".$key."='".$value."'";
+                        //     }
+                            
+                        // }
+                            
+                        
                         
                     }
                 }       
@@ -604,16 +609,18 @@ class ApiController extends Controller
                 
                 foreach ($has_block->blockIdblock->category0->posts as $key_post => $has_post) {
 
-                    $subarray[]=$has_post->attributes;
+                    if ($filter->language==$has_post->language && $filter->state==$has_post->state && $filter->is_deleted==$has_post->is_deleted ){
 
-                    /* [if has extra attributes] */
-                    foreach ($has_post->attributes0 as $key_attr => $has_attr) { 
-                        $attr=$has_attr;                     
-                        $attr_val=CJSON::decode($attr->value)!=null?CJSON::decode($attr->value):$attr->value;
-                        $subarray[$key_post]=array_merge($subarray[$key_post],array($attr->key=>$attr_val));                        
+                        $subarray[]=$has_post->attributes;
+                        /* [if has extra attributes] */
+                        foreach ($has_post->attributes0 as $key_attr => $has_attr) { 
+                            $attr=$has_attr;                     
+                            $attr_val=CJSON::decode($attr->value)!=null?CJSON::decode($attr->value):$attr->value;
+                            $subarray[$key_post]=array_merge($subarray[$key_post],array($attr->key=>$attr_val));                        
 
+                        }
+                        /* [end extra attributes] */
                     }
-                    /* [end extra attributes] */
 
                 }
 
@@ -681,7 +688,6 @@ class ApiController extends Controller
             $model->ip_address = $this->getRealIP();
             $model->country_name = $country->getCountryFromIP($this->getRealIP(), " NamE ");;
             $model->browser = $_SERVER['HTTP_USER_AGENT'];
-            $model->device = '';
 
         // Try to save the model
         if($model->save()) {
