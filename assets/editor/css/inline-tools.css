@@ -348,11 +348,14 @@
 
 .ui.active.modal_cw {
   display: block;
-  z-index: 10000 !important;
+  z-index: 100000 !important;
 }
 .ui.in.modal_cw {
   display: block;
-  z-index: 10000 !important;
+  z-index: 100000 !important;
+}
+.note-editor .note-editable {
+  background-color: #CCC;
 }
 
 

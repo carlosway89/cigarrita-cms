@@ -39,7 +39,7 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('category, tag', 'required'),
+			array('category', 'required'),
 			array('category', 'length', 'max'=>10),
 			array('tag', 'length', 'max'=>100),
 			// The following rule is used by search().

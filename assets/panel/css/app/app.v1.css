@@ -1605,3 +1605,17 @@ Just For Demo / Showcase
 	padding: 10px;
 	margin: 5px;
 }
+.note-editor .note-editable {
+	    background-color: #CCC;
+	}
+.note-link-dialog.modal,.note-image-dialog.modal,.note-help-dialog.modal{
+	z-index: 1000000;
+	background-color: transparent;
+	box-shadow: none;
+	overflow:hidden;
+	width: inherit;
+	max-height: inherit;
+}
+.note-help-dialog.modal{
+	overflow-y:scroll;
+}

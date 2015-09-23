@@ -35,7 +35,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<textarea class="materialize-textarea" name="Page[source]" style="height: 360px;overflow-y: scroll;background-color: rgba(0, 0, 0, 0.8);
+			<textarea class="materialize-textarea summernote" name="Page[source]" style="height: 360px;overflow-y: scroll;background-color: rgba(0, 0, 0, 0.8);
 color: #66AFE9;" ><?=$model->source?></textarea>
 		</div>
 	</div>

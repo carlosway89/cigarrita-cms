@@ -222,8 +222,16 @@ $(function(){
 		$('.wysihtml').wysihtml5();
 	}
 	
-	
-	
+	/******************************
+	summernote Bootstrap
+	*******************************/
+	if( $.isFunction($.fn.summernote) ){
+		$('.summernote').summernote({
+	      height: 200,
+	      
+	  });
+	}
+
 	/********************************
 	wysihtml5
 	********************************/

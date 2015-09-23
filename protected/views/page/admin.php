@@ -8,6 +8,18 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
+						<?php		
+						if (isset($message)) {
+							echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h6><br>";
+						}
+						?>	
+						<?php if (Yii::app()->user->checkAccess("webmaster")) {
+										?>
+						<button type="button" data-toggle="modal" data-target="#modal_category" class="btn btn-primary">+Add Category</button>
+						<button type="button" data-toggle="modal" data-target="#modal_page" class="btn ">+Add Page</button>
+						
+						<br><br>
+						<?php }?>
 						<table class="hoverable centered">
 							<thead>
 								<tr>
@@ -39,7 +51,7 @@
 											<div class="col-sm-12">
 												<?php 
 												foreach($value->pageHasBlocks as $key_block => $has_block){
-													if (!$has_block->blockIdblock->is_deleted) {
+													if (!$has_block->blockIdblock->is_deleted && $lang==$has_block->blockIdblock->language) {
 												?>
 												<div class="col-sm-1 page-has-block">
 													<a class="text-danger delete-link" href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/block/<?=$has_block->blockIdblock->idblock?>"><i class="fa fa-trash-o "></i></a>
@@ -48,9 +60,9 @@
 												<?php 
 													}
 												} ?>
-												<a href="#" class="col-sm-1 page-has-block btn-default">
+												<button type="button" data-page-id="<?=$value->idpage?>" data-toggle="modal" data-target="#modal_block" class="col-sm-1 page-has-block btn-default new_block_button">
 													+Add new
-												</a>
+												</button>
 											</div>
 										</div>
 									</td>
@@ -64,4 +76,69 @@
 		</div>	
 	</div>
 </div>
+<!-- Modal Block-->
+<div class="modal fade" id="modal_page" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Page</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->renderPartial('//page/_form', 
+			array(
+					'model'=>$model
+				)
+			); 
+		?>
+      </div>
+    </div>
+</div>
 
+<!-- Modal Block-->
+<div class="modal fade" id="modal_block" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Block</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->renderPartial('//block/_form', 
+			array(
+					'model'=>$model_block,
+					'list_category'=>$list_category,
+					'lang'=>$lang
+				)
+			); 
+		?>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Category -->
+<div class="modal fade" id="modal_category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Category</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->renderPartial('//category/_form', 
+			array(
+					'model'=>$model_category
+				)
+			); 
+		?>
+      </div>
+    </div>
+</div>
+<script type="text/javascript">
+	
+	window.onload = function(){
+		$('.new_block_button').on('click',function(event){
+			var page_id=$(event.currentTarget).attr('data-page-id');
+			console.log(page_id);
+			$('#page_id').val(page_id);
+		});
+	}
+	
+</script>

@@ -534,8 +534,16 @@ class PanelController extends Controller
 		
 		$model=new Page();
 
+		$model_block=new Block();
+
+		$model_category=new Category();
+
+		$list_category=Category::model()->findAll();
+
 		$message=null;
 		$list=null;
+
+		$root=$_SERVER['DOCUMENT_ROOT'];
 
 		if (Yii::app()->user->checkAccess("webmaster")) {
 			
@@ -544,7 +552,7 @@ class PanelController extends Controller
 
 				$model=Page::model()->findByPk($id);
 				
-				$root=$_SERVER['DOCUMENT_ROOT'];
+				
 				$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
 				// $file = new SplFileObject($root.'/themes/design/views/site/home'.'.php','w+');
 
@@ -559,12 +567,53 @@ class PanelController extends Controller
 				
 				$model->attributes=$_POST['Page'];
 				$model->state=$model->state=='on'?1:0;
+				$page=$model->source;
 				$model->source="";
 				
 				if($model->save()){									
 					$message="Successfully Updated";
-					$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+					
+					
+					$file = new SplFileObject($root."/themes/design/views/site/$model->name".".php",'w+');		            
+		            $file->fwrite($page); 
+
+		            $source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+
 					$model->source=$source;
+
+					$this->refresh();
+				}
+					
+			}
+
+			if(isset($_POST['Category']))
+			{	
+				
+				$model_category->attributes=$_POST['Category'];
+
+				
+				if($model_category->save()){									
+					$message="Successfully Updated";
+					
+				}
+					
+			}
+
+			if(isset($_POST['Block']))
+			{	
+				
+				$model_block->attributes=$_POST['Block'];
+				$model_block->state=$model->state=='on'?1:0;
+
+				
+				if($model_block->save()){
+					$page_has_block=new PageHasBlock();
+					$page_has_block->page_idpage=$_POST['page_id'];
+					$page_has_block->block_idblock=$model_block->idblock;
+					if ($page_has_block->save()) {
+						$message="Successfully Updated";
+					}
+					
 				}
 					
 			}
@@ -584,7 +633,11 @@ class PanelController extends Controller
 
 		$this->render($render,array(
 			'list'=>$list,
+			'list_category'=>$list_category,
+			'lang'=>Yii::app()->user->getState('language_initial'),
 			'model'=>$model,
+			'model_block'=>$model_block,
+			'model_category'=>$model_category,
 			'message'=>$message,
 		));
 
@@ -629,6 +682,7 @@ class PanelController extends Controller
 			}
 				
 		}
+
 
 		if (!is_numeric($lang)){
 			
