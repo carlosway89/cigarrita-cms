@@ -25,7 +25,7 @@
 							<thead>
 								<tr>
 						            <th data-field="name">Header</th>
-						            <th data-field="flag">Subheader</th>
+						            <!-- <th data-field="flag">Subheader</th> -->
 						            <th data-field="flag">Category</th>
 						            <th data-field="state">State</th>
 						            <th data-field="state">Date Created</th>
@@ -37,7 +37,6 @@
 								?>
 								<tr>
 									<td><?=$value->header?></td>
-									<td><?=substr($value->subheader, 0, 30)."..."?></td>
 									<td><?=$value->category?></td>
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 									<td><?=$value->date_created?></td>

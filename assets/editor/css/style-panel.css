@@ -519,6 +519,9 @@ h1,h2,h3 {
     width: 100%;
 }
 
+.text-md{
+  font-size: 18px;
+}
 
 
 /*embed iframe*/

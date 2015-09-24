@@ -1,8 +1,8 @@
 # cigarrita Worker
-present: API cigarrita + AngularJS + facebook integration
+present: CMS Cigarrita Worker
 
 ## INSTALLATION
-The Cigarrita API can be installed with [Composer](https://getcomposer.org/). Add the package to your `composer.json` file.
+The CMS Cigarrita Worker can be installed with [Composer](https://getcomposer.org/). Add the package to your `composer.json` file.
 
 ```json
 {
@@ -12,19 +12,16 @@ The Cigarrita API can be installed with [Composer](https://getcomposer.org/). Ad
 }
 ```
 
-Intp the Root folder create a folder called "THEMES" there paste your folder of your web with your files required (HTML,CSS,JS, etc).
+Into the Root-folder create a folder called "THEMES" there paste your folder of your web with your files required (HTML,CSS,JS, etc).
 
 ex: [root_folder]/themes/{{design_name}} .
 
-Open you console and place it to the root_folder and type the follow code.
+Open the folder called "install" and create a database ex: "data_base_name" run the script  into the database ```cigarrita_db_to_install.sql```.
 
-``` ./cigarrita theming ```
+create a virtual host, ex. miweb.dev, 
+open it with your prefer browser and .
 
-if you want to know more code option just type.
-
-``` ./cigarrita ```
-
-and that makes you a List with all the code options with a description.
+follow the instruction...
 
 
 ###READY TO PLAY WITH !!!

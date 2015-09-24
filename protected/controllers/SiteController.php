@@ -58,9 +58,7 @@ class SiteController extends Controller
 		if ($is_instaled) {
 			$this->render('index');
 		}else{
-			$this->layout='main';
-			$this->render('//panel/installation');
-			echo 'instalation....';
+			$this->redirect(array('/installationCigarrita'));
 		}
 		
 		
@@ -82,7 +80,14 @@ class SiteController extends Controller
 		// 		$this->render('error');
 		// }
 		error_reporting(0);
-		$this->render('index');
+
+		$is_instaled=Configuration::model()->findByPk(1)->is_installed;
+		if ($is_instaled) {
+			$this->render('index');
+		}else{
+			$this->redirect(array('/installationCigarrita'));
+		}
+		
 	}
 
 	/**
