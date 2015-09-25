@@ -1,14 +1,4 @@
-<?php 
-  $config=Configuration::model()->findByPk(1);
-  $criteria = new CDbCriteria;
-  $criteria->condition="language = '$config->language' and state=1 AND is_deleted=0";
-  $criteria->limit = 1000;
-
-  $menu=Menu::model()->findAll($criteria);
-
-  $theme=Yii::app()->theme->baseUrl;
-  $request=Yii::app()->request->baseUrl;
-?>
+<?php include(Yii::app()->request->baseUrl."assets/init_config.php"); ?>
 <!DOCTYPE html>
 <html ng-app="cigarritaWeb" lang="<?=$config->language?>">
 <head>
@@ -39,10 +29,10 @@
 	<!--[/cigarrita Angular Web]-->
 	
 </head>
-<body>
+<body ng-controller="indexCtrl">
 
 	<div id="external_links"></div>
-	<div class="header fast-animated clearfix" ng-controller="indexCtrl">
+	<div class="header fast-animated clearfix" >
 		<div class="line ui page grid page-gray" style="background-color:#F5F5F5">
 			<div class="column">
 				<div class="ui search selection dropdown pull-right"  language-select="language">
@@ -68,8 +58,8 @@
 				  <a href="javascript:;;" class="menu-side-icon"><i class="align justify icon"></i></a>
 				  <div class=" menu header-options">
 					<!--menus -->
-					<!--use target="_self" to -->
 					<a class='item' ng-href='{{link.url}}' ng-repeat="link in links" menu-links="{{link.type}}">{{link.name}}</a>
+					<!--use target="_self" to -->
 				</div>
 
 			</div>

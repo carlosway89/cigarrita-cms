@@ -17,9 +17,13 @@ class InstallationCigarritaController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','pages'),
-					'users'=>array('*') 
-					),
+				'actions'=>array('index','pages','user'),
+					// 'users'=>array('*') ,
+					'expression'=>'!Configuration::model()->findByPk(1)->is_installed',
+				),
+			array('deny',  // deny all to users
+                'users'=>array('*'),
+                )
 			);
 	}
 
@@ -46,14 +50,14 @@ class InstallationCigarritaController extends Controller
 	public function actionIndex()
 	{
 		
-		$is_instaled=Configuration::model()->findByPk(1)->is_installed;
-		if ($is_instaled) {
-			$this->redirect(array('/site/index'));
-		}else{
-			$this->layout='main';
+		// $is_instaled=Configuration::model()->findByPk(1)->is_installed;
+		// if ($is_instaled) {
+		// 	$this->redirect(array('/site/index'));
+		// }else{
+			// $this->layout='main';
 			$this->render('//panel/installation');
 			
-		}
+		// }
 		
 		if (isset($_POST['continue'])) {
 			$this->redirect(array('pages'));
@@ -105,7 +109,8 @@ class InstallationCigarritaController extends Controller
 	public function actionPages(){
 
 
-		$dir = 'themes/design/views/site/';
+		$dir = 'themes/design/';
+		// $dir = 'themes/design/views/site/';
 
 		$files=array();
 
@@ -113,44 +118,77 @@ class InstallationCigarritaController extends Controller
 
 		$root=$_SERVER['DOCUMENT_ROOT'];
 
+		if (file_exists($dir."index.html") && file_exists($dir."blank.html")) {
 
-        foreach(glob($dir.'*.html') as $file) {
-          
-          if ($file!=$dir."index.html")
-          	$files[]=str_replace($dir, "", $file);
+	        foreach(glob($dir.'*.html') as $file) {
+	          
+	          if ($file!=$dir."index.html" && $file!=$dir."blank.html")
+	          	$files[]=str_replace($dir, "", $file);
 
-        }
+	        }
 
-        if (isset($_POST['File'])) {
-        	
-        	$selected=$_POST['File'];
+	        if(!is_dir($dir."views")){
+	        	$oldmask = umask(0);
+	    		mkdir($dir."views",0777);
+	    		umask($oldmask);
+	    		if (!is_dir($dir."views/site")) {
+	    			$oldmask = umask(0);
+	    			mkdir($dir."views/site",0777);
+	    			umask($oldmask);
+	    		}
+			}
 
-        	foreach ($selected as $key => $value) {
-        		$single_file=$files[$key];
+	        if (isset($_POST['File'])) {
+	        	
+	        	$selected=$_POST['File'];
 
-				$page=file_get_contents($root."/themes/design/views/site/$single_file");
-        		$name=str_replace(".html","", $single_file);
-        		$file = new SplFileObject($root."/themes/design/views/site/$name".".php",'w+');		            
-		        $file->fwrite($page);
+	        	foreach ($selected as $key => $value) {
+	        		$single_file=$files[$key];
 
-		        $page=new Page();
-		        $page->name=$name;
-		        if ($page->save()) {
-		        	
+					$page=file_get_contents($root."/themes/design/$single_file");
+	        		$name=str_replace(".html","", $single_file);
+	        		$file = new SplFileObject($root."/themes/design/views/site/$name".".php",'w+');		            
+			        $file->fwrite($page);
 
-		        }
-		        
+			        $page=new Page();
+			        $page->name=$name;
+			        if ($page->save()) {
+			        	
 
-        	}
+			        }
+			        
 
-        	// $this->refresh();
+	        	}
 
-        	$this->redirect(array('user'));
-        }
+	        	$_files=array("blank.html"=>"index","index.html"=>"home");
 
-		$this->render('//panel/page_list',array(
-			'files'=>$files
-		));
+	        	foreach ($_files as $key => $value) {
+	        		$page=file_get_contents($root."/themes/design/$key");
+	        		if ($key=="blank.html") {
+	        			$file = new SplFileObject($root."/themes/design/views/site/editor_cigarrita_worker".".php",'w+');		            
+			        	$file->fwrite($page);
+	        		}
+	        		$file = new SplFileObject($root."/themes/design/views/site/$value".".php",'w+');		            
+			        $file->fwrite($page);
+
+			        $page=new Page();
+			        $page->name=$value;
+
+			        if ($page->save()) {			        	
+			        }
+	        	}
+
+	        
+
+	        	$this->redirect(array('user'));
+	        }
+
+			$this->render('//panel/page_list',array(
+				'files'=>$files
+			));
+		}else{
+			$this->redirect(array('/index'));
+		}
 	}
 
 
