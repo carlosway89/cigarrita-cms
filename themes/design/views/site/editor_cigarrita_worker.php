@@ -24,7 +24,6 @@
                 <?php include($request."assets/js_editor.php"); ?>
                 </head>
                 <body ng-controller="indexCtrl">
-                    <div id="external_links"></div>
                     <div class="header fast-animated clearfix" >
                         <div class="line ui page grid page-gray" style="background-color:#F5F5F5">
                             <div class="column">
@@ -50,16 +49,14 @@
                             </div>
                             <div class="ui secondary pull-right menu">
                                 <a href="javascript:;;" class="menu-side-icon"><i class="align justify icon"></i></a>
-                                <div class="menu header-options">
-                                    <!--menus -->
-                                    <a class='item' ng-href='{{link.url}}' ng-repeat="link in links" menu-links="{{link.type}}">{{link.name}}</a> 
-                                    <!--use target="_self" to -->
-                                </div>
+                                <div class="menu header-options"><a class='item' ng-href="{{link.url}}" ng-repeat="link in links" menu-links="{{link.type}}" >{{link.name}}</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="content" >
-                        <div ng-view></div>
+                        <div ng-view="">
+                            <!--content-->
+                        </div>
                         <a href="https://plus.google.com/107866117296817349154" class="hidden" rel="publisher">Google+</a> 
                     </div>
                 </body>

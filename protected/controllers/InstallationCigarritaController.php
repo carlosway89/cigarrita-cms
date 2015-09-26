@@ -105,114 +105,98 @@ class InstallationCigarritaController extends Controller
 		));
 	}
 
-	public function generatePHP_editor(){
-		
+
+	public function generatePHP($page){
 		$root=$_SERVER['DOCUMENT_ROOT'];
 		$html_dom=new HTMLDOM();
 
-		$html=$html_dom->get($root."/themes/design/views/site/editor_cigarrita_worker.php");
+		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
     	$html->find("html",0)->outertext='<?php include(Yii::app()->request->baseUrl."assets/init_config.php"); ?>'.$html->find("html",0)->outertext;
-    	$html->save($root."/themes/design/views/site/editor_cigarrita_worker.php");
+    	$html->save($root."/themes/design/views/site/".$page.".php");
     	$html->clear();
 
-    	$html=$html_dom->get($root."/themes/design/views/site/editor_cigarrita_worker.php");
+    	$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
     	$html->find("html",0)->setAttribute("ng-app","cigarritaWeb");
-    	$html->save($root."/themes/design/views/site/editor_cigarrita_worker.php");
+    	$html->save($root."/themes/design/views/site/".$page.".php");
     	$html->clear();
     	
-    	$html=$html_dom->get($root."/themes/design/views/site/editor_cigarrita_worker.php");
+    	$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
     	$html->find("body",0)->setAttribute("ng-controller","indexCtrl");
-    	$html->save($root."/themes/design/views/site/editor_cigarrita_worker.php");
+    	$html->save($root."/themes/design/views/site/".$page.".php");
     	$html->clear();
 
-    	$html=$html_dom->get($root."/themes/design/views/site/editor_cigarrita_worker.php");
+
+    	$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
     	foreach($html->find('link') as $key => $element){
-			$element->href=Yii::app()->theme->baseUrl.$element->href;			
+			$element->href=Yii::app()->theme->baseUrl."/".$element->href;			
 		}
-		$html->save($root."/themes/design/views/site/editor_cigarrita_worker.php");
+		$html->save($root."/themes/design/views/site/".$page.".php");
 		$html->clear();
 
-		$html=$html_dom->get($root."/themes/design/views/site/editor_cigarrita_worker.php");
+		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
     	foreach($html->find('script') as $key => $element){
     		if (!preg_match("/(http|https):\/\/(.*?)$/i", $element->src))
-				$element->src=Yii::app()->theme->baseUrl.$element->src;			
+				$element->src=Yii::app()->theme->baseUrl."/".$element->src;			
 		}
-		$html->save($root."/themes/design/views/site/editor_cigarrita_worker.php");
-		$html->clear();
-
-    	$html=$html_dom->get($root."/themes/design/views/site/editor_cigarrita_worker.php");
-		$html->find('link',-1)->outertext=$html->find('link',-1)->outertext.'<?php include($request."assets/css_editor.php"); ?>';
-		$html->save($root."/themes/design/views/site/editor_cigarrita_worker.php");
-    	$html->clear();
-
-		$html=$html_dom->get($root."/themes/design/views/site/editor_cigarrita_worker.php");
-		$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php include($request."assets/js_editor.php"); ?>';
-		$page=$html->save();
-    	$html->clear();
-
-    	$indent=new DINDENT();
-    	$result=$indent->get($page);
-		$file = new SplFileObject($root."/themes/design/views/site/editor_cigarrita_worker.php",'w+');		            
-        $file->fwrite($result);
-
-        chmod($root."/themes/design/views/site/editor_cigarrita_worker.php", 0777);
-    	
-
-	}
-
-	public function generatePHP_index(){
-		
-		$root=$_SERVER['DOCUMENT_ROOT'];
-		$html_dom=new HTMLDOM();
-
-		$html=$html_dom->get($root."/themes/design/views/site/index.php");
-    	$html->find("html",0)->outertext='<?php include(Yii::app()->request->baseUrl."assets/init_config.php"); ?>'.$html->find("html",0)->outertext;
-    	$html->save($root."/themes/design/views/site/index.php");
-    	$html->clear();
-
-    	$html=$html_dom->get($root."/themes/design/views/site/index.php");
-    	$html->find("html",0)->setAttribute("ng-app","cigarritaWeb");
-    	$html->save($root."/themes/design/views/site/index.php");
-    	$html->clear();
-    	
-    	$html=$html_dom->get($root."/themes/design/views/site/index.php");
-    	$html->find("body",0)->setAttribute("ng-controller","indexCtrl");
-    	$html->save($root."/themes/design/views/site/index.php");
-    	$html->clear();
-
-
-    	$html=$html_dom->get($root."/themes/design/views/site/index.php");
-    	foreach($html->find('link') as $key => $element){
-			$element->href=Yii::app()->theme->baseUrl.$element->href;			
-		}
-		$html->save($root."/themes/design/views/site/index.php");
-		$html->clear();
-
-		$html=$html_dom->get($root."/themes/design/views/site/index.php");
-    	foreach($html->find('script') as $key => $element){
-    		if (!preg_match("/(http|https):\/\/(.*?)$/i", $element->src))
-				$element->src=Yii::app()->theme->baseUrl.$element->src;			
-		}
-		$html->save($root."/themes/design/views/site/index.php");
+		$html->save($root."/themes/design/views/site/".$page.".php");
 		$html->clear();
 		
+		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+		foreach ($html->find('.header-options') as $element) {
+			
+			$element->children(1)->setAttribute('ng-href','{{link.url}}');
+			$element->children(1)->setAttribute('ng-repeat','link in links');
+			$element->children(1)->setAttribute('menu-links','{{link.type}}');
+			$element->children(1)->innertext='{{link.name}}';
 
-		// if (!preg_match("/(http|https):\/\/(.*?)$/i", $src)) 
+			$element->innertext=$element->children(1)->outertext;
+			
+			
+		}
+		$html->save($root."/themes/design/views/site/".$page.".php");
+		$html->clear();
 
-		$html=$html_dom->get($root."/themes/design/views/site/index.php");
-		$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php include($request."assets/js_index.php"); ?>';
-		$page=$html->save();
+		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+
+		foreach ($html->find('comment') as $value) {
+			if ($value->outertext=='<!--content-->') {
+				$value->parent()->setAttribute("ng-view","");
+			}
+		}
+		
+		$html->save($root."/themes/design/views/site/".$page.".php");
+		$html->clear();
+
+		if ($page!="index") {
+    		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+			$html->find('link',-1)->outertext=$html->find('link',-1)->outertext.'<?php include($request."assets/css_editor.php"); ?>';
+			$html->save($root."/themes/design/views/site/".$page.".php");
+	    	$html->clear();
+    	}
+
+		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+		if ($page=="index") {
+			$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php include($request."assets/js_index.php"); ?>';
+		
+		}else{
+			$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php include($request."assets/js_editor.php"); ?>';
+		
+		}
+
+		$html_page=$html->save();
     	$html->clear();
 
-    	$indent=new DINDENT();
-    	$result=$indent->get($page);
-		$file = new SplFileObject($root."/themes/design/views/site/index.php",'w+');		            
-        $file->fwrite($result);
-
-        chmod($root."/themes/design/views/site/index.php", 0777);
     	
 
+    	$indent=new DINDENT();
+    	$result=$indent->get($html_page);
+		$file = new SplFileObject($root."/themes/design/views/site/".$page.".php",'w+');		            
+        $file->fwrite($result);
+
+        chmod($root."/themes/design/views/site/".$page.".php", 0777);
 	}
+
+
 
 	public function actionPages(){
 
@@ -262,8 +246,6 @@ class InstallationCigarritaController extends Controller
 			        $page=new Page();
 			        $page->name=$name;
 			        if ($page->save()) {
-			        	
-
 			        }
 			        
 
@@ -285,8 +267,8 @@ class InstallationCigarritaController extends Controller
 	        			$file = new SplFileObject($root."/themes/design/views/site/editor_cigarrita_worker".".php",'w+');		            
 			        	$file->fwrite($page);
 
-			        	$this->generatePHP_index();	
-			        	$this->generatePHP_editor();			        	
+			        	$this->generatePHP("index");	
+			        	$this->generatePHP("editor_cigarrita_worker");			        	
 			        	
 	        		}
 	        		

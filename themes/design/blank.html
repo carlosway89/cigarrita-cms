@@ -10,23 +10,21 @@
 	<meta name="keywords" content="keywords"/>
 	<meta name="robots" content="INDEX,FOLLOW">
 
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="/css/semantic.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/semantic.min.css" />
 	
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 
-	<script type="text/javascript" src="/js/webfont.js"></script> 
-	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/js/semantic.js"></script>
-	<script type="text/javascript" src="/js/outsider.js"></script>
+	<script type="text/javascript" src="js/webfont.js"></script> 
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/semantic.js"></script>
+	<script type="text/javascript" src="js/outsider.js"></script>
 	
 </head>
 <body>
-
-	<div id="external_links"></div>
 	<div class="header fast-animated clearfix" >
 		<div class="line ui page grid page-gray" style="background-color:#F5F5F5">
 			<div class="column">
@@ -54,7 +52,8 @@
 				<a href="javascript:;;" class="menu-side-icon"><i class="align justify icon"></i></a>
 				<div class=" menu header-options">
 					<!--menus -->
-					<a class='item' ng-href='{{link.url}}' ng-repeat="link in links" menu-links="{{link.type}}">{{link.name}}</a>
+					<a class='item' >link.name1</a>
+					<a class='item' >link.name2</a>
 					<!--use target="_self" to -->
 				</div>
 
@@ -62,7 +61,9 @@
 		</div>
 	</div>
 	<div class="content" >
-		<div ng-view></div>			
+		<div>
+			<!--content-->
+		</div>			
 		<a href="https://plus.google.com/107866117296817349154" class="hidden" rel="publisher">Google+</a>
 	</div>
 
