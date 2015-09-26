@@ -2,6 +2,7 @@
   "require" : {
     "facebook/php-sdk-v4" : "4.0.*",
     "phpmailer/phpmailer": "~5.2",
-    "dompdf/dompdf" : "0.6.*"
+    "dompdf/dompdf" : "0.6.*",
+    "gajus/dindent": "2.0.*"
   }
 }
