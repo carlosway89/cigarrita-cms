@@ -21,7 +21,7 @@ class PanelController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','posts','links','facebook','delete','change'),
+				'actions'=>array('index','language','config','users','messages','pages','posts','links','facebook','delete','change','help'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
 					),
@@ -387,6 +387,12 @@ class PanelController extends Controller
 
 
 	}
+	public function actionHelp(){
+
+		$this->render("//panel/help");
+
+	}
+
 	public function actionUsers($id=null){
 		
 		$model=new User();

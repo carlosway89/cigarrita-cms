@@ -123,7 +123,7 @@
 
               ?>
                 <ul class="nav navbar-nav">
-                <li><a href="<?=Yii::app()->getBaseUrl(true)?>" target="_blank">Live Website</a></li>
+                <li><a href="<?=Yii::app()->getBaseUrl(true)?>" target="_blank"><i class="fa fa-play"></i> Live Website</a></li>
                 <li class="dropdown">
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">Languages <span class="caret"></span></a>
                   <ul role="menu" class="dropdown-menu">
@@ -146,6 +146,7 @@
                     <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language#modal_language">+ Add New Language</a></li>
                   </ul>
                 </li>
+                <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/help" target="_blank"><i class="fa fa-book"></i> Help</a></li>
               </ul>
             </nav>
             

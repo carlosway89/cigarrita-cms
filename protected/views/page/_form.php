@@ -49,3 +49,16 @@ color: #66AFE9;" ><?=$model->source?></textarea>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script type="text/javascript">
+	
+	window.onload = function(){ 
+
+		setTimeout(function(){
+			$('button[data-event="codeview"]').trigger('click');	        
+	    },200);
+	    
+	    
+	};
+	
+</script>

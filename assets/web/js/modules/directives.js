@@ -52,8 +52,15 @@ cigarritaDirective
     priority: 1002, // must higher than ng-repeat
     link: function (scope, element, attrs) {
       var repeat="block in page | filter:{category:'"+attrs.elementBlock+"'}";
+
+      if (attrs.elementBlock!='slider') {
+        element.attr('id',attrs.elementBlock);
+      }
+
       attrs.$set('ngRepeat', repeat);
       attrs.$set('elementBlock', null);
+
+
 
       // $(element).find('#subheader,#header').attr("contenteditable",true);
       
