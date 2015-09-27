@@ -14,6 +14,7 @@
 									'message'=>$message,
 									'category'=>$category,
 									'language'=>$language,
+									'attr'=>$attr,
 								)
 							); 
 						?>

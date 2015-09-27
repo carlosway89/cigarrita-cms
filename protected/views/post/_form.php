@@ -1,5 +1,8 @@
 
-<?php		
+<?php
+
+	// print_r($attr);
+
 	if (isset($message)) {
 		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h6><br>";
 	}
@@ -52,7 +55,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'language'); ?>
-		<select name="Menu[language]" class="browser-default">
+		<select name="Post[language]" class="browser-default">
 		<?php foreach ($language as $key => $value) {
 		?>
 		<option <?=$model->language==$value->min?'selected':''?> value="<?=$value->min?>" ><?=$value->name?></option>
@@ -74,6 +77,9 @@
         </div>
 		<?php echo $form->error($model,'state'); ?>
 	</div>
+	<div id="attributes_post">
+		<?php echo $this->renderPartial('//post/attributes', array('attr'=>$attr,'model'=>$model)); ?>
+	</div>
 
 	<div class="row buttons">
 		<button class="btn btn-info" type="submit">Save</button>
@@ -83,3 +89,24 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<script type="text/javascript">
+	
+	window.onload = function(){ 
+		$('.add-new-attr').on('click',function(event){
+
+			var html_attr=$('.attributes_inputs').html();
+
+			$( '<div class="col-sm-12 attributes_inputs">'+html_attr+'</div>').insertAfter(".attributes_inputs:last-child");
+			
+			setTimeout(function(){
+				$('.attributes_inputs:last-child').find('.add-new-attr').hide();
+				$('.delete-new-attr').on('click',function(event){
+					$(event.currentTarget).parent().parent().remove();
+				});
+			},100)
+		});
+		
+		
+	};
+	
+</script>

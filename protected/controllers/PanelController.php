@@ -484,6 +484,8 @@ class PanelController extends Controller
 
 		$model=new Post();
 
+		$attr=array(0=>array("key"=>"","value"=>"","idattributes"=>"0","idpost"=>"0"));
+
 		$message=null;
 		$list=null;
 
@@ -492,6 +494,14 @@ class PanelController extends Controller
 			$id=$lang;
 
 			$model=Post::model()->findByPk($id);
+
+
+			foreach ($model->attributes0 as $has_attr) { 
+
+                $attr[]=$has_attr->Attributes;                                           
+
+            }
+			
 
 			$render='//post/update';
 
@@ -503,7 +513,51 @@ class PanelController extends Controller
 			$model->state=$model->state=='on'?1:0;
 
 			
-			if($model->save()){									
+			if($model->save()){				
+				if (isset($_POST['Attr'])) {
+					$new_attr=$_POST['Attr'];
+
+					
+					// print_r($new_attr);
+					for ($i=0; $i < count($new_attr['idattributes']); $i++) { 
+						$idattributes=$new_attr['idattributes'][$i];
+						$idpost=$new_attr['idpost'][$i];
+						$key=$new_attr['key'][$i];
+						$value=$new_attr['value'][$i];
+
+						if ( $idattributes!=0) {
+							$_attributes=Attributes::model()->findByPk($idattributes);
+							$_attributes->idpost=$idpost;
+						}else{
+							$_attributes=new Attributes();
+							$_attributes->idpost=$model->idpost;
+						}
+
+						$_attributes->key=$key;
+						$_attributes->value=$value;
+
+						if ($value!="" && $key!="") {
+							if ($_attributes->save()) {
+								
+							}
+						}
+						
+
+					}
+
+					$model=Post::model()->findByPk($model->idpost);
+
+					$attr=array(0=>array("key"=>"","value"=>"","idattributes"=>"0","idpost"=>"0"));
+
+					foreach ($model->attributes0 as $has_attr) { 
+
+		                $attr[]=$has_attr->Attributes;                                           
+
+		            }
+
+					
+				}		
+
 				$message="Successfully Updated";
 				
 			}
@@ -522,6 +576,7 @@ class PanelController extends Controller
 			'message'=>$message,
 			'category'=>$category,
 			'language'=>$language,
+			'attr'=>$attr
 		));
 		
 		

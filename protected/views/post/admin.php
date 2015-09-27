@@ -20,6 +20,7 @@
 		                    <?php } ?>
 		                  </ul>
 		                </div>
+		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1">Create Post</button>
 		                <br><br><br>
 						<table id="postList" class="hoverable centered">
 							<thead>
@@ -55,6 +56,28 @@
 	</div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Post</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->renderPartial('//post/_form', 
+			array(
+					'model'=>$model,
+					'message'=>$message,
+					'category'=>$category,
+					'language'=>$language,
+					'attr'=>$attr
+				)
+			); 
+		?>
+      </div>
+    </div>
+</div>
+
 <script type="text/javascript">
 	
 	window.onload = function(){ 
@@ -64,6 +87,21 @@
 	        beans.generate_data_table('postList');
 	        
 	    },200);
+	    
+	    $('.add-new-attr').on('click',function(event){
+
+			var html_attr=$('.attributes_inputs').html();
+
+			$( '<div class="col-sm-12 attributes_inputs">'+html_attr+'</div>').insertAfter(".attributes_inputs:last-child");
+			
+			setTimeout(function(){
+				$('.attributes_inputs:last-child').find('.add-new-attr').hide();
+				$('.delete-new-attr').on('click',function(event){
+					$(event.currentTarget).parent().parent().remove();
+				});
+			},100)
+		});
 	};
 	
 </script>
+
