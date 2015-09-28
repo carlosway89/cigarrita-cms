@@ -80,6 +80,7 @@ class SiteController extends Controller
 		// 		$this->render('error');
 		// }
 		error_reporting(0);
+		http_response_code(200);
 
 		$is_instaled=Configuration::model()->findByPk(1)->is_installed;
 		if ($is_instaled) {

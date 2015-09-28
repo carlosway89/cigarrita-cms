@@ -152,13 +152,24 @@ element-block='category-name'
 	                        <div class="panel-heading">
 	                          <h4 class="panel-title">
 	                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-	                              Insert New Attributes to each Post
+	                              Facebook Sync and Insert New Attributes to each Post
 	                            </a>
 	                          </h4>
 	                        </div>
 	                        <div style="height: 0px;" id="collapseThree" class="panel-collapse collapse">
 	                          <div class="panel-body">
-	                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+	                          	<blockquote>
+	                          		<ul>
+	                          			<li>1.- You Need to Insert your ID facebook FanPage of your bussines into the <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config">Config Page option</a><br>
+	                          				ex1: <small>https://www.facebook.com/cigarritaworker?fref=ts</small> the IDpage would be <code>cigarritaworker</code><br>
+	                          				ex2: <small>https://www.facebook.com/CyS.ComputerSolutions</small> the IDpage would be <code>CyS.ComputerSolutions</code> 
+	                          			</li>
+	                          			<li>
+	                          				2.- then you need to go to the facebook menu and login with your Facebook Account
+	                          			</li>
+	                          			<li>3.- you can sync each option gave it into the CMS (gallery, events, Feeds, about, countact info) from Facebook</li>
+	                          		</ul>
+	                          	</blockquote>  
 	                          </div>
 	                        </div>
 	                      </div>

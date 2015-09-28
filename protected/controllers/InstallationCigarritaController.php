@@ -55,13 +55,15 @@ class InstallationCigarritaController extends Controller
 		// 	$this->redirect(array('/site/index'));
 		// }else{
 			// $this->layout='main';
-			$this->render('//panel/installation');
+			
 			
 		// }
 		
 		if (isset($_POST['continue'])) {
 			$this->redirect(array('pages'));
 		}
+
+		$this->render('//panel/installation');
 		
 	}
 
@@ -214,7 +216,7 @@ class InstallationCigarritaController extends Controller
 
 	        foreach(glob($dir.'*.html') as $file) {
 	          
-	          if ($file!=$dir."index.html" && $file!=$dir."blank.html")
+	          if ($file!=$dir."blank.html")
 	          	$files[]=str_replace($dir, "", $file);
 
 	        }
@@ -244,6 +246,11 @@ class InstallationCigarritaController extends Controller
 
 			        chmod($root."/themes/design/views/site/$name".".php", 0777);
 			        $page=new Page();
+
+			        if ($name=='index') {
+			        	$name="home";
+			        }
+
 			        $page->name=$name;
 			        if ($page->save()) {
 			        }

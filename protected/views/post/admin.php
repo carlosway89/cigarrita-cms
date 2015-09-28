@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manage Users</h4>
+			<h4>Manage Posts</h4>
 			<br>
 				
 				<div class="panel panel-default">

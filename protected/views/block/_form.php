@@ -34,7 +34,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'subheader'); ?>
-		<?php echo $form->textField($model,'subheader',array('rows'=>6, 'cols'=>50,'class'=>'summernote textarea-materialize')); ?>
+		<textarea class="materialize-textarea summernote" name="Block[subheader]" ><?=$model->subheader?></textarea>
 		<?php echo $form->error($model,'subheader'); ?>
 	</div>
 
@@ -43,7 +43,7 @@
 		<div class="switch">
           <label>
             Off
-            <input name="Block[state]" <?=$model->state?'checked="1"':''?> type="checkbox">
+            <input name="Block[state]" <?=$model->state?'checked="1"':($model->isNewRecord?'checked="1"':'')?> type="checkbox">
             <span class="lever"></span>
             On
           </label>

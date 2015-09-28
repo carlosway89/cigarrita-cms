@@ -328,11 +328,12 @@ class ApiController extends Controller
         //ex. cigarrita-worker.com/api/faceboob/1431968783721316/data
 
         $profile_id=$this->uri(2);
+        $type_sync=$this->uri(3)?$this->uri(3):'all';
 
         // echo $profile_id;
         $fb=new Facebook();
 
-        $response=$fb->getUserFB($profile_id);
+        $response=$fb->getUserFB($profile_id,$type_sync);
 
         // $this->_getObjectEncoded();
         $this->_sendResponse(200, CJSON::encode($response));
@@ -384,7 +385,7 @@ class ApiController extends Controller
         $profile_id=$this->uri(2);
         $type_sync=$this->uri(3)?$this->uri(3):'all';
 
-        $fb=new facebook();
+        $fb=new Facebook();
 
         $response=$fb->getUserFB($profile_id,$type_sync);
 

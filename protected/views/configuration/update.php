@@ -67,12 +67,19 @@
 									<?php echo $form->textField($model,'analytic_id',array('size'=>60,'maxlength'=>100)); ?>
 									<?php echo $form->error($model,'analytic_id'); ?>
 								</div>
-
 								<div class="row">
 									<?php echo $form->labelEx($model,'keywords'); ?>
 									<?php echo $form->textField($model,'keywords',array('length'=>200,'class'=>'counter_char')); ?>
 									<?php echo $form->error($model,'keywords'); ?>
 								</div>
+								<?php if (Yii::app()->user->checkAccess("webmaster")) {
+								?>
+								<div class="row">
+									<?php echo $form->labelEx($model,'id_facebook_page'); ?>
+									<?php echo $form->textField($model,'id_facebook_page'); ?>
+									<?php echo $form->error($model,'id_facebook_page'); ?>
+								</div>
+								<?php } ?>
 
 								<div class="row buttons">
 									<button type="submit" class="btn btn-info">Update</button>

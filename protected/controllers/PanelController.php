@@ -26,7 +26,7 @@ class PanelController extends Controller
 					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
 					),
 			// array('allow',
-			// 	'actions'=>array('index'),
+			// 	'actions'=>array('facebook'),
 			// 		'users'=>array('*') 
 			// 		),
 			array('deny',
@@ -571,7 +571,7 @@ class PanelController extends Controller
 		}
 		if (!is_numeric($lang)){
 			
-			$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."'");
+			$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
 			$render='//post/admin';
 			
 		}
@@ -653,7 +653,8 @@ class PanelController extends Controller
 				$model_category->attributes=$_POST['Category'];
 
 				
-				if($model_category->save()){									
+				if($model_category->save()){	
+					$this->refresh();								
 					$message="Successfully Updated";
 					
 				}
@@ -672,6 +673,7 @@ class PanelController extends Controller
 					$page_has_block->page_idpage=$_POST['page_id'];
 					$page_has_block->block_idblock=$model_block->idblock;
 					if ($page_has_block->save()) {
+						$this->refresh();
 						$message="Successfully Updated";
 					}
 					
@@ -814,16 +816,112 @@ class PanelController extends Controller
         
 	}
 
+	private function saveFBdata($response,$type_sync){
+        
+
+		// print_r($response['id']);
+
+        $id=$response['id'];
+
+        // $post=Post::model()->findByAttributes(array('source'=>$id));  
+        
+        $cat=Category::model()->findByAttributes(array('category'=>"fb_".$type_sync));
+
+        
+
+        if (!$cat) {
+            $cat_model=new Category();
+            $cat_model->source="fb_".$type_sync;
+            $cat_model->save();
+        }
+
+        $continue=true;
+
+        switch ($type_sync) {
+        	case 'feed':
+        		$data_response=$response['posts']->data;
+        		break;
+        	case 'event':
+        		$data_response=$response['events']->data;
+        		break;  
+        	case 'gallery':
+        		$data_response=$response['photos']->data;
+        		break;       	
+        	default:
+        		$continue=false;
+        		$data_response=$response;
+        		break;
+        }
+
+        // if ($post) {
+        //     $_model=$post;
+        //     $id_post=$_model->idpost;
+        // }
+        // else{
+        	if (!$continue) {
+        		$_model=new Post();
+        		$_model->language=Yii::app()->user->getState('language_initial');
+	            $_model->source=$id;
+	            $_model->category="fb_".$type_sync;
+
+	            if ($_model->save()) {
+	            	$id_post=$_model->idpost;
+	            }
+        	}
+            
+        // }
+
+        
+
+        foreach($data_response as $key_data=>$data) {
+
+        	
+        	if ($continue) {
+
+        		$_model=new Post();
+        		$_model->language=Yii::app()->user->getState('language_initial');
+	            $_model->source=$data->id;
+	            $_model->category="fb_".$type_sync;
+
+	            if ($_model->save()) {
+	            	$id_post=$_model->idpost;
+	            }
+
+        		foreach ($data as $key => $value) {
+	        		$attr=new Attributes();
+		            $attr->idpost=$id_post;            
+		            $attr->key=$key;
+		            $attr->value=is_object($value)?json_encode($value):(is_array($value)?json_encode($value):$value);            
+		            $attr->save();	
+	        	}
+        	}else{
+
+        		$attr=new Attributes();
+	            $attr->idpost=$id_post;            
+	            $attr->key=$key_data;
+	            $attr->value=is_object($data)?json_encode($data):(is_array($data)?json_encode($data):$data);            
+	            $attr->save();
+
+ 	
+        	}
+        	
+
+        	
+        }
+
+        return true;
+
+    }
 
 	public function actionFacebook(){
 		
 
 		
-
+		$id_facebook_page=Configuration::model()->findByPk(1)->id_facebook_page;
 		$model_about=Post::model()->findAll("category='fb_about'");
 		$model_feed=Post::model()->findAll("category='fb_feed'");
 		$model_contact=Post::model()->findAll("category='fb_contact'");
-		$model_events=Post::model()->findAll("category='fb_events'");
+		$model_events=Post::model()->findAll("category='fb_event'");
 		$model_gallery=Post::model()->findAll("category='fb_gallery'");
 		
 		$config=Configuration::model()->findByPk(1);
@@ -834,14 +932,34 @@ class PanelController extends Controller
 			
     		$redirect=$facebook->loginFB($config);
     		$this->redirect($redirect);
-		}		
+		}	
+
+		if (isset($_POST['sync'])) {
+			
+			$type_sync=$_POST['sync'];
+
+			$fb=new Facebook();
+
+			$profile_id=$id_facebook_page;
+
+			if ($id_facebook_page) {
+				$response=$fb->getUserFB($profile_id,$type_sync);
+        		$ret=$this->saveFBdata($response,$type_sync);
+			}       		
+        	
+
+        	if ($ret) {
+        		$this->refresh();
+        		$this->redirect(array('/panel/facebook'));
+        	}	
+		}	
     	
 
 		$this->render('facebook',array(
 			'model_about'=>$model_about,
-			'model_feeds'=>$model_about,
-			'model_contact'=>$model_about,
-			'model_events'=>$model_about,
+			'model_feeds'=>$model_feed,
+			'model_contact'=>$model_contact,
+			'model_events'=>$model_events,
 			'model_gallery'=>$model_gallery,
 			'config'=>$config
 		));

@@ -59,7 +59,7 @@ class Facebook
       
       $about="cover.fields(source),about,company_overview,mission,founded,description,category";
       $contact="emails,location,phone";
-      $feed="posts.limit(5)";
+      $feed="posts.limit(5).fields(description,message,type,link,name,picture,source)";
       $event="events.limit(5).fields(cover,name,description,place).since(2014)";
       $gallery="photos.fields(picture,source),albums.limit(10).fields(cover_photo,name,type,description,photos.limit(10).fields(picture,source))";
 
@@ -141,7 +141,7 @@ class Facebook
            
        /* ---- Session Variables -----*/
            // Yii::app()->user->setState('FBID',$fbid);  
-            $config->id_facebook_page=json_encode($fbpages);
+            // $config->id_facebook_page=json_encode($fbpages);
             $config->id_facebook=$fbid;
            $config->save();
 
@@ -150,7 +150,8 @@ class Facebook
         // header("Location: $base_url");
            return $base_url;
       } else {
-          $loginUrl = $helper->getLoginUrl(array('scope' => 'manage_pages'));
+          $permissions = ['manage_pages'];
+          $loginUrl = $helper->getLoginUrl($permissions);
           return $loginUrl;
        // header("Location: ".$loginUrl);
       }
