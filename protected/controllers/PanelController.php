@@ -656,7 +656,7 @@ class PanelController extends Controller
 				if($model_category->save()){	
 					$this->refresh();								
 					$message="Successfully Updated";
-					
+					$list_category=Category::model()->findAll();
 				}
 					
 			}
@@ -665,7 +665,12 @@ class PanelController extends Controller
 			{	
 				
 				$model_block->attributes=$_POST['Block'];
-				$model_block->state=$model->state=='on'?1:0;
+				
+				if ($model_block->isNewRecord) {
+					$model_block->state=1;
+				}else{
+					$model_block->state=$model->state=='on'?1:0;
+				}
 
 				
 				if($model_block->save()){

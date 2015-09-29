@@ -22,8 +22,8 @@
 	<div class="container page-content  page-white " style="padding-top:20px;min-height: 800px;">
 		<br>
 		<div class="col-md-12">
-			<h1 data-id="header" element-object="block" class="font-huge text-center no-margin" ><span element-editable ng-model="block.header">{{block.header}}</span></h1>
-			<h2 data-id="subheader" class="font-huge text-center no-margin" element-object="block" ><small element-editable ng-model="block.subheader">{{block.subheader}}</small></h2>
+			<h1 data-id="header" element-object="block" class="font-huge text-center no-margin" element-contenido >{{block.header}}</h1>
+			<h2 data-id="subheader" class="font-huge text-center no-margin" element-object="block" ><small element-contenido>{{block.subheader}}</small></h2>
 		</div>
 		<br>
 		<div class="row" data-id="posts">
@@ -31,8 +31,8 @@
 			<div element-object="post" class="col-md-3 col-sm-3 bottom-20 text-center" element-post >
 				
 				<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive img-icon">
-			  	<h2 element-editable ng-model="post.header" class="font-large text-icon no-margin">{{post.header}}</h2>
-				<p element-editable ng-model="post.subheader" class="p-text text-ligth " ng-bind-html="post.subheader | sanitize"></p>
+			  	<h2 element-contenido class="font-large text-icon no-margin">{{post.header}}</h2>
+				<p element-contenido class="p-text text-ligth ">{{post.subheader}}</p>
 				
 			</div>
 			

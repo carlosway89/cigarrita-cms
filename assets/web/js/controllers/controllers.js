@@ -87,12 +87,13 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       query:JSON.stringify(obj)
     },function(data){
       setTimeout(function(){
+          $('.loading-container').hide();
           $('#home .transito').css({opacity: 0.0});
           $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
           $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
           $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
           var timer = setInterval(nextSlide,slideDuration);
-      },2000);
+      },1000);
 
     });
 

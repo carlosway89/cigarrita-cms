@@ -46,6 +46,28 @@ cigarritaDirective
           }
     }
 })
+.directive('elementContenido', function ($compile) {
+  return {
+    terminal: true, // prevent ng-repeat from compiled twice
+    priority: 1003, // must higher than ng-repeat
+    link: function (scope, element, attrs) {
+
+      var temp=element[0].innerHTML;
+
+      var model= temp.replace('{{','');
+      model=model.replace('}}','');
+      
+      temp="<span element-editable ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</span>";
+      $(element).html(temp);
+      
+      attrs.$set('elementContenido', null);
+
+      $compile(element)(scope);
+      
+
+    }
+  };
+})
 .directive('elementBlock', function ($compile) {
   return {
     terminal: true, // prevent ng-repeat from compiled twice

@@ -31,12 +31,12 @@
 	                          		
 	                          	</blockquote>
 	                          	<pre><code class="language-bash" data-lang="bash">element-block='category-name'
-├── {{block.header}}:(text)
-├── {{block.subheader}}:(text or html) || [if HTML: add a new attribute to the label: ng-bind-html="block.subheader | sanitize" ]
+├── {{block.header}}:(text or html)
+├── {{block.subheader}}:(text or html)
 ├── {{block.source}}:(image_url or video_url)
 ├── element-post
-│   ├── {{post.header}}
-│   ├── {{post.subheader}}:(text or html) || [if HTML: add a new attribute to the label: ng-bind-html="post.subheader | sanitize" ]
+│   ├── {{post.header}}:(text or html) 
+│   ├── {{post.subheader}}:(text or html) 
 │   └── {{post.source}}:(image_url or video_url)
 └── </code></pre>
 <hr>
@@ -44,7 +44,7 @@
 	                          	<blockquote>
 	                          		<ul>
 	                          			<li>1.- element-object: specify what kind of element bellow to ( post, block ) </li>
-	                          			<li>2.- element-editable: after each "element-object" should be inserted this attribute with a ng-model all wrapped with HTML-label"</li>
+	                          			<li>2.- element-contenido: before the variable wrapped by {{var}} must insert this element to able the editor inline</li>
 	                          		</ul>	
 	                          		
 	                          		
@@ -52,13 +52,13 @@
 	                          	<pre><code class="language-bash" data-lang="bash">
 element-block='category-name'
 ├── element-object='block'
-│	└── &lt;span element-editable ng-model="block.header" &gt{{block.header}}&lt;/span&gt
+│	└── &lt;div element-contenido &gt{{block.header}}&lt;/div&gt
 ├── element-object='block'
-│	└── &lt;span element-editable ng-model="block.subheader" &gt{{block.subheader}}&lt;/span&gt
+│	└── &lt;div element-contenido &gt{{block.subheader}}&lt;/div&gt
 │	
 ├── element-post  element-object='post'
-│   ├── &lt;div element-editable ng-model="post.header" &gt{{post.header}}&lt;/div&gt
-│   └── &lt;div element-editable ng-model="post.subheader" ng-bind-html="post.subheader | sanitize" &gt{{post.subheader}}&lt;/div&gt
+│   ├── &lt;div element-contenido &gt{{post.header}}&lt;/div&gt
+│   └── &lt;div element-contenido &gt{{post.subheader}}&lt;/div&gt
 │   
 └── </code></pre>
 <hr>
@@ -67,14 +67,14 @@ element-block='category-name'
 	                          	<pre><code class="language-bash" data-lang="bash">
 &lt;div element-block="services" &gt
 	&lt;div class="row"&gt
-		&lt;h1  element-object="block" &gt&lt;span element-editable ng-model="block.header"&gt{{block.header}}&lt;/span&gt&lt;/h1&gt
-		&lt;h2 element-object="block" &gt&lt;small element-editable ng-model="block.subheader"&gt{{block.subheader}}&lt;/small&gt&lt;/h2&gt
+		&lt;h1  element-object="block" &gt&lt;span element-contenido &gt{{block.header}}&lt;/span&gt&lt;/h1&gt
+		&lt;h2 element-object="block" &gt&lt;small element-contenido &gt{{block.subheader}}&lt;/small&gt&lt;/h2&gt
 	&lt;/div&gt
 	&lt;div class="row"&gt
 		&lt;div element-object="post" element-post &gt				
 			&lt;img src="{{post.source}}" &gt
-		  	&lt;h2 element-editable ng-model="post.header" &gt{{post.header}}&lt;/h2&gt
-			&lt;p element-editable ng-model="post.subheader" ng-bind-html="post.subheader | sanitize"&gt&lt;/p&gt
+		  	&lt;h2 element-contenido &gt{{post.header}}&lt;/h2&gt
+			&lt;p element-contenido &gt{{post.subheader}}&lt;/p&gt
 		&lt;/div&gt
 	&lt;/div&gt
 &lt;/div&gt
