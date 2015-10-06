@@ -29,7 +29,7 @@
     
     <!-- Base Styling  -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/app/app.v1.css" />
-
+    
     <style type="text/css">
       input.counter_char + .character-counter{
           display: none;
@@ -276,7 +276,9 @@
     
     
     <!-- JQuery v1.9.1 -->
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+	   <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/underscore/underscore-min.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/bootstrap/bootstrap.min.js"></script>

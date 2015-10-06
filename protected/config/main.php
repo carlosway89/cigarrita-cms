@@ -37,7 +37,7 @@ return array(
 	// application components
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=cigarritaworker_v2',
+			'connectionString' => 'mysql:host=localhost;dbname=demo_cw',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '150189',
@@ -70,6 +70,7 @@ return array(
 		        array('api/safeDelete', 'pattern'=>'api/<model:\w+>/safe/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/formContact', 'pattern'=>'api/formContact', 'verb'=>'POST'),
 		        array('api/upload', 'pattern'=>'api/upload', 'verb'=>'POST'),
+		        array('api/menuSort', 'pattern'=>'api/menuSort', 'verb'=>'POST'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),		        
 		        // Other controllers
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

@@ -51,7 +51,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
 			if ($value->type=="new") {
     ?>
       when('<?=$value->url?>', {
-        templateUrl: $base_url+'/api/template/<?=$value->name?>/site',
+        templateUrl: $base_url+'/api/template<?=$value->url?>/site',
         controller: 'pageCtrl',
         pageid: <?=$value->page?>,
         reloadOnSearch: false

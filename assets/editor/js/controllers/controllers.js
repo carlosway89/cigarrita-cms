@@ -78,7 +78,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
 
 
     var obj_lang={
-      state:1,
+      estado:1,
       is_deleted:0
     };
 
@@ -239,6 +239,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
 
     $scope.check_status();
 
+    $('.selection.dropdown').dropdown();
     
 
 }]);

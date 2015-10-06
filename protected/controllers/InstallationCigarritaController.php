@@ -76,6 +76,7 @@ class InstallationCigarritaController extends Controller
 		if(isset($_POST['User']))
 		{	
 			
+
 			$model->attributes=$_POST['User'];
 			$model->estado=1;		
 
@@ -146,10 +147,12 @@ class InstallationCigarritaController extends Controller
 		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
 		foreach ($html->find('.header-options') as $element) {
 			
-			$element->children(1)->setAttribute('ng-href','{{link.url}}');
 			$element->children(1)->setAttribute('ng-repeat','link in links');
-			$element->children(1)->setAttribute('menu-links','{{link.type}}');
-			$element->children(1)->innertext='{{link.name}}';
+
+			$element->children(1)->find('a',0)->setAttribute('ng-href','{{link.url}}');
+			
+			$element->children(1)->find('a',0)->setAttribute('menu-links','{{link.type}}');
+			$element->children(1)->find('a',0)->innertext='{{link.name}}';
 
 			$element->innertext=$element->children(1)->outertext;
 			
@@ -246,11 +249,9 @@ class InstallationCigarritaController extends Controller
 
 			        chmod($root."/themes/design/views/site/$name".".php", 0777);
 			        $page=new Page();
-
 			        if ($name=='index') {
 			        	$name="home";
 			        }
-
 			        $page->name=$name;
 			        if ($page->save()) {
 			        }

@@ -486,14 +486,7 @@ class ApiController extends Controller
 
         $parsedRequest = CJSON::decode($requestBody);
 
-
-        // $array=json_decode(stripslashes($_POST['json']));
-        // foreach ($parsedRequest['json'] as $key => $value) {
-        //     echo "id=".$key."val=".$value;
-        // }
         $done=1;
-
-           // print_r($parsedRequest);
 
         foreach ($parsedRequest as $key => $value) {
             $menu=Menu::model()->findByPk($value);  

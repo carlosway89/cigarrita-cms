@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `block` (
   `source` text,
   PRIMARY KEY (`idblock`),
   KEY `fk_block_category1_idx` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `block_has_post` (
   PRIMARY KEY (`id_block_has_post`,`block_idblock`,`post_idpost`),
   KEY `fk_block_has_post_post1_idx` (`post_idpost`),
   KEY `fk_block_has_post_block1_idx` (`block_idblock`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -159,17 +159,9 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `id_facebook` varchar(200) NOT NULL,
   `id_facebook_page` varchar(300) NOT NULL,
   PRIMARY KEY (`idconfig`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
-
---
--- Volcado de datos para la tabla `configuration`
---
-
-INSERT INTO `configuration` (`idconfig`, `title`, `logo`, `description`, `language`, `analytic_id`, `keywords`, `is_installed`, `id_facebook`, `id_facebook_page`) VALUES
-(1, 'demo', '', 'description', 'en', '', 'keywords', 0, '', '');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
-
 
 --
 -- Estructura de tabla para la tabla `form`
@@ -186,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `form` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`idform`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1  ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 -- --------------------------------------------------------
 
@@ -202,15 +194,15 @@ CREATE TABLE IF NOT EXISTS `language` (
   `min` varchar(3) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idlanguage`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1  ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Volcado de datos para la tabla `language`
 --
 
 INSERT INTO `language` (`idlanguage`, `name`, `flag`, `estado`, `min`, `is_deleted`) VALUES
-(30, 'Español', 'es', 1, 'es', 0),
-(31, 'English', 'en', 1, 'en', 0),
+(30, 'Español', 'es', 1, 'es', 1),
+(31, 'English', 'en', 1, 'en', 1),
 (32, 'Deutsch', 'de', 1, 'de', 0);
 
 -- --------------------------------------------------------
@@ -226,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `log` (
   `ip` varchar(100) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idlog`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=411 ;
 
 -- --------------------------------------------------------
 
@@ -247,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `parent_id` int(11) DEFAULT NULL,
   `source` text,
   PRIMARY KEY (`idmenu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -262,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `state` tinyint(1) DEFAULT '1',
   `source` text,
   PRIMARY KEY (`idpage`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -277,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `page_has_block` (
   PRIMARY KEY (`id_page_has_block`,`page_idpage`,`block_idblock`),
   KEY `fk_page_has_block_block1_idx` (`block_idblock`),
   KEY `fk_page_has_block_page_idx` (`page_idpage`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -297,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`idpost`),
   KEY `fk_post_category1_idx` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=133 ;
 
 -- --------------------------------------------------------
 
@@ -314,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` text NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`iduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -322,7 +314,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`iduser`, `username`, `password`, `estado`, `full_name`, `email`, `is_deleted`) VALUES
 (3, 'webmaster', 'c33367701511b4f6020ec61ded352059', 1, 'carlos manay', 'carlos@cigarrita-worker.com', 0),
-(4, 'admin', 'c33367701511b4f6020ec61ded352059', 1, 'Admin Website', 'info@cigarrita-worker.com', 0);
+(4, 'admin', 'c33367701511b4f6020ec61ded352059', 1, 'Admin Website', '', 0);
 
 --
 -- Restricciones para tablas volcadas

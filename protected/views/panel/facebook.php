@@ -39,7 +39,12 @@
                 <button type="sumbit" class="btn btn-primary"><i class="fa fa-refresh"></i> Sync <small>Feeds</small> from Facebook</button>
               </form>
               <?php
-              }else{?>                          
+              }else{?> 
+              <form method="POST">
+                  <input type="hidden" name ="sync" value="feed" >
+                  <button type="sumbit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Updates</button>
+                </form>
+              <br><br>                          
               <table id="feedsList" class="hoverable centered">
                 <thead>
                   <tr>
@@ -88,6 +93,7 @@
           </div>
           <div id="events" class="tab-pane tabs-up fade panel panel-default ">
             <div class="panel-body">
+
               <?php if (!$model_events) {
               ?>
               <form method="POST">
@@ -95,7 +101,12 @@
                 <button type="sumbit" class="btn btn-primary"><i class="fa fa-refresh"></i> Sync <small>Events</small> from Facebook</button>
               </form>
               <?php
-              }else{?>                          
+              }else{?>    
+                <form method="POST">
+                  <input type="hidden" name ="sync" value="event" >
+                  <button type="sumbit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Updates</button>
+                </form>
+              <br><br>                      
               <table id="eventsList" class="hoverable centered">
                 <thead>
                   <tr>
@@ -150,7 +161,12 @@
                 <button type="sumbit" class="btn btn-primary"><i class="fa fa-refresh"></i> Sync <small>Gallery</small> from Facebook</button>
               </form>
               <?php
-              }else{?>                          
+              }else{?> 
+              <form method="POST">
+                  <input type="hidden" name ="sync" value="gallery" >
+                  <button type="sumbit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Updates</button>
+                </form>
+              <br><br>                          
               <table id="galleryList" class="hoverable centered">
                 <thead>
                   <tr>
@@ -205,7 +221,12 @@
                 <button type="sumbit" class="btn btn-primary"><i class="fa fa-refresh"></i> Sync <small>Contact Information</small> from Facebook</button>
               </form>
               <?php
-              }else{?>                          
+              }else{?>    
+              <form method="POST">
+                  <input type="hidden" name ="sync" value="contact" >
+                  <button type="sumbit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Updates</button>
+                </form>
+              <br><br>                       
               <table id="contactList" class="hoverable centered">
                 <thead>
                   <tr>
@@ -260,7 +281,12 @@
                 <button type="sumbit" class="btn btn-primary"><i class="fa fa-refresh"></i> Sync <small>About Information</small> from Facebook</button>
               </form>
               <?php
-              }else{?>                          
+              }else{?>      
+              <form method="POST">
+                  <input type="hidden" name ="sync" value="about" >
+                  <button type="sumbit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Updates</button>
+                </form>
+              <br><br>                     
               <table id="aboutList" class="hoverable centered">
                 <thead>
                   <tr>

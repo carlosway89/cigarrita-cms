@@ -868,4 +868,27 @@ i.closing.icon:before{
 
 
 }
+.selection.dropdown{
+  z-index: 100000;
+  position: relative;
+}
+
+.selection.dropdown{
+  margin: 10px;
+  float: left !important;
+  position: fixed !important;
+  bottom: 0px !important;
+  display: inline-block !important;
+}
+.menu.laguage-select{
+    /*top: -250% !important;
+    border-radius: 5px !important;*/
+    height: 100px;
+    bottom: -200px !important;
+    top: -170% !important;
+    border-radius: 5px !important;
+}
+.menu.laguage-select .item{
+    font-size: 12px !important;
+}
 
