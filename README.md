@@ -17,7 +17,7 @@ Into the Root-folder create a folder called "THEMES" there paste your folder of 
 ex: [root_folder]/themes/{{design_name}} .
 
 Open the folder called "install" and create a database ex: "data_base_name" run the script  into the database ```cigarrita_db_to_install.sql```.
-
+Configure the file ```[root_folder]/protected/config/main.php``` with your database information (username,password).
 create a virtual host, ex. miweb.dev, 
 open it with your prefer browser and .
 
