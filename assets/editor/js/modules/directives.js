@@ -73,7 +73,7 @@ cigarritaDirective
     terminal: true, // prevent ng-repeat from compiled twice
     priority: 1002, // must higher than ng-repeat
     link: function (scope, element, attrs) {
-      var repeat="block in page | filter:{category:'"+attrs.elementBlock+"'}";
+      var repeat="block in page | filter:{category:'"+attrs.elementBlock+"'} as results";
       
       if (attrs.elementBlock!='slider') {
         element.attr('id',attrs.elementBlock);
@@ -83,7 +83,10 @@ cigarritaDirective
       attrs.$set('elementBlock', null);
 
       // $(element).find('#subheader,#header').attr("contenteditable",true);
+      // scope.counter = scope.block.length; 
       $compile(element)(scope);
+
+
       
 
     }
@@ -94,7 +97,16 @@ cigarritaDirective
     terminal: true, // prevent ng-repeat from compiled twice
     priority: 1001, // must higher than ng-repeat
     link: function (scope, element, attrs) {
-      var repeat="post in block.posts";
+
+      var val_limit=element.attr('data-limit');
+      var limiting="";
+      // console.log(val_limit);
+      if (val_limit!=undefined) {
+        limiting=" | limitTo:"+val_limit;
+      }
+
+      var repeat="post in block.posts"+limiting + " as results ";
+      
       attrs.$set('ngRepeat', repeat);
       attrs.$set('elementPost', null);
       
@@ -295,7 +307,7 @@ cigarritaDirective
 
                 var is_self=current_link.attr('target');
 
-                
+                $('.header-options .active').removeClass('active');
                 $('.header-options a').removeClass('active');
 
                 var url=$(element).attr('href');
@@ -328,6 +340,7 @@ cigarritaDirective
 
                 $(element).on('click',function(event){
 
+                  $('.header-options .active').removeClass('active');
                   $('.header-options a').removeClass('active');
                   
                   $(element).addClass('active');

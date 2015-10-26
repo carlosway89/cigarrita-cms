@@ -51,7 +51,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
 			if ($value->type=="new") {
     ?>
       when('<?=$value->url?>', {
-        templateUrl: $base_url+'/api/template/<?=$value->name?>/site',
+        templateUrl: $base_url+'/api/template<?=$value->url?>/site',
         controller: 'pageCtrl',
         pageid: <?=$value->page?>,
         reloadOnSearch: false
@@ -63,7 +63,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
       when('/:link', {
         templateUrl: $base_url+'/api/template/home/site', //router template with api
         controller: 'homeCtrl',
-        pageid: 1
+        pageid: 7
       }).
       otherwise({
         redirectTo: '/home'

@@ -351,10 +351,50 @@ class PanelController extends Controller
 			$model->min=$model->flag;
 
 			
-			if($model->save()){									
-				$message="Successfully Updated";
-				
+			
+			if ($model->isNewRecord) {
+				if($model->save()){	
+					$_block=Block::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+					$_menu=Menu::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+
+					foreach ($_block as  $value) {
+						$model_block=new Block();
+						$model_block->attributes=$value->attributes;
+						unset($model_block->idblock);
+						$model_block->language=$model->flag;
+
+						if ($model_block->save()) {
+							foreach ($value->pageHasBlocks as $val_page) {
+								$model_page_block=new PageHasBlock();
+								$model_page_block->block_idblock=$model_block->idblock; 
+								$model_page_block->page_idpage=$val_page->page_idpage;
+								if ($model_page_block->save()) {
+									$message="Successfully Updated";
+								}
+							}
+						}
+						
+					}	
+
+					foreach ($_menu as $menu_val) {
+						$model_menu=new Menu();
+						$model_menu->attributes=$menu_val->attributes;
+						unset($model_menu->idmenu);
+						$model_menu->language=$model->flag;
+
+						if ($model_menu->save()) {
+							$message="Successfully Updated";
+						}
+
+					}
+
+				}
+			}else{
+				if($model->save()){
+					$message="Successfully Updated";
+				}
 			}
+			
 				
 		}
 
@@ -653,8 +693,7 @@ class PanelController extends Controller
 				$model_category->attributes=$_POST['Category'];
 
 				
-				if($model_category->save()){	
-					$this->refresh();								
+				if($model_category->save()){									
 					$message="Successfully Updated";
 					$list_category=Category::model()->findAll();
 				}
@@ -663,25 +702,28 @@ class PanelController extends Controller
 
 			if(isset($_POST['Block']))
 			{	
-				
-				$model_block->attributes=$_POST['Block'];
-				
-				if ($model_block->isNewRecord) {
-					$model_block->state=1;
-				}else{
-					$model_block->state=$model->state=='on'?1:0;
-				}
+				$_lang=Language::model()->findAll("is_deleted='0'");
 
+				foreach ($_lang as $value) {					
 				
-				if($model_block->save()){
-					$page_has_block=new PageHasBlock();
-					$page_has_block->page_idpage=$_POST['page_id'];
-					$page_has_block->block_idblock=$model_block->idblock;
-					if ($page_has_block->save()) {
-						$this->refresh();
-						$message="Successfully Updated";
-					}
+					$model_block=new Block();
+					$model_block->attributes=$_POST['Block'];
+					$model_block->language=$value->flag;
+					if ($model_block->isNewRecord) {
+						$model_block->state=1;
+					}else{
+						$model_block->state=$model->state=='on'?1:0;
+					}				
 					
+					if($model_block->save()){
+						$page_has_block=new PageHasBlock();
+						$page_has_block->page_idpage=$_POST['page_id'];
+						$page_has_block->block_idblock=$model_block->idblock;
+						if ($page_has_block->save()) {
+							$message="Successfully Updated";
+						}
+						
+					}
 				}
 					
 			}
@@ -718,19 +760,23 @@ class PanelController extends Controller
 		
 		$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
-		$page=Page::model()->findAll("state=1");
-		$block=Block::model()->findAll("state=1");
+		$page=Page::model()->findAll("state=1 AND is_deleted='0'");
+		$block=Block::model()->findAll("state=1 AND is_deleted='0'");
 		
+
 		$model=new Menu();
 
 		$message=null;
-		$list=null;
+
+		$list=Menu::model()->findAll("is_deleted='0' AND language = '".$lang."' order by t.position");
+		
+		// $list=null;
 
 		
 
 		if (is_numeric($lang)) {
 			$id=$lang;
-
+			$list=Menu::model()->findAll("is_deleted='0' AND language = '".Yii::app()->user->getState('language_initial')."' order by t.position");
 			$model=Menu::model()->findByPk($id);
 
 			$render='//menu/menu';
@@ -740,21 +786,38 @@ class PanelController extends Controller
 		if(isset($_POST['Menu']))
 		{	
 			
-			$model->attributes=$_POST['Menu'];
-			$model->state=$model->state=='on'?1:0;
 
-			
-			if($model->save()){									
-				$message="Successfully Updated";
+			if ($model->isNewRecord) {
 				
-			}
+				$_lang=Language::model()->findAll("is_deleted='0'");
+
+				foreach ($_lang as $value) {					
+					$model=new Menu();
+					$model->attributes=$_POST['Menu'];
+					$model->state=$model->state=='on'?1:0;					
+					$model->language=$value->flag;
+
+					if ($model->save()) {
+						$message="Successfully Updated";
+					}				
+					
+				}
+			}else{
+				$model->attributes=$_POST['Menu'];
+				$model->state=$model->state=='on'?1:0;
+				
+				if($model->save()){									
+					$message="Successfully Updated";					
+				}
+			}					
+			
 				
 		}
 
 
 		if (!is_numeric($lang)){
 			
-			$list=Menu::model()->findAll("is_deleted='0' AND language = '".$lang."'");
+			// $list=Menu::model()->findAll("is_deleted='0' AND language = '".$lang."' order by t.position");
 			$render='//menu/admin';
 			
 		}
@@ -824,11 +887,8 @@ class PanelController extends Controller
 	private function saveFBdata($response,$type_sync){
         
 
-		// print_r($response['id']);
 
         $id=$response['id'];
-
-        // $post=Post::model()->findByAttributes(array('source'=>$id));  
         
         $cat=Category::model()->findByAttributes(array('category'=>"fb_".$type_sync));
 
@@ -836,7 +896,7 @@ class PanelController extends Controller
 
         if (!$cat) {
             $cat_model=new Category();
-            $cat_model->source="fb_".$type_sync;
+            $cat_model->category="fb_".$type_sync;
             $cat_model->save();
         }
 
@@ -850,7 +910,8 @@ class PanelController extends Controller
         		$data_response=$response['events']->data;
         		break;  
         	case 'gallery':
-        		$data_response=$response['photos']->data;
+        		// $data_response=$response['photos']->data;
+        		$data_response=$response['albums']->data;
         		break;       	
         	default:
         		$continue=false;
@@ -858,52 +919,74 @@ class PanelController extends Controller
         		break;
         }
 
-        // if ($post) {
-        //     $_model=$post;
-        //     $id_post=$_model->idpost;
-        // }
-        // else{
-        	if (!$continue) {
-        		$_model=new Post();
-        		$_model->language=Yii::app()->user->getState('language_initial');
+
+    	if (!$continue) {
+    		$post=Post::model()->findByAttributes(array('source'=>$id)); 
+    		if ($post) {
+    			$_model=$post;
+    			$id_post=$_model->idpost;
+    		}else{
+    			$_model=new Post();
+    			$_model->language=Yii::app()->user->getState('language_initial');
 	            $_model->source=$id;
 	            $_model->category="fb_".$type_sync;
 
 	            if ($_model->save()) {
 	            	$id_post=$_model->idpost;
 	            }
-        	}
-            
-        // }
-
-        
+    		}
+    		
+    	}
+              
 
         foreach($data_response as $key_data=>$data) {
 
         	
         	if ($continue) {
 
-        		$_model=new Post();
-        		$_model->language=Yii::app()->user->getState('language_initial');
-	            $_model->source=$data->id;
-	            $_model->category="fb_".$type_sync;
+        		$post=Post::model()->findByAttributes(array('source'=>$data->id));
 
-	            if ($_model->save()) {
-	            	$id_post=$_model->idpost;
-	            }
+        		if ($post) {
+        		 	$_model=$post;
+        			$id_post=$_model->idpost;
+        		}else{
+
+	        		$_model=new Post();
+	        		$_model->source=$data->id;
+	        		$_model->language=Yii::app()->user->getState('language_initial');
+		  
+		            $_model->category="fb_".$type_sync;
+
+		            if ($_model->save()) {
+		            	$id_post=$_model->idpost;
+		            }
+		        }
+
 
         		foreach ($data as $key => $value) {
-	        		$attr=new Attributes();
-		            $attr->idpost=$id_post;            
-		            $attr->key=$key;
+        			if ($post) {
+	        			$attr=Attributes::model()->findByAttributes(array('key'=>$key,'idpost'=>$id_post));
+	        		}else{
+	        			$attr=new Attributes();
+			            $attr->idpost=$id_post;            
+			            $attr->key=$key;
+	        		}
+	        		
 		            $attr->value=is_object($value)?json_encode($value):(is_array($value)?json_encode($value):$value);            
 		            $attr->save();	
 	        	}
+
         	}else{
 
-        		$attr=new Attributes();
-	            $attr->idpost=$id_post;            
-	            $attr->key=$key_data;
+        		if ($post) {
+        			$attr=Attributes::model()->findByAttributes(array('key'=>$key_data,'idpost'=>$id_post));
+        		}else{
+        			$attr=new Attributes();
+	            	$attr->idpost=$id_post;
+	            	$attr->key=$key_data;
+        		}
+        		            
+	            
 	            $attr->value=is_object($data)?json_encode($data):(is_array($data)?json_encode($data):$data);            
 	            $attr->save();
 

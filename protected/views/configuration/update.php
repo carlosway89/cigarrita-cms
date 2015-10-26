@@ -49,7 +49,8 @@
 									<?php echo $form->textField($model,'description',array('size'=>60,'length'=>'120','maxlength'=>400,'class'=>'counter_char')); ?>
 									<?php echo $form->error($model,'description'); ?>
 								</div>
-
+								<?php if (Yii::app()->user->checkAccess("webmaster")) {
+								?>
 								<div class="row">
 									<?php echo $form->labelEx($model,'language Default'); ?>
 									<select name="Configuration[language]" class="browser-default">
@@ -61,6 +62,7 @@
 									</select>
 									<?php echo $form->error($model,'language'); ?>
 								</div>
+								<?php } ?>
 
 								<div class="row">
 									<?php echo $form->labelEx($model,'Google Analytic ID'); ?>

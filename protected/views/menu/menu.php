@@ -12,6 +12,7 @@
 						<?php echo $this->renderPartial('//menu/_form', 
 							array(
 									'model'=>$model,
+									'list'=>$list,
 									'page'=>$page,
 									'block'=>$block,
 									'language'=>$language,

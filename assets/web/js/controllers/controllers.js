@@ -2,7 +2,7 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
 
 
     var obj_lang={
-      state:1,
+      estado:1,
       is_deleted:0
     };
 
@@ -56,7 +56,9 @@ cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model'
 
       });
 
-    })
+    });
+
+    $('.selection.dropdown').dropdown();
 
     
 
@@ -66,13 +68,6 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
   
   var pageid = $route.current.$$route.pageid;
-
-  var fadeDuration=1000;
-  var fadeDuration1=1000;
-  var slideDuration=7000;
-  var currentIndex=1;
-  var nextIndex=1;
-
 
   var page=function(){
     
@@ -87,13 +82,21 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       query:JSON.stringify(obj)
     },function(data){
       setTimeout(function(){
-          $('.loading-container').hide();
-          $('#home .transito').css({opacity: 0.0});
-          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
-          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-          var timer = setInterval(nextSlide,slideDuration);
-      },1000);
+
+        // if (!$('script[src="/themes/design/js/script.js"]').length) {
+          var js = document.createElement("script");
+
+          js.type = "text/javascript";
+          js.src = '/themes/design/js/script.js';
+
+          document.body.appendChild(js);
+        // }        
+        
+
+        $('.loading-container').hide();
+        $('.preloader').hide();
+      },300);
+      
 
     });
 
@@ -106,30 +109,6 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       page();
   });
 
-
-    var nextSlide=function(){
-
-          nextIndex =currentIndex+1;
-
-          if(nextIndex > $('#home .transito').length)
-          {
-            nextIndex =1;
-          }
-          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
-          $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-          $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
-          currentIndex = nextIndex;
-
-    };
-
-  $scope.launchit=function(model){
-
-    // console.log(model);
-
-    // parent.$(parent.document).trigger('launch.edition',model);
-
-  }
 
 }]);
 
@@ -148,6 +127,19 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
 
     $scope.page = Content.query({
       query:JSON.stringify(obj)
+    },function(){
+       // if (!$('script[src="/themes/design/js/script.js"]').length) {
+          var js = document.createElement("script");
+
+          js.type = "text/javascript";
+          js.src = '/themes/design/js/script.js';
+
+          document.body.appendChild(js);
+        // }        
+        
+
+        $('.loading-container').hide();
+        $('.preloader').hide();
     });
     
   }

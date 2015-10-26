@@ -44,10 +44,11 @@ class Menu extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idmenu, state, position, is_deleted, page, parent_id', 'numerical', 'integerOnly'=>true),
+			array('idmenu, state, position, is_deleted, page', 'numerical', 'integerOnly'=>true),
 			array('url, name', 'length', 'max'=>100),
 			array('type, language', 'length', 'max'=>10),
 			array('source', 'safe'),
+			array('parent_id', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('idmenu, url, name, type, state, position, is_deleted, language, page, parent_id, source', 'safe', 'on'=>'search'),

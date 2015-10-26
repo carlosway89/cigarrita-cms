@@ -62,9 +62,11 @@
 	position: relative;
 	z-index: 20000;
 	text-decoration: none !important;
+	display: block;
 }
 .inline-add a{
 	text-decoration: none !important;	
+	background-color: transparent !important;
 }
 #inline-editors{
 	position:absolute;

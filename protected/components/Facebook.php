@@ -61,7 +61,7 @@ class Facebook
       $contact="emails,location,phone";
       $feed="posts.limit(5).fields(description,message,type,link,name,picture,source)";
       $event="events.limit(5).fields(cover,name,description,place).since(2014)";
-      $gallery="photos.fields(picture,source),albums.limit(10).fields(cover_photo,name,type,description,photos.limit(10).fields(picture,source))";
+      $gallery="photos.fields(picture,source),albums.limit(10).fields(cover_photo,name,type,description,photos.limit(10).fields(name,picture,source))";
 
       switch ($type) {
         case 'all':

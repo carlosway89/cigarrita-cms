@@ -131,196 +131,6 @@ class ApiController extends Controller
 
     }
 
-    public function actionMultiLanguage(){
-
-        $new_lang=$this->uri(2);
-
-        // $requestBody = Yii::app()->request->getRawBody();
-
-        // $parsedRequest = CJSON::decode($requestBody);
-
-        $new_menu= new Menu();
-
-        $model=Menu::model()->findAll(" language = '$this->language_initial'");
-
-        $new_model=Menu::model()->findAll(" language = '$new_lang'");
-
-        foreach ($model as $key_menu=>$menu) {
-            if (!$new_model) {
-                $new_menu= new Menu();
-                $new_menu->attributes=$menu->attributes;
-                $new_menu->language=$new_lang; 
-                $new_menu->name="$new_lang-".$new_menu->name;               
-                // $new_menu->save();
-                if ($new_menu->save()) {
-                    $content=Content::model()->findAll(" idmenu = '$menu->idmenu'");
-
-                    foreach ($content as $key_cont => $content) {
-                        $new_content=new Content();
-                        $new_content->attributes=$content->attributes;
-                        $new_content->idmenu=$new_menu->idmenu;
-                        $new_content->language=$new_lang; 
-
-                        if ($new_content->save()) {
-                            $post=Post::model()->findAll(" idcontent = '$content->idcontent'");
-
-                            foreach ($post as $key_post => $post) {
-                                $new_post=new Post();
-                                $new_post->attributes=$post->attributes;
-                                $new_post->idcontent=$new_content->idcontent;
-                                $new_post->language=$new_lang;
-                                $new_post->save();
-                            }
-                        }
-                    }
-                }
-
-                
-
-
-            }else{
-                
-                $url=$menu->url;
-                $found=false;
-                foreach ($new_model as $key => $value) {
-                    if ($url==$value->url) {
-                        $found=true;
-                        break;
-                    }
-                }
-                if (!$found) {
-                    $new_menu= new Menu();
-                    $new_menu->attributes=$menu->attributes;
-                    $new_menu->language=$new_lang;
-                    $new_menu->name="$new_lang-".$new_menu->name;                
-                    
-                    if ($new_menu->save()) {
-                        $content=Content::model()->findAll(" idmenu = '$menu->idmenu'");
-
-                        foreach ($content as $key_cont => $content) {
-                            $new_content=new Content();
-                            $new_content->attributes=$content->attributes;
-                            $new_content->idmenu=$new_menu->idmenu;
-                            $new_content->language=$new_lang; 
-
-                            if ($new_content->save()) {
-                                $post=Post::model()->findAll(" idcontent = '$content->idcontent'");
-
-                                foreach ($post as $key_post => $post) {
-                                    $new_post=new Post();
-                                    $new_post->attributes=$post->attributes;
-                                    $new_post->idcontent=$new_content->idcontent;
-                                    $new_post->language=$new_lang;
-                                    $new_post->save();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            $array[]=array("success"=>1);
-                
-                
-        }
-
-        // foreach ($variable as $key => $value) {
-        //     # code...
-        // }
-
-        header('Content-type: application/json');
-
-            // print_r($array);
-        echo CJSON::encode($array);
-
-        // print_r($array);
-
-        // echo $new_lang;
-
-        // $this->actionCreate($model,$parsedRequest);
-
-        // $this->actionUpdate($model,$id,$parsedRequest);
-    }
-
-    public function actionRunFile()
-    {   
-
-        try {
-        $criteria = new CDbCriteria;
-        $criteria->condition="language = 'es' and estado=1";
-        $criteria->limit = 1000;
-        // $criteria->order="ASC"
-
-        $menu=Menu::model()->findAll($criteria);
-
-        $col_menu="";
-        $column=array();
-
-        foreach ($menu as $value) {
-            $val=str_replace('#','principal',$value->attributes['url']);
-            $ext=$value->attributes['minimal']?"":"-ext";
-            $column[]=str_replace('/','',$val.$ext);
-            
-        }
-        $col_menu=implode(",",$column);
-        $root=$_SERVER['DOCUMENT_ROOT'];
-
-        $file=Yii::app()->getBaseUrl(true)."/js/vendor/router_template.php?var=".$col_menu;
-
-        // print_r($test);
-        $c = curl_init($file);
-        curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-        $page = curl_exec($c);
-        curl_close($c);
-
-        
-            $file = new SplFileObject($root."/js/vendor/router.js",'w+');
-            // $file->seek(57);     // Seek 9999 postion to show line no. 10,000
-            // echo 'aqui'.$file->current();
-            // $string="\n"; 
-            // foreach ($test as $value) {
-            //     $string=$string.$value."\n";
-            // }
-            
-            $file->fwrite($page); // write over the line specify above
-        } catch (Exception $e) {
-            echo $e;
-        }
-        
-    }
-    public function actionTester(){
-
-            // $profile_id=$this->uri(2);
-            // $connection = Yii::app()->db;//get connection
-            // $dbSchema = $connection->schema;
-            // //or $connection->getSchema();
-            // $tables = $dbSchema->getTables();//returns array of tbl schema's
-            // foreach($tables as $tbl)
-            // {
-
-            //     echo $tbl->rawName, ':<br/>', implode(', ', $tbl->columnNames), '<br/>';
-            // }
-
-            // $model=new Menu('search');
-
-            // $data=$model->search()->getData();
-
-            // $array=array();
-            // echo $profile_id;
-        
-        // Create DOM from URL or file
-        // $html = new HTMLDOM();
-
-        // $url=Yii::app()->getBaseUrl(true)."/api/template/view/site";
-        // $html=$html->get($url);
-
-        // foreach($html->find('[data-id="subheader"]') as $element)
-        //        echo "elemento: ".$element. '<br>';
-
-        echo 'prueba';
-
-    }
-
 
     public function actionFacebook(){
 
@@ -339,106 +149,7 @@ class ApiController extends Controller
         $this->_sendResponse(200, CJSON::encode($response));
     }
     
-    private function saveFBdata($model,$response){
-        
 
-        $id=$response->id;
-
-        $attr=$model::model()->findByPk($id);  
-
-        if ($attr) {
-            $_model=$attr;
-        }
-        else{
-            $_model=new $model();
-        }
-
-        foreach($response as $var=>$value) {
-            
-            if($_model->hasAttribute($var)) {
-                $_model->$var =  is_object($value)?json_encode($value):(is_array($value)?json_encode($value):$value);
-            } 
-
-        }
-
-        if($_model->save()) {
-            return 1;
-        } else {
-            // Errors occurred
-            $msg = "<h1>Error</h1>";
-            $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
-            $msg .= "<ul>";
-            foreach($_model->errors as $attribute=>$attr_errors) {
-                $msg .= "<li>Attribute: $attribute</li>";
-                $msg .= "<ul>";
-                foreach($attr_errors as $attr_error) {
-                    $msg .= "<li>$attr_error</li>";
-                }        
-                $msg .= "</ul>";
-            }
-            $msg .= "</ul>";
-            $this->_sendResponse(500, $msg );
-        }
-    }
-
-    public function actionDataFacebookSync(){
-        $profile_id=$this->uri(2);
-        $type_sync=$this->uri(3)?$this->uri(3):'all';
-
-        $fb=new Facebook();
-
-        $response=$fb->getUserFB($profile_id,$type_sync);
-
-        switch ($type_sync) {
-            case 'about':
-                if ($this->saveFBdata("About",$response)) {
-                    echo 1;
-                } 
-            break;
-            case 'contact':
-                if ($this->saveFBdata("Contact",$response)) {
-                    echo 1;
-                }
-            break;
-            case 'feed':
-                $feeds=$response['posts']->data;
-
-                foreach ($feeds as $feeds_key => $feeds_val) {
-                    $this->saveFBdata("Feed",$feeds_val);
-                }
-                echo 1;
-
-            break; 
-            case 'event':
-               $events=$response['events']->data;
-               foreach ($events as $events_key => $events_val) {
-                    $this->saveFBdata("Event",$events_val);
-                }
-                echo 1;
-            break; 
-            case 'gallery':
-                $albums=$response['albums']->data;
-
-                foreach ($albums as $albums_key => $albums_val) {
-                    $photos=$albums_val->photos->data;
-                    $this->saveFBdata("Gallery",$albums_val);
-                    foreach ($photos as $val) {
-                        $val= (object) array_merge((array) $val,array("belong"=>$albums_val->id));
-                        $this->saveFBdata("Gallery",$val);
-                    }
-                    
-                } 
-                echo 1;
-            break;         
-            default:
-              echo 'All';
-              break;
-        }
-
-        
- 
-
-    }
 
 
 
@@ -486,14 +197,7 @@ class ApiController extends Controller
 
         $parsedRequest = CJSON::decode($requestBody);
 
-
-        // $array=json_decode(stripslashes($_POST['json']));
-        // foreach ($parsedRequest['json'] as $key => $value) {
-        //     echo "id=".$key."val=".$value;
-        // }
         $done=1;
-
-           // print_r($parsedRequest);
 
         foreach ($parsedRequest as $key => $value) {
             $menu=Menu::model()->findByPk($value);  
@@ -853,8 +557,21 @@ class ApiController extends Controller
             }
             
 
-           
+            if ($model=="Menu") {
+                $criteria->condition=$criteria->condition." AND parent_id IS NULL";
+            }
+
             $models=$model::model()->findAll($criteria);
+
+            if ($model=="Menu") {
+
+                $lister=array();
+                foreach ($models as $key_model => $val_model) {                    
+                    $_menu=Menu::model()->findAll("parent_id='".$val_model->idmenu."'");
+                    $lister[]=array_merge($val_model->attributes,array("sub_menu"=>$_menu));
+                }
+                $models=$lister;
+            }
 
         }else{
             $models=array("error"=>204,"message"=>"doesn't exits such a model");            

@@ -78,7 +78,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
 
 
     var obj_lang={
-      state:1,
+      estado:1,
       is_deleted:0
     };
 
@@ -239,6 +239,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
 
     $scope.check_status();
 
+    $('.selection.dropdown').dropdown();
     
 
 }]);
@@ -247,13 +248,6 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
 
   var pageid = $route.current.$$route.pageid;
-
-  var fadeDuration=1000;
-  var fadeDuration1=1000;
-  var slideDuration=7000;
-  var currentIndex=1;
-  var nextIndex=1;
-
 
 
   var page=function(){
@@ -269,12 +263,19 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       query:JSON.stringify(obj)
     },function(data){
       setTimeout(function(){
-          $('#home .transito').css({opacity: 0.0});
-          $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration1);
-          // $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-          // $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-          var timer = setInterval(nextSlide,slideDuration);
-      },2000);
+         // if (!$('script[src="/themes/design/js/script.js"]').length) {
+          var js = document.createElement("script");
+
+          js.type = "text/javascript";
+          js.src = '/themes/design/js/script.js';
+
+          document.body.appendChild(js);
+        // }        
+        
+
+        $('.loading-container').hide();
+        $('.preloader').hide();
+      },1000);
 
     });
 
@@ -286,21 +287,6 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       page();
   });
 
-  var nextSlide=function(){
-
-        nextIndex =currentIndex+1;
-
-        if(nextIndex > $('#home .transito').length)
-        {
-          nextIndex =1;
-        }
-        $('#home .transito:nth-child('+nextIndex+')').show().animate({opacity: 1.0}, fadeDuration);
-        // $('#home .transito:nth-child('+nextIndex+') h1').transition('bounce');
-        // $('#home .transito:nth-child('+nextIndex+') img').transition('pulse');
-        $('#home .transito:nth-child('+currentIndex+')').animate({opacity: 0.0}, fadeDuration).hide();
-        currentIndex = nextIndex;
-
-  };
   
   modal_options($scope,$http,$compile,$rootScope);
 
@@ -308,7 +294,7 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
 }]);
 
-cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$route','$http','$compile',function($scope,Content,Language,$route,$http,$compile){
+cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$route','$http','$compile','$rootScope',function($scope,Content,Language,$route,$http,$compile,$rootScope){
 
   var pageid = $route.current.$$route.pageid;
 
@@ -323,6 +309,19 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
 
     $scope.page = Content.query({
       query:JSON.stringify(obj)
+    },function(data){
+      // if (!$('script[src="/themes/design/js/script.js"]').length) {
+          var js = document.createElement("script");
+
+          js.type = "text/javascript";
+          js.src = '/themes/design/js/script.js';
+
+          document.body.appendChild(js);
+        // }        
+        
+
+        $('.loading-container').hide();
+        $('.preloader').hide();
     });
     
   }

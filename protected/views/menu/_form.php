@@ -59,6 +59,20 @@
 			<?php echo $form->error($model,'page'); ?>
 		</div>
 
+		<div class="row">
+			<?php echo $form->labelEx($model,'sub_menu_from'); ?>
+			<select id="parent_id" name="Menu[parent_id]" class="browser-default">
+				<option value="">None</option>
+			<?php foreach ($list as $val_list) {
+			 ?>			 
+			 	<option <?=$model->parent_id==$val_list->idmenu?'selected':''?> value="<?=$val_list->idmenu?>"><?=$val_list->name?></option>	 
+			<?php	
+			}?>
+			</select>
+			
+			<?php echo $form->error($model,'parent_id'); ?>
+		</div>
+
 		
 
 		<div class="row">
