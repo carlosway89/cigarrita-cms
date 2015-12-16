@@ -241,7 +241,21 @@ $(function(){
 	$('.inlineckeditor').ckeditor();
 	}
 	
-	
+	/******************************
+	Codemirror
+	******************************/
+	if( $('#codemirror').length ){
+		var editor = CodeMirror.fromTextArea(document.getElementById("codemirror"), {
+		  mode: "application/xml",
+		  styleActiveLine: true,
+		  lineNumbers: true,
+		  lineWrapping: true
+		});
+		// console.log('editor',editor);
+		// var editor = CodeMirror.fromTextArea($('.codemirror'), {
+	 //    lineNumbers: true
+	 //  	});
+	}
 	
 	
 	/********************************

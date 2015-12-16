@@ -24,6 +24,8 @@
 			<?php echo $form->error($model,'name'); ?>
 		</div>
 
+		<?php if (Yii::app()->user->checkAccess("webmaster")) {
+        ?>
 		<div class="row">
 			<?php echo $form->labelEx($model,'url'); ?>
 			<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100,'readonly'=>true)); ?>
@@ -41,7 +43,7 @@
 			<br>
 			<select id="url_page"  class="browser-default">
 				<?php foreach ($block as $key => $value) {?>
-				<option <?=$model->url=='/'.$value->category?'selected':''?>  ><?=$value->category?></option>
+				<option <?=$model->url=='/'.$value->category?'selected':''?> value="<?=$value->category?>" ><?=$value->category?></option>
 				<?php }?>
 			</select>
 			<?php echo $form->error($model,'type'); ?>
@@ -64,9 +66,10 @@
 			<select id="parent_id" name="Menu[parent_id]" class="browser-default">
 				<option value="">None</option>
 			<?php foreach ($list as $val_list) {
+				if ($val_list->parent_id=="") {
 			 ?>			 
 			 	<option <?=$model->parent_id==$val_list->idmenu?'selected':''?> value="<?=$val_list->idmenu?>"><?=$val_list->name?></option>	 
-			<?php	
+			<?php }	
 			}?>
 			</select>
 			
@@ -94,7 +97,7 @@
 			<?php echo $form->textField($model,'source',array('rows'=>6, 'cols'=>50)); ?>
 			<?php echo $form->error($model,'source'); ?>
 		</div>
-
+		<?php }?>
 		<div class="row">
 
 			<?php echo $form->labelEx($model,'state'); ?>

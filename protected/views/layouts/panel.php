@@ -24,10 +24,13 @@
   <!-- Summernote -->
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/plugins/summernote/summernote.css" /> 
 
-    <!-- Fonts  -->
+  <!-- Codemirror-->
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/lib/codemirror.css" />
+  
+  <!-- Fonts  -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
     
-    <!-- Base Styling  -->
+  <!-- Base Styling  -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/app/app.v1.css" />
     
     <style type="text/css">
@@ -79,10 +82,16 @@
                 	<li class="active"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel"><i class="fa fa-laptop"></i><span class="nav-label">Dashboard</span></a></li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-file-o"></i> <span class="nav-label">Web &amp; Pages</span></a>
                     	<ul class="list-unstyled">
+                          <?php if (Yii::app()->user->checkAccess("webmaster")) {
+                          ?>
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages">Web Pages</a></li>
+                          <?php }?>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Web Posts</a></li>
+                          <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+                          ?>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users">Web Users</a></li>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config">Web Configuration</a></li>
+                          <?php }?>
                         </ul>
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-link"></i> <span class="nav-label">Menus &amp; Links</span></a>
@@ -90,6 +99,8 @@
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links">Menus / links</a></li>
                         </ul>
                     </li>
+                    <?php if (Yii::app()->user->checkAccess("webmaster")) {
+                          ?>
                     <li class="has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label">Facebook &amp; Sync</span></a>
                     	<ul class="list-unstyled">
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#feeds" target="_self">Feeds</a></li>
@@ -99,6 +110,7 @@
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#about" target="_self">About</a></li>                            
                         </ul>
                     </li>
+                    <?php }?>
                 </ul>
             </nav>
             
@@ -124,6 +136,8 @@
               ?>
                 <ul class="nav navbar-nav">
                 <li><a href="<?=Yii::app()->getBaseUrl(true)?>" target="_blank"><i class="fa fa-play"></i> Live Website</a></li>
+                <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+                                ?>
                 <li class="dropdown">
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">Languages <span class="caret"></span></a>
                   <ul role="menu" class="dropdown-menu">
@@ -146,12 +160,16 @@
                     <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language#modal_language">+ Add New Language</a></li>
                   </ul>
                 </li>
+                <?php }?>
                 <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/help" target="_blank"><i class="fa fa-book"></i> Help</a></li>
               </ul>
             </nav>
             
             <ul class="nav-toolbar">
               <?php 
+
+              if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+              
                 $criteria = new CDbCriteria;
 
                 $criteria->order="date DESC";
@@ -210,6 +228,7 @@
                         
                     </div>
                 </li>
+              <?php }?>
               <li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
                 <span class="badg">1</span>
               </a>
@@ -219,10 +238,17 @@
                         </div>
                         
                         <div class="list-group">
-                            
                             <a href="http://cigarrita-worker.com/contact" target="_blank" class="list-group-item">
                               Welcome to the CMS Cigarrita Worker, keep you update or in contact with us clicking here
                             </a>
+                            <p class="list-group-item">You are currently in the <strong>1.1 version</strong> of Cigarrita CMS!!</p>
+                            <p class="list-group-item" >
+                              - Developed by Cigarrita Worker<br/>
+                              - Author: Carlos Manay<br/>
+                              - Built with YII 1.1 and AngularJs<br>
+                              - Copyright 2015.
+                            </p>
+                            
                             
                             
 
@@ -238,8 +264,10 @@
                         <div class="panel-body text-center">
                         	<div class="row">
                             	<div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn">Messages</p></a></div>
+                                <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+                                ?>
                                 <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config" class="text-purple"><span class="h2"><i class="fa fa-file-text-o"></i></span><p class="text-gray no-margn">Page Config</p></a></div>
-                                
+                                <?php }?>
                                 <div class="col-xs-12 visible-xs-block"><hr></div>
                                 
                                 <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->request->baseUrl?>/site/logout" class="text-red"><span class="h2"><i class="fa fa-sign-out"></i></span><p class="text-gray no-margn">Log Out</p></a></div>
@@ -299,6 +327,14 @@
     <!-- Summernote -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/summernote/summernote.min.js"></script>
 
+    <!-- Codemirror-->
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/lib/codemirror.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/xml/xml.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/javascript/javascript.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/css/css.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/addon/edit/matchbrackets.js"></script>
+    
     <!-- Globalize -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/globalize/globalize.min.js"></script>
     

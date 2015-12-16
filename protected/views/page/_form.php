@@ -35,11 +35,23 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<textarea class="materialize-textarea summernote" name="Page[source]" style="height: 360px;overflow-y: scroll;background-color: rgba(0, 0, 0, 0.8);
+			<textarea id="codemirror" name="Page[source]" style="height: 360px;overflow-y: scroll;background-color: rgba(0, 0, 0, 0.8);
 color: #66AFE9;" ><?=$model->source?></textarea>
 		</div>
 	</div>
+	<div class="row">
 
+		<?php echo $form->labelEx($model,'single_page'); ?>
+		<div class="switch">
+          <label>
+            Off
+            <input name="Page[single_page]" <?=$model->single_page?'checked="1"':''?> type="checkbox">
+            <span class="lever"></span>
+            On
+          </label>
+        </div>
+		<?php echo $form->error($model,'single_page'); ?>
+	</div>
 
 	<div class="row buttons">
 		<button class="btn btn-info" type="submit">Save</button>
@@ -55,7 +67,7 @@ color: #66AFE9;" ><?=$model->source?></textarea>
 	window.onload = function(){ 
 
 		setTimeout(function(){
-			$('button[data-event="codeview"]').trigger('click');	        
+				// $('button[data-event="codeview"]').trigger('click');	        
 	    },200);
 	    
 	    

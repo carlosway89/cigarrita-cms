@@ -152,5 +152,48 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
 
 
 }]);
+cigarritaControllers.controller('singleCtrl',['$scope','Post','Language','$route',function($scope,Post,Language,$route){
+
+  var post_page=function(){
+    
+    // console.log($route.current.params);
+
+    $scope.post = Post.get({
+      id:$route.current.params.id
+    },function(data){
+      console.log(data);
+      setTimeout(function(){
+
+        // if (!$('script[src="/themes/design/js/script.js"]').length) {
+          var js = document.createElement("script");
+
+          js.type = "text/javascript";
+          js.src = '/themes/design/js/script.js';
+
+          document.body.appendChild(js);
+        // }        
+        
+
+        $('.loading-container').hide();
+        $('.preloader').hide();
+      },300);
+      
+
+    }).$promise.then(function(data) {
+          // console.log(data);
+    }, function(error) {
+        window.location.href="/home";
+    });
+
+  }
+
+  post_page();
+
+
+  $scope.$on('language.changed', function() {
+      post_page();
+  });
+
+}]);
 
 

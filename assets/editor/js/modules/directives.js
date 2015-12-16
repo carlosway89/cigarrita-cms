@@ -99,13 +99,18 @@ cigarritaDirective
     link: function (scope, element, attrs) {
 
       var val_limit=element.attr('data-limit');
+      var val_orderby=element.attr('data-order');
       var limiting="";
+      var ording="";
       // console.log(val_limit);
       if (val_limit!=undefined) {
         limiting=" | limitTo:"+val_limit;
       }
+      if (val_orderby!=undefined) {
+        ording=" | orderBy: '"+val_orderby+"'";
+      }
 
-      var repeat="post in block.posts"+limiting + " as results ";
+      var repeat="post in block.posts"+ ording +limiting;
       
       attrs.$set('ngRepeat', repeat);
       attrs.$set('elementPost', null);
@@ -151,7 +156,7 @@ cigarritaDirective
       });
       var type=element.attr('data-type');
 
-      console.log(scope);
+      // console.log(scope);
       
 
       element.hover(
@@ -411,7 +416,7 @@ cigarritaDirective
                     $.ajax({
                       type: "POST",
                       beforeSend: function(request) {
-                        imagen.addClass('ui button loading');
+                        imagen.addClass('ui btn loading');
                       },
                       url: serverUrl,
                       data: data,
@@ -421,20 +426,40 @@ cigarritaDirective
                         // get the native XmlHttpRequest object
                         var xhr = $.ajaxSettings.xhr() ;
                         // set the onprogress event handler
-                        xhr.upload.onprogress = function(evt){ console.log('progress:', evt.loaded/evt.total*100) } ;
+                        xhr.upload.onprogress = function(evt){ 
+                          
+                          if (imagen.find('#counter_loader').length) {
+                            imagen.find('#counter_loader').html(evt.loaded/evt.total*100+'%');
+                          }else{
+                            imagen.append('<span id="counter_loader" style="position: absolute;font-weight: bold;color:#337AB7;top: 67px;right: 106px;font-size: 17px;">'+evt.loaded/evt.total*100+'%</span>');
+                          }                          
+                          console.log('progress:', evt.loaded/evt.total*100) 
+                        } ;
                         // set the onload event handler
-                        xhr.upload.onload = function(){ console.log('DONE!') } ;
+                        xhr.upload.onload = function(){ 
+                          setTimeout(function(){
+                            imagen.find('#counter_loader').remove();
+                          });                          
+                          console.log('DONE!');
+                        } ;
                         // return the customized object
                         return xhr ;
                       },
-                      success: function(data) {     
-
-                        scope['posting']['source'] = data.url;                 
-                        // scope.$parent[attrs.ngModel] = data.url; 
-                        // scope.$parent.$apply();
-                        $(element).find('img').attr('src',data.url);
-                        $(element).find('img').removeClass('ng-hide');
-                        imagen.removeClass('ui button loading');           
+                      success: function(data) { 
+                        if (data.error) {
+                          if (!imagen.find('#alert_error_upload').length) {
+                            imagen.append('<span id="alert_error_upload" class="alert alert-danger" style="top: 0px;position: absolute;">'+data.error+'</span>');
+                          }
+                        }else{
+                          imagen.find('#alert_error_upload').remove();
+                          scope['posting']['source'] = data.url;                 
+                          // scope.$parent[attrs.ngModel] = data.url; 
+                          // scope.$parent.$apply();
+                          $(element).find('img').attr('src',data.url);
+                          $(element).find('img').removeClass('ng-hide');
+                        }    
+                        
+                        imagen.removeClass('ui btn loading');           
                       }
                     });
 

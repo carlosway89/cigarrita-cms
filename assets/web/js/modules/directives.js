@@ -103,13 +103,18 @@ cigarritaDirective
     link: function (scope, element, attrs) {
 
       var val_limit=element.attr('data-limit');
+      var val_orderby=element.attr('data-order');
       var limiting="";
+      var ording="";
       // console.log(val_limit);
       if (val_limit!=undefined) {
         limiting=" | limitTo:"+val_limit;
       }
+      if (val_orderby!=undefined) {
+        ording=" | orderBy: '"+val_orderby+"'";
+      }
 
-      var repeat="post in block.posts"+limiting+ " as results ";
+      var repeat="post in block.posts" + ording +limiting;
       attrs.$set('ngRepeat', repeat);
       attrs.$set('elementPost', null);
       
@@ -126,14 +131,26 @@ cigarritaDirective
     link: function (scope, element, attrs) {
       
       setTimeout(function(){
+        element.append('<div id="alert-msg" class="alert alert-success" style="display:none" >Your message has been successfully sent</div>');
 
         element.find('form').submit(function(event){
           event.preventDefault();
           var target=element.find('form');
+          
+          var data = {};
+          var msg="";
+          target.find('input,textarea').each(function(){
+
+              data[ $(this).attr('id')] = $(this).val();              
+              msg=msg + $(this).attr('id')+" : "+$(this).val()+"\n\n";
+              $(this).val('');
+
+          });
+          console.log(data);
 
           var contact_model={
-            email:target.find('#email').val(),
-            subject:target.find('#subject').val()
+            email:data['email'],
+            subject:msg
           }
 
           setTimeout(function(){

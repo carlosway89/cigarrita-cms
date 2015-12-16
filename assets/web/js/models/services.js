@@ -92,9 +92,10 @@ cigarritaServices
 })
 .factory('Post',function($resource){
     
-    return $resource('api/index/post/:id',{
+    return $resource($base_url+'/api/post/:id',{
         id:"@id"
     },{
+        query: {method:'GET', isArray:true},
         update:{method:'PUT'}
     });
 })

@@ -15,7 +15,7 @@
               <textarea style='height: 200px !important;' class='form-control form-values post' id='header' placeholder='Enter Header' ng-model="posting.header"></textarea>
           </div>
           <div class='col-sm-4'>  
-            <label for='image' class='col-sm-12 control-label'>Image</label>
+            <label for='image' class='col-sm-12 control-label'>Image <small>(max: 2Mb)</small></label>
             <br>    
             <div class="new_modal_uploading" style="">
               <div id="fileinput_modal_media" class="fileinput fileinput-new" data-name="image" image-upload image-model="block" image-attribute="background">

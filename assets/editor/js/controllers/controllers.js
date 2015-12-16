@@ -28,15 +28,17 @@ var modal_options=function($scope,$http,$compile,$rootScope){
   
 
   $scope.options = {
-      height: 100,
+      height: 200,
       toolbar: [
         //[groupname, [button list]]
-        ['inser',['link','picture']],
-        ['style', ['bold', 'italic', 'underline', 'clear']],
-        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['color', ['color']], 
+        // ['style', ['style']],
+        ['insert',['link','picture']],
+        ['table', ['table']],
+        ['font', ['bold', 'italic', 'underline', 'clear']],
+        // ['font', ['strikethrough', 'superscript', 'subscript']],
         ['fontsize', ['fontsize']],  
-        ['height', ['height']],      
-        ['color', ['color']],  
+        ['height', ['height']],     
         ['para', ['ul', 'ol', 'paragraph']],
         ['misc',['codeview']]          
       ]
@@ -50,6 +52,10 @@ var modal_options=function($scope,$http,$compile,$rootScope){
         source:''
       };
       
+      var imagen=$('#modal_post').find('.fileinput-new.thumbnail');
+      imagen.find('#counter_loader').remove();
+      imagen.find('#alert_error_upload').remove();
+      imagen.removeClass('ui btn loading');
 
       setTimeout(function(){
         $scope.posting=data;
@@ -68,8 +74,10 @@ var modal_options=function($scope,$http,$compile,$rootScope){
 
   });
 
-  $scope.$on('close.modal',function(){
+  $scope.$on('close.modal',function(){    
+
     $('#modal_post').modal_cw('hide');
+  
   });
 
 }
@@ -157,7 +165,8 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
 
 
 
-
+    var handle_error_post=0;
+    var handle_error_block=0;
     
     $scope.save_post = function(post){
 
@@ -167,14 +176,32 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
             });
 
             record = $.extend(record, post);
-            record.$save(function(record){
-              for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
-                if ($scope.$$childTail.page[i].category==record.category) {
-                  $scope.$$childTail.page[i].posts.push(record);
-                };                
-              };
-              $scope.handle_saving('saved');
-            });
+            record.$save(
+              function(record){
+                for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
+                  if ($scope.$$childTail.page[i].category==record.category) {
+                    $scope.$$childTail.page[i].posts.push(record);
+                  };                
+                };
+                $scope.handle_saving('saved');
+                handle_error_post=0;
+              },
+              function(err){
+                setTimeout(function(){
+                  handle_error_post=handle_error_post+1;
+                  if (handle_error_post>3) {
+                    alert('Contection Error!!Reloading!!');
+                    setTimeout(function(){
+                      window.top.location.reload();
+                    },2000);
+                    
+                  }else{
+                    $scope.save_post(post);
+                  }
+                  
+                },3000);
+              }
+            );
 
         }else{
             // var record = new Post({id:post.idpost});
@@ -184,9 +211,26 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
             });
 
             record = $.extend(record, post);
-            record.$update(function(){
-              $scope.handle_saving('saved');
-            });
+            record.$update(
+              function(){
+                $scope.handle_saving('saved');
+                handle_error_post=0;
+              },
+              function(err){
+                setTimeout(function(){
+                  handle_error_post=handle_error_post+1;
+                  if (handle_error_post>3) {
+                    alert('Contection Error!!Reloading!!');
+                    setTimeout(function(){
+                      window.top.location.reload();
+                    },2000);
+                  }else{
+                    $scope.save_post(post);
+                  }
+                },3000);
+                
+              }
+            );
         }
     }
 
@@ -199,9 +243,26 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
 
           rec_block = $.extend(rec_block, block);
 
-          rec_block.$save(function(data){
-            $scope.handle_saving('saved');
-          });
+          rec_block.$save(
+            function(data){
+              $scope.handle_saving('saved');
+              handle_error_block=0;
+            },
+            function(err){
+              setTimeout(function(){
+                  handle_error_block=handle_error_block+1;
+                  if (handle_error_block>3) {
+                    alert('Contection Error!!Reloading!!');
+                    setTimeout(function(){
+                      window.top.location.reload();
+                    },2000);
+                  }else{
+                    $scope.save_block(block);
+                  }
+              },3000);
+                           
+            }
+          );
           
 
       }else{
@@ -212,9 +273,25 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
             });
 
           rec_block = $.extend(rec_block, block);
-          rec_block.$update(function(){
-            $scope.handle_saving('saved');
-          });
+          rec_block.$update(
+            function(){
+              $scope.handle_saving('saved');
+              handle_error_block=0;
+            },
+            function(err){
+              setTimeout(function(){
+                handle_error_block=handle_error_block+1;
+                if (handle_error_block>3) {
+                  alert('Contection Error!!Reloading!!');
+                  setTimeout(function(){
+                    window.top.location.reload();
+                  },2000);
+                }else{
+                  $scope.save_block(block);
+                }
+              },3000);  
+            }
+          );
           
       }
     }

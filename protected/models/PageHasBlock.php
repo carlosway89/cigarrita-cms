@@ -7,6 +7,7 @@
  * @property integer $page_idpage
  * @property integer $block_idblock
  * @property integer $id_page_has_block
+ * @property integer $is_deleted
  *
  * The followings are the available model relations:
  * @property Block $blockIdblock
@@ -41,7 +42,7 @@ class PageHasBlock extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('page_idpage, block_idblock', 'required'),
-			array('page_idpage, block_idblock', 'numerical', 'integerOnly'=>true),
+			array('page_idpage, is_deleted, block_idblock', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('page_idpage, block_idblock, id_page_has_block', 'safe', 'on'=>'search'),
@@ -70,6 +71,7 @@ class PageHasBlock extends CActiveRecord
 			'page_idpage' => 'Page Idpage',
 			'block_idblock' => 'Block Idblock',
 			'id_page_has_block' => 'Id Page Has Block',
+			'is_deleted' => 'Is Deleted',
 		);
 	}
 
@@ -87,6 +89,7 @@ class PageHasBlock extends CActiveRecord
 		$criteria->compare('page_idpage',$this->page_idpage);
 		$criteria->compare('block_idblock',$this->block_idblock);
 		$criteria->compare('id_page_has_block',$this->id_page_has_block);
+		$criteria->compare('is_deleted',$this->is_deleted);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

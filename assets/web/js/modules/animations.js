@@ -1,6 +1,6 @@
 var cigarritaAnimations = angular.module('cigarritaAnimations', ['ngAnimate']);
 
-cigarritaAnimations.animation('.panels', function() {
+cigarritaAnimations.animation('.page-wrapper', function() {
 
   var animateUp = function(element, className, done) {
     if(className != 'active') {

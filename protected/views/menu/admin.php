@@ -27,8 +27,10 @@
 			                    <?php } ?>
 			                  </ul>
 			                </div>
-
+			                <?php if (Yii::app()->user->checkAccess("webmaster")) {
+                          	?>
 			                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Add Menu</button>
+							<?php }?>
 							<br><br>
 						</div>
 						
@@ -58,7 +60,10 @@
 											<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 											<td>
 												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
+												<?php if (Yii::app()->user->checkAccess("webmaster")) {
+                          						?>
 												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+												<?php }?>
 											</td>
 										</tr>
 										<?php } ?>

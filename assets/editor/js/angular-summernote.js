@@ -61,6 +61,7 @@ angular.module('summernote', [])
       }
 
       element.summernote(summernoteConfig);
+      element.trigger('focus');
 
       var editor$ = element.next('.note-editor'),
           unwatchNgModel;

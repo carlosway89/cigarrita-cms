@@ -99,6 +99,15 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
 		}
 	}
     ?>
+    <?php foreach ($pages as $pag_val) { 
+    ?>
+      
+      when('/post/:id/:name', {
+        templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
+        controller: 'singleCtrl'
+      }).
+    <?php } ?>
+
       when('/:link', {
         templateUrl: $base_url+'/api/template/home/site', //router template with api
         controller: 'homeCtrl',

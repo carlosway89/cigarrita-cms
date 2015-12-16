@@ -43,7 +43,10 @@
 									<td><?=$value->date_created?></td>
 									<td>
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$value->idpost?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;
+										<?php if (Yii::app()->user->checkAccess("admin")) {
+                          				?>
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+										<?php }?>
 									</td>
 								</tr>
 								<?php } ?>

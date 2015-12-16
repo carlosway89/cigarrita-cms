@@ -8,6 +8,7 @@ class facebookCommand extends CConsoleCommand {
 
         
         $id_facebook_page=Configuration::model()->findByPk(1)->id_facebook_page;
+        $language_initial=Configuration::model()->findByPk(1)->language;
 
         $fb=new Facebook();
 
@@ -18,13 +19,15 @@ class facebookCommand extends CConsoleCommand {
 		if ($id_facebook_page) {
 			foreach ($syncs as $value) {
 				$response=$fb->getUserFB($profile_id,$value);
-    			$ret=$this->saveFBdata($response,$value);
+    			$ret=$this->saveFBdata($response,$value,$language_initial);
 			}			
 		} 
+
+        echo "data sync successful \n";
  		
  	}
 
- 	private function saveFBdata($response,$type_sync){
+ 	private function saveFBdata($response,$type_sync,$language_initial){
         
 
 
@@ -67,7 +70,7 @@ class facebookCommand extends CConsoleCommand {
     			$id_post=$_model->idpost;
     		}else{
     			$_model=new Post();
-    			$_model->language=Yii::app()->user->getState('language_initial');
+    			$_model->language=$language_initial;
 	            $_model->source=$id;
 	            $_model->category="fb_".$type_sync;
 
@@ -93,7 +96,7 @@ class facebookCommand extends CConsoleCommand {
 
 	        		$_model=new Post();
 	        		$_model->source=$data->id;
-	        		$_model->language=Yii::app()->user->getState('language_initial');
+	        		$_model->language=$language_initial;
 		  
 		            $_model->category="fb_".$type_sync;
 

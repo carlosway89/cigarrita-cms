@@ -6,6 +6,11 @@ cigarritaApp.run(function($route, $rootScope, $location, $anchorScroll, $routePa
   //   $location.hash($routeParams.scrollTo);
   //   $anchorScroll();  
   // });
+  $rootScope.$on('$routeChangeError', function(event, current, previous, error) {
+      if(error.status === 404) {
+          $location.path('/home');
+      }
+  });
 
 
    $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {

@@ -327,93 +327,96 @@ class PanelController extends Controller
 
 	public function actionLanguage($id=null){
 		
-		
-		$list=null;
-		
-		$message=null;
-		$model=new Language();
-		
-		$flags=$this->flags();
-
-		if (is_numeric($id)) {
-
-			$model=Language::model()->findByPk($id);
-
-			$render='//language/update';
-
-		}
-
-		if(isset($_POST['Language']))
-		{	
+		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+			$list=null;
 			
-			$model->attributes=$_POST['Language'];
-			$model->estado=$model->estado=='on'?1:0;
-			$model->min=$model->flag;
-
+			$message=null;
+			$model=new Language();
 			
-			
-			if ($model->isNewRecord) {
-				if($model->save()){	
-					$_block=Block::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
-					$_menu=Menu::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+			$flags=$this->flags();
 
-					foreach ($_block as  $value) {
-						$model_block=new Block();
-						$model_block->attributes=$value->attributes;
-						unset($model_block->idblock);
-						$model_block->language=$model->flag;
+			if (is_numeric($id)) {
 
-						if ($model_block->save()) {
-							foreach ($value->pageHasBlocks as $val_page) {
-								$model_page_block=new PageHasBlock();
-								$model_page_block->block_idblock=$model_block->idblock; 
-								$model_page_block->page_idpage=$val_page->page_idpage;
-								if ($model_page_block->save()) {
-									$message="Successfully Updated";
+				$model=Language::model()->findByPk($id);
+
+				$render='//language/update';
+
+			}
+
+			if(isset($_POST['Language']))
+			{	
+				
+				$model->attributes=$_POST['Language'];
+				$model->estado=$model->estado=='on'?1:0;
+				$model->min=$model->flag;
+
+				
+				
+				if ($model->isNewRecord) {
+					if($model->save()){	
+						$_block=Block::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+						$_menu=Menu::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+
+						foreach ($_block as  $value) {
+							$model_block=new Block();
+							$model_block->attributes=$value->attributes;
+							unset($model_block->idblock);
+							$model_block->language=$model->flag;
+
+							if ($model_block->save()) {
+								foreach ($value->pageHasBlocks as $val_page) {
+									$model_page_block=new PageHasBlock();
+									$model_page_block->block_idblock=$model_block->idblock; 
+									$model_page_block->page_idpage=$val_page->page_idpage;
+									if ($model_page_block->save()) {
+										$message="Successfully Updated";
+									}
 								}
 							}
-						}
-						
-					}	
+							
+						}	
 
-					foreach ($_menu as $menu_val) {
-						$model_menu=new Menu();
-						$model_menu->attributes=$menu_val->attributes;
-						unset($model_menu->idmenu);
-						$model_menu->language=$model->flag;
+						foreach ($_menu as $menu_val) {
+							$model_menu=new Menu();
+							$model_menu->attributes=$menu_val->attributes;
+							unset($model_menu->idmenu);
+							$model_menu->language=$model->flag;
 
-						if ($model_menu->save()) {
-							$message="Successfully Updated";
+							if ($model_menu->save()) {
+								$message="Successfully Updated";
+							}
+
 						}
 
 					}
-
+				}else{
+					if($model->save()){
+						$message="Successfully Updated";
+					}
 				}
-			}else{
-				if($model->save()){
-					$message="Successfully Updated";
-				}
-			}
-			
 				
+					
+			}
+
+			if (!is_numeric($id)) {
+
+				$list=Language::model()->findAll("is_deleted='0'");
+
+				$render='//language/admin';
+
+			}
+
+
+			
+			$this->render($render,array(
+				'model'=>$model,
+				'list'=>$list,
+				'flags'=>$flags,
+				'message'=>$message
+			));
+		}else{
+			$this->redirect(array('//panel/'));
 		}
-
-		if (!is_numeric($id)) {
-
-			$list=Language::model()->findAll("is_deleted='0'");
-
-			$render='//language/admin';
-
-		}
-
-
-		
-		$this->render($render,array(
-			'model'=>$model,
-			'list'=>$list,
-			'flags'=>$flags,
-			'message'=>$message
-		));
 	}
 
 	public function actionChange($id=null){
@@ -494,25 +497,29 @@ class PanelController extends Controller
 	public function actionMessages($id=null){
 
 
-		if ($id==null) {
-			$model=Form::model()->findAll("is_deleted='0'");	
+		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+			if ($id==null) {
+				$model=Form::model()->findAll("is_deleted='0'");	
 
-			$this->render('message',array(
-				'model'=>$model,
-			));
-			
-		}else{
-			$model=Form::model()->findByPk($id);
+				$this->render('message',array(
+					'model'=>$model,
+				));
+				
+			}else{
+				$model=Form::model()->findByPk($id);
 
-			if ($model->state=="new") {
-				$model->state="seen";
-				$model->save();
+				if ($model->state=="new") {
+					$model->state="seen";
+					$model->save();
+				}
+				
+
+				$this->render('message_single',array(
+					'model'=>$model,
+				));
 			}
-			
-
-			$this->render('message_single',array(
-				'model'=>$model,
-			));
+		}else{
+			$this->redirect(array('//panel/'));
 		}
 		
 		
@@ -632,124 +639,161 @@ class PanelController extends Controller
 	}
 	public function actionPages($id=null){
 		
-		
-		$model=new Page();
-
-		$model_block=new Block();
-
-		$model_category=new Category();
-
-		$list_category=Category::model()->findAll();
-
-		$message=null;
-		$list=null;
-
-		$root=$_SERVER['DOCUMENT_ROOT'];
-
 		if (Yii::app()->user->checkAccess("webmaster")) {
-			
+			$model=new Page();
 
-			if (is_numeric($id)) {
+			$model_block=new Block();
 
-				$model=Page::model()->findByPk($id);
+			$model_category=new Category();
+
+			$list_category=Category::model()->findAll();
+			$list_blocks=block::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+
+			$message=null;
+			$list=null;
+
+			$root=$_SERVER['DOCUMENT_ROOT'];
+
+			if (Yii::app()->user->checkAccess("webmaster")) {
 				
-				
-				$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
-				// $file = new SplFileObject($root.'/themes/design/views/site/home'.'.php','w+');
 
-				$model->source=$source;
+				if (is_numeric($id)) {
 
-				$render='//page/update';
-
-			}
-
-			if(isset($_POST['Page']))
-			{	
-				
-				$model->attributes=$_POST['Page'];
-				$model->state=$model->state=='on'?1:0;
-				$page=$model->source;
-				$model->source="";
-				
-				if($model->save()){									
-					$message="Successfully Updated";
+					$model=Page::model()->findByPk($id);
 					
 					
-					$file = new SplFileObject($root."/themes/design/views/site/$model->name".".php",'w+');		            
-		            $file->fwrite($page); 
-
-		            $source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+					$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+					// $file = new SplFileObject($root.'/themes/design/views/site/home'.'.php','w+');
 
 					$model->source=$source;
 
-					$this->refresh();
+					$render='//page/update';
+
 				}
+
+				if(isset($_POST['Page']))
+				{	
 					
-			}
-
-			if(isset($_POST['Category']))
-			{	
-				
-				$model_category->attributes=$_POST['Category'];
-
-				
-				if($model_category->save()){									
-					$message="Successfully Updated";
-					$list_category=Category::model()->findAll();
-				}
+					$model->attributes=$_POST['Page'];
+					$model->state=$model->state=='on'?1:0;
+					$model->single_page=$model->single_page=='on'?1:0;
+					$page=$model->source;
+					$model->source="";
 					
-			}
-
-			if(isset($_POST['Block']))
-			{	
-				$_lang=Language::model()->findAll("is_deleted='0'");
-
-				foreach ($_lang as $value) {					
-				
-					$model_block=new Block();
-					$model_block->attributes=$_POST['Block'];
-					$model_block->language=$value->flag;
-					if ($model_block->isNewRecord) {
-						$model_block->state=1;
-					}else{
-						$model_block->state=$model->state=='on'?1:0;
-					}				
-					
-					if($model_block->save()){
-						$page_has_block=new PageHasBlock();
-						$page_has_block->page_idpage=$_POST['page_id'];
-						$page_has_block->block_idblock=$model_block->idblock;
-						if ($page_has_block->save()) {
-							$message="Successfully Updated";
-						}
+					if($model->save()){									
+						$message="Successfully Updated";
 						
+						
+						$file = new SplFileObject($root."/themes/design/views/site/$model->name".".php",'w+');		            
+			            $file->fwrite($page); 
+
+			            $source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+
+						$model->source=$source;
+
+						$this->refresh();
 					}
+						
 				}
+
+				if(isset($_POST['Category']))
+				{	
 					
+					$model_category->attributes=$_POST['Category'];
+
+					
+					if($model_category->save()){									
+						$message="Successfully Updated";
+						$list_category=Category::model()->findAll();
+					}
+						
+				}
+
+				if(isset($_POST['Block']))
+				{	
+					$_lang=Language::model()->findAll("is_deleted='0'");
+
+					$has_same_block=$_POST['idblock']!=""?1:0;
+
+					
+					
+					if ($has_same_block) {
+
+							$page_has_block=new PageHasBlock();
+							$page_has_block->page_idpage=$_POST['page_id'];
+							$page_has_block->block_idblock=$_POST['idblock'];
+							if ($page_has_block->save()) {
+								$message="Successfully Updated";
+							}else{
+								$message="Error Saving";
+							}
+					}else{
+
+						foreach ($_lang as $value) {					
+					
+							$model_block=new Block();
+							$model_block->attributes=$_POST['Block'];
+							$model_block->language=$value->flag;
+							if ($model_block->isNewRecord) {
+								$model_block->state=1;
+							}else{
+								$model_block->state=$model->state=='on'?1:0;
+							}				
+							
+							if($model_block->save()){
+								$page_has_block=new PageHasBlock();
+								$page_has_block->page_idpage=$_POST['page_id'];
+								$page_has_block->block_idblock=$model_block->idblock;
+								if ($page_has_block->save()) {
+									$message="Successfully Updated";
+								}else{
+									$msg = "<h1>Error</h1>";
+	                				$msg .= "<ul>";
+									foreach($page_has_block->errors as $attribute=>$attr_errors) {
+					                    $msg .= "<li>Attribute: $attribute</li>";
+					                    $msg .= "<ul>";
+					                    foreach($attr_errors as $attr_error) {
+					                        $msg .= "<li>$attr_error</li>";
+					                    }        
+					                    $msg .= "</ul>";
+					                }
+					                $msg .= "</ul>";
+									$message ="Error Saving".$msg;
+								}
+								
+							}
+						}
+					
+					}
+						
+				}
 			}
-		}
-		else{
-			// $list=Page::model()->findAll("is_deleted='0'");
-			$render='//page/admin';
-			// $this->redirect(array('panel/pages'));
-		}
+			else{
+				// $list=Page::model()->findAll("is_deleted='0'");
+				$render='//page/admin';
+				// $this->redirect(array('panel/pages'));
+			}
 
-		if (!is_numeric($id)){
-			
-			$list=Page::model()->findAll("is_deleted='0'");
-			$render='//page/admin';
-			
-		}
+			if (!is_numeric($id)){
+				
+				$list=Page::model()->findAll("is_deleted='0'");
+				$render='//page/admin';
+				
+			}
 
-		$this->render($render,array(
-			'list'=>$list,
-			'list_category'=>$list_category,
-			'lang'=>Yii::app()->user->getState('language_initial'),
-			'model'=>$model,
-			'model_block'=>$model_block,
-			'model_category'=>$model_category,
-			'message'=>$message,
-		));
+			$this->render($render,array(
+				'list'=>$list,
+				'list_category'=>$list_category,
+				'list_blocks'=>$list_blocks,
+				'lang'=>Yii::app()->user->getState('language_initial'),
+				'model'=>$model,
+				'model_block'=>$model_block,
+				'model_category'=>$model_category,
+				'message'=>$message,
+			));
+		}else{
+			$this->redirect(array('//panel/'));
+		}
 
 		
 	}
@@ -761,7 +805,11 @@ class PanelController extends Controller
 		$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
 		$page=Page::model()->findAll("state=1 AND is_deleted='0'");
-		$block=Block::model()->findAll("state=1 AND is_deleted='0'");
+		
+		$criteria_block = new CDbCriteria;
+		$criteria_block->select = "DISTINCT category";
+		$criteria_block->condition=" state=1 AND is_deleted='0' AND language='".Yii::app()->user->getState('language_initial')."'";
+		$block=Block::model()->findAll($criteria_block);
 		
 
 		$model=new Menu();
@@ -838,45 +886,59 @@ class PanelController extends Controller
 
 	public function actionDelete(){
 		
-		$_model=$this->uri(2);
-		$id=$this->uri(3);
+
+		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+	                          
+			$_model=$this->uri(2);
+			$id=$this->uri(3);
 
 
-		$model=ucfirst($_model);
+			$model=ucfirst($_model);
 
-		$model=$model::model()->findByPk($id);
-
-		$model->is_deleted=1;
-
-		
-		if($model->save()){						
-			switch ($_model) {
-				case 'menu':
-					$link='links';
-					break;
-				case 'user':
-					$link='users';
-					break;
-				case 'form':
-					$link='messages';
-					break;
-				case 'post':
-					$link='posts';
-					break;
-				case 'page':
-					$link='pages';
-					break;	
-				case 'block':
-					$link='pages';
-					break;				
-				default:
-					$link=$_model;
-					break;
+			if ($_model=='pageHasBlock') {
+				$model=$model::model()->findByAttributes(array("id_page_has_block"=>$id));
+			}else{
+				$model=$model::model()->findByPk($id);	
 			}
+			
 
-			$this->redirect(array('//panel/'.$link.'/'));
+			$model->is_deleted=1;
+
+			
+			if($model->save()){						
+				switch ($_model) {
+					case 'menu':
+						$link='links';
+						break;
+					case 'user':
+						$link='users';
+						break;
+					case 'form':
+						$link='messages';
+						break;
+					case 'post':
+						$link='posts';
+						break;
+					case 'page':
+						$link='pages';
+						break;	
+					case 'block':
+						$link='pages';
+						break;
+					case 'pageHasBlock':
+						$link='pages';
+						break;				
+					default:
+						$link=$_model;
+						break;
+				}
+
+				$this->redirect(array('//panel/'.$link.'/'));
+			}else{
+				print_r($model->errors);
+			}
 		}else{
-			print_r($model->errors);
+			$this->redirect(array('//panel/'));
 		}
 			
 

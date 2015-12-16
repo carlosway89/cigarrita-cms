@@ -24,8 +24,8 @@
 							<thead>
 								<tr>
 						            <th data-field="name">Name</th>
-						            <th data-field="flag">State</th>
-						            <th data-field="state">Source</th>
+						            <th data-field="state">Single Page</th>
+						            <th data-field="flag">State</th>						            
 						            <th>Options</th>
 						        </tr>
 							</thead>
@@ -34,8 +34,9 @@
 								?>
 								<tr>
 									<td><?=$value->name?></td>
+									<td><?=$value->single_page?"YES":"NO"?></td>
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
-									<td><?=substr($value->source, 0, 30)."..."?></td>
+									
 									<td>
 										<a href="#page-<?=$value->idpage?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="page-<?=$value->idpage?>"><i class="fa fa-plus "></i> Details</a>&nbsp;
 										<?php if (Yii::app()->user->checkAccess("webmaster")) {
@@ -51,10 +52,10 @@
 											<div class="col-sm-12">
 												<?php 
 												foreach($value->pageHasBlocks as $key_block => $has_block){
-													if (!$has_block->blockIdblock->is_deleted && $lang==$has_block->blockIdblock->language) {
+													if (!$has_block->is_deleted && !$has_block->blockIdblock->is_deleted && $lang==$has_block->blockIdblock->language) {
 												?>
 												<div class="col-sm-1 page-has-block">
-													<a class="text-danger delete-link" href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/block/<?=$has_block->blockIdblock->idblock?>"><i class="fa fa-trash-o "></i></a>
+													<a class="text-danger delete-link" href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/pageHasBlock/<?=$has_block->id_page_has_block?>"><i class="fa fa-trash-o "></i></a>
 													<?=$has_block->blockIdblock->category?>
 												</div>
 												<?php 
@@ -106,6 +107,7 @@
 			array(
 					'model'=>$model_block,
 					'list_category'=>$list_category,
+					'list_blocks'=>$list_blocks,
 					'lang'=>$lang
 				)
 			); 
@@ -139,6 +141,24 @@
 			console.log(page_id);
 			$('#page_id').val(page_id);
 		});
+
+			
+		$('#link_new_block').on('click',function(){
+			$('#options_block').hide();
+			$('#new_block').show();
+		});
+
+		$('#link_same_block').on('click',function(){
+			$('#options_block').hide();
+			$('#same_block').show();
+		});
+
+		$('.link_return').on('click',function(){
+			$('#same_block').hide();
+			$('#new_block').hide();
+			$('#options_block').show();
+		});
+
 	}
 	
 </script>
