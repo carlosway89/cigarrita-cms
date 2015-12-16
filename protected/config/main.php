@@ -37,7 +37,7 @@ return array(
 	// application components
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=ikt',
+			'connectionString' => 'mysql:host=localhost;dbname=cigarritaworker_v2',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '150189',
