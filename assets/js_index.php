@@ -111,7 +111,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
       when('/:link', {
         templateUrl: $base_url+'/api/template/home/site', //router template with api
         controller: 'homeCtrl',
-        pageid: 1
+        pageid: 7
       }).
       otherwise({
         redirectTo: '/home'

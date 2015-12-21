@@ -321,7 +321,7 @@ class ApiController extends Controller
                 $fileName = $_FILES["images"]["name"];
                 $moved=move_uploaded_file($_FILES["images"]["tmp_name"],$output_dir.$string.$fileName);
                 if ($moved) {
-                    $ret= ['name'=>$fileName,'url'=>$output_dir.$string.$fileName];
+                    $ret= ['name'=>$fileName,'url'=>$output_dir.$string.$fileName,'link'=>$output_dir.$string.$fileName];
                 }else{
                     $ret= ['error'=>'Error, try again!!, Imagen max. 2 Mb','type'=>'error'];
                 }

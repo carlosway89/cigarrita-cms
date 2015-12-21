@@ -52,13 +52,18 @@ cigarritaDirective
     priority: 1003, // must higher than ng-repeat
     link: function (scope, element, attrs) {
 
-      var temp=element[0].innerHTML;
+      var type=attrs.elementContenido;
 
-      var model= temp.replace('{{','');
-      model=model.replace('}}','');
       
-      temp="<span element-editable ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</span>";
-      $(element).html(temp);
+
+        var temp=element[0].innerHTML;
+
+        var model= temp.replace('{{','');
+        model=model.replace('}}','');
+        
+        temp="<textarea element-editable  class='fr-view' froala ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</textarea>";
+        $(element).html(temp);
+    
       
       attrs.$set('elementContenido', null);
 
@@ -129,12 +134,21 @@ cigarritaDirective
           event.stopImmediatePropagation();
           var category=$(event.currentTarget).attr('data-category');
 
+          // var model={
+          //   category:category,
+          //   language:beans.readCookie('language.initial')
+          // }
+
           var model={
             category:category,
+            header:"[text header]",
+            subheader:"[text subheader]",
+            source:$base_url+"/assets/editor/images/default-image.jpg",
             language:beans.readCookie('language.initial')
           }
 
-          $rootScope.$broadcast('show.modal',model);
+          $rootScope.$broadcast('inline.saving.post',model);
+          // $rootScope.$broadcast('show.modal',model);
       });
 
       
@@ -157,7 +171,10 @@ cigarritaDirective
       var type=element.attr('data-type');
 
       // console.log(scope);
-      
+        
+        
+        
+      element.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
 
       element.hover(
         function() {
@@ -180,7 +197,7 @@ cigarritaDirective
 
                 $('#inline-saver').remove();
                 element.addClass('editable-mode');
-                element.find('[element-editable]').attr('contenteditable','true');
+                // element.find('[element-editable]').attr('contenteditable','true');
                 // element.find('[element-editable]:last-child').focus();
                   
                 element.append("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>");
@@ -197,7 +214,8 @@ cigarritaDirective
                   var new_position=element.offset().top + plus;
                 }
 
-                
+
+                $rootScope.$broadcast('init.editor.inline',element);
 
                 $('html, body').animate({
                     scrollTop: new_position
@@ -222,6 +240,8 @@ cigarritaDirective
 
                 $('#inline-saver').remove();
 
+                element.find('[element-editable]').froalaEditor('edit.off');
+
               });
 
               element.find(".inline-saving").on('click',function(event){
@@ -233,6 +253,8 @@ cigarritaDirective
 
                 $(".inline-saving").addClass('success').html('&#x2713;');
                 $(".inline-closing").remove();
+
+                element.find('[element-editable]').froalaEditor('edit.off');
 
                 setTimeout(function(){
                   element.removeClass('editable-mode');
@@ -265,19 +287,78 @@ cigarritaDirective
     link: function(scope, element, attrs, ctrl) {
       // view -> model
 
-      if (ctrl) {
-        element.bind('blur', function() {
+      // if (ctrl) {
+      //   element.bind('blur', function() {
           
-          // console.log(ctrl,element.html());
+      //     // console.log(ctrl,element.html());
 
-          scope.$apply(function() {
-            var value=element.html();
-            value=value.replace("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>", ""); 
-            value=value.replace("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>","");
-            ctrl.$setViewValue(value);
-          });
-        });
-      };
+      //     scope.$apply(function() {
+      //       var value=element.html();
+      //       value=value.replace("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>", ""); 
+      //       value=value.replace("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>","");
+      //       ctrl.$setViewValue(value);
+            
+      //     });
+      //   });
+      // };
+     
+      // element.find('[element-editable]').froalaEditor('edit.off')
+      scope.$on('init.editor.inline',function(event,elem){
+
+
+      //   elem.find('[element-editable]').froalaEditor({
+      //     toolbarInline: true,
+      //     charCounterCount: false,
+      //   });
+
+        elem.find('[element-editable]').froalaEditor('edit.on');
+      //   element.on('froalaEditor.blur', function (e, editor) {
+          
+      //     var value=editor.$el[0].innerHTML;
+      //     //element.froalaEditor('html.get');
+      //     // editor.$el[0].innerHTML;
+          
+      //     scope.$apply(function() {
+      //         // ctrl.$modelValue=value;
+      //         ctrl.$setViewValue(value); 
+      //     }); 
+
+      //     element.froalaEditor('destroy');
+      //     setTimeout(function(){
+      //       element.froalaEditor({
+      //         toolbarInline: true,
+      //         charCounterCount: false,
+      //       });
+      //       element.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
+      //     },300);
+          
+
+      //   });
+
+        
+      //   elem.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
+
+      });
+     
+      
+      setTimeout(function(){
+        element.froalaEditor('edit.off');
+        element.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
+      });
+      
+
+      // scope.$watch(attrs.ngModel, function(newValue) {
+
+      //     // necessary to prevent thrashing
+      //     console.log(newValue);
+
+      //     if (newValue && (newValue !== element.html()) ) {
+
+      //       console.log(newValue);
+
+      //     }
+
+      // });
 
       // model -> view
       // ctrl.$render = function() {
@@ -470,4 +551,130 @@ cigarritaDirective
               
           }
     }
+})
+.directive('wysiwyg', function($document) {
+
+    return {
+      restrict: 'EA',
+      transclude: true,
+      // restrict: "A",
+
+      require: "ngModel",
+
+      template: "<textarea class'form-control' style='width: 100%;height:200px' placeholder='Enter your text ...'></textarea>",
+
+      replace: true,
+
+      link: function (scope, element, attrs, controller) {
+
+        var styleSheets,
+
+            synchronize, editor,
+
+            wysihtml5ParserRules = {
+
+              tags: {
+
+                strong: {}, b: {}, i: 1, em: 1, br: {}, p: 1,
+                form:1, input:{} , textarea:{}, button:1,
+                div: 1, span: 1, ul: 1, ol: 1, li: 1,
+                table:1,td:1,tr:1,th:1, tbody:1,thead:1,
+                h1: {}, h2: {}, h3: {}, 
+
+                a: {
+
+                  set_attributes: {
+                    target: "_blank",
+
+                    rel:    "nofollow"
+
+                  },
+
+                  check_attributes: {
+
+                    href:   "url" // important to avoid XSS
+
+                  }
+
+                }
+
+              }
+
+            };
+
+
+        styleSheets = _($document[0].styleSheets)
+
+          .filter(function(ss) { return ss.href; })
+
+          .pluck('href').value();
+
+
+        editor = new wysihtml5.Editor(element[0], {
+
+          toolbar: attrs.wysiwygToolbar, // id of toolbar element
+
+          parserRules: wysihtml5ParserRules, // defined in parser rules set
+
+          useLineBreaks: false,
+
+          stylesheets: styleSheets
+
+        });
+
+
+        synchronize = function() {
+
+          controller.$setViewValue(editor.getValue());
+
+          scope.$apply();
+
+        };
+
+
+        editor.on('redo:composer', synchronize);
+
+        editor.on('undo:composer', synchronize);
+
+        editor.on('paste', synchronize);
+
+        editor.on('aftercommand:composer', synchronize);
+
+        editor.on('change', synchronize);
+
+
+        // the secret sauce to update every keystroke, may be cheating but it works
+
+        editor.on('load', function() {
+
+          wysihtml5.dom.observe(
+
+            editor.currentView.iframe.contentDocument.body, 
+
+            ['keyup'], synchronize);
+
+        });
+
+
+        // handle changes to model from outside the editor
+
+        scope.$watch(attrs.ngModel, function(newValue) {
+
+                editor.clear();
+                // necessary to prevent thrashing
+
+                if (newValue && (newValue !== editor.getValue())) {
+
+                  element.html(newValue);
+
+                  editor.setValue(newValue);
+
+                }
+
+            });
+
+      }
+
+    };
+
 });

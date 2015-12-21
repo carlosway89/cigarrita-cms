@@ -1,4 +1,10 @@
+<style type="text/css">
+.materialize-textarea{
+	height: 350px !important;
+	min-height: 300px !important;
+}
 
+</style>
 <?php
 
 	// print_r($attr);
@@ -42,7 +48,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'subheader'); ?>
-		<textarea  class="summernote materialize-textarea" name="Post[subheader]"><?=$model->subheader?></textarea>
+		<textarea  class="wysihtml materialize-textarea" name="Post[subheader]" ><?=$model->subheader?></textarea>
 		<?php //echo $form->textField($model,'subheader',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'subheader'); ?>
 	</div>

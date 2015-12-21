@@ -9,7 +9,8 @@ var cigarritaApp = angular.module('cigarritaWeb', [
   'cigarritaFilters',
   'cigarritaDirective',
   'cigarritaServices',
-  'summernote'
+  'summernote',
+  'froala'
 ]);
 
 // document.desingMode="on";

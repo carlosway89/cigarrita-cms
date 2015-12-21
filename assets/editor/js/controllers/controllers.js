@@ -14,7 +14,7 @@ var modal_options=function($scope,$http,$compile,$rootScope){
       var type="post"; 
     }
 
-    model.subheader=$scope.editable[0].innerHTML;
+      // model.subheader=$scope.editable[0].innerHTML;
 
     $rootScope.$broadcast('inline.saving.'+type,model); 
   }
@@ -521,7 +521,7 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Model','Post','Menu','
                 
                 record.idcontent=block.idcontent;
 
-                post.subheader=$('#modal_post').find('#subheader').code();
+                // post.subheader=$('#modal_post').find('#subheader').code();
                 record = $.extend(record, post);
                 // record.subheader=$('#modal_post').find('#subheader').code();
                 
@@ -534,7 +534,7 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Model','Post','Menu','
             }else{
                 var record = new Post({id:post.idpost});
 
-                post.subheader=$('#modal_post').find('#subheader').code();
+                // post.subheader=$('#modal_post').find('#subheader').code();
 
                 record = $.extend(record, post);
                 // record.subheader=$('#modal_post').find('#subheader').code();
@@ -565,7 +565,7 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Model','Post','Menu','
                 rec_menu = $.extend(rec_menu, menu);
                 rec_menu.language=beans.readCookie('language.initial');
                 
-                block.subheader=$('#save_form_content').find('#subheader').code();
+                // block.subheader=$('#save_form_content').find('#subheader').code();
                 rec_block = $.extend(rec_block, block);
 
                 rec_menu.imagen=block.background;
@@ -602,7 +602,7 @@ cigarritaControllers.controller('contentCtrl', ['$scope','Model','Post','Menu','
 
                 rec_menu = $.extend(rec_menu, menu);
 
-                block.subheader=$('#save_form_content').find('#subheader').code();
+                // block.subheader=$('#save_form_content').find('#subheader').code();
                 rec_block = $.extend(rec_block, block);
 
                 rec_menu.imagen=block.background;
