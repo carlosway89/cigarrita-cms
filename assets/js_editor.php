@@ -114,7 +114,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     <?php 
     foreach ($menu as $value) {
 
-			if ($value->type=="new") {
+      if ($value->type=="new") {
     ?>
       when('<?=$value->url?>', {
         templateUrl: $base_url+'/api/template<?=$value->url?>/site',
@@ -123,14 +123,37 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
         reloadOnSearch: false
       }).
     <?php 
-		}
-	}
+    }
+  }
+    ?>
+    <?php 
+    foreach ($pages as $pag_val) { 
+      if ($pag_val->single_page) {
+      
+    ?>
+      
+      when('/post/:id/:name', {
+        templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
+        controller: 'singleCtrl'
+      }).
+    <?php 
+      } 
+    } 
+    ?>
+    <?php 
+    foreach ($pages as $pag_val) { 
+      if ($pag_val->name=="home") {
+      
     ?>
       when('/:link', {
         templateUrl: $base_url+'/api/template/home/site', //router template with api
         controller: 'homeCtrl',
-        pageid: 1
+        pageid: <?=$pag_val->idpage?>
       }).
+    <?php 
+      } 
+    } 
+    ?>
       otherwise({
         redirectTo: '/home'
       });
