@@ -13,6 +13,8 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 	
+	<?php if (!isset($edit_block)) {
+	?>
 	<div id="options_block" style="padding-bottom: 125px;padding-top: 125px;">
 		<div class="row">
 			<div class="col-sm-6">
@@ -42,7 +44,9 @@
 			<a href="javascript:;;" class="link_return btn btn-default">Return Options</a>
 		</div>
 	</div>
-	<div id="new_block" style="display:none">
+	<?php }?>
+	
+	<div id="new_block" style="<?=isset($edit_block)?'':'display:none' ?>">
 		<p class="note">Fields with <span class="required">*</span> are required.</p>
 		<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
@@ -94,8 +98,12 @@
 
 		<div class="row buttons">
 			<button class="btn btn-info" type="submit">Save</button>&nbsp;
+			<?php if (!isset($edit_block)) {
+			?>
 			<a href="javascript:;;" class="link_return btn btn-default">Return Options</a>
-			<!-- <a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages">Back</a> -->
+			<?php }else{?>
+			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks">Back</a>
+			<?php }?>
 		</div>
 	</div>
 <?php $this->endWidget(); ?>

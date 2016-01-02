@@ -32,12 +32,12 @@ class ApiController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','admin','create','view','update','safeDelete','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync'),
+                'actions'=>array('index','admin','create','view','update','safeDelete','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync','deleteImage'),
                 // 'expression'=>'Yii::app()->user->checkAccess("administrador")',
                 'users'=>array('@'),
                 ),
             array('allow',
-                'actions'=>array('index','list','view','formContact','flag','tester','content','facebook','template','checkStatus','realTimeUpdate','searchPost'),
+                'actions'=>array('index','list','view','formContact','flag','tester','content','facebook','template','checkStatus','realTimeUpdate','searchPost','images'),
                 'users'=>array('*'),
                 ),
             array('deny',  // deny all to users
@@ -497,6 +497,39 @@ class ApiController extends Controller
         }
 
         $this->_sendResponse(200, CJSON::encode($array));
+    }
+
+
+    public function actionImages(){
+
+        $dir=$_SERVER['DOCUMENT_ROOT'].'/files';
+
+        $files = scandir($dir);
+        $rows = array();
+
+        foreach ($files as $key => $value) {
+            if ( $value!="." && $value!="..") {
+               $rows[] = ['tag'=>'Images','url'=>Yii::app()->request->baseUrl."/files/".$value,'name'=>$value];
+            }
+            
+        }                 
+
+        $this->_sendResponse(200, CJSON::encode($rows));
+
+    }
+
+    public function actionDeleteImage(){
+        $dir=$_SERVER['DOCUMENT_ROOT'];
+
+        $file=$dir.$_POST['src'];
+
+        if (unlink($file)) {
+            $res=array('result'=>'success');
+        }else{
+            $res=array('result'=>'error');
+        }
+
+        $this->_sendResponse(200, CJSON::encode($res));
     }
 
     public function actionFlag(){

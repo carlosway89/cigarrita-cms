@@ -106,7 +106,8 @@ cigarritaServices
         query:"@query"
     },{
         query: {method:'GET',params:{model:'@model'}, isArray:true},
-        update:{method:'PUT'}
+        update:{method:'PUT'},
+        remove:{method:'DELETE'}
     });
 })
 .factory('ApiFace',function($resource){

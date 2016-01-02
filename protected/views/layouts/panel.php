@@ -86,12 +86,13 @@
                           ?>
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages">Web Pages</a></li>
                           <?php }?>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Web Posts</a></li>
                           <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           ?>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users">Web Users</a></li>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config">Web Configuration</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Web Posts</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks">Web Blocks</a></li>                
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users">Web Users</a></li>                          
                           <?php }?>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config">Web Configuration</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-link"></i> <span class="nav-label">Menus &amp; Links</span></a>
@@ -168,7 +169,7 @@
             <ul class="nav-toolbar">
               <?php 
 
-              if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+              
               
                 $criteria = new CDbCriteria;
 
@@ -181,57 +182,58 @@
                 $msgs=Form::model()->count("state = 'new' AND is_deleted='0'");
 
               ?>
-            	<li class="dropdown">
-                <a href="#" data-toggle="dropdown">
-                  <i class="fa fa-comments-o"></i> 
-                  <?php
-                    if ($msgs!=0) {
-                  ?>
-                  <span class="badg bg-warning"><?=$msgs?></span>
-                  <?php }?>
-                </a>
-                	<div class="dropdown-menu md arrow pull-right panel panel-default arrow-top-right messages-dropdown">
-                        <div class="panel-heading">
-                      	Messages
-                        </div>
-                        
-                        <div class="list-group">
-                            <?php 
-
-                            if ($msgs==0) {
-                              ?>
-                              <div class="media">
-                                <div class="media-body">
-                                  <h6 class="text-center">0 new messages</h6>
-                                </div>
-                              </div>
-
-                            <?php
-                            }
-
-                            foreach ($model_message as $key => $value) {
-                            ?>
-                            <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="list-group-item">
-                              <div class="media">
-                                <div class="media-body">
-                                  <h6 class="text-info"><?=$value->email?></h6>
-                                  <h6 class="media-heading"><?=substr($value->subject, 0, 30)."..."?></h6>
-                                  <small class="text-muted"><?=$value->date?></small>
-                                </div>
-                              </div>
-                            </a>
-                            <?php } ?>
-                            
-                            <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="btn btn-info btn-flat btn-block">View All Messages</a>
-
-                        </div>
-                        
-                    </div>
-                </li>
-              <?php }?>
-              <li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
-                <span class="badg">1</span>
+          	<li class="dropdown">
+              <a href="#" data-toggle="dropdown">
+                <i class="fa fa-comments-o"></i> 
+                <?php
+                  if ($msgs!=0) {
+                ?>
+                <span class="badg bg-warning"><?=$msgs?></span>
+                <?php }?>
               </a>
+              	<div class="dropdown-menu md arrow pull-right panel panel-default arrow-top-right messages-dropdown">
+                      <div class="panel-heading">
+                    	Messages
+                      </div>
+                      
+                      <div class="list-group">
+                          <?php 
+
+                          if ($msgs==0) {
+                            ?>
+                            <div class="media">
+                              <div class="media-body">
+                                <h6 class="text-center">0 new messages</h6>
+                              </div>
+                            </div>
+
+                          <?php
+                          }
+
+                          foreach ($model_message as $key => $value) {
+                          ?>
+                          <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="list-group-item">
+                            <div class="media">
+                              <div class="media-body">
+                                <h6 class="text-info"><?=$value->email?></h6>
+                                <h6 class="media-heading"><?=substr($value->subject, 0, 30)."..."?></h6>
+                                <small class="text-muted"><?=$value->date?></small>
+                              </div>
+                            </div>
+                          </a>
+                          <?php } ?>
+                          
+                          <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="btn btn-info btn-flat btn-block">View All Messages</a>
+
+                      </div>
+                      
+                  </div>
+              </li>
+              
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
+                  <span class="badg">1</span>
+                </a>
                 	<div class="dropdown-menu arrow pull-right md panel panel-default arrow-top-right notifications">
                         <div class="panel-heading">
                       	Notification
@@ -241,7 +243,7 @@
                             <a href="http://cigarrita-worker.com/contact" target="_blank" class="list-group-item">
                               Welcome to the CMS Cigarrita Worker, keep you update or in contact with us clicking here
                             </a>
-                            <p class="list-group-item">You are currently in the <strong>1.1 version</strong> of Cigarrita CMS!!</p>
+                            <p class="list-group-item">You are currently in the <strong>1.2 version</strong> of Cigarrita CMS!!</p>
                             <p class="list-group-item" >
                               - Developed by Cigarrita Worker<br/>
                               - Author: Carlos Manay<br/>
@@ -264,10 +266,9 @@
                         <div class="panel-body text-center">
                         	<div class="row">
                             	<div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn">Messages</p></a></div>
-                                <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
-                                ?>
+                                
                                 <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config" class="text-purple"><span class="h2"><i class="fa fa-file-text-o"></i></span><p class="text-gray no-margn">Page Config</p></a></div>
-                                <?php }?>
+                                
                                 <div class="col-xs-12 visible-xs-block"><hr></div>
                                 
                                 <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->request->baseUrl?>/site/logout" class="text-red"><span class="h2"><i class="fa fa-sign-out"></i></span><p class="text-gray no-margn">Log Out</p></a></div>

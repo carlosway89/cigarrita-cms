@@ -206,6 +206,7 @@ iframe.fr-iframe {
   white-space: nowrap;
   position: absolute;
   margin-top: 10px;
+  z-index: 992;
 }
 .fr-toolbar.fr-inline.fr-desktop .fr-arrow {
   width: 0;

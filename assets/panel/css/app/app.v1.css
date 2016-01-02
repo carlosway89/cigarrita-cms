@@ -170,8 +170,8 @@ aside.left-panel{
 	
 aside.left-panel.collapsed{
 	overflow:visible !important;
-	/*position:absolute;*/
-	position:fixed; 
+	position:absolute;
+	/*position:fixed; */
 	bottom:0px;
 }
 

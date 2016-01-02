@@ -58,7 +58,36 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/angular-summernote.js"></script>
-
+<script type="text/javascript">
+  var $froala=angular.module('froala', []);
+  // angular.module('froala', []).
+    $froala.value('froalaConfig', {
+          toolbarInline: true,
+          charCounterCount: false,
+          imageUploadURL: 'api/upload',
+          imageUploadParam: 'images',
+          imageManagerLoadURL:'api/images',
+          imageManagerDeleteURL:'api/deleteImage/files',
+          <?php
+          if (!Yii::app()->user->checkAccess("webmaster")){
+          ?>
+          imageEditButtons: ['imageReplace', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+          toolbarButtons:['bold', 'italic', 'underline', 'strikeThrough','fontFamily', 'fontSize', '|', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'undo', 'redo', 'clearFormatting', 'selectAll'],
+          <?php } ?>
+          linkList: [
+            {
+              text: 'Cigarrita',
+              href: 'http://cigarrita-worker.com',
+              target: '_blank'
+            },
+            {
+              displayText: 'my Web',
+              href: 'http://'+$base_url,
+              target: '_blank'
+            }
+          ],
+    });
+</script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/angular-froala.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/froala-sanitize.js"></script>
 
@@ -100,7 +129,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
       when('/:link', {
         templateUrl: $base_url+'/api/template/home/site', //router template with api
         controller: 'homeCtrl',
-        pageid: 7
+        pageid: 1
       }).
       otherwise({
         redirectTo: '/home'

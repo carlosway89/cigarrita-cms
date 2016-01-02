@@ -42,9 +42,12 @@
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 									<td><?=$value->date_created?></td>
 									<td>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$value->idpost?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;
-										<?php if (Yii::app()->user->checkAccess("admin")) {
+										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           				?>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$value->idpost?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;
+										<?php }
+										if (Yii::app()->user->checkAccess("webmaster")) {
+											?>
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
 										<?php }?>
 									</td>

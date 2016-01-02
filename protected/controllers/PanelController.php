@@ -21,7 +21,7 @@ class PanelController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','posts','links','facebook','delete','change','help'),
+				'actions'=>array('index','language','config','users','messages','pages','posts','blocks','links','facebook','delete','change','help'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
 					),
@@ -497,30 +497,27 @@ class PanelController extends Controller
 	public function actionMessages($id=null){
 
 
-		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
-			if ($id==null) {
-				$model=Form::model()->findAll("is_deleted='0'");	
+		if ($id==null) {
+			$model=Form::model()->findAll("is_deleted='0'");	
 
-				$this->render('message',array(
-					'model'=>$model,
-				));
-				
-			}else{
-				$model=Form::model()->findByPk($id);
-
-				if ($model->state=="new") {
-					$model->state="seen";
-					$model->save();
-				}
-				
-
-				$this->render('message_single',array(
-					'model'=>$model,
-				));
-			}
+			$this->render('message',array(
+				'model'=>$model,
+			));
+			
 		}else{
-			$this->redirect(array('//panel/'));
+			$model=Form::model()->findByPk($id);
+
+			if ($model->state=="new") {
+				$model->state="seen";
+				$model->save();
+			}
+			
+
+			$this->render('message_single',array(
+				'model'=>$model,
+			));
 		}
+
 		
 		
 
@@ -529,111 +526,182 @@ class PanelController extends Controller
 	}
 	public function actionPosts(){
 
-		$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
+		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
 
-		$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
+			$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
 
-		$category=Category::model()->findAll();
+			$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
-		$model=new Post();
+			$category=Category::model()->findAll();
 
-		$attr=array(0=>array("key"=>"","value"=>"","idattributes"=>"0","idpost"=>"0"));
+			$model=new Post();
 
-		$message=null;
-		$list=null;
+			$attr=array(0=>array("key"=>"","value"=>"","idattributes"=>"0","idpost"=>"0"));
 
-		
-		if (is_numeric($lang)) {
-			$id=$lang;
-
-			$model=Post::model()->findByPk($id);
-
-
-			foreach ($model->attributes0 as $has_attr) { 
-
-                $attr[]=$has_attr->Attributes;                                           
-
-            }
-			
-
-			$render='//post/update';
-
-		}
-		if(isset($_POST['Post']))
-		{	
-			
-			$model->attributes=$_POST['Post'];
-			$model->state=$model->state=='on'?1:0;
+			$message=null;
+			$list=null;
 
 			
-			if($model->save()){				
-				if (isset($_POST['Attr'])) {
-					$new_attr=$_POST['Attr'];
+			if (is_numeric($lang)) {
+				$id=$lang;
 
-					
-					// print_r($new_attr);
-					for ($i=0; $i < count($new_attr['idattributes']); $i++) { 
-						$idattributes=$new_attr['idattributes'][$i];
-						$idpost=$new_attr['idpost'][$i];
-						$key=$new_attr['key'][$i];
-						$value=$new_attr['value'][$i];
+				$model=Post::model()->findByPk($id);
 
-						if ( $idattributes!=0) {
-							$_attributes=Attributes::model()->findByPk($idattributes);
-							$_attributes->idpost=$idpost;
-						}else{
-							$_attributes=new Attributes();
-							$_attributes->idpost=$model->idpost;
-						}
 
-						$_attributes->key=$key;
-						$_attributes->value=$value;
+				foreach ($model->attributes0 as $has_attr) { 
 
-						if ($value!="" && $key!="") {
-							if ($_attributes->save()) {
-								
-							}
-						}
+	                $attr[]=$has_attr->Attributes;                                           
+
+	            }
+				
+
+				$render='//post/update';
+
+			}
+			if(isset($_POST['Post']))
+			{	
+				
+				$model->attributes=$_POST['Post'];
+				$model->state=$model->state=='on'?1:0;
+
+				
+				if($model->save()){				
+					if (isset($_POST['Attr'])) {
+						$new_attr=$_POST['Attr'];
+
 						
+						// print_r($new_attr);
+						for ($i=0; $i < count($new_attr['idattributes']); $i++) { 
+							$idattributes=$new_attr['idattributes'][$i];
+							$idpost=$new_attr['idpost'][$i];
+							$key=$new_attr['key'][$i];
+							$value=$new_attr['value'][$i];
 
-					}
+							if ( $idattributes!=0) {
+								$_attributes=Attributes::model()->findByPk($idattributes);
+								$_attributes->idpost=$idpost;
+							}else{
+								$_attributes=new Attributes();
+								$_attributes->idpost=$model->idpost;
+							}
 
-					$model=Post::model()->findByPk($model->idpost);
+							$_attributes->key=$key;
+							$_attributes->value=$value;
 
-					$attr=array(0=>array("key"=>"","value"=>"","idattributes"=>"0","idpost"=>"0"));
+							if ($value!="" && $key!="") {
+								if ($_attributes->save()) {
+									
+								}
+							}
+							
 
-					foreach ($model->attributes0 as $has_attr) { 
+						}
 
-		                $attr[]=$has_attr->Attributes;                                           
+						$model=Post::model()->findByPk($model->idpost);
 
-		            }
+						$attr=array(0=>array("key"=>"","value"=>"","idattributes"=>"0","idpost"=>"0"));
 
+						foreach ($model->attributes0 as $has_attr) { 
+
+			                $attr[]=$has_attr->Attributes;                                           
+
+			            }
+
+						
+					}		
+
+					$message="Successfully Updated";
 					
-				}		
-
-				$message="Successfully Updated";
+				}
+					
+			}
+			if (!is_numeric($lang)){
+				
+				$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
+				$render='//post/admin';
 				
 			}
+
+			$this->render($render,array(
+				'list'=>$list,
+				'model'=>$model,
+				'message'=>$message,
+				'category'=>$category,
+				'language'=>$language,
+				'attr'=>$attr
+			));
+		}else{
+			$this->redirect(array('/panel'));
+		}
+		
+		
+
+
+		
+	}
+	public function actionBlocks(){
+
+
+		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+
+			$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
+
+			$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
+
+			$category=Category::model()->findAll();
+			$list_blocks=Block::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+
+			$model=new Block();
+
+			
+			$message=null;
+			$list=null;
+
+			
+			if (is_numeric($lang)) {
+				$id=$lang;
+
+				$model=Block::model()->findByPk($id);
+
+				$render='//block/update';
+
+			}
+			if(isset($_POST['Block']))
+			{	
 				
-		}
-		if (!is_numeric($lang)){
-			
-			$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
-			$render='//post/admin';
-			
-		}
+				$model->attributes=$_POST['Block'];
+				$model->state=$model->state=='on'?1:0;
 
-		$this->render($render,array(
-			'list'=>$list,
-			'model'=>$model,
-			'message'=>$message,
-			'category'=>$category,
-			'language'=>$language,
-			'attr'=>$attr
-		));
-		
-		
+				
+				if($model->save()){				
+					$model=Block::model()->findByPk($model->idpost);		
 
+					$message="Successfully Updated";
+					
+				}
+					
+			}
+			if (!is_numeric($lang)){
+				
+				$list=Block::model()->findAll("is_deleted='0' AND language = '".$lang."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
+				$render='//block/admin';
+				
+			}
+
+			$this->render($render,array(
+				'list'=>$list,
+				'model'=>$model,
+				'message'=>$message,
+				'category'=>$category,
+				'language'=>$language,
+				'list_blocks'=>$list_blocks,
+				'lang'=>$lang
+			));
+			
+			
+		}else{
+			$this->redirect(array('/panel'));
+		}
 
 		
 	}
@@ -647,7 +715,7 @@ class PanelController extends Controller
 			$model_category=new Category();
 
 			$list_category=Category::model()->findAll();
-			$list_blocks=block::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
+			$list_blocks=Block::model()->findAll("language='".Yii::app()->user->getState('language_initial')."'");
 
 			$message=null;
 			$list=null;
@@ -923,7 +991,7 @@ class PanelController extends Controller
 						$link='pages';
 						break;	
 					case 'block':
-						$link='pages';
+						$link='blocks';
 						break;
 					case 'pageHasBlock':
 						$link='pages';

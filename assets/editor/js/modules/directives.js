@@ -60,8 +60,14 @@ cigarritaDirective
 
         var model= temp.replace('{{','');
         model=model.replace('}}','');
+        if (type=="non-editor") {
+          temp="<span element-editable  class='fr-view' ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</span>";
         
-        temp="<textarea element-editable  class='fr-view' froala ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</textarea>";
+        }else{
+          temp="<textarea element-editable  class='fr-view' froala ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</textarea>";
+        
+        }
+
         $(element).html(temp);
     
       
@@ -139,11 +145,16 @@ cigarritaDirective
           //   language:beans.readCookie('language.initial')
           // }
 
+          if (category=="slider") {
+            var source=$base_url+"/assets/editor/images/default-image.jpg";
+          }else{
+            var source="<img src='"+$base_url+"/assets/editor/images/default-image.jpg' alt='default image' />";
+          }
           var model={
             category:category,
             header:"[text header]",
             subheader:"[text subheader]",
-            source:$base_url+"/assets/editor/images/default-image.jpg",
+            source:source,
             language:beans.readCookie('language.initial')
           }
 
@@ -180,11 +191,20 @@ cigarritaDirective
         function() {
 
           if (type=='slider') {
-            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
+            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='edit details'><i class='fa fa-external-link'></i></span><span class='tooling tooling-top deleting-item' data-tool='Delete item'><i class='fa fa-trash-o'></i></span></div>");
           
           }else{
-            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>");
-          
+            if (type!="none-editor") {
+
+              if (attrs.elementObject=="block") {
+                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'><i class='fa fa-pencil'></i></span></div>");
+            
+              }else{
+                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'><i class='fa fa-pencil'></i></span><span class='tooling tooling-top deleting-item' data-tool='Delete item'><i class='fa fa-trash-o'></i></span></div>");
+            
+              }
+            }
+            
           }
           
           // $compile(document.getElementById('inline-editors'))(scope);
@@ -221,6 +241,17 @@ cigarritaDirective
                     scrollTop: new_position
                 }, 1500);
                 
+              });
+              
+              element.find(".deleting-item").on('click',function(event){
+
+                  if (confirm('Are you sure you want to delete this item?')) {
+                     $rootScope.$broadcast('delete.item',$data_model,element);
+                  }else{
+                    return false;
+                  }
+                 
+
               });
 
               element.find(".editing-external").on('click',function(event){
@@ -312,6 +343,7 @@ cigarritaDirective
       //   });
 
         elem.find('[element-editable]').froalaEditor('edit.on');
+        elem.find('[element-editable]').froalaEditor('events.focus');
       //   element.on('froalaEditor.blur', function (e, editor) {
           
       //     var value=editor.$el[0].innerHTML;
@@ -561,7 +593,7 @@ cigarritaDirective
 
       require: "ngModel",
 
-      template: "<textarea class'form-control' style='width: 100%;height:200px' placeholder='Enter your text ...'></textarea>",
+      template: "<textarea class='form-control' style='width: 100%;height:200px' placeholder='Enter your text ...'></textarea>",
 
       replace: true,
 

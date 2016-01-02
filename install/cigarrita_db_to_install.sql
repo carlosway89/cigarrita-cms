@@ -261,6 +261,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `is_deleted` tinyint(1) DEFAULT '0',
   `state` tinyint(1) DEFAULT '1',
   `source` text,
+  `single_page` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idpage`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
 
@@ -273,6 +274,7 @@ CREATE TABLE IF NOT EXISTS `page` (
 CREATE TABLE IF NOT EXISTS `page_has_block` (
   `page_idpage` int(11) NOT NULL,
   `block_idblock` int(11) NOT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0',
   `id_page_has_block` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_page_has_block`,`page_idpage`,`block_idblock`),
   KEY `fk_page_has_block_block1_idx` (`block_idblock`),

@@ -163,6 +163,10 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
         
     });
 
+    $scope.$on('delete.item',function(event,data,element){
+    
+      $scope.delete_post(data,element);
+    });
 
 
     var handle_error_post=0;
@@ -232,6 +236,36 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
               }
             );
         }
+    }
+
+    $scope.delete_post=function(post,element){
+
+     var _post = new Model({
+              model:'post',
+              query:post.idpost,
+              id:'safe'
+      });
+     
+      element.fadeOut();
+
+      _post.$remove(function(){    
+          
+            for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
+                if ($scope.$$childTail.page[i].category==_post.category) {
+                  for (var j = $scope.$$childTail.page[i].posts.length - 1; j >= 0; j--) {
+                     if ($scope.$$childTail.page[i].posts[j].idpost=_post.idpost) {
+                      $scope.$$childTail.page[i].posts.splice(j,1);
+                      
+                      break;
+                     }
+                  }
+
+                }               
+            }
+
+            
+        });
+      
     }
 
     $scope.save_block = function(block){

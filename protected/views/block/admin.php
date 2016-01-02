@@ -1,62 +1,89 @@
-<?php
-/* @var $this BlockController */
-/* @var $model Block */
+<div class="container-fluid embed-panel">
+	<div class="row">
+		<div class="col-sm-12">
+			<br>
+			<h4>Manage Block</h4>
+			<br>
+				
+				<div class="panel panel-default">
+					<div class="panel-heading clean"></div>
+					<div class="panel-body">
+						<div class="dropdown col-sm-2">
+		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Languages <span class="caret"></span></a>
+		                  <ul class="dropdown-menu">
+		                    <?php foreach ($language as $key => $value) {
+		                    ?>
+		                    <li>
+		                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks/<?=$value->min?> "><?=$value->name?> 
+		                      </a>
+		                    </li>
+		                    <?php } ?>
+		                  </ul>
+		                </div>
+		                <br><br><br>
+						<table id="postList" class="hoverable centered">
+							<thead>
+								<tr>
+						            <th data-field="name">Header</th>
+						            <!-- <th data-field="flag">Subheader</th> -->
+						            <th data-field="flag">Category</th>
+						            <th data-field="state">State</th>
+						            <th>Options</th>
+						        </tr>
+							</thead>
+							<tbody>
+								<?php foreach ($list as $key => $value) {
+								?>
+								<tr>
+									<td><?=$value->header?></td>
+									<td><?=$value->category?></td>
+									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
+									
+									<td>
+										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+                          				?>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks/<?=$value->idblock?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;
+										<?php }
+										if (Yii::app()->user->checkAccess("webmaster")) {
+											?>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/block/<?=$value->idblock?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+										<?php }?>
+									</td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
 
-$this->breadcrumbs=array(
-	'Blocks'=>array('index'),
-	'Manage',
-);
+		</div>	
+	</div>
+</div>
 
-$this->menu=array(
-	array('label'=>'List Block', 'url'=>array('index')),
-	array('label'=>'Create Block', 'url'=>array('create')),
-);
+<script type="text/javascript">
+	
+	window.onload = function(){ 
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#block-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
-?>
+		setTimeout(function(){
+			var beans=new Beans();
+	        beans.generate_data_table('postList');
+	        
+	    },200);
+	    
+	    $('.add-new-attr').on('click',function(event){
 
-<h1>Manage Blocks</h1>
+			var html_attr=$('.attributes_inputs').html();
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+			$( '<div class="col-sm-12 attributes_inputs">'+html_attr+'</div>').insertAfter(".attributes_inputs:last-child");
+			
+			setTimeout(function(){
+				$('.attributes_inputs:last-child').find('.add-new-attr').hide();
+				$('.delete-new-attr').on('click',function(event){
+					$(event.currentTarget).parent().parent().remove();
+				});
+			},100)
+		});
+	};
+	
+</script>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'block-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'idblock',
-		'category',
-		'header',
-		'subheader',
-		'is_deleted',
-		'state',
-		/*
-		'language',
-		'source',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>

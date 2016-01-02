@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/css/jasny-bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/summernote/summernote/v0.6.16/dist/summernote.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
 <!--[inline-editor] -->
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/froala_editor.css">

@@ -1,11 +1,11 @@
-angular.module('froala', []).
-	value('froalaConfig', {
-		toolbarInline: true,
-        charCounterCount: false,
-        imageUploadURL: 'api/upload',
-        imageUploadParam: 'images'
-	}).
-	directive('froala', ['froalaConfig', '$timeout', function(froalaConfig, $timeout) {
+// angular.module('froala', []).
+// 	value('froalaConfig', {
+// 		toolbarInline: true,
+//         charCounterCount: false,
+//         imageUploadURL: 'api/upload',
+//         imageUploadParam: 'images'
+// 	}).
+	$froala.directive('froala', ['froalaConfig', '$timeout', function(froalaConfig, $timeout) {
 		"use strict"; //Scope strict mode to only this directive
 		froalaConfig = froalaConfig || {};
 		var generatedIds = 0;
