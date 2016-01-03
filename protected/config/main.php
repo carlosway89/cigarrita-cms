@@ -27,8 +27,8 @@ return array(
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=yaps',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '150189',
+			'username' => 'user',
+			'password' => '********',
 			'charset' => 'utf8',
 		),
 		'user'=>array(
