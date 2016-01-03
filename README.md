@@ -12,14 +12,11 @@ The CMS Cigarrita Worker can be installed with [Composer](https://getcomposer.or
 }
 ```
 
-Into the Root-folder create a folder called "THEMES" there paste your folder of your web with your files required (HTML,CSS,JS, etc).
+Into the Root-folder there is a folder called "THEMES/DESIGN", paste your folder of your web with your files required (HTML,CSS,JS, etc).
 
-ex: [root_folder]/themes/{{design_name}} .
 
-Open the folder called "install" and create a database ex: "data_base_name" run the script  into the database ```cigarrita_db_to_install.sql```.
-
-create a virtual host, ex. miweb.dev, 
-open it with your prefer browser and .
+create a virtual host, ex. miweb.dev or just your domain-name, 
+open it with your prefer browser and type your virtualhost or domain and add to the last /install.
 
 follow the instruction...
 
@@ -30,7 +27,7 @@ we are working on a complete and clear DOC soon!!!
 
 ## MINIMUN REQUIERED
 - php => 5.3
-- Virtual Host, ex: tuweb.dev
+- Virtual Host or domain, ex: tuweb.dev
 - mod rewrite
 - CURL
 - Happiness
