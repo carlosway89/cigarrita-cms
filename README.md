@@ -12,11 +12,11 @@ The CMS Cigarrita Worker can be installed with [Composer](https://getcomposer.or
 }
 ```
 
-Into the Root-folder there is a folder called "THEMES/DESIGN", paste your folder of your web with your files required (HTML,CSS,JS, etc).
+Into the Root-folder there is a folder called "THEMES/DESIGN", paste your folder of your web design with your files required (HTML,CSS,JS, etc).
 
 
 create a virtual host, ex. miweb.dev or just your domain-name, 
-open it with your prefer browser and type your virtualhost or domain and add to the last /install.
+open it with your prefer browser and type your virtualhost or domain and add to the last `/install`.
 
 follow the instruction...
 
