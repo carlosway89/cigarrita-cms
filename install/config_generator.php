@@ -25,10 +25,10 @@ return array(
 	// application components
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=yaps',
+			'connectionString' => 'mysql:host={#dbhost};dbname={#dbname}',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '150189',
+			'username' => '{#dbuser}',
+			'password' => '{#dbpass}',
 			'charset' => 'utf8',
 		),
 		'user'=>array(

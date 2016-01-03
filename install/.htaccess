@@ -1,1 +1,4 @@
-deny from all
+RewriteEngine on
+
+# otherwise forward it to index.php
+RewriteRule . index.php
