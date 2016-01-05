@@ -42,7 +42,6 @@ class InstallationCigarritaController extends Controller
 			),
 		);
 	}
-
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -50,19 +49,9 @@ class InstallationCigarritaController extends Controller
 	public function actionIndex()
 	{
 		
-		// $is_instaled=Configuration::model()->findByPk(1)->is_installed;
-		// if ($is_instaled) {
-		// 	$this->redirect(array('/site/index'));
-		// }else{
-			// $this->layout='main';
-			
-			
-		// }
 		
 		if (isset($_POST['continue'])) {
 			$this->redirect(array('pages'));
-		}else{
-			
 		}
 
 		$this->render('//panel/installation');

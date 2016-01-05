@@ -24,7 +24,7 @@
                                         <li>2.- You have a "blank.html" page into you folder, Such pages may serve purposes ranging from place-holding to space-filling and content separation.</li>
                                         <li>3.- The rest of the pages may have a separate content that will be placed in the blank page.<br> (index.html [home-page], page1.html, page2.html, etc.)</li>
                                         <li>4.- Place <code> &lt;!--content--&gt </code> into blank page where the rest of the contents will be placed.</li>
-                                        <li>5.- Make sure you have applied 0777 permission over the root folder. </li>                                        
+                                        <li>5.- You Have Deleted the Directory called install </li>                                        
                                         <br>
                                         <li class="text-warning">(Optional):<br> if you want to manage all your menu-links by the CMS you need to insert a class <b>"header-options"</b> to the parent menu over blank plage.<br> 
 
