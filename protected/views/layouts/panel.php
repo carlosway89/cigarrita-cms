@@ -71,9 +71,13 @@
     <!-- Preloader -->
     
 	<aside class="left-panel collapsed">
-    		
+    		    <?php $config_val=Configuration::model()->find();
+
+                $logo=$config_val->logo?Yii::app()->request->baseUrl.$config_val->logo:Yii::app()->request->baseUrl."/assets/panel/images/avtar/cigarrita-pet.jpg";
+
+            ?>
             <div class="user text-center">
-                  <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/images/avtar/cigarrita-pet.jpg" class="img-circle" alt="cigarrita worker">
+                  <img src="<?php echo $logo?>" class="img-circle" alt="cigarrita worker">
                   <h4 class="user-name"><?php echo Yii::app()->user->getState('fullname');?></h4>
             </div>
             
@@ -243,17 +247,13 @@
                             <a href="http://cigarrita-worker.com/contact" target="_blank" class="list-group-item">
                               Welcome to the CMS Cigarrita Worker, keep you update or in contact with us clicking here
                             </a>
-                            <p class="list-group-item">You are currently in the <strong>1.2 version</strong> of Cigarrita CMS!!</p>
+                            <p class="list-group-item">You are currently in the <strong>1.3 version</strong> of Cigarrita CMS!!</p>
                             <p class="list-group-item" >
                               - Developed by Cigarrita Worker<br/>
                               - Author: Carlos Manay<br/>
                               - Built with YII 1.1 and AngularJs<br>
                               - Copyright 2015.
                             </p>
-                            
-                            
-                            
-
                         </div>
                         
                     </div>

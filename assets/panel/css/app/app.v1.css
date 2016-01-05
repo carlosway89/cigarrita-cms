@@ -228,7 +228,9 @@ User
 .user img{
 	border:1px solid #383c4a;
 	padding:8px;
-	width:70px;}	
+	width:70px;
+	height: 70px;
+}	
 
 .user .user-login{
 	display:inline-block;}
