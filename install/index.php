@@ -9,19 +9,25 @@
 		$dbname=$_POST["dbname"];
 		$gen=new generator_model($dbhost,$dbuser,$dbpass,$dbname);
 		$res=$gen->create_db();
-
-		if ($res==true) {
-				$res2=$gen->run_sql();
-				if ($res2==true) {
-					if ($gen->create_config()) {
-						sleep(5);
-						header("Location: /installationCigarrita");
-					}
+		$message="";
+		if ($res=="1") {
+			sleep(1);
+			$res2=$gen->run_sql();
+			if ($res2=="1") {
+				sleep(1);
+				$res3=$gen->create_config();
+				if ($res3=="1") {
+					sleep(5);
+					header("Location: /installationCigarrita");
 				}else{
-					print_r($res2);
+					$message=$res3;
 				}
+			}else{
+				$message=$res2;
+			}
+			
 		}else{
-			print_r($res);
+			$message=$res;
 		}
 	}
 
@@ -55,6 +61,12 @@
 	<script type="text/javascript" src="/assets/panel/js/bootstrap/bootstrap.min.js"></script>
 	<!-- Materialize -->
     <script src="/assets/panel/js/materialize/materialize.min.js"></script>
+
+    <script>
+        function enableButton() {
+            document.getElementById("submit_button").disabled = false;
+        }
+    </script>
 </head>
 <body>
 
@@ -82,6 +94,13 @@
 	                  
 	                                <br>
 	                                <form method="POST" class="form-horizontal">
+	                                	<?php if (isset($message)) {
+	                                	?>
+	                                	<div class="alert alert-danger text-left">
+	                                		<p><?=$message?></p>
+	                                	</div>
+	                                	<?php }?>
+
 	                                	<div class="form-group">
 										    <label for="dbhost" class="col-sm-2 control-label">DB Host:</label>
 										    <div class="col-sm-10">
@@ -106,8 +125,13 @@
 										    	<input type="password" class="form-control" name="dbpass" id="dbpass" placeholder="Database Password" required>
 											</div>
 										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-9">
+	                                			<div class="alert alert-info">Before to continue, apply 0777 permission <code>chmod -R 777</code> over the root folder.</div>
+	                                		</div>
+	                                	</div>
 	                                    <input name="action" value="true" type="hidden" />
-	                                    <button class="btn red" type="submit">Continue</button>
+	                                    <button id="submit_button" class="btn red" type="submit" onclick="enableButton()">Continue</button>
 	                                </form>
 	                    		</div>
 	                    		

@@ -70,24 +70,21 @@ class SiteController extends Controller
 	 */
 	public function actionError()
 	{
-		// $this->layout='//layouts/main';
 
-		// if($error=Yii::app()->errorHandler->error)
-		// {
-		// 	if(Yii::app()->request->isAjaxRequest)
-		// 		echo $error['message'];
-		// 	else
-		// 		$this->render('error');
-		// }
-		error_reporting(0);
-		http_response_code(200);
+		try {
+			error_reporting(0);
+			http_response_code(200);
 
-		$is_instaled=Configuration::model()->findByPk(1)->is_installed;
-		if ($is_instaled) {
-			$this->render('index');
-		}else{
-			$this->redirect(array('/installationCigarrita'));
+			$is_instaled=Configuration::model()->findByPk(1)->is_installed;
+			if ($is_instaled) {
+				$this->render('index');
+			}else{
+				$this->redirect(array('/installationCigarrita'));
+			}
+		} catch (Exception $e) {
+			header("Location: /install");
 		}
+		
 		
 	}
 

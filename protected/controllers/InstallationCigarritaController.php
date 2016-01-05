@@ -61,6 +61,8 @@ class InstallationCigarritaController extends Controller
 		
 		if (isset($_POST['continue'])) {
 			$this->redirect(array('pages'));
+		}else{
+			
 		}
 
 		$this->render('//panel/installation');

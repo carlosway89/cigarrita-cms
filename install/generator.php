@@ -19,24 +19,33 @@ class generator_model{
 	  	}
 
 	  	public function create_config(){
-	  		$config=file_get_contents("config_generator.php");
-	  		$config=str_replace("{#dbhost}", $this->dbhost, $config);
-	  		$config=str_replace("{#dbuser}", $this->dbuser, $config);
-	  		$config=str_replace("{#dbpass}", $this->dbpass, $config);
-	  		$config=str_replace("{#dbname}", $this->dbname, $config);
+	  		try {
+	  			
+	  			$config=file_get_contents("config_generator.php");
+		  		$config=str_replace("{#dbhost}", $this->dbhost, $config);
+		  		$config=str_replace("{#dbuser}", $this->dbuser, $config);
+		  		$config=str_replace("{#dbpass}", $this->dbpass, $config);
+		  		$config=str_replace("{#dbname}", $this->dbname, $config);
 
-	  		$file = new SplFileObject($this->root."/protected/config/main.php",'w+');		            
-			$file->fwrite($config);
+		  		$file = new SplFileObject($this->root."/protected/config/main.php",'w+');		            
+				$file->fwrite($config);
+				chmod($this->root."/protected/config/main.php", 0777);
 
-			return true;
-			// chmod($this->root."/protected/config/main.php", 0777);
+				return true;
+	  			
+	  		} catch (Exception $e) {
+	  			return $e;
+	  		}
+	  		
+			
 	  	}
 
 	  	public function run_sql(){
 
 	  		   // $conn = mysql_connect($this->dbhost, $this->dbuser, $this->dbpass);
 	  		$conn = new mysqli($this->dbhost, $this->dbuser, $this->dbpass, $this->dbname);
-	   			$message="";
+	   		
+	   		$message=true;
 
 			   if(mysqli_connect_errno()) {
 			      $message='Could not connect: ' . mysqli_connect_error();
@@ -65,7 +74,7 @@ class generator_model{
 
 			
 		    $conn = mysql_connect($this->dbhost, $this->dbuser, $this->dbpass);
-		    $message="";
+		    $message=true;
 		   
 			if(! $conn ) {
 				$message='Could not connect: ' . mysql_error();
