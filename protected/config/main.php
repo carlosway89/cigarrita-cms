@@ -25,10 +25,10 @@ return array(
 	// application components
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=cigarritaworker_v2',
+			'connectionString' => 'mysql:host=localhost;dbname=dbname',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '150189',
+			'username' => 'user',
+			'password' => '******',
 			'charset' => 'utf8',
 		),
 		'user'=>array(

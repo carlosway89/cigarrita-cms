@@ -1,40 +1,32 @@
 # cigarrita Worker
-present: CMS Cigarrita Worker
+presenta: CMS Cigarrita Worker
 
 ## INSTALLATION
-The CMS Cigarrita Worker can be installed with [Composer](https://getcomposer.org/). Add the package to your `composer.json` file.
+The CMS Cigarrita Worker puede ser instalado con [Composer](https://getcomposer.org/). Agregar el paquete a tu `composer.json` archivo.
 
 ```json
 {
     "require": {
-        "cigarrita-worker/cigarrita-api": "dev-master"
+        "cigarrita-worker/cigarrita-api": "v1.3-es"
     }
 }
 ```
 
-Into the Root-folder paste all the Files from the CMS you have dowloaded. inward there is a folder called "THEMES/DESIGN", paste your folder of your web-design with your files required (HTML,CSS,JS, etc).
+Dentro de tu carpeta raiz pega todos los archivos del CMS que has descargado. dentro de el hay una carpeta llamada "THEMES/DESIGN", pega alli los archivos de tu diseño web-design (HTML,CSS,JS, etc).
 
 
-create a virtual host, ex. miweb.dev or just your domain-name, 
-open it with your prefer browser and type your virtualhost or domain and add to the last `/install`.
+crear un Host virtual, ej. miweb.dev o solo usa tu nombre de dominio, 
+abrelo con tu browser preferido y escribe tu host virtual o tu dominio y agregar al ultimo `/install`.
 
-follow the instruction...
+Sigue las instrucciones...
 
 
-###READY TO PLAY WITH !!!
+###LISTO!!!
 
-we are working on a complete and clear DOC soon!!!
 
-## MINIMUN REQUIERED
-- php => 5.3
-- Virtual Host or domain, ex: tuweb.dev
-- mod rewrite
-- CURL
-- Happiness
+## LICENCIA
 
-## LICENSE
+Profavor ve [license file](https://cigarrita-worker.com/licence) para más información.
 
-Please see the [license file](https://cigarrita-worker.com/licence) for more information.
-
-## ISSUES AND CONTRIBUTING
-If you find any issue, bug or have any contribution please email me to [carlos@cigarrita-worker.com](mailto:carlos@cigarrita-worker.com)
+## ERRORES Y CONTRIBUCION
+si encuantras algun error, problema o tienes alguna contribución porfavor envíanos un email a [carlos@cigarrita-worker.com](mailto:carlos@cigarrita-worker.com)
