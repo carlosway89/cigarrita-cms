@@ -1,7 +1,7 @@
 # cigarrita Worker
 presenta: CMS Cigarrita Worker
 
-## INSTALLACION
+## INSTALACION
 The CMS Cigarrita Worker puede ser instalado con [Composer](https://getcomposer.org/). Agregar el paquete a tu `composer.json` archivo.
 
 ```json
@@ -22,6 +22,12 @@ Sigue las instrucciones...
 
 ###LISTO!!!
 
+## MINIMO REQUERIDO
+- php => 5.3
+- Virtual Host o domain, ej: tuweb.dev
+- mod rewrite activado
+- CURL
+- Felicidad
 
 ## LICENCIA
 
