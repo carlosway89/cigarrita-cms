@@ -3,7 +3,7 @@
     	<div class="row">
 
         	<div class="col-lg-9 col-xs-5">
-        		<h4>Message</h4>
+        		<h4>Mensaje</h4>
 	            <a class="btn btn-default" href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages"><i class="fa fa-fw fa-level-up fa-rotate-270"></i></a>
 	            
 	            <div class="btn-group visible-lg-inline-block">
@@ -39,15 +39,14 @@
 		                    <div class="col-lg-6 text-right">
 		                    	<small class="form-control-static text-gray"><?=$model->date?></small>
 		                        <div class="btn-group">
-		                          <a href="mailto:<?=$model->email?>?subject=<?=substr($model->subject, 0, 30)."..."?>&cc=admin@example.org&body=<?=$model->subject?>" class="btn btn-default btn-sm">Reply</a>
+		                          <a href="mailto:<?=$model->email?>?subject=<?=substr($model->subject, 0, 30)."..."?>&cc=admin@example.org&body=<?=$model->subject?>" class="btn btn-default btn-sm">Responder</a>
 		                          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
 		                            <span class="caret"></span>
 		                            <span class="sr-only">Toggle Dropdown</span>
 		                          </button>
 		                          <ul role="menu" class="dropdown-menu pull-right">
-		                            <li><a href="javascript:window.print()">Print</a></li>
-		                            <li><a href="#">Mark as unread</a></li>
-		                            <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$model->idform?>">Delete this message</a></li>
+		                            <li><a href="javascript:window.print()">Imprimir</a></li>
+		                            <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$model->idform?>">Eliminar este mensaje</a></li>
 		                          </ul>
 		                        </div>
 		                    </div>
@@ -64,19 +63,19 @@
 		                <div class="row">
 		                	<div class="col-sm-4">
 		                		<address>
-				                  <strong>country Name</strong>
+				                  <strong>Pais</strong>
 				                  <code><?=$model->country_name?></code>
 				                </address>
 		                	</div>
 		                	<div class="col-sm-4">
 		                		<address>
-				                  <strong>Device</strong>
+				                  <strong>Dispositivo</strong>
 				                  <code><?=$model->browser?></code>
 				                </address>
 		                	</div>
 		                	<div class="col-sm-4">
 		                		<address>
-		                			<strong>IP Address</strong>
+		                			<strong>Dirección IP</strong>
 		                  			<code><?=$model->ip_address?></code>
 		                		</address>
 		                	</div>

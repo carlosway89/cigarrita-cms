@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manage Menu/Links</h4>
+			<h4>Manejar Menu/Links</h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -16,7 +16,7 @@
 
 						<div class="row">
 							<div class="dropdown col-sm-2">
-			                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Languages <span class="caret"></span></a>
+			                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Idiomas <span class="caret"></span></a>
 			                  <ul class="dropdown-menu">
 			                    <?php foreach ($language as $key => $value) {
 			                    ?>
@@ -29,7 +29,7 @@
 			                </div>
 			                <?php if (Yii::app()->user->checkAccess("webmaster")) {
                           	?>
-			                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Add Menu</button>
+			                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Agregar Menu</button>
 							<?php }?>
 							<br><br>
 						</div>
@@ -41,12 +41,12 @@
 		                		<table id="" class="hoverable centered">
 									<thead>
 										<tr>
-								            <th data-field="name">Name</th>
-								            <th data-field="flag">Page</th>
+								            <th data-field="name">Nombre</th>
+								            <th data-field="flag">Pagina</th>
 								            <th data-field="url">Url</th>
-								            <th data-field="type">Type</th>
-								            <th data-field="state">State</th>
-								            <th>Options</th>
+								            <th data-field="type">Tipo</th>
+								            <th data-field="state">Estado</th>
+								            <th>Opciones</th>
 								        </tr>
 									</thead>
 									<tbody id="sortable">
@@ -59,10 +59,10 @@
 											<td><?=$value->type?></td>
 											<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 											<td>
-												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
+												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> Editar</a>&nbsp;&nbsp;
 												<?php if (Yii::app()->user->checkAccess("webmaster")) {
                           						?>
-												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
 												<?php }?>
 											</td>
 										</tr>
@@ -87,7 +87,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create New Link/menu</h4>
+        <h4 class="modal-title" id="myModalLabel">Crear Nuevo Link/menu</h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//menu/_form', 

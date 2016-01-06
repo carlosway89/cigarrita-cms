@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Block</h1>
+<h1>Crear un Block</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Web Configuration</h4>
+			<h4>Web Configuraciones</h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -19,13 +19,13 @@
 								'enableAjaxValidation'=>false,								
         						'htmlOptions' => array('enctype' => 'multipart/form-data'),
 							)); ?>
-								<p class="note">Fields with <span class="required">*</span> are required.</p>
+								<p class="note">Campos con<span class="required">*</span> son requeridos.</p>
 								
 								<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 								
 
 								<div class="row">
-									<?php echo $form->labelEx($model,'title'); ?>
+									<?php echo $form->labelEx($model,'titulo'); ?>
 									<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
 									<?php echo $form->error($model,'title'); ?>
 								</div>
@@ -45,14 +45,14 @@
 								</div>
 
 								<div class="row">
-									<?php echo $form->labelEx($model,'description'); ?>
+									<?php echo $form->labelEx($model,'descripcion'); ?>
 									<?php echo $form->textField($model,'description',array('size'=>60,'length'=>'120','maxlength'=>400,'class'=>'counter_char')); ?>
 									<?php echo $form->error($model,'description'); ?>
 								</div>
 								<?php if (Yii::app()->user->checkAccess("webmaster")) {
 								?>
 								<div class="row">
-									<?php echo $form->labelEx($model,'language Default'); ?>
+									<?php echo $form->labelEx($model,'idioma por defecto'); ?>
 									<select name="Configuration[language]" class="browser-default">
 									<?php foreach ($language as $key => $value) {
 									?>
@@ -84,7 +84,7 @@
 								<?php } ?>
 
 								<div class="row buttons">
-									<button type="submit" class="btn btn-info">Update</button>
+									<button type="submit" class="btn btn-info">Actualizar</button>
 								</div>
 							<?php $this->endWidget(); ?>
 

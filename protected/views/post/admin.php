@@ -2,14 +2,14 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manage Posts</h4>
+			<h4>Manejar Posts</h4>
 			<br>
 				
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
 						<div class="dropdown col-sm-2">
-		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Languages <span class="caret"></span></a>
+		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Idiomas <span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
 		                    <?php foreach ($language as $key => $value) {
 		                    ?>
@@ -20,17 +20,17 @@
 		                    <?php } ?>
 		                  </ul>
 		                </div>
-		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1">Create Post</button>
+		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1">Crear Post</button>
 		                <br><br><br>
 						<table id="postList" class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="name">Header</th>
+						            <th data-field="name">Cabecera</th>
 						            <!-- <th data-field="flag">Subheader</th> -->
-						            <th data-field="flag">Category</th>
-						            <th data-field="state">State</th>
-						            <th data-field="state">Date Created</th>
-						            <th>Options</th>
+						            <th data-field="flag">Categoria</th>
+						            <th data-field="state">Estado</th>
+						            <th data-field="state">Fecha de creación</th>
+						            <th>Opciones</th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -44,11 +44,11 @@
 									<td>
 										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           				?>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$value->idpost?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$value->idpost?>" class="text-success"><i class="fa fa-pencil "></i> Editar</a>&nbsp;
 										<?php }
 										if (Yii::app()->user->checkAccess("webmaster")) {
 											?>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
 										<?php }?>
 									</td>
 								</tr>
@@ -67,7 +67,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create New Post</h4>
+        <h4 class="modal-title" id="myModalLabel">Crear nuevo Post</h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//post/_form', 

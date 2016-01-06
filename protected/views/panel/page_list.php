@@ -16,14 +16,14 @@
                     	<div class="col-md-offset-2 col-md-8 panel panel-default">
                     		
                     		<div class="panel-body text-center">
-                    			<h5 class="">Lists of the pages</h5>
-                                <p>Select the pages you want to convert in the views to the website</p>
+                    			<h5 class="">Lista de paginas</h5>
+                                <p>Selecciona las paginas que tu quieres convertir en vista de la web</p>
                                 <form method="POST">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th data-field="state"><p><input type="checkbox" id="check_all" onchange="checkAll(this)" ><label for="check_all" >Select</label></p></th>
-                                            <th data-field="name">Page Name</th>
+                                            <th data-field="state"><p><input type="checkbox" id="check_all" onchange="checkAll(this)" ><label for="check_all" >Seleccionar</label></p></th>
+                                            <th data-field="name">Nombre de la Pagina</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,7 +42,7 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                <button class="btn ">Create Pages</button>
+                                <button class="btn ">Crear Vistas</button>
                                 </form>
                     		</div>
                     		

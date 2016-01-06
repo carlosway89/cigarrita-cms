@@ -90,7 +90,7 @@
 	                    	<div class="col-md-offset-2 col-md-8 panel panel-default">
 	                    		
 	                    		<div class="panel-body text-center">
-	                    			<h5 class="">Pre-Configuration <small>Website</small></h5><br>
+	                    			<h5 class="">Pre-Configuracion <small>Website</small></h5><br>
 	                  
 	                                <br>
 	                                <form method="POST" class="form-horizontal">
@@ -102,36 +102,36 @@
 	                                	<?php }?>
 
 	                                	<div class="form-group">
-										    <label for="dbhost" class="col-sm-2 control-label">DB Host:</label>
+										    <label for="dbhost" class="col-sm-2 control-label">Host o Servidor:</label>
 										    <div class="col-sm-10">
 										    	<input type="text" class="form-control" name="dbhost" id="dbhost" placeholder="Database Host" required>
 											</div>
 										</div>
 										<div class="form-group">
-										    <label for="dbname" class="col-sm-2 control-label">DB Name:</label>
+										    <label for="dbname" class="col-sm-2 control-label">BD Nombre:</label>
 										    <div class="col-sm-10">
 										    	<input type="text" class="form-control" name="dbname" id="dbname" placeholder="Database Name or leave in blank to create default (cigarrita_web)">
 											</div>
 										</div>
 										<div class="form-group">
-										    <label for="dbuser" class="col-sm-2 control-label">DB User:</label>
+										    <label for="dbuser" class="col-sm-2 control-label">BD Usuario:</label>
 										    <div class="col-sm-10">
 										    	<input type="text" class="form-control" name="dbuser" id="dbuser" placeholder="Database User" required>
 											</div>
 										</div>
 										<div class="form-group">
-										    <label for="dbpass" class="col-sm-2 control-label">DB Password:</label>
+										    <label for="dbpass" class="col-sm-2 control-label">BD Contraseña:</label>
 										    <div class="col-sm-10">
 										    	<input type="password" class="form-control" name="dbpass" id="dbpass" placeholder="Database Password" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-sm-offset-2 col-sm-9">
-	                                			<div class="alert alert-info">Before to continue, apply 0777 permission <code>chmod -R 777</code> over the root folder.</div>
+	                                			<div class="alert alert-info">Antes de continuar aplica permisos 0777 <code>chmod -R 777</code> sobre la carpeta raiz.</div>
 	                                		</div>
 	                                	</div>
 	                                    <input name="action" value="true" type="hidden" />
-	                                    <button id="submit_button" class="btn red" type="submit" onclick="enableButton()">Continue</button>
+	                                    <button id="submit_button" class="btn red" type="submit" onclick="enableButton()">Continuar</button>
 	                                </form>
 	                    		</div>
 	                    		

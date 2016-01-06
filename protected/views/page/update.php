@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Page</h4>
+			<h4>Pagina</h4>
 			<br>
 				
 				<div class="panel panel-default">

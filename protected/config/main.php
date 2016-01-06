@@ -8,8 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'CIGARRITA',
-	'language'=>'en',
-	'sourceLanguage'=>'en',
+	'language'=>'es',
+	'sourceLanguage'=>'es',
 	'charset'=>'utf-8',
 	'theme'=>'design',
 
@@ -25,10 +25,10 @@ return array(
 	// application components
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=dbname',
+			'connectionString' => 'mysql:host=localhost;dbname=cigarritaworker_v2',
 			'emulatePrepare' => true,
-			'username' => 'user',
-			'password' => '********',
+			'username' => 'root',
+			'password' => '150189',
 			'charset' => 'utf8',
 		),
 		'user'=>array(

@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 INSERT INTO `configuration` (`idconfig`, `title`, `logo`, `description`, `language`, `analytic_id`, `keywords`, `is_installed`, `id_facebook`, `id_facebook_page`) VALUES
-(1, 'demo', '', 'description', 'en', '', 'keywords', 0, '', '');
+(1, 'demo', '', 'description', 'es', '', 'keywords', 0, '', '');
 
 -- --------------------------------------------------------
 

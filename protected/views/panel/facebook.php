@@ -16,7 +16,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Facebook Integration</h4>
+			<h4>Facebook Integracion</h4>
 			<br>
 				
         <?php if (Yii::app()->user->checkAccess("webmaster")) {          
@@ -42,7 +42,7 @@
               }else{?> 
               <form method="POST">
                   <input type="hidden" name ="sync" value="feed" >
-                  <button type="sumbit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Updates</button>
+                  <button type="sumbit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Actualizar</button>
                 </form>
               <br><br>                          
               <table id="feedsList" class="hoverable centered">
@@ -65,9 +65,9 @@
                     <td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
                     <td><?=$value->date_created?></td>
                     <td>
-                      <a href="#feed-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="feed-<?=$value->idpost?>"><i class="fa fa-plus "></i> Details</a>&nbsp;
+                      <a href="#feed-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="feed-<?=$value->idpost?>"><i class="fa fa-plus "></i> Detalles</a>&nbsp;
                     
-                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
                     </td>
                   </tr>
                   <tr  class="collapse fade" id="feed-<?=$value->idpost?>" >
@@ -126,9 +126,9 @@
                     <td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
                     <td><?=$value->date_created?></td>
                     <td>
-                      <a href="#event-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="event-<?=$value->idpost?>"><i class="fa fa-plus "></i> Details</a>&nbsp;
+                      <a href="#event-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="event-<?=$value->idpost?>"><i class="fa fa-plus "></i> Detalles</a>&nbsp;
                     
-                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
                     </td>
                   </tr>
                   <tr  class="collapse fade" id="event-<?=$value->idpost?>" >
@@ -186,9 +186,9 @@
                     <td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
                     <td><?=$value->date_created?></td>
                     <td>
-                      <a href="#gallery-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="gallery-<?=$value->idpost?>"><i class="fa fa-plus "></i> Details</a>&nbsp;
+                      <a href="#gallery-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="gallery-<?=$value->idpost?>"><i class="fa fa-plus "></i> Detalles</a>&nbsp;
                     
-                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
                     </td>
                   </tr>
                   <tr  class="collapse fade" id="gallery-<?=$value->idpost?>" >
@@ -246,9 +246,9 @@
                     <td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
                     <td><?=$value->date_created?></td>
                     <td>
-                      <a href="#contact-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="contact-<?=$value->idpost?>"><i class="fa fa-plus "></i> Details</a>&nbsp;
+                      <a href="#contact-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="contact-<?=$value->idpost?>"><i class="fa fa-plus "></i> Detalles</a>&nbsp;
                     
-                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
                     </td>
                   </tr>
                   <tr  class="collapse fade" id="contact-<?=$value->idpost?>" >
@@ -306,8 +306,8 @@
                     <td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
                     <td><?=$value->date_created?></td>
                     <td>
-                      <a href="#about-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="about-<?=$value->idpost?>"><i class="fa fa-plus "></i> Details</a>&nbsp;
-                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+                      <a href="#about-<?=$value->idpost?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="about-<?=$value->idpost?>"><i class="fa fa-plus "></i> Detalles</a>&nbsp;
+                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
                     </td>
                   </tr>
                   <tr  class="collapse fade" id="about-<?=$value->idpost?>" >

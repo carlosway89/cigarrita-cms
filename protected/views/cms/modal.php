@@ -1,7 +1,7 @@
 <div id="modal_post" class="ui small modal_cw">
   <i class="close icon closing">&#x2716;</i>
   <div class="header">
-    Detail
+    Detalles
   </div>
   <div class="content">
     <div class="description">
@@ -18,7 +18,7 @@
           </div>
           -->
           <div class='col-sm-12'>  
-            <label for='image' class='col-sm-2 control-label'>Image <small>(max: 2Mb)</small></label>            
+            <label for='image' class='col-sm-2 control-label'>Imagen <small>(max: 2Mb)</small></label>            
             <div class="new_modal_uploading" style="">
               <div id="fileinput_modal_media" class="fileinput fileinput-new" data-name="image" image-upload image-model="block" image-attribute="background">
                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px; display:block !important">
@@ -28,8 +28,8 @@
                 </div> -->
                 <div>
                   <span class="btn btn-default btn-file">
-                    <span class="fileinput-new">Upload image</span>
-                    <span class="fileinput-exists">Change</span>
+                    <span class="fileinput-new">Subir imagen</span>
+                    <span class="fileinput-exists">Cambiar</span>
                     <input id="input" type="file" name="image" ng-model="posting.source">
                 </span>
                   <!-- <a href="javascript:;;"  class="btn btn-default"  ng-show="posting.source?true:false">Remove</a> -->
@@ -41,7 +41,7 @@
         </div>
         
         <div class='form-group'>
-          <label for='subheader' class='col-sm-2 control-label'>Sub Header</label>
+          <label for='subheader' class='col-sm-2 control-label'>Parrafo</label>
           <div class='col-sm-9'>
            <!-- 
             <ul id='toolbar' style="" class="wysihtml5-toolbar list-inline list-unstyled">
@@ -117,8 +117,8 @@
           	<div class="alert alert-success post" style="display:none">
       				<strong><i class="hand up huge icon no-margin"></i> Success :)</strong> Your Operation was Successfully 
       			</div>
-            <button id="save_external" type='button' ng-click="save_external(posting,$event)" class='btn btn-primary saving'>Save Content</button>
-            <button id='close_modal' type='button' class='btn btn-default closing' style='margin-left:20px'>Close</button>
+            <button id="save_external" type='button' ng-click="save_external(posting,$event)" class='btn btn-primary saving'>Guardar</button>
+            <button id='close_modal' type='button' class='btn btn-default closing' style='margin-left:20px'>Cerrar</button>
           </div>
         </div>
       </div>

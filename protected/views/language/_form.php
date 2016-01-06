@@ -11,18 +11,18 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->labelEx($model,'nombre'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'flag'); ?>
+		<?php echo $form->labelEx($model,'bandera'); ?>
 		<select name="Language[flag]" class="browser-default">
 			<?php foreach ($flags as $value) {
 			?>
@@ -46,8 +46,8 @@
 	</div>
 
 	<div class="row buttons">
-		<button class="btn btn-info" type="submit">Save</button>
-		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/language">Back</a>
+		<button class="btn btn-info" type="submit">Guardar</button>
+		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/language">Regresar</a>
 	</div>
 
 <?php $this->endWidget(); ?>

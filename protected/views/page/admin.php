@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>List Pages</h4>
+			<h4>Lista de Paginas</h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -15,18 +15,18 @@
 						?>	
 						<?php if (Yii::app()->user->checkAccess("webmaster")) {
 										?>
-						<button type="button" data-toggle="modal" data-target="#modal_category" class="btn btn-primary">+Add Category</button>
-						<button type="button" data-toggle="modal" data-target="#modal_page" class="btn ">+Add Page</button>
+						<button type="button" data-toggle="modal" data-target="#modal_category" class="btn btn-primary">+Agregar Categoria</button>
+						<button type="button" data-toggle="modal" data-target="#modal_page" class="btn ">+Agregar Pagina</button>
 						
 						<br><br>
 						<?php }?>
 						<table class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="name">Name</th>
-						            <th data-field="state">Single Page</th>
-						            <th data-field="flag">State</th>						            
-						            <th>Options</th>
+						            <th data-field="name">Nombre</th>
+						            <th data-field="state">Simple Pagina</th>
+						            <th data-field="flag">Estado</th>						            
+						            <th>Opciones</th>
 						        </tr>
 							</thead>
 							<tbody id="table-acordion" aria-multiselectable="true">
@@ -38,11 +38,11 @@
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 									
 									<td>
-										<a href="#page-<?=$value->idpage?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="page-<?=$value->idpage?>"><i class="fa fa-plus "></i> Details</a>&nbsp;
+										<a href="#page-<?=$value->idpage?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="page-<?=$value->idpage?>"><i class="fa fa-plus "></i> Detalles</a>&nbsp;
 										<?php if (Yii::app()->user->checkAccess("webmaster")) {
 										?>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages/<?=$value->idpage?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/page/<?=$value->idpage?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages/<?=$value->idpage?>" class="text-success"><i class="fa fa-pencil "></i> Editar</a>&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/page/<?=$value->idpage?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
 										<?php }?>
 									</td>
 								</tr>
@@ -62,7 +62,7 @@
 													}
 												} ?>
 												<button type="button" data-page-id="<?=$value->idpage?>" data-toggle="modal" data-target="#modal_block" class="col-sm-1 page-has-block btn-default new_block_button">
-													+Add new
+													+Nuevo
 												</button>
 											</div>
 										</div>
@@ -100,7 +100,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create Block</h4>
+        <h4 class="modal-title" id="myModalLabel">Crear Block</h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//block/_form', 
@@ -121,7 +121,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create New Category</h4>
+        <h4 class="modal-title" id="myModalLabel">Crear Nueva Categoria</h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//category/_form', 

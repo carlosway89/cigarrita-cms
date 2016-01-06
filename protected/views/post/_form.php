@@ -19,11 +19,11 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'category'); ?>
+		<?php echo $form->labelEx($model,'categoria'); ?>
 		<select name="Post[category]" class="browser-default">
 		<?php foreach ($category as $val_cat) {
 		 ?>			 
@@ -35,26 +35,26 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'header'); ?>
+		<?php echo $form->labelEx($model,'Cabecera'); ?>
 		<?php echo $form->textField($model,'header',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'header'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'subheader'); ?>
+		<?php echo $form->labelEx($model,'Parrafo'); ?>
 		<textarea  class="wysihtml materialize-textarea" name="Post[subheader]"><?=$model->subheader?></textarea>
 		<?php //echo $form->textField($model,'subheader',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'subheader'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'source'); ?>
+		<?php echo $form->labelEx($model,'Recurso'); ?>
 		<?php echo $form->textField($model,'source',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'source'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'language'); ?>
+		<?php echo $form->labelEx($model,'idioma'); ?>
 		<select name="Post[language]" class="browser-default">
 		<?php foreach ($language as $key => $value) {
 		?>
@@ -66,7 +66,7 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'state'); ?>
+		<?php echo $form->labelEx($model,'estado'); ?>
 		<div class="switch">
           <label>
             Off
@@ -82,8 +82,8 @@
 	</div>
 
 	<div class="row buttons">
-		<button class="btn btn-info" type="submit">Save</button>
-		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Back</a>
+		<button class="btn btn-info" type="submit">Guardar</button>
+		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Regresar</a>
 	</div>
 
 <?php $this->endWidget(); ?>

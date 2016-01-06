@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>List Messages</h4>
+			<h4>Lista de Mensajes</h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -12,11 +12,11 @@
 							<thead>
 								<tr>
 						            <th data-field="name">Email</th>
-						            <th data-field="flag">Subject</th>
-						            <th data-field="state">Date</th>
-						            <th data-field="state">Country</th>
-						            <th data-field="state">State</th>
-						            <th>Options</th>
+						            <th data-field="flag">Mensaje</th>
+						            <th data-field="state">Fecha</th>
+						            <th data-field="state">Pais</th>
+						            <th data-field="state">Estado</th>
+						            <th>Opciones</th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -30,8 +30,8 @@
 									<td><span class="text-warning"><?=$value->state?></span></td>
 									<td>
 										
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="text-info"><i class="fa fa-eye "></i> See</a>&nbsp;&nbsp;
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$value->idform?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="text-info"><i class="fa fa-eye "></i> Ver</a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$value->idform?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
 									</td>
 								</tr>
 								<?php } ?>

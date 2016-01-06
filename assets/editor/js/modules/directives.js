@@ -131,7 +131,7 @@ cigarritaDirective
       var show=element.attr('data-add-hide');
 
       if (!show) {
-        $('<div class="'+classes+' text-center inline-add"><a id="new" data-category="'+scope.block.category+'" href="javascript:;;" class="plus-gray" ><span>+</span><label>Add New</label></a></div>').insertAfter(element);
+        $('<div class="'+classes+' text-center inline-add"><a id="new" data-category="'+scope.block.category+'" href="javascript:;;" class="plus-gray" ><span>+</span><label>Agregar Nuevo</label></a></div>').insertAfter(element);
       }
       
       $compile(element)(scope);
@@ -152,8 +152,8 @@ cigarritaDirective
           }
           var model={
             category:category,
-            header:"[text header]",
-            subheader:"[text subheader]",
+            header:"[Texto Cabecera]",
+            subheader:"[Texto Parrafo]",
             source:source,
             language:beans.readCookie('language.initial')
           }
@@ -191,16 +191,16 @@ cigarritaDirective
         function() {
 
           if (type=='slider') {
-            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='edit details'><i class='fa fa-external-link'></i></span><span class='tooling tooling-top deleting-item' data-tool='Delete item'><i class='fa fa-trash-o'></i></span></div>");
+            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='editar detalles'><i class='fa fa-external-link'></i></span><span class='tooling tooling-top deleting-item' data-tool='Eliminar item'><i class='fa fa-trash-o'></i></span></div>");
           
           }else{
             if (type!="none-editor") {
 
               if (attrs.elementObject=="block") {
-                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'><i class='fa fa-pencil'></i></span></div>");
+                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='editar'><i class='fa fa-pencil'></i></span></div>");
             
               }else{
-                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'><i class='fa fa-pencil'></i></span><span class='tooling tooling-top deleting-item' data-tool='Delete item'><i class='fa fa-trash-o'></i></span></div>");
+                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='editar'><i class='fa fa-pencil'></i></span><span class='tooling tooling-top deleting-item' data-tool='Eliminar item'><i class='fa fa-trash-o'></i></span></div>");
             
               }
             }
@@ -220,7 +220,7 @@ cigarritaDirective
                 // element.find('[element-editable]').attr('contenteditable','true');
                 // element.find('[element-editable]:last-child').focus();
                   
-                element.append("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>");
+                element.append("<div id='inline-saver'><span class='inline-saving'>Guardar</span><span class='inline-closing'>x</span></div>");
                 
                 $compile(document.getElementById('inline-saver'))(scope);
 
@@ -245,7 +245,7 @@ cigarritaDirective
               
               element.find(".deleting-item").on('click',function(event){
 
-                  if (confirm('Are you sure you want to delete this item?')) {
+                  if (confirm('Esta seguro que desea eliminar este item?')) {
                      $rootScope.$broadcast('delete.item',$data_model,element);
                   }else{
                     return false;
@@ -542,10 +542,12 @@ cigarritaDirective
                         xhr.upload.onprogress = function(evt){ 
                           
                           if (imagen.find('#counter_loader').length) {
+                            imagen.find('#counter_loader').empty();
                             imagen.find('#counter_loader').html(evt.loaded/evt.total*100+'%');
                           }else{
                             imagen.append('<span id="counter_loader" style="position: absolute;font-weight: bold;color:#337AB7;top: 67px;right: 106px;font-size: 17px;">'+evt.loaded/evt.total*100+'%</span>');
-                          }                          
+                          }        
+
                           console.log('progress:', evt.loaded/evt.total*100) 
                         } ;
                         // set the onload event handler

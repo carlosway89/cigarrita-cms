@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Category</h1>
+<h1>Crear Categoria</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

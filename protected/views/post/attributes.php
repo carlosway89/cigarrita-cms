@@ -1,12 +1,12 @@
 <div class="row">
-	<label class="active" for="Post_header">External Attributes</label>
+	<label class="active" for="Post_header">Atributos externos</label>
 	<?php foreach ($attr as $key => $value) {
 	?>
 	<div class="col-sm-12 attributes_inputs">
 		<div class="col-sm-2">
 			<br>
 			<a href="javascript:;;" class="btn-link add-new-attr">
-				+add new
+				+Nuevo
 			</a>
 		</div>
 		<div class="col-sm-4">

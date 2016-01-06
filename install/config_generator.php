@@ -8,8 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'CIGARRITA',
-	'language'=>'en',
-	'sourceLanguage'=>'en',
+	'language'=>'es',
+	'sourceLanguage'=>'es',
 	'charset'=>'utf-8',
 	'theme'=>'design',
 

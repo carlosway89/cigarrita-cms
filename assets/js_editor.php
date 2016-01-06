@@ -44,7 +44,9 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/inline_style.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/save.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/fullscreen.min.js"></script>
-
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/language.min.js"></script>
+<!--español plugin version-->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/languages/es.js"></script>
 
 <!--[end]-->
 
@@ -63,6 +65,7 @@
   // angular.module('froala', []).
     $froala.value('froalaConfig', {
           toolbarInline: true,
+          language: 'es',
           charCounterCount: false,
           imageUploadURL: 'api/upload',
           imageUploadParam: 'images',

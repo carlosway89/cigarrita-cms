@@ -194,7 +194,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
                 setTimeout(function(){
                   handle_error_post=handle_error_post+1;
                   if (handle_error_post>3) {
-                    alert('Contection Error!!Reloading!!');
+                    alert('Error de Conección!!');
                     setTimeout(function(){
                       window.top.location.reload();
                     },2000);
@@ -224,7 +224,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
                 setTimeout(function(){
                   handle_error_post=handle_error_post+1;
                   if (handle_error_post>3) {
-                    alert('Contection Error!!Reloading!!');
+                    alert('Error de Conección!!');
                     setTimeout(function(){
                       window.top.location.reload();
                     },2000);
@@ -286,7 +286,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
               setTimeout(function(){
                   handle_error_block=handle_error_block+1;
                   if (handle_error_block>3) {
-                    alert('Contection Error!!Reloading!!');
+                    alert('Error de Conección!!');
                     setTimeout(function(){
                       window.top.location.reload();
                     },2000);
@@ -316,7 +316,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
               setTimeout(function(){
                 handle_error_block=handle_error_block+1;
                 if (handle_error_block>3) {
-                  alert('Contection Error!!Reloading!!');
+                  alert('Error de Conección!!');
                   setTimeout(function(){
                     window.top.location.reload();
                   },2000);

@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>User</h4>
+			<h4>Usuario</h4>
 			<br>
 				
 				<div class="panel panel-default">

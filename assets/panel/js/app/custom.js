@@ -266,7 +266,7 @@ $(function(){
       $('input.counter_char, textarea.counter_char').characterCounter();
 
       $('.delete-link').click(function(event){
-      	if(!confirm('Are you sure you want to delete this item?')) return false;
+      	if(!confirm('Esta seguro que desea eliminar este item?')) return false;
       });
 
     });

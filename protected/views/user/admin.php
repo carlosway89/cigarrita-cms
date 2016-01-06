@@ -2,23 +2,23 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manage Users</h4>
+			<h4>Manejar Usuarios</h4>
 			<br>
 				
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Add User</button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Nuevo Usuario</button>
 						<br><br>
 						<table id="userList" class="hoverable centered">
 							<thead>
 								<tr>
 						            <th data-field="name">Email</th>
-						            <th data-field="flag">User</th>
-						            <th data-field="state">Full Name</th>
-						            <th data-field="state">Type</th>
-						            <th data-field="state">State</th>
-						            <th>Options</th>
+						            <th data-field="flag">Usuario</th>
+						            <th data-field="state">Nombre</th>
+						            <th data-field="state">Tipo</th>
+						            <th data-field="state">Estado</th>
+						            <th>Opciones</th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -40,8 +40,8 @@
 									<td>
 										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           				?>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users/<?=$value->iduser?>" class="text-info"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/user/<?=$value->iduser?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users/<?=$value->iduser?>" class="text-info"><i class="fa fa-pencil "></i> Editar</a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/user/<?=$value->iduser?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
 										<?php }?>
 									</td>
 								</tr>
@@ -59,7 +59,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create New User</h4>
+        <h4 class="modal-title" id="myModalLabel">Crear Nuevo Usuario</h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//user/_form', 

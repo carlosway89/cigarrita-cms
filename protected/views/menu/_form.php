@@ -14,12 +14,12 @@
 		'enableAjaxValidation'=>false,
 	)); ?>
 
-		<p class="note">Fields with <span class="required">*</span> are required.</p>
+		<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
 		<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'name'); ?>
+			<?php echo $form->labelEx($model,'nombre'); ?>
 			<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?>
 			<?php echo $form->error($model,'name'); ?>
 		</div>
@@ -35,10 +35,10 @@
 		
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'type'); ?>
+			<?php echo $form->labelEx($model,'tipo'); ?>
 			<select id="type_page" name="Menu[type]" class="browser-default">
-				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll To</option>
-				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >New Tab</option>
+				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll</option>
+				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >Nuevo Tab</option>
 			</select>
 			<br>
 			<select id="url_page"  class="browser-default">
@@ -49,7 +49,7 @@
 			<?php echo $form->error($model,'type'); ?>
 		</div>
 		<div class="row">
-			<?php echo $form->labelEx($model,'page'); ?>
+			<?php echo $form->labelEx($model,'pagina'); ?>
 			<select id="page_name" name="Menu[page]" class="browser-default">
 			<?php foreach ($page as $val_pag) {
 			 ?>			 
@@ -62,9 +62,9 @@
 		</div>
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'sub_menu_from'); ?>
+			<?php echo $form->labelEx($model,'Sub menu'); ?>
 			<select id="parent_id" name="Menu[parent_id]" class="browser-default">
-				<option value="">None</option>
+				<option value="">Ninguno</option>
 			<?php foreach ($list as $val_list) {
 				if ($val_list->parent_id=="") {
 			 ?>			 
@@ -79,7 +79,7 @@
 		
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'language'); ?>
+			<?php echo $form->labelEx($model,'idioma'); ?>
 			<select name="Menu[language]" class="browser-default">
 			<?php foreach ($language as $key => $value) {
 			?>
@@ -93,14 +93,14 @@
 		
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'source'); ?>
+			<?php echo $form->labelEx($model,'recurso'); ?>
 			<?php echo $form->textField($model,'source',array('rows'=>6, 'cols'=>50)); ?>
 			<?php echo $form->error($model,'source'); ?>
 		</div>
 		<?php }?>
 		<div class="row">
 
-			<?php echo $form->labelEx($model,'state'); ?>
+			<?php echo $form->labelEx($model,'estado'); ?>
 			<div class="switch">
               <label>
                 Off
@@ -113,8 +113,8 @@
 		</div>
 
 		<div class="row buttons">
-			<button class="btn btn-info" type="submit">Save</button>
-			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/links">Back</a>
+			<button class="btn btn-info" type="submit">Guardar</button>
+			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/links">Regresar</a>
 		</div>
 
 	<?php $this->endWidget(); ?>

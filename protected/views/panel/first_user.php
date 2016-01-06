@@ -16,7 +16,7 @@
                     	<div class="col-md-offset-2 col-md-8 panel panel-default">
                     		
                     		<div class="panel-body ">
-                    			<h5 class="text-center">Create your User Name<h5>
+                    			<h5 class="text-center">Crear un usuario<h5>
                                     <br>
                                 <?php echo $this->renderPartial('//user/_form', 
                                     array(

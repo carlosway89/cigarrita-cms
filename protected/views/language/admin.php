@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manage Languages</h4>
+			<h4>Manejar Idiomas</h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -13,10 +13,10 @@
 						<table id="langList" class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="name">Name</th>
-						            <th data-field="flag">Flag</th>
-						            <th data-field="state">State</th>
-						            <th>Options</th>
+						            <th data-field="name">Nombre</th>
+						            <th data-field="flag">Bandera</th>
+						            <th data-field="state">Estado</th>
+						            <th>Opciones</th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -27,8 +27,8 @@
 									<td><i class="flag-icon-<?=$value->flag?> flag-icon"></i></td>
 									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?'Enable':'Disable'?></td>
 									<td>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language/<?=$value->idlanguage?>" class="text-success"><i class="fa fa-pencil "></i> Edit</a>&nbsp;&nbsp;
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/language/<?=$value->idlanguage?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Delete</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language/<?=$value->idlanguage?>" class="text-success"><i class="fa fa-pencil "></i> Editar</a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/language/<?=$value->idlanguage?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
 									</td>
 								</tr>
 								<?php } ?>
@@ -45,7 +45,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create New Language</h4>
+        <h4 class="modal-title" id="myModalLabel">Crear Nuevo Idioma</h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//language/_form', 

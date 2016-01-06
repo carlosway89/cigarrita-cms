@@ -23,19 +23,19 @@
                                 <?php } ?>
 
                                 <div class="input-field col s12">
-                                  <input placeholder="UserName" id="user_name" type="text" name="LoginForm[username]" class="">
-                                  <label for="user_name">UserName</label>
+                                  <input placeholder="Usuario" id="user_name" type="text" name="LoginForm[username]" class="">
+                                  <label for="user_name">Usuario</label>
                                 </div>        
                                 <div class="input-field col s12">
-                                  <input placeholder="UserName" id="password" name="LoginForm[password]" type="password" placeholder="Password" class="">
-                                  <label for="password">Password</label>
+                                  <input placeholder="UserName" id="password" name="LoginForm[password]" type="password" placeholder="Contraseña" class="">
+                                  <label for="password">Contraseña</label>
                                 </div>                		                       		
                         		<br>
                                 <div class="col s12 checkbox">
                                     <input type="checkbox" class="filled-in" id="filled-in-box" name="LoginForm[rememberMe]" />
-                                    <label for="filled-in-box">Remember me 30 days</label>
+                                    <label for="filled-in-box">Recuerdame por 30 dias</label>
                                 </div>
-                        		<button class="btn btn-info btn-md pull-right  red darken-1" type="submit">Login</button>
+                        		<button class="btn btn-info btn-md pull-right  red darken-1" type="submit">Iniciar Sesión</button>
                         		<br><br>
                         	</div>
                         </form>
