@@ -32,7 +32,7 @@ var modal_options=function($scope,$http,$compile,$rootScope){
             category:category,
             header:"[Texto Cabecera]",
             subheader:"[Texto Parrafo]",
-            source:$base_url+"assets/editor/images/default-image.jpg",
+            source:$base_url+"/assets/editor/images/default-image.jpg",
             language:beans.readCookie('language.initial')
           }
     //$scope.editable[0].innerHTML="[Texto Parrafo]";

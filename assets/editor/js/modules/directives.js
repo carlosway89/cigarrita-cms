@@ -152,9 +152,9 @@ cigarritaDirective
           // }
 
           if (category=="slider") {
-            var source=$base_url+"assets/editor/images/default-image.jpg";
+            var source=$base_url+"/assets/editor/images/default-image.jpg";
           }else{
-            var source="<img src='"+$base_url+"assets/editor/images/default-image.jpg' alt='default image' />";
+            var source="<img src='"+$base_url+"/assets/editor/images/default-image.jpg' alt='default image' />";
           }
           var model={
             category:category,

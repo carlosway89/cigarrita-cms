@@ -8,7 +8,7 @@
 					<h1 class="no-margin text-principal" element-editable ng-model="post.header">{{post.header}}</h1>					
 				</div>
 				<div class="col-md-6">
-					<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive" alt="cigarrita-worker">
+					<img ng-src="{{post.source}}" class="img-responsive" alt="cigarrita-worker">
 				</div>
 				
 			</div>
@@ -30,7 +30,7 @@
 			<!-- {{#each this.posts_list}} -->
 			<div element-object="post" class="col-md-3 col-sm-3 bottom-20 text-center" element-post >
 				
-				<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive img-icon">
+				<img ng-src="{{post.source}}" class="img-responsive img-icon">
 			  	<h2 element-contenido class="font-large text-icon no-margin">{{post.header}}</h2>
 				<p element-contenido class="p-text text-ligth ">{{post.subheader}}</p>
 				
@@ -73,7 +73,7 @@
 			    	<div class="">	
 			    		<div class="col-md-12 block"  element-object="post" data-type="slider">
 			    			<div class="col-md-9 ipad-ground">
-			    				<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive" alt="cigarrita-worker">
+			    				<img ng-src="{{post.source}}" class="img-responsive" alt="cigarrita-worker">
 			    			</div>
 			    			<div class="col-md-3">
 			    				<h4 element-editable ng-model="post.header">{{post.header}}</h4>
@@ -105,7 +105,7 @@
 
 				</div>
 				<div class="col-md-8">
-					<img data-id="background" ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{block.source}}" class="img-responsive" alt="subscribe">
+					<img data-id="background" ng-src="{{block.source}}" class="img-responsive" alt="subscribe">
 				</div>				
 			</div>
 
