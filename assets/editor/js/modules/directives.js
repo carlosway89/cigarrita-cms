@@ -130,6 +130,12 @@ cigarritaDirective
 
       var show=element.attr('data-add-hide');
 
+      var type=element.attr('data-type');
+
+      if (type=="slider") {
+        show=true;
+      }
+
       if (!show) {
         $('<div class="'+classes+' text-center inline-add"><a id="new" data-category="'+scope.block.category+'" href="javascript:;;" class="plus-gray" ><span>+</span><label>Agregar Nuevo</label></a></div>').insertAfter(element);
       }
@@ -146,9 +152,9 @@ cigarritaDirective
           // }
 
           if (category=="slider") {
-            var source=$base_url+"/assets/editor/images/default-image.jpg";
+            var source=$base_url+"assets/editor/images/default-image.jpg";
           }else{
-            var source="<img src='"+$base_url+"/assets/editor/images/default-image.jpg' alt='default image' />";
+            var source="<img src='"+$base_url+"assets/editor/images/default-image.jpg' alt='default image' />";
           }
           var model={
             category:category,
@@ -191,7 +197,9 @@ cigarritaDirective
         function() {
 
           if (type=='slider') {
-            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='editar detalles'><i class='fa fa-external-link'></i></span><span class='tooling tooling-top deleting-item' data-tool='Eliminar item'><i class='fa fa-trash-o'></i></span></div>");
+            // console.log(scope, element, attrs);
+            var $data_scope=scope;
+            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='detalles'><i class='fa fa-cogs'></i></span><span class='tooling tooling-top deleting-item' data-tool='Eliminar item'><i class='fa fa-trash-o'></i></span></div>");
           
           }else{
             if (type!="none-editor") {
@@ -256,7 +264,7 @@ cigarritaDirective
 
               element.find(".editing-external").on('click',function(event){
 
-                  $rootScope.$broadcast('show.modal',$data_model);
+                  $rootScope.$broadcast('show.modal',$data_model,$data_scope);
 
               });
 
@@ -304,10 +312,6 @@ cigarritaDirective
         }
       );
 
-      
-
-
-
     }
   };
 })
@@ -316,59 +320,12 @@ cigarritaDirective
     restrict: 'EA',
     require: '^?ngModel',
     link: function(scope, element, attrs, ctrl) {
-      // view -> model
 
-      // if (ctrl) {
-      //   element.bind('blur', function() {
-          
-      //     // console.log(ctrl,element.html());
-
-      //     scope.$apply(function() {
-      //       var value=element.html();
-      //       value=value.replace("<div id='inline-saver'><span class='inline-saving'>Save</span><span class='inline-closing'>x</span></div>", ""); 
-      //       value=value.replace("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='edit inline'>&#9997;</span><span class='tooling tooling-top editing-external' data-tool='edit details'>&#8599;</span></div>","");
-      //       ctrl.$setViewValue(value);
-            
-      //     });
-      //   });
-      // };
-     
-      // element.find('[element-editable]').froalaEditor('edit.off')
       scope.$on('init.editor.inline',function(event,elem){
 
 
-      //   elem.find('[element-editable]').froalaEditor({
-      //     toolbarInline: true,
-      //     charCounterCount: false,
-      //   });
-
         elem.find('[element-editable]').froalaEditor('edit.on');
         elem.find('[element-editable]').froalaEditor('events.focus');
-      //   element.on('froalaEditor.blur', function (e, editor) {
-          
-      //     var value=editor.$el[0].innerHTML;
-      //     //element.froalaEditor('html.get');
-      //     // editor.$el[0].innerHTML;
-          
-      //     scope.$apply(function() {
-      //         // ctrl.$modelValue=value;
-      //         ctrl.$setViewValue(value); 
-      //     }); 
-
-      //     element.froalaEditor('destroy');
-      //     setTimeout(function(){
-      //       element.froalaEditor({
-      //         toolbarInline: true,
-      //         charCounterCount: false,
-      //       });
-      //       element.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
-      //     },300);
-          
-
-      //   });
-
-        
-      //   elem.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
 
       });
      
@@ -378,27 +335,6 @@ cigarritaDirective
         element.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
       });
       
-
-      // scope.$watch(attrs.ngModel, function(newValue) {
-
-      //     // necessary to prevent thrashing
-      //     console.log(newValue);
-
-      //     if (newValue && (newValue !== element.html()) ) {
-
-      //       console.log(newValue);
-
-      //     }
-
-      // });
-
-      // model -> view
-      // ctrl.$render = function() {
-      //   element.html(ctrl.$viewValue);
-      // };
-
-      // load init value from DOM
-      // ctrl.$render();
     }
   };
 })

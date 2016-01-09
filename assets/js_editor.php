@@ -52,6 +52,7 @@
 
 <script type="text/javascript">
 	var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
+  var $is_master="<?php echo Yii::app()->user->checkAccess('webmaster')?Yii::app()->user->checkAccess('webmaster'):0;?>";
 </script>
 
 

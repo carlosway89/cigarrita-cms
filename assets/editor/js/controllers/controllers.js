@@ -14,11 +14,31 @@ var modal_options=function($scope,$http,$compile,$rootScope){
       var type="post"; 
     }
 
-      // model.subheader=$scope.editable[0].innerHTML;
+    model.subheader=$scope.editable[0].innerHTML;
 
     $rootScope.$broadcast('inline.saving.'+type,model); 
   }
 
+  $scope.set_external_model=function(model){
+    // $event.stopImmediatePropagation();
+    $scope.editable[0].innerHTML=model.subheader;
+    $scope.posting=model;
+
+  }
+
+  $scope.new_external=function(category){
+    var model={
+            notclose:true,
+            category:category,
+            header:"[Texto Cabecera]",
+            subheader:"[Texto Parrafo]",
+            source:$base_url+"assets/editor/images/default-image.jpg",
+            language:beans.readCookie('language.initial')
+          }
+    //$scope.editable[0].innerHTML="[Texto Parrafo]";
+    $rootScope.$broadcast('inline.saving.post',model);
+    $scope.set_external_model(model);
+  }
 
     $http.get($base_url+'/api/template/modal/cms').then(function(response) {
           var elemento=$('[ng-view]');
@@ -27,26 +47,43 @@ var modal_options=function($scope,$http,$compile,$rootScope){
     });
   
 
-  $scope.options = {
+  if ($is_master=="1") {
+    $scope.options = {
+        height: 200,
+        toolbar: [
+          //[groupname, [button list]]
+          ['color', ['color']], 
+          ['style', ['style']],
+          ['insert',['link','picture']],
+          ['table', ['table']],
+          ['font', ['bold', 'italic', 'underline', 'clear']],
+          // ['font', ['strikethrough', 'superscript', 'subscript']],
+          ['fontsize', ['fontsize']],  
+          ['height', ['height']],     
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['misc',['codeview']]          
+        ]
+    };
+  }else{
+    $scope.options = {
       height: 200,
       toolbar: [
-        //[groupname, [button list]]
         ['color', ['color']], 
-        // ['style', ['style']],
+        ['style', ['style']],
         ['insert',['link','picture']],
         ['table', ['table']],
         ['font', ['bold', 'italic', 'underline', 'clear']],
-        // ['font', ['strikethrough', 'superscript', 'subscript']],
         ['fontsize', ['fontsize']],  
         ['height', ['height']],     
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['misc',['codeview']]          
+        ['para', ['ul', 'ol', 'paragraph']]         
       ]
   };
+  }
+  
 
-  $scope.$on('show.modal', function(event,data) {
+  $scope.$on('show.modal', function(event,data,data_scope) {
 
-      // console.log(data);
+      
       $scope.posting={
         state:1,
         source:''
@@ -57,7 +94,11 @@ var modal_options=function($scope,$http,$compile,$rootScope){
       imagen.find('#alert_error_upload').remove();
       imagen.removeClass('ui btn loading');
 
+      $(".selector-list-images").empty();
+      $(".selector-list-images").html('<li ng-repeat="list_post in block_posts.posts"><a ng-click="set_external_model(list_post,$event)" ng-class="list_post.idpost==posting.idpost?\'active\':\'\'"><img ng-src="{{list_post.source}}" /></a></li><li class="new-external-modal"><a ng-click="new_external(posting.category)"><i class="fa fa-plus"></i></a></li>');
+  
       setTimeout(function(){
+        $scope.block_posts=data_scope.block;        
         $scope.posting=data;
         $('#modal_post').find('img').attr('src',data.source);
         $scope.text_subheader=data.subheader;
@@ -138,9 +179,20 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
               btn.removeAttr('disabled').removeClass('ui success');
           },1000);          
         }else{
-          $rootScope.$broadcast('close.modal'); 
-          btn_close.removeAttr('disabled').show();
-          btn.removeAttr('disabled').removeClass('ui loading');
+          if (action=="new") {
+            var text=btn.html();
+            btn.removeClass('ui loading').addClass('ui success').html('&#x2713;');
+            setTimeout(function(){
+                btn.html(text);
+                btn_close.removeAttr('disabled').show();
+                btn.removeAttr('disabled').removeClass('ui success');
+            },1000); 
+          }else{
+            $rootScope.$broadcast('close.modal'); 
+            btn_close.removeAttr('disabled').show();
+            btn.removeAttr('disabled').removeClass('ui loading');
+          }
+          
         }
       }
 
@@ -187,7 +239,12 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
                     $scope.$$childTail.page[i].posts.push(record);
                   };                
                 };
-                $scope.handle_saving('saved');
+                if (post.notclose) {
+                  $scope.handle_saving('new');
+                }else{
+                  $scope.handle_saving('saved');
+                }
+                
                 handle_error_post=0;
               },
               function(err){

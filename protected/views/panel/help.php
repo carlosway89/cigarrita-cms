@@ -151,6 +151,36 @@ element-block='category-name'
 	                      <div class="panel panel-default">
 	                        <div class="panel-heading">
 	                          <h4 class="panel-title">
+	                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseConfig">
+	                              Variables and Configurations
+	                            </a>
+	                          </h4>
+	                        </div>
+	                        <div style="height: 0px;" id="collapseConfig" class="panel-collapse collapse">
+	                          <div class="panel-body">
+	                          	<blockquote>
+	                          		<h6>element-object:</h6>
+	                          		<ul>
+	                          			<li>- data-type: ( slider, none-editor)
+	                          			</li>
+	                          		</ul>
+	                          	</blockquote>  
+	                          	<blockquote>
+	                          		<h6>element-post:</h6>
+	                          		<ul>
+	                          			<li>- data-type: ( slider, none-editor)</li>
+                      					<li>- data-add-hide: (true, false or not added)</li>
+                      					<li>- data-limit: number and limit of items </li>
+                      					<li>- data-order: ASC(-idpost) or DESC(idpost) </li>
+                      					<li>- ng-class: "{active : $first}" set a active Class to the first Item</li>
+	                          		</ul>
+	                          	</blockquote>
+	                          </div>
+	                        </div>
+	                      </div>
+	                      <div class="panel panel-default">
+	                        <div class="panel-heading">
+	                          <h4 class="panel-title">
 	                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
 	                              Facebook Sync and Insert New Attributes to each Post
 	                            </a>

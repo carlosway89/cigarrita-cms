@@ -159,7 +159,38 @@
 	background-color: #479459 !important;
 }
 
-
+.selector-list-images{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	margin-bottom: 25px;
+}
+.selector-list-images a{
+	display: block;
+	cursor: pointer;
+}
+.selector-list-images a.active img{
+	border: 2px solid rgba(0, 0, 0, 0.6);
+}
+.selector-list-images a img{
+	margin: 5px;
+	border-radius: 5px;
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	width:60px;
+	height:60px;
+}
+.new-external-modal a{
+	width: 60px;
+	color: rgb(194, 194, 194);
+	font-size: 40px;
+	height: 60px;
+}
+.new-external-modal a i{
+	position: absolute;
+	display: block;
+	padding: 8px 12px;
+	border: 1px solid;
+	border-radius: 10%;
+	top: 8%;
+}
 /* Some basic styling to notify users
    about the tooltips*/
 .tooling {

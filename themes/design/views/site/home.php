@@ -55,7 +55,7 @@
 			  <div class="col-md-12 ">
 			  	<div class="row carousel-indicators" role="tablist">
 			  		<!-- {{#each this.posts_list}} -->
-			  		<div class="col-xs-3 pointer " ng-class="{active : $first}" data-target="#carousel-slider" data-slide-to="{{$index}}" element-post>
+			  		<div class="col-xs-3 pointer " ng-class="{active : $first}" data-target="#carousel-slider" data-slide-to="{{$index}}" element-post data-add-hide="true" data-limit="4" data-order="-idpost">
 			  			<i class="{{post.class}} huge icon no-margin"></i>
 			  		</div>
 			  		<!-- {{/each}} -->
@@ -69,9 +69,9 @@
 			  <div class="carousel-inner ui page grid margin-top" role="listbox"  >
 
 			  	<!-- {{#each this.posts_list}} -->
-			    <div class="item " element-post ng-class="{active : $first}">
+			    <div class="item " element-post data-limit="4" data-order="idpost" ng-class="{active : $first}" >
 			    	<div class="">	
-			    		<div class="col-md-12 block"  element-object="post">
+			    		<div class="col-md-12 block"  element-object="post" data-type="slider">
 			    			<div class="col-md-9 ipad-ground">
 			    				<img ng-src="<?php echo Yii::app()->request->baseUrl;?>/{{post.source}}" class="img-responsive" alt="cigarrita-worker">
 			    			</div>
