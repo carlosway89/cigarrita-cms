@@ -59,8 +59,9 @@
            <!--             
             <span data-wysiwyg='posting.subheader' data-wysiwyg-toolbar='toolbar' data-ng-model='posting.subheader'></span>
            -->
-           <summernote ng-model="text_subheader" config="options" editable="editable" editor="editor"></summernote>
-            <!-- <textarea bootstrap-summer class='form-control form-values post' id='subheader' placeholder='Enter Sub Header' ng-model="posting.subheader" ></textarea> -->
+            <textarea class='fr-view' froalamodal ng-model="posting.subheader"></textarea>
+           <!--<summernote ng-model="text_subheader" config="options" editable="editable" editor="editor"></summernote>
+             <textarea bootstrap-summer class='form-control form-values post' id='subheader' placeholder='Enter Sub Header' ng-model="posting.subheader" ></textarea> -->
           </div>
         </div>
         <!-- <div class="form-group">

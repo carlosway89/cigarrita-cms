@@ -105,7 +105,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
       
     ?>
       
-      when('/post/:id/:name', {
+      when('/<?=$pag_val->name?>/:id/:name', {
         templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
         controller: 'singleCtrl'
       }).

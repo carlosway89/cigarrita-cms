@@ -17,7 +17,7 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{	
-		$usuario = User::model()->findByAttributes(array('username' => $this->username));		
+		$usuario = User::model()->findByAttributes(array('username' => $this->username,"is_deleted"=>0,"estado"=>1));		
 		if(!isset($usuario))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif($usuario->password !== $this->password)

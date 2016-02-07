@@ -108,6 +108,7 @@
   background: #ffffff;
   overflow-y: scroll;
   height: 450px;
+  overflow-x: hidden;
 }
 .ui.modal_cw > .image.content {
   display: -webkit-box;
@@ -349,6 +350,7 @@
 .ui.active.modal_cw {
   display: block;
   z-index: 100000 !important;
+  height: initial !important;
 }
 .ui.in.modal_cw {
   display: block;

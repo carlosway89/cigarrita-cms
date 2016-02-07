@@ -24,18 +24,18 @@
 
                                 <div class="input-field col s12">
                                   <input placeholder="Usuario" id="user_name" type="text" name="LoginForm[username]" class="">
-                                  <label for="user_name">Usuario</label>
+                                  <label for="user_name"><?=Yii::t('app','login.user')?></label>
                                 </div>        
                                 <div class="input-field col s12">
                                   <input placeholder="UserName" id="password" name="LoginForm[password]" type="password" placeholder="Contraseña" class="">
-                                  <label for="password">Contraseña</label>
+                                  <label for="password"><?=Yii::t('app','login.password')?></label>
                                 </div>                		                       		
                         		<br>
                                 <div class="col s12 checkbox">
                                     <input type="checkbox" class="filled-in" id="filled-in-box" name="LoginForm[rememberMe]" />
-                                    <label for="filled-in-box">Recuerdame por 30 dias</label>
+                                    <label for="filled-in-box"><?=Yii::t('app','login.remember')?></label>
                                 </div>
-                        		<button class="btn btn-info btn-md pull-right  red darken-1" type="submit">Iniciar Sesión</button>
+                        		<button class="btn btn-info btn-md pull-right  red darken-1" type="submit"><?=Yii::t('app','login.button')?></button>
                         		<br><br>
                         	</div>
                         </form>

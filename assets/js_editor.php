@@ -8,6 +8,8 @@
      document.getElementsByTagName('head')[0].appendChild(script);
   }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/inline-tools.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/jasny-bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/jquery-beat.min.js"></script>
@@ -44,7 +46,6 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/inline_style.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/save.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/fullscreen.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/language.min.js"></script>
 <!--español plugin version-->
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/languages/es.js"></script>
 
@@ -72,11 +73,23 @@
           imageUploadParam: 'images',
           imageManagerLoadURL:'api/images',
           imageManagerDeleteURL:'api/deleteImage/files',
+          fileUploadURL: 'api/upload',
+          fileUploadParam: 'images',
+          linkAttributes: {
+            'title':'Titulo'
+          },
+          linkStyles: {
+            "btn btn-default btn-select":"boton gris",
+            "pull-right":"boton a la derecha"
+          },
+          imageStyles: {
+            "lightboxImage": 'lightboxImage',
+          },
           <?php
           if (!Yii::app()->user->checkAccess("webmaster")){
           ?>
-          imageEditButtons: ['imageReplace', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
-          toolbarButtons:['bold', 'italic', 'underline', 'strikeThrough','fontFamily', 'fontSize', '|', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'undo', 'redo', 'clearFormatting', 'selectAll'],
+          imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+          toolbarButtons:['bold', 'italic', 'underline', 'strikeThrough','fontFamily', 'fontSize', '|', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', 'undo', 'redo', 'clearFormatting', 'selectAll'],
           <?php } ?>
           linkList: [
             {
@@ -91,6 +104,48 @@
             }
           ],
     });
+    
+    $froala.value('froalaConfigModal', {
+          toolbarInline: false,
+          language: 'es',
+          charCounterCount: false,
+          imageUploadURL: 'api/upload',
+          imageUploadParam: 'images',
+          imageManagerLoadURL:'api/images',
+          imageManagerDeleteURL:'api/deleteImage/files',
+          fileUploadURL: 'api/upload',
+          fileUploadParam: 'images',
+          linkAttributes: {
+            'title':'Titulo'
+          },
+          linkStyles: {
+            "btn btn-default btn-select":"boton gris",
+            "pull-right":"boton a la derecha"
+          },
+          imageStyles: {
+            "lightboxImage": 'lightboxImage',
+          },
+          <?php
+          if (!Yii::app()->user->checkAccess("webmaster")){
+          ?>
+          imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+          toolbarButtons:['bold', 'italic', 'underline', 'strikeThrough','fontFamily', 'fontSize', '|', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', 'undo', 'redo', 'clearFormatting', 'selectAll'],
+          <?php } ?>
+          linkList: [
+            {
+              text: 'Cigarrita',
+              href: 'http://cigarrita-worker.com',
+              target: '_blank'
+            },
+            {
+              displayText: 'my Web',
+              href: 'http://'+$base_url,
+              target: '_blank'
+            }
+          ],
+    });
+
+  
 </script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/angular-froala.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/froala-sanitize.js"></script>
@@ -136,7 +191,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
       
     ?>
       
-      when('/post/:id/:name', {
+      when('/<?=$pag_val->name?>/:id/:name', {
         templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
         controller: 'singleCtrl'
       }).

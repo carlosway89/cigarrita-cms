@@ -29,7 +29,52 @@
   
   <!-- Fonts  -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
-    
+  <!--[inline-editor] -->
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/froala_editor.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/froala_style.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/code_view.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/colors.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/emoticons.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/image_manager.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/image.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/line_breaker.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/table.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/file.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/char_counter.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/video.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/emoticons.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/fullscreen.css">
+  <style type="text/css">
+    .modal-backdrop {
+        z-index: 99;
+    }
+    .tt-dropdown-menu {
+        background-color: #FFF;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        margin-top: -12px;
+        padding: 8px 10px;
+        /*width: 100%;*/
+        width: -moz-max-content;
+    }
+    .tt-suggestion{
+      padding: 5px;
+    }
+    .tt-suggestion.tt-is-under-cursor{
+      padding: 5px;
+      background-color: rgba(0,0,0,0.1);
+      border-radius: 5px;
+      color: #222;
+    }
+    .twitter-typeahead{
+      width:100%;
+    }
+  </style>
+  <!-- [end] -->
+   <!-- Chosen Select  -->
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/plugins/bootstrap-chosen/chosen.css" />
+
   <!-- Base Styling  -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/app/app.v1.css" />
     
@@ -346,10 +391,125 @@
   <script type="text/javascript">
      var $baseURL="<?=Yii::app()->getBaseUrl(true)?>/panel";
   </script>
-    <!-- Custom JQuery -->
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/app/custom.js" type="text/javascript"></script>
-    
+  <!--[inline editor]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/froala_editor.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/align.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/code_beautifier.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/code_view.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/colors.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/emoticons.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/font_size.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/font_family.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/image.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/image_manager.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/line_breaker.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/link.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/lists.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/paragraph_format.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/paragraph_style.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/video.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/table.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/url.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/emoticons.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/file.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/entities.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/char_counter.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/inline_style.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/save.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/fullscreen.min.js"></script>
+<!--language plugin version-->
 
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/languages/<?=Yii::app()->language?>.js"></script>
+  <!-- 
+  To get current language: 
+  $lang = Yii::app()->language; 
+
+  To set current language:
+  Yii::app()->language = ‘en'; 
+  -->
+<!-- Typeahead Bootstrap -->
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/typehead/typeahead.js" type="text/javascript"></script>
+
+<!-- chosen Bootstrap -->
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/bootstrap-chosen/chosen.jquery.js" type="text/javascript"></script>
+
+<!-- Custom JQuery -->
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/app/custom.js" type="text/javascript"></script>
+    
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.delete-link').click(function(event){
+        if(!confirm('Esta seguro que desea eliminar este item?')) return false;
+      });
+
+    });
+    $(function() {
+      $('.froala-editor').froalaEditor({
+              toolbarInline: false,
+              height: 250,
+              language: 'es',
+              charCounterCount: false,
+              imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
+              imageUploadParam: 'images',
+              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+              linkAttributes: {
+                'title':'Titulo'
+              },
+              imageStyles: {
+                "lightboxImage": 'lightboxImage',
+              },
+              <?php
+              if (!Yii::app()->user->checkAccess("webmaster")){
+              ?>
+              imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+              toolbarButtons:['bold', 'italic', 'underline', 'strikeThrough','fontFamily', 'fontSize', '|', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertTable','-', 'undo', 'redo', 'clearFormatting', 'selectAll'],
+              <?php } ?>
+              linkList: [
+                {
+                  text: 'Cigarrita',
+                  href: 'http://cigarrita-worker.com',
+                  target: '_blank'
+                }
+              ],
+      })
+      $('.froala-editor-inline').froalaEditor({
+              toolbarInline: true,
+              language: 'es',
+              charCounterCount: false,
+              imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
+              imageUploadParam: 'images',
+              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+              linkAttributes: {
+                'title':'Titulo'
+              },
+              imageStyles: {
+                "lightboxImage": 'lightboxImage',
+              },
+              <?php
+              if (!Yii::app()->user->checkAccess("webmaster")){
+              ?>
+              imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+              toolbarButtons:['insertImage'],
+              <?php } ?>
+              linkList: [
+                {
+                  text: 'Cigarrita',
+                  href: 'http://cigarrita-worker.com',
+                  target: '_blank'
+                }
+              ],
+      })
+      
+
+      setTimeout(function(){
+        $("body").find('a[href="https://froala.com/wysiwyg-editor"]').remove();
+      },100)
+    });
+  </script>
 </body>
 
 </html>

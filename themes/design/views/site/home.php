@@ -1,4 +1,3 @@
-
 <div id="home" element-block="slider">
 	<div class="page-gray" style="">
 		<div id="principal_background" style="padding-top:200px;{{block.source}}">
@@ -26,9 +25,9 @@
 			<h2 data-id="subheader" class="font-huge text-center no-margin" element-object="block" ><small element-contenido>{{block.subheader}}</small></h2>
 		</div>
 		<br>
-		<div class="row" data-id="posts">
+		<div class="row element-sortable" data-id="posts">
 			<!-- {{#each this.posts_list}} -->
-			<div element-object="post" class="col-md-3 col-sm-3 bottom-20 text-center" element-post >
+			<div element-object="post" class="col-md-3 col-sm-3 bottom-20 text-center item-sortable" element-post >
 				
 				<img ng-src="{{post.source}}" class="img-responsive img-icon">
 			  	<h2 element-contenido class="font-large text-icon no-margin">{{post.header}}</h2>
@@ -53,7 +52,7 @@
 			  <!-- Indicators -->
 			  
 			  <div class="col-md-12 ">
-			  	<div class="row carousel-indicators" role="tablist">
+			  	<div class="row carousel-indicators element-sortable" role="tablist">
 			  		<!-- {{#each this.posts_list}} -->
 			  		<div class="col-xs-3 pointer " ng-class="{active : $first}" data-target="#carousel-slider" data-slide-to="{{$index}}" element-post data-add-hide="true" data-limit="4" data-order="-idpost">
 			  			<i class="{{post.class}} huge icon no-margin"></i>

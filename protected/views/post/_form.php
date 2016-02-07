@@ -19,7 +19,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
+	<p class="note"><?=Yii::t('app','panel.required')?></p>
 	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 	<div class="row">
@@ -42,14 +42,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Parrafo'); ?>
-		<textarea  class="wysihtml materialize-textarea" name="Post[subheader]"><?=$model->subheader?></textarea>
+		<textarea  class="froala-editor" name="Post[subheader]"><?=$model->subheader?></textarea>
 		<?php //echo $form->textField($model,'subheader',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'subheader'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Recurso'); ?>
-		<?php echo $form->textField($model,'source',array('rows'=>6, 'cols'=>50)); ?>
+		<textarea  class="froala-editor-inline" name="Post[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
 		<?php echo $form->error($model,'source'); ?>
 	</div>
 

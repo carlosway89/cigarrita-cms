@@ -265,10 +265,6 @@ $(function(){
 	$(document).ready(function() {
       $('input.counter_char, textarea.counter_char').characterCounter();
 
-      $('.delete-link').click(function(event){
-      	if(!confirm('Esta seguro que desea eliminar este item?')) return false;
-      });
-
     });
 	
 	

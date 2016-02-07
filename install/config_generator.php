@@ -9,7 +9,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'CIGARRITA',
 	'language'=>'es',
-	'sourceLanguage'=>'es',
+	'sourceLanguage'=>'00',
 	'charset'=>'utf-8',
 	'theme'=>'design',
 

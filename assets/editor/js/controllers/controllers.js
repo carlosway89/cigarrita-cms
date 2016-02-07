@@ -14,14 +14,14 @@ var modal_options=function($scope,$http,$compile,$rootScope){
       var type="post"; 
     }
 
-    model.subheader=$scope.editable[0].innerHTML;
+    // model.subheader=$scope.editable[0].innerHTML;
 
     $rootScope.$broadcast('inline.saving.'+type,model); 
   }
 
   $scope.set_external_model=function(model){
     // $event.stopImmediatePropagation();
-    $scope.editable[0].innerHTML=model.subheader;
+    //$scope.editable[0].innerHTML=model.subheader;
     $scope.posting=model;
 
   }
@@ -47,39 +47,7 @@ var modal_options=function($scope,$http,$compile,$rootScope){
     });
   
 
-  if ($is_master=="1") {
-    $scope.options = {
-        height: 200,
-        toolbar: [
-          //[groupname, [button list]]
-          ['color', ['color']], 
-          ['style', ['style']],
-          ['insert',['link','picture']],
-          ['table', ['table']],
-          ['font', ['bold', 'italic', 'underline', 'clear']],
-          // ['font', ['strikethrough', 'superscript', 'subscript']],
-          ['fontsize', ['fontsize']],  
-          ['height', ['height']],     
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['misc',['codeview']]          
-        ]
-    };
-  }else{
-    $scope.options = {
-      height: 200,
-      toolbar: [
-        ['color', ['color']], 
-        ['style', ['style']],
-        ['insert',['link','picture']],
-        ['table', ['table']],
-        ['font', ['bold', 'italic', 'underline', 'clear']],
-        ['fontsize', ['fontsize']],  
-        ['height', ['height']],     
-        ['para', ['ul', 'ol', 'paragraph']]         
-      ]
-  };
-  }
-  
+ 
 
   $scope.$on('show.modal', function(event,data,data_scope) {
 
@@ -107,7 +75,9 @@ var modal_options=function($scope,$http,$compile,$rootScope){
         
 
         $('#modal_post')
-        .modal_cw('show');           
+        .modal_cw('show');  
+
+        $('#modal_post').find('a[href="https://froala.com/wysiwyg-editor"]').remove();         
 
       },100);
 
@@ -443,6 +413,42 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
         $('.loading-container').hide();
         $('.preloader').hide();
+
+        // $(".element-sortable").sortable({
+        //   items: "div:not(.inline-add)",
+        //   cursor: "move",
+        //   //handle:".item-sortable",
+        //   start:function(event, ui){
+        //         startPosition = ui.item.prevAll().length;
+        //   },
+        //   update: function(event, ui) {
+        //           endPosition = ui.item.prevAll().length;
+        //           var json={};
+
+        //           console.log(event,ui,this);
+
+        //           $(event.target).find("li").each(function(index){
+        //             json[index+1]=$(this).attr('data-position');        
+        //           });
+
+        //           var serverUrl=$base_url+"/api/postSort";
+
+        //           json=JSON.stringify(json);
+
+        //           $.ajax({
+        //               type: "POST",
+        //               url: serverUrl,
+        //               data: json,
+        //               contentType: 'application/json; charset=utf-8',  
+        //               dataType: "json",              
+        //               success: function(data) {
+
+        //               }
+        //           });
+                
+        //     }
+        //   });
+
       },1000);
 
     });
