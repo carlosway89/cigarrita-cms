@@ -414,40 +414,41 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
         $('.loading-container').hide();
         $('.preloader').hide();
 
-        // $(".element-sortable").sortable({
-        //   items: "div:not(.inline-add)",
-        //   cursor: "move",
-        //   //handle:".item-sortable",
-        //   start:function(event, ui){
-        //         startPosition = ui.item.prevAll().length;
-        //   },
-        //   update: function(event, ui) {
-        //           endPosition = ui.item.prevAll().length;
-        //           var json={};
+        $(".element-sortable").sortable({
+          //containment: "parent",
+          //items: ">div:not(.inline-add)",
+          cursor: "move",
+          handle:".sort-item",
+          start:function(event, ui){
+                startPosition = ui.item.prevAll().length;
+          },
+          update: function(event, ui) {
+                  endPosition = ui.item.prevAll().length;
+                  var json={};
 
-        //           console.log(event,ui,this);
+                  console.log(event,ui,this);
 
-        //           $(event.target).find("li").each(function(index){
-        //             json[index+1]=$(this).attr('data-position');        
-        //           });
+                  $(event.target).find("[data-item-sortable]").each(function(index){
+                    json[index+1]=$(this).attr('data-item-sortable');        
+                  });
 
-        //           var serverUrl=$base_url+"/api/postSort";
+                  var serverUrl=$base_url+"/api/postSort";
 
-        //           json=JSON.stringify(json);
+                  json=JSON.stringify(json);
 
-        //           $.ajax({
-        //               type: "POST",
-        //               url: serverUrl,
-        //               data: json,
-        //               contentType: 'application/json; charset=utf-8',  
-        //               dataType: "json",              
-        //               success: function(data) {
+                  $.ajax({
+                      type: "POST",
+                      url: serverUrl,
+                      data: json,
+                      contentType: 'application/json; charset=utf-8',  
+                      dataType: "json",              
+                      success: function(data) {
 
-        //               }
-        //           });
+                      }
+                  });
                 
-        //     }
-        //   });
+            }
+          });
 
       },1000);
 

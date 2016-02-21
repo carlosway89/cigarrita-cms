@@ -107,6 +107,7 @@
     
     $froala.value('froalaConfigModal', {
           toolbarInline: false,
+          height: '270',
           language: 'es',
           charCounterCount: false,
           imageUploadURL: 'api/upload',

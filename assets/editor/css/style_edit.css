@@ -108,6 +108,21 @@
 #inline-editors span:only-child {
     border-radius: 5px 5px 5px 5px;
 }
+.sort-item{
+	position:absolute;
+	z-index: 1000;
+	left:0;
+	margin-left: 5px;
+	top:0;
+	margin-top: 5px;
+	background-color: #cccccc;
+	border-radius: 5px 0px;
+	font-size: 20px;	
+	width:30px;
+	text-align: center;
+	color:rgba(255,255,255,0.9) !important;
+	cursor: move;
+}
 /*#inline-editors span:last-child{
 	display:inline-block;
 	padding:5px;

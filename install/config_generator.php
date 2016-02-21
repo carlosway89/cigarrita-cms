@@ -49,6 +49,7 @@ return array(
 		        array('api/formContact', 'pattern'=>'api/formContact', 'verb'=>'POST'),
 		        array('api/upload', 'pattern'=>'api/upload', 'verb'=>'POST'),
 		        array('api/menuSort', 'pattern'=>'api/menuSort', 'verb'=>'POST'),
+		        array('api/postSort', 'pattern'=>'api/postSort', 'verb'=>'POST'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),		        
 		        // Other controllers
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

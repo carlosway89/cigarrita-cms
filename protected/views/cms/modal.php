@@ -1,4 +1,4 @@
-<div id="modal_post" class="ui small modal_cw">
+<div id="modal_post" class="ui small modal_cw" style="width: 900px;margin-left: -450px;">
   <i class="close icon closing">&#x2716;</i>
   <div class="header">
     Detalles
@@ -10,8 +10,8 @@
 		</div> 
       <div class="container">
         <div class="col-xs-12">
-          <ul style="" class="list-inline selector-list-images">
-            <li ng-repeat="list_post in block_posts.posts">
+          <ul style="" class="list-inline selector-list-images element-sortable">
+            <li class="sort-item" data-item-sortable="list_post.idpost" ng-repeat="list_post in block_posts.posts">
               <a ng-click="set_external_model(list_post)" ng-class="list_post.idpost==posting.idpost?'active':''">
                 <img ng-src="{{list_post.source}}" />
               </a>

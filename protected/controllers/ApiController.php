@@ -32,7 +32,7 @@ class ApiController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','admin','create','view','update','safeDelete','list','upload','runFile','menuSort','multiLanguage','myuser','dataFacebookSync','deleteImage'),
+                'actions'=>array('index','admin','create','view','update','safeDelete','list','upload','runFile','menuSort','postSort','multiLanguage','myuser','dataFacebookSync','deleteImage'),
                 // 'expression'=>'Yii::app()->user->checkAccess("administrador")',
                 'users'=>array('@'),
                 ),
@@ -381,6 +381,42 @@ class ApiController extends Controller
         $this->_sendResponse(200, CJSON::encode($rows));
 
     }
+    public function actionPostSort(){
+
+        header('Content-Type: application/json');
+
+        $requestBody = Yii::app()->request->getRawBody();
+
+        $parsedRequest = CJSON::decode($requestBody);
+
+        $done=1;
+
+        foreach ($parsedRequest as $key => $value) {
+            $post=Post::model()->findByPk($value);  
+            $post->position=$key;
+            if($post->save()) {
+                $done=$done*1;           
+            } else {
+                $done=$done*0;
+                $msg = "<h1>Error</h1>";
+                $msg .= sprintf("Couldn't update model <b>%s</b>", $_GET['model']);
+                $msg .= "<ul>";
+                foreach($model->errors as $attribute=>$attr_errors) {
+                    $msg .= "<li>Attribute: $attribute</li>";
+                    $msg .= "<ul>";
+                    foreach($attr_errors as $attr_error) {
+                        $msg .= "<li>$attr_error</li>";
+                    }        
+                    $msg .= "</ul>";
+                }
+                $msg .= "</ul>";
+                $this->_sendResponse(500, $msg );
+            }
+        }
+        $rows=array("success"=>$done);
+        $this->_sendResponse(200, CJSON::encode($rows));
+
+    }
 
     public function actionContent(){
 
@@ -452,7 +488,7 @@ class ApiController extends Controller
 
         // $criteria->with=array('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost');
         $criteria->with=array('pageHasBlocks.blockIdblock.category0.posts');
-        
+        $criteria->order = 'posts.position ASC';
 
         $criteria->together = true; 
 

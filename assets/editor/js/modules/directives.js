@@ -125,6 +125,9 @@ cigarritaDirective
       
       attrs.$set('ngRepeat', repeat);
       attrs.$set('elementPost', null);
+      if (element.parent(".element-sortable").length) {
+        attrs.$set('data-item-sortable', "{{post.idpost}}");
+      }
       
       var classes=$(element).attr('class');
 
@@ -193,6 +196,7 @@ cigarritaDirective
         
       element.find('a[href="https://froala.com/wysiwyg-editor"]').remove();
 
+
       element.hover(
         function() {
 
@@ -209,10 +213,14 @@ cigarritaDirective
             
               }else{
                 element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='editar'><i class='fa fa-pencil'></i></span><span class='tooling tooling-top deleting-item' data-tool='Eliminar item'><i class='fa fa-trash-o'></i></span></div>");
-            
+                
               }
             }
             
+          }
+
+          if (element.parent(".element-sortable").length) {
+            element.append("<span class='tooling tooling-top sort-item' data-tool='Ordenar item'><i class='fa fa-arrows-alt'></i></span>");
           }
           
           // $compile(document.getElementById('inline-editors'))(scope);
@@ -309,6 +317,7 @@ cigarritaDirective
 
       }, function() {
           element.find( "div#inline-editors" ).remove();
+          element.find( ".sort-item" ).remove();
         }
       );
 
