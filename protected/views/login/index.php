@@ -23,11 +23,11 @@
                                 <?php } ?>
 
                                 <div class="input-field col s12">
-                                  <input placeholder="Usuario" id="user_name" type="text" name="LoginForm[username]" class="">
+                                  <input placeholder="<?=Yii::t('app','login.user')?>" id="user_name" type="text" name="LoginForm[username]" class="">
                                   <label for="user_name"><?=Yii::t('app','login.user')?></label>
                                 </div>        
                                 <div class="input-field col s12">
-                                  <input placeholder="UserName" id="password" name="LoginForm[password]" type="password" placeholder="Contraseña" class="">
+                                  <input placeholder="<?=Yii::t('app','login.password')?>" id="password" name="LoginForm[password]" type="password" placeholder="Contraseña" class="">
                                   <label for="password"><?=Yii::t('app','login.password')?></label>
                                 </div>                		                       		
                         		<br>

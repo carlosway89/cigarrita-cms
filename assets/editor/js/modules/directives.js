@@ -140,7 +140,7 @@ cigarritaDirective
       }
 
       if (!show) {
-        $('<div class="'+classes+' text-center inline-add"><a id="new" data-category="'+scope.block.category+'" href="javascript:;;" class="plus-gray" ><span>+</span><label>Agregar Nuevo</label></a></div>').insertAfter(element);
+        $('<div class="'+classes+' text-center inline-add"><a id="new" data-category="'+scope.block.category+'" href="javascript:;;" class="plus-gray" ><span>+</span><label>'+$editor_buttons_add+'</label></a></div>').insertAfter(element);
       }
       
       $compile(element)(scope);
@@ -203,16 +203,16 @@ cigarritaDirective
           if (type=='slider') {
             // console.log(scope, element, attrs);
             var $data_scope=scope;
-            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='detalles'><i class='fa fa-cogs'></i></span><span class='tooling tooling-top deleting-item' data-tool='Eliminar item'><i class='fa fa-trash-o'></i></span></div>");
+            element.append("<div id='inline-editors'><span class='tooling tooling-top editing-external' data-tool='"+$editor_tooltip_details+"'><i class='fa fa-cogs'></i></span><span class='tooling tooling-top deleting-item' data-tool='"+$editor_tooltip_delete+"'><i class='fa fa-trash-o'></i></span></div>");
           
           }else{
             if (type!="none-editor") {
 
               if (attrs.elementObject=="block") {
-                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='editar'><i class='fa fa-pencil'></i></span></div>");
+                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='"+$editor_tooltip_edit+"'><i class='fa fa-pencil'></i></span></div>");
             
               }else{
-                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='editar'><i class='fa fa-pencil'></i></span><span class='tooling tooling-top deleting-item' data-tool='Eliminar item'><i class='fa fa-trash-o'></i></span></div>");
+                element.append("<div id='inline-editors'><span class='tooling tooling-top editing-inline' data-tool='"+$editor_tooltip_edit+"'><i class='fa fa-pencil'></i></span><span class='tooling tooling-top deleting-item' data-tool='"+$editor_tooltip_delete+"'><i class='fa fa-trash-o'></i></span></div>");
                 
               }
             }
@@ -220,7 +220,7 @@ cigarritaDirective
           }
 
           if (element.parent(".element-sortable").length) {
-            element.append("<span class='tooling tooling-top sort-item' data-tool='Ordenar item'><i class='fa fa-arrows-alt'></i></span>");
+            element.append("<span class='tooling tooling-top sort-item' data-tool='"+$editor_tooltip_sort+"'><i class='fa fa-arrows-alt'></i></span>");
           }
           
           // $compile(document.getElementById('inline-editors'))(scope);
@@ -236,7 +236,7 @@ cigarritaDirective
                 // element.find('[element-editable]').attr('contenteditable','true');
                 // element.find('[element-editable]:last-child').focus();
                   
-                element.append("<div id='inline-saver'><span class='inline-saving'>Guardar</span><span class='inline-closing'>x</span></div>");
+                element.append("<div id='inline-saver'><span class='inline-saving'>"+$editor_buttons_save+"</span><span class='inline-closing'>x</span></div>");
                 
                 $compile(document.getElementById('inline-saver'))(scope);
 
@@ -261,7 +261,7 @@ cigarritaDirective
               
               element.find(".deleting-item").on('click',function(event){
 
-                  if (confirm('Esta seguro que desea eliminar este item?')) {
+                  if (confirm($editor_popout_delete)) {
                      $rootScope.$broadcast('delete.item',$data_model,element);
                   }else{
                     return false;

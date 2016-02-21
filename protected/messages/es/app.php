@@ -13,6 +13,7 @@ return
         'panel.new_language'=>'Nuevo Idioma',
         'panel.help'=>'Ayuda',
         'panel.messages'=>'Mensajes',
+        'panel.messages.news'=>'Nuevos mensajes',
         'panel.see_all_messages'=>'Ver todos los mensajes',
         'panel.notifications'=>'Notificaciones',
         'panel.options'=>'Panel de opciones',
@@ -29,6 +30,7 @@ return
         'panel.back'=>'Regresar',
         'panel.update'=>'Actualizar',
         'panel.none'=>'Ninguno',
+        'panel.popout.delete'=>'Esta seguro que desea eliminar este Item?',
         //General Attributes
         'panel.table.name'=>'Nombre',
         'panel.table.state'=>'Estado',
@@ -82,7 +84,7 @@ return
         'panel.config.source'=>'Recurso',
         'panel.config.language'=>'Idioma',
         //Menus views
-        'panel.menus'=>'Manejar Menu/Links de la web',
+        'panel.menus'=>'Menu/Links de la web',
         'panel.menus.create'=>'Crear Link ',
         'panel.menus.table.url'=>'Link',
         'panel.menus.table.type'=>'Tipo',
@@ -104,6 +106,20 @@ return
         'panel.messages.delete'=>'Eliminar este mensaje',
 
         //pop out
-
+        
+        'editor.tooltip.delete'=>'Eliminar Item',
+        'editor.tooltip.details'=>'Editar Detalles',
+        'editor.tooltip.edit'=>'Editar Item',
+        'editor.tooltip.sort'=>'Ordenar Item',
+        'editor.buttons.add'=>'Agregar Nuevo Item',
+        'editor.buttons.save'=>'Guardar',
+        'editor.buttons.close'=>'Cerrar',
+        'editor.popout.delete'=>'Esta seguro que desea eliminar este Item?',
+        'editor.modal.details'=>'Editar detalles',
+        'editor.modal.image'=>'Imagen <small>(max: 2Mb)</small>',
+        'editor.modal.image.upload'=>'Subir Imagen',
+        'editor.modal.image.change'=>'Cambiar Imagen',
+        'editor.modal.subheader'=>'Parrafo/Contenido',
+        'editor.modal.header'=>'Ingresar Parrafo cabecera',
     );
 ?>

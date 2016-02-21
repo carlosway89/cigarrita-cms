@@ -128,30 +128,30 @@
             
             <nav class="navigation">
             	<ul class="list-unstyled">
-                	<li class="active"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel"><i class="fa fa-laptop"></i><span class="nav-label">Diseño</span></a></li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-file-o"></i> <span class="nav-label">Web &amp; Paginas</span></a>
+                	<li class="active"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel"><i class="fa fa-laptop"></i><span class="nav-label">design</span></a></li>
+                    <li class="has-submenu"><a href="#"><i class="fa fa-file-o"></i> <span class="nav-label"><?=Yii::t('app','panel.pages')?></span></a>
                     	<ul class="list-unstyled">
                           <?php if (Yii::app()->user->checkAccess("webmaster")) {
                           ?>
-                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages">Paginas</a></li>
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages"><?=Yii::t('app','panel.pages')?></a></li>
                           <?php }?>
                           <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           ?>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Web Posts</a></li>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks">Web Blocks</a></li>                
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users">Web Usuarios</a></li>                          
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts"><?=Yii::t('app','panel.posts')?></a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks"><?=Yii::t('app','panel.blocks')?></a></li>                
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><?=Yii::t('app','panel.users')?></a></li>                          
                           <?php }?>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config">Web Configuración</a></li>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config"><?=Yii::t('app','panel.config')?></a></li>
                         </ul>
                     </li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-link"></i> <span class="nav-label">Menus &amp; Links</span></a>
+                    <li class="has-submenu"><a href="#"><i class="fa fa-link"></i> <span class="nav-label"><?=Yii::t('app','panel.menus')?></span></a>
                     	<ul class="list-unstyled">
-                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links">Menus / links</a></li>
+                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links"><?=Yii::t('app','panel.menus')?></a></li>
                         </ul>
                     </li>
                     <?php if (Yii::app()->user->checkAccess("webmaster")) {
                           ?>
-                    <li class="has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label">Facebook &amp; Sync</span></a>
+                    <li class="has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label"><?=Yii::t('app','panel.facebook')?></span></a>
                     	<ul class="list-unstyled">
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#feeds" target="_self">Feeds</a></li>
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#events" target="_self">Events</a></li>
@@ -185,11 +185,11 @@
 
               ?>
                 <ul class="nav navbar-nav">
-                <li><a href="<?=Yii::app()->getBaseUrl(true)?>" target="_blank"><i class="fa fa-play"></i> Ver Website</a></li>
+                <li><a href="<?=Yii::app()->getBaseUrl(true)?>" target="_blank"><i class="fa fa-play"></i> <?=Yii::t('app','panel.livewebsite')?></a></li>
                 <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                                 ?>
                 <li class="dropdown">
-                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Idiomas <span class="caret"></span></a>
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?=Yii::t('app','panel.languages')?> <span class="caret"></span></a>
                   <ul role="menu" class="dropdown-menu">
                     <?php foreach ($model_language as $key => $value) {
                     ?>
@@ -207,11 +207,11 @@
                     </li>
                     <?php } ?>
                     <li class="divider"></li>
-                    <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language#modal_language">+ Nuevo Idioma</a></li>
+                    <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language#modal_language">+ <?=Yii::t('app','panel.new_language')?></a></li>
                   </ul>
                 </li>
                 <?php }?>
-                <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/help" target="_blank"><i class="fa fa-book"></i> Ayuda</a></li>
+                <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/help" target="_blank"><i class="fa fa-book"></i> <?=Yii::t('app','panel.help')?></a></li>
               </ul>
             </nav>
             
@@ -242,7 +242,7 @@
               </a>
               	<div class="dropdown-menu md arrow pull-right panel panel-default arrow-top-right messages-dropdown">
                       <div class="panel-heading">
-                    	Mensajes
+                    	<?=Yii::t('app','panel.messages')?>
                       </div>
                       
                       <div class="list-group">
@@ -252,7 +252,7 @@
                             ?>
                             <div class="media">
                               <div class="media-body">
-                                <h6 class="text-center">0 Nuevos Mensajes</h6>
+                                <h6 class="text-center">0 <?=Yii::t('app','panel.messages.news')?></h6>
                               </div>
                             </div>
 
@@ -272,7 +272,7 @@
                           </a>
                           <?php } ?>
                           
-                          <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="btn btn-info btn-flat btn-block">Ver todos los Mensajes</a>
+                          <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="btn btn-info btn-flat btn-block"><?=Yii::t('app','panel.see_all_messages')?></a>
 
                       </div>
                       
@@ -285,19 +285,19 @@
                 </a>
                 	<div class="dropdown-menu arrow pull-right md panel panel-default arrow-top-right notifications">
                         <div class="panel-heading">
-                      	Notificaciones
+                      	<?=Yii::t('app','panel.notifications')?>
                         </div>
                         
                         <div class="list-group">
                             <a href="http://cigarrita-worker.com/contact" target="_blank" class="list-group-item">
-                              Bienvenido a CMS Cigarrita Worker, siga en contacto con conosotros sobre nuestras novedades y actualizaciones aqui
+                              welcome to CMS Cigarrita Worker, keep updated to clicking here
                             </a>
-                            <p class="list-group-item">Esto es actualmente la <strong>version 1.3 </strong> de Cigarrita CMS!!</p>
+                            <p class="list-group-item">Current <strong>version 1.3 </strong> Cigarrita CMS!!</p>
                             <p class="list-group-item" >
-                              - Desarrollado por Cigarrita Worker<br/>
-                              - Autor: Carlos Manay<br/>
-                              - Construido con YII 1.1 y AngularJs<br>
-                              - Copyright 2015.
+                              - Developed by Cigarrita Worker<br/>
+                              - Author: Carlos Manay<br/>
+                              - Built with YII 1.1 & AngularJs<br>
+                              - Copyright <?=date("Y")?>
                             </p>
                         </div>
                         
@@ -306,17 +306,17 @@
               <li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
                 	<div class="dropdown-menu lg pull-right arrow panel panel-default arrow-top-right">
                     	<div class="panel-heading">
-                        	Panel de Opciones
+                        	<?=Yii::t('app','panel.options')?>
                         </div>
                         <div class="panel-body text-center">
                         	<div class="row">
-                            	<div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn">Mensajes</p></a></div>
+                            	<div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn"><?=Yii::t('app','panel.messages')?></p></a></div>
                                 
-                                <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config" class="text-purple"><span class="h2"><i class="fa fa-file-text-o"></i></span><p class="text-gray no-margn">Configuraciones</p></a></div>
+                                <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config" class="text-purple"><span class="h2"><i class="fa fa-file-text-o"></i></span><p class="text-gray no-margn"><?=Yii::t('app','panel.configurations')?></p></a></div>
                                 
                                 <div class="col-xs-12 visible-xs-block"><hr></div>
                                 
-                                <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->request->baseUrl?>/site/logout" class="text-red"><span class="h2"><i class="fa fa-sign-out"></i></span><p class="text-gray no-margn">Cerrar Sesión</p></a></div>
+                                <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->request->baseUrl?>/site/logout" class="text-red"><span class="h2"><i class="fa fa-sign-out"></i></span><p class="text-gray no-margn"><?=Yii::t('app','panel.logout')?></p></a></div>
                                                       
                           </div>
                         </div>
@@ -449,7 +449,7 @@
       $('.froala-editor').froalaEditor({
               toolbarInline: false,
               height: 250,
-              language: 'es',
+              language: '<?=Yii::app()->language?>',
               charCounterCount: false,
               imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
               imageUploadParam: 'images',
@@ -477,7 +477,7 @@
       })
       $('.froala-editor-inline').froalaEditor({
               toolbarInline: true,
-              language: 'es',
+              language: '<?=Yii::app()->language?>',
               charCounterCount: false,
               imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
               imageUploadParam: 'images',
