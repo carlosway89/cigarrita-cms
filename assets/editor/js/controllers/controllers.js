@@ -44,6 +44,8 @@ var modal_options=function($scope,$http,$compile,$rootScope){
           var elemento=$('[ng-view]');
           // $(response.data).insertAfter(elemento);
           elemento.append(response.data);
+
+          
     });
   
 
@@ -51,7 +53,41 @@ var modal_options=function($scope,$http,$compile,$rootScope){
 
   $scope.$on('show.modal', function(event,data,data_scope) {
 
-      
+      $('#modal_post').find(".ul-sortable").sortable({
+          //containment: "parent",
+          items: "li:not(.new-external-modal)",
+          cursor: "move",
+          start:function(event, ui){
+                startPosition = ui.item.prevAll().length;
+          },
+          update: function(event, ui) {
+                  endPosition = ui.item.prevAll().length;
+                  var json={};
+
+                  console.log(event,ui,this);
+
+                  $(event.target).find("[data-item-sortable]").each(function(index){
+                    json[index+1]=$(this).attr('data-item-sortable');        
+                  });
+
+                  var serverUrl=$base_url+"/api/postSort";
+
+                  json=JSON.stringify(json);
+
+                  $.ajax({
+                      type: "POST",
+                      url: serverUrl,
+                      data: json,
+                      contentType: 'application/json; charset=utf-8',  
+                      dataType: "json",              
+                      success: function(data) {
+
+                      }
+                  });
+                
+            }
+          });
+
       $scope.posting={
         state:1,
         source:''
@@ -63,7 +99,7 @@ var modal_options=function($scope,$http,$compile,$rootScope){
       imagen.removeClass('ui btn loading');
 
       $(".selector-list-images").empty();
-      $(".selector-list-images").html('<li ng-repeat="list_post in block_posts.posts"><a ng-click="set_external_model(list_post,$event)" ng-class="list_post.idpost==posting.idpost?\'active\':\'\'"><img ng-src="{{list_post.source}}" /></a></li><li class="new-external-modal"><a ng-click="new_external(posting.category)"><i class="fa fa-plus"></i></a></li>');
+      $(".selector-list-images").html('<li class="sort-li-item" data-item-sortable="{{list_post.idpost}}" ng-repeat="list_post in block_posts.posts"><a ng-click="set_external_model(list_post,$event)" ng-class="list_post.idpost==posting.idpost?\'active\':\'\'"><img ng-src="{{list_post.source}}" /></a></li><li class="new-external-modal"><a ng-click="new_external(posting.category)"><i class="fa fa-plus"></i></a></li>');
   
       setTimeout(function(){
         $scope.block_posts=data_scope.block;        
@@ -186,7 +222,6 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
     });
 
     $scope.$on('delete.item',function(event,data,element){
-    
       $scope.delete_post(data,element);
     });
 
@@ -204,11 +239,28 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
             record = $.extend(record, post);
             record.$save(
               function(record){
-                for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
-                  if ($scope.$$childTail.page[i].category==record.category) {
-                    $scope.$$childTail.page[i].posts.push(record);
-                  };                
-                };
+                if ($scope.$$childTail.page!="undefined") {
+                  for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
+                    if ($scope.$$childTail.page[i].category==record.category) {
+                      $scope.$$childTail.page[i].posts.push(record);
+                      break;
+                      // var data={};
+                      // data[record.position]=record;
+                      // $scope.$$childTail.page[i].posts=$.extend($scope.$$childTail.page[i].posts, data);
+                    }                
+                  }
+                }else{
+                  for (var i =$scope.$$childHead.page.length- 1; i >= 0; i--) {
+                    if ($scope.$$childHead.page[i].category==record.category) {
+                      $scope.$$childHead.page[i].posts.push(record);
+                      break;
+                      // var data={};
+                      // data[record.position]=record;
+                      // $scope.$$childHead.page[i].posts=$.extend($scope.$$childHead.page[i].posts, data);
+                    }                
+                  }
+                }
+
                 if (post.notclose) {
                   $scope.handle_saving('new');
                 }else{
@@ -276,18 +328,30 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
       element.fadeOut();
 
       _post.$remove(function(){    
-          
-            for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
-                if ($scope.$$childTail.page[i].category==_post.category) {
-                  for (var j = $scope.$$childTail.page[i].posts.length - 1; j >= 0; j--) {
-                     if ($scope.$$childTail.page[i].posts[j].idpost=_post.idpost) {
-                      $scope.$$childTail.page[i].posts.splice(j,1);
-                      
-                      break;
-                     }
-                  }
+            if ($scope.$$childTail.page!="undefined") {
+              for (var i =$scope.$$childTail.page.length- 1; i >= 0; i--) {
+                  if ($scope.$$childTail.page[i].category==_post.category) {
+                    for (var j = $scope.$$childTail.page[i].posts.length - 1; j >= 0; j--) {
+                       if ($scope.$$childTail.page[i].posts[j].idpost==_post.idpost) {                        
+                        $scope.$$childTail.page[i].posts.splice(j,1);                        
+                        break;
+                       }
+                    }
 
-                }               
+                  }               
+              }
+            }else{
+              for (var i =$scope.$$childHead.page.length- 1; i >= 0; i--) {
+                  if ($scope.$$childHead.page[i].category==_post.category) {
+                    for (var j = $scope.$$childHead.page[i].posts.length - 1; j >= 0; j--) {
+                       if ($scope.$$childHead.page[i].posts[j].idpost==_post.idpost) {
+                        $scope.$$childHead.page[i].posts.splice(j,1);                        
+                        break;
+                       }
+                    }
+
+                  }               
+              }
             }
 
             
@@ -426,9 +490,9 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
                   endPosition = ui.item.prevAll().length;
                   var json={};
 
-                  console.log(event,ui,this);
+                  //console.log(event,ui,this);
 
-                  $(event.target).find("[data-item-sortable]").each(function(index){
+                  $($(event.target).find("[data-item-sortable]").get().reverse()).each(function(index){
                     json[index+1]=$(this).attr('data-item-sortable');        
                   });
 

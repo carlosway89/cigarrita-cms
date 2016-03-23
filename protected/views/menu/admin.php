@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manejar Menu/Links</h4>
+			<h4><?=Yii::t('app','panel.menus')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -16,7 +16,7 @@
 
 						<div class="row">
 							<div class="dropdown col-sm-2">
-			                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Idiomas <span class="caret"></span></a>
+			                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#"><?=Yii::t('app','panel.menus.language')?> <span class="caret"></span></a>
 			                  <ul class="dropdown-menu">
 			                    <?php foreach ($language as $key => $value) {
 			                    ?>
@@ -29,46 +29,78 @@
 			                </div>
 			                <?php if (Yii::app()->user->checkAccess("webmaster")) {
                           	?>
-			                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Agregar Menu</button>
+			                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.menus.create')?></button>
 							<?php }?>
 							<br><br>
+							<?php 
+			                	if (isset($_GET["message"])) {
+									echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
+								}
+			                ?>
 						</div>
 						
 						
 						 
 		                <div class="row">
 		                	<div class="col-sm-12">
-		                		<table id="" class="hoverable centered">
-									<thead>
-										<tr>
-								            <th data-field="name">Nombre</th>
-								            <th data-field="flag">Pagina</th>
-								            <th data-field="url">Url</th>
-								            <th data-field="type">Tipo</th>
-								            <th data-field="state">Estado</th>
-								            <th>Opciones</th>
-								        </tr>
-									</thead>
-									<tbody id="sortable">
-										<?php foreach ($list as $key => $value) {
+		                		<div id="type_table" class="hoverable centered">
+									<div class="thead">
+								        <div data-field="name"><?=Yii::t('app','panel.table.name')?></div>
+								        <div data-field="url"><?=Yii::t('app','panel.menus.table.url')?></div>
+								        <div data-field="type"><?=Yii::t('app','panel.menus.table.type')?></div>
+								        <div data-field="state"><?=Yii::t('app','panel.table.state')?></div>
+								        <div><?=Yii::t('app','panel.table.options')?></div>
+									</div>
+									<div class="tbody" id="sortable">
+										<?php 										
+										foreach ($list as $key => $value) {
+											if ($value->hierarchy==0) {
 										?>
-										<tr id="<?=$value->idmenu?>" class="ui-state-default">
-											<td><?=$value->name?></td>
-											<td><?=$value->page?></td>
-											<td><?=$value->url?></td>
-											<td><?=$value->type?></td>
-											<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
-											<td>
-												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> Editar</a>&nbsp;&nbsp;
+										<div id="<?=$value->idmenu?>" class="tr ui-state-default level0">
+											<div><a class="collapse-link" href="javascript:;;"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;<?=$value->name?></div>
+											<div><?=$value->url?></div>
+											<div><?=$value->type?></div>
+											<div><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></div>
+											<div>
+												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;&nbsp;
 												<?php if (Yii::app()->user->checkAccess("webmaster")) {
                           						?>
-												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
+												<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>/<?=$lang?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
 												<?php }?>
-											</td>
-										</tr>
-										<?php } ?>
-									</tbody>
-								</table>
+											</div>
+										</div>
+										<?php 
+											for ($i=0; $i <= $hierarchy; $i++) { 											
+												foreach ($list as $key_list => $val_list) {													
+													if ($val_list->parent_id==$value->idmenu && $val_list->hierarchy==$i) {
+														$size=($i)*50;
+														$with="width: calc(100% - ".$size."px);";
+														$left="margin-left: ".$size."px;";
+														$style=$left.$with;
+										?>
+											<div id="<?=$val_list->idmenu?>" class="tr ui-state-default level<?=$i?> child" style="<?=$style?>">
+												<div><a class="collapse-link" href="javascript:;;"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;<?=$val_list->name?></div>
+												<div><?=$val_list->url?></div>
+												<div><?=$val_list->type?></div>
+												<div><i class="fa fa-circle <?=$val_list->state?'text-success':'text-warning'?>"></i> <?=$val_list->state?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></div>
+												<div>
+													<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$val_list->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;&nbsp;
+													<?php if (Yii::app()->user->checkAccess("webmaster")) {
+	                          						?>
+													<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$val_list->idmenu?>/<?=$lang?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
+													<?php }?>
+												</div>
+											</div>
+										<?php
+														break;
+													}
+												}
+											}
+										?>
+										<?php }
+										} ?>
+									</div>
+								</div>
 		                	</div>
 		                </div>
 						
@@ -97,7 +129,8 @@
 					'page'=>$page,
 					'block'=>$block,
 					'language'=>$language,
-					'lang'=>$lang
+					'lang'=>$lang,
+					'hierarchy'=>$hierarchy
 				)
 			); 
 		?>
@@ -120,10 +153,22 @@
 
 				if ($('select#type_page option#scroll_page').is(':selected')) {
 					$('#url_page').show();
+					$('#page_name').show();
+					$('#Menu_url').attr("readonly","readonly");
 					$('#Menu_url').val("/"+$("#url_page option:selected").text());
 				}else{
-					$('#url_page').hide();
-					$('#Menu_url').val("/"+$("#page_name option:selected").text());
+					if ($('select#type_page option#new_page').is(':selected')) {
+						$('#url_page').hide();
+						$('#page_name').show();
+						$('#Menu_url').attr("readonly","readonly");
+						$('#Menu_url').val("/"+$("#page_name option:selected").text());
+					}else{
+						$('#url_page').hide();
+						$('#page_name').hide();
+						$('#Menu_url').attr("readonly",false);
+						$('#Menu_url').val("");
+					}
+					
 				}
 			}
 
@@ -149,7 +194,7 @@
 
 			    setTimeout(function(){
 			    	$( "#sortable" ).sortable({
-			    		items: "tr:not(.enabled-sortable)",
+			    		items: "div.tr:not(.enabled-sortable)",
 						cursor: "move",
 						// handle:".text-success",
 						start:function(event, ui){

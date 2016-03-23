@@ -37,8 +37,40 @@ a:hover{
 	padding-top: 100%;
 }
 
-
-
+#type_table{
+	display:table;
+	width:100%;
+}
+#type_table .thead{
+	width: 100%;
+	display:table;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #D0D0D0;
+}
+#type_table .thead div{
+	display: table-cell;
+	width: 18.73%;
+	font-weight: bold;
+	text-align: center;
+}
+#type_table .tbody{
+	width: 100%;
+	display: table;
+}
+#type_table .tbody .tr{
+	width: 100%;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+#type_table .tbody .tr div{
+	display: table-cell;
+	width: 10%;
+	text-align: center;
+}
+#type_table .tbody .tr div a.collapse-link{
+	float: left;
+}
 /*****************************
 Loader
 *****************************/

@@ -116,10 +116,38 @@
     <!-- Preloader -->
     
 	<aside class="left-panel collapsed">
-    		    <?php $config_val=Configuration::model()->find();
+    		    <?php 
 
-                $logo=$config_val->logo?Yii::app()->request->baseUrl.$config_val->logo:Yii::app()->request->baseUrl."/assets/panel/images/avtar/cigarrita-pet.jpg";
+              $config_val=Configuration::model()->find();
 
+              $logo=$config_val->logo?Yii::app()->request->baseUrl.$config_val->logo:Yii::app()->request->baseUrl."/assets/panel/images/avtar/cigarrita-pet.jpg";
+              $url=Yii::app()->request->getPathInfo();
+              $uri = explode("/", $url);
+              $current_uri=isset($uri[1])?$uri[1]:"";
+              
+              $post_active="";
+              $pages_active="";
+              $links_active="";
+              $facebook_active="";
+              $panel_active="";
+
+              switch ($current_uri) {
+                case 'posts':
+                  $post_active="active";
+                  break;
+                case 'pages':
+                  $pages_active="active";
+                  break;
+                case 'links':
+                  $links_active="active";
+                  break;
+                case 'facebook':
+                  $facebook_active="active";
+                  break;                
+                default:
+                  $panel_active="active";
+                  break;
+              }
             ?>
             <div class="user text-center">
                   <img src="<?php echo $logo?>" class="img-circle" alt="cigarrita worker">
@@ -128,8 +156,19 @@
             
             <nav class="navigation">
             	<ul class="list-unstyled">
-                	<li class="active"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel"><i class="fa fa-laptop"></i><span class="nav-label">design</span></a></li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-file-o"></i> <span class="nav-label"><?=Yii::t('app','panel.pages')?></span></a>
+                	  <li class="<?=$panel_active?>"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel"><i class="fa fa-laptop"></i><span class="nav-label">design</span></a></li>
+                    <li class="has-submenu <?=$post_active?>">
+                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts"><i class="fa fa-newspaper-o"></i> <span class="nav-label"><?=Yii::t('app','panel.posts')?></a>
+                      <ul class="list-unstyled">
+                          <?php 
+                          $list_category=Category::model()->findAll("tag='panel'");
+                          foreach ($list_category as $cat_val) {                            
+                          ?>
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$cat_val->category?>"><?=Yii::t('app','panel.posts')?> - <strong><?=$cat_val->category?></strong></a></li>                         
+                          <?php }?>
+                      </ul>
+                    </li>
+                    <li class="<?=$pages_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages"><i class="fa fa-file-o"></i> <span class="nav-label"><?=Yii::t('app','panel.pages')?></span></a>
                     	<ul class="list-unstyled">
                           <?php if (Yii::app()->user->checkAccess("webmaster")) {
                           ?>
@@ -137,21 +176,21 @@
                           <?php }?>
                           <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           ?>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts"><?=Yii::t('app','panel.posts')?></a></li>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks"><?=Yii::t('app','panel.blocks')?></a></li>                
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><?=Yii::t('app','panel.users')?></a></li>                          
                           <?php }?>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config"><?=Yii::t('app','panel.config')?></a></li>
                         </ul>
                     </li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-link"></i> <span class="nav-label"><?=Yii::t('app','panel.menus')?></span></a>
+                    
+                    <li class="<?=$links_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links"><i class="fa fa-link"></i> <span class="nav-label"><?=Yii::t('app','panel.menus')?></span></a>
                     	<ul class="list-unstyled">
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links"><?=Yii::t('app','panel.menus')?></a></li>
                         </ul>
                     </li>
                     <?php if (Yii::app()->user->checkAccess("webmaster")) {
                           ?>
-                    <li class="has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label"><?=Yii::t('app','panel.facebook')?></span></a>
+                    <li class="<?=$facebook_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label"><?=Yii::t('app','panel.facebook')?></span></a>
                     	<ul class="list-unstyled">
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#feeds" target="_self">Feeds</a></li>
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#events" target="_self">Events</a></li>
@@ -449,6 +488,7 @@
       $('.froala-editor').froalaEditor({
               toolbarInline: false,
               height: 250,
+              enter: $.FroalaEditor.ENTER_BR,
               language: '<?=Yii::app()->language?>',
               charCounterCount: false,
               imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
@@ -477,6 +517,7 @@
       })
       $('.froala-editor-inline').froalaEditor({
               toolbarInline: true,
+              enter: $.FroalaEditor.ENTER_BR,
               language: '<?=Yii::app()->language?>',
               charCounterCount: false,
               imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",

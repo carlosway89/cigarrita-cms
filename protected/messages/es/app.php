@@ -31,6 +31,9 @@ return
         'panel.update'=>'Actualizar',
         'panel.none'=>'Ninguno',
         'panel.popout.delete'=>'Esta seguro que desea eliminar este Item?',
+        'panel.message.success.save'=>'Item creado correctamente',
+        'panel.message.success.update'=>'Item actualizado correctamente',
+        'panel.message.error'=>'Lo sentimos!! Ocurrio un error, intentar de nuevo',
         //General Attributes
         'panel.table.name'=>'Nombre',
         'panel.table.state'=>'Estado',

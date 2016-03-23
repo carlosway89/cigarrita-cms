@@ -10,12 +10,14 @@
 		</div> 
       <div class="container">
         <div class="col-xs-12">
-          <ul style="" class="list-inline selector-list-images element-sortable">
+          <ul style="" class="list-inline selector-list-images ul-sortable">
+            <!--li by Control autogenerate-->
             <li class="sort-item" data-item-sortable="{{list_post.idpost}}" ng-repeat="list_post in block_posts.posts">
               <a ng-click="set_external_model(list_post)" ng-class="list_post.idpost==posting.idpost?'active':''">
                 <img ng-src="{{list_post.source}}" />
               </a>
-            </li>            
+            </li>
+            <!--/Control autogenerate-->            
           </ul>
 
         </div>

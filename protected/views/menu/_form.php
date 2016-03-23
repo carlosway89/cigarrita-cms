@@ -1,6 +1,6 @@
 <?php		
-	if (isset($message)) {
-		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h6><br>";
+	if (isset($_GET["message"]) && !$model->isNewRecord) {
+		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
 	}
 
 	if (isset($lang)) {
@@ -14,13 +14,12 @@
 		'enableAjaxValidation'=>false,
 	)); ?>
 
-		<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
-
+		<p class="note"><?=Yii::t('app','panel.required')?></p>
 		<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 		<div class="row">
 			<?php echo $form->labelEx($model,'nombre'); ?>
-			<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?>
+			<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100,'required'=>'required')); ?>
 			<?php echo $form->error($model,'name'); ?>
 		</div>
 
@@ -28,7 +27,16 @@
         ?>
 		<div class="row">
 			<?php echo $form->labelEx($model,'url'); ?>
-			<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100,'readonly'=>true)); ?>
+
+			<?php 
+				
+				if ($model->type=='redirect') {
+					echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100)); 
+				}else{
+					echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100,'readonly'=>true)); 
+				}
+				
+			?>
 			<?php echo $form->error($model,'url'); ?>
 		</div>
 
@@ -38,7 +46,8 @@
 			<?php echo $form->labelEx($model,'tipo'); ?>
 			<select id="type_page" name="Menu[type]" class="browser-default">
 				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll</option>
-				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >Nuevo Tab</option>
+				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >Page</option>
+				<option id="redirect_page" value="redirect" <?=$model->type=='redirect'?'selected':''?> >Redirect</option>
 			</select>
 			<br>
 			<select id="url_page"  class="browser-default">
@@ -65,13 +74,28 @@
 			<?php echo $form->labelEx($model,'Sub menu'); ?>
 			<select id="parent_id" name="Menu[parent_id]" class="browser-default">
 				<option value="">Ninguno</option>
-			<?php foreach ($list as $val_list) {
-				if ($val_list->parent_id=="") {
-			 ?>			 
-			 	<option <?=$model->parent_id==$val_list->idmenu?'selected':''?> value="<?=$val_list->idmenu?>"><?=$val_list->name?></option>	 
-			<?php }	
-			}?>
+				<?php foreach ($list as $key => $value) {
+					if ($value->hierarchy==0) {				?>
+				<option <?=$model->parent_id==$value->idmenu?'selected':''?> value="<?=$value->idmenu?>" ><?=$value->name?></option>
+				<?php 
+					for ($i=0; $i <= $hierarchy; $i++) { 											
+						foreach ($list as $key_list => $val_list) {													
+							if ($val_list->parent_id==$value->idmenu && $val_list->hierarchy==$i) {
+								$size=($i)*20;
+								$left="padding-left: ".$size."px;";
+								$style=$left;
+				?>
+					<option style="<?=$style?>" <?=$model->parent_id==$val_list->idmenu?'selected':''?> value="<?=$val_list->idmenu?>" >> <?=$val_list->name?></option>
+				<?php
+								break;
+							}
+						}
+					}
+				?>
+				<?php }
+				}?>
 			</select>
+			
 			
 			<?php echo $form->error($model,'parent_id'); ?>
 		</div>
@@ -114,7 +138,7 @@
 
 		<div class="row buttons">
 			<button class="btn btn-info" type="submit">Guardar</button>
-			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/links">Regresar</a>
+			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=isset($lang)?$lang:$model->language?>">Regresar</a>
 		</div>
 
 	<?php $this->endWidget(); ?>
@@ -130,10 +154,23 @@
 
 			if ($('select#type_page option#scroll_page').is(':selected')) {
 				$('#url_page').show();
+				$('#page_name').show();
+				$('#Menu_url').attr("readonly","readonly");
 				$('#Menu_url').val("/"+$("#url_page option:selected").text());
 			}else{
-				$('#url_page').hide();
-				$('#Menu_url').val("/"+$("#page_name option:selected").text());
+				if ($('select#type_page option#new_page').is(':selected')) {
+					$('#url_page').hide();
+					$('#page_name').show();
+					$('#Menu_url').attr("readonly","readonly");
+					$('#Menu_url').val("/"+$("#page_name option:selected").text());
+				}else{
+					$('#url_page').hide();
+					$('#page_name').hide();					
+					$('#Menu_url').attr("readonly",false);
+					$('#Menu_url').val("<?=$model->url?>");
+					
+				}
+				
 			}
 		}
 

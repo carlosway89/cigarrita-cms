@@ -15,14 +15,14 @@
 	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'nombre'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.table.name')); ?>
 		<?php echo $form->textField($model,'name',array('size'=>100,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
 
-		<?php echo $form->labelEx($model,'estado'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.table.state')); ?>
 		<div class="switch">
           <label>
             Off
@@ -54,8 +54,8 @@ color: #66AFE9;" ><?=$model->source?></textarea>
 	</div>
 
 	<div class="row buttons">
-		<button class="btn btn-info" type="submit">Guardar</button>
-		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages">Regresar</a>
+		<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
+		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages"><?=Yii::t('app','panel.back')?></a>
 	</div>
 
 <?php $this->endWidget(); ?>

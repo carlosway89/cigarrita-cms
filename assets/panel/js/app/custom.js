@@ -75,6 +75,11 @@ $(function(){
 
 	})
 	
+	setTimeout(function(){
+		$("#message_updated").fadeOut(2000, function() {
+			$(this).remove();
+		});
+	},3000);
 	
 	
 	/********************************

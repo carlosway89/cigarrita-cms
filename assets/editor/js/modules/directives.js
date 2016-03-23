@@ -262,7 +262,8 @@ cigarritaDirective
               element.find(".deleting-item").on('click',function(event){
 
                   if (confirm($editor_popout_delete)) {
-                     $rootScope.$broadcast('delete.item',$data_model,element);
+                        // console.log("event trigger",scope.post,element,attrs,$data_model);
+                       $rootScope.$broadcast('delete.item',scope.post,element);
                   }else{
                     return false;
                   }

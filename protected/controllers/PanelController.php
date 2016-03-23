@@ -18,13 +18,18 @@ class PanelController extends Controller
 
 
 	public function accessRules()
-	{
+	{	
+		//$test=Configuration::model()->findAll();
 		return array(
 			array('allow',
 				'actions'=>array('index','language','config','users','messages','pages','posts','blocks','links','facebook','delete','change','help'),
 				'users'=>array('@')
-					// 'users'=>array('Yii::app()->user->checkAccess("administrador")')
+					// 'users'=>array('Yii::app()->user->checkAccess("webmaster")')
 					),
+			array('allow',
+				'actions'=>array('delete'),
+				'users'=>array('@')
+			),
 			// array('allow',
 			// 	'actions'=>array('facebook'),
 			// 		'users'=>array('*') 
@@ -528,7 +533,8 @@ class PanelController extends Controller
 
 		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
 
-			$lang=$this->uri(2)?$this->uri(2):Yii::app()->user->getState('language_initial');
+			$post_page=$this->uri(2)?$this->uri(2):Category::model()->find("tag='panel'")->category;
+			$lang=$this->uri(3)?$this->uri(3):Yii::app()->user->getState('language_initial');
 
 			$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
@@ -542,8 +548,8 @@ class PanelController extends Controller
 			$list=null;
 
 			
-			if (is_numeric($lang)) {
-				$id=$lang;
+			if (is_numeric($post_page)) {
+				$id=$post_page;
 
 				$model=Post::model()->findByPk($id);
 
@@ -564,6 +570,7 @@ class PanelController extends Controller
 				$model->attributes=$_POST['Post'];
 				$model->state=$model->state=='on'?1:0;
 
+				$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
 				
 				if($model->save()){				
 					if (isset($_POST['Attr'])) {
@@ -610,14 +617,16 @@ class PanelController extends Controller
 						
 					}		
 
-					$message="Successfully Updated";
 					
+					$model->unsetAttributes();			
+				
+					$this->redirect(array("panel/posts/".$post_page."/".$lang."?message=".$message));
 				}
 					
 			}
-			if (!is_numeric($lang)){
+			if (!is_numeric($post_page)){
 				
-				$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
+				$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."'AND category='".$post_page."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
 				$render='//post/admin';
 				
 			}
@@ -627,6 +636,8 @@ class PanelController extends Controller
 				'model'=>$model,
 				'message'=>$message,
 				'category'=>$category,
+				'post_page'=>$post_page,
+				'lang'=>$lang,
 				'language'=>$language,
 				'attr'=>$attr
 			));
@@ -883,15 +894,23 @@ class PanelController extends Controller
 		$model=new Menu();
 
 		$message=null;
+		$hierarchy=null;
+
+		$criteria=new CDbCriteria;
+
+		$criteria->select="max(hierarchy) AS hierarchy";
+		$criteria->condition="is_deleted='0' AND language = '".Yii::app()->user->getState('language_initial')."'";
+		$hierarchy=Menu::model()->find($criteria)->hierarchy;
 
 		$list=Menu::model()->findAll("is_deleted='0' AND language = '".$lang."' order by t.position");
 		
-		// $list=null;
 
 		
 
 		if (is_numeric($lang)) {
 			$id=$lang;
+
+
 			$list=Menu::model()->findAll("is_deleted='0' AND language = '".Yii::app()->user->getState('language_initial')."' order by t.position");
 			$model=Menu::model()->findByPk($id);
 
@@ -902,7 +921,7 @@ class PanelController extends Controller
 		if(isset($_POST['Menu']))
 		{	
 			
-
+			$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
 			if ($model->isNewRecord) {
 				
 				$_lang=Language::model()->findAll("is_deleted='0'");
@@ -914,16 +933,22 @@ class PanelController extends Controller
 					$model->language=$value->flag;
 
 					if ($model->save()) {
-						$message="Successfully Updated";
+						
 					}				
 					
 				}
+
+				$this->redirect(array("panel/links/".$lang."?message=".$message));	
 			}else{
 				$model->attributes=$_POST['Menu'];
 				$model->state=$model->state=='on'?1:0;
 				
-				if($model->save()){									
-					$message="Successfully Updated";					
+				if($model->save()){	
+
+					$model->unsetAttributes();	
+					$this->redirect(array("panel/links/".$lang."?message=".$message));				
+					// $this->redirect(array("panel/links/".$lang,"message"=>$message));									
+									
 				}
 			}					
 			
@@ -947,7 +972,8 @@ class PanelController extends Controller
 				'language'=>$language,
 				'message'=>$message,
 				'list'=>$list,
-				'lang'=>!is_numeric($lang)?$lang:'es'
+				'lang'=>!is_numeric($lang)?$lang:'es',
+				'hierarchy'=>$hierarchy
 		));
 
 	}
@@ -959,6 +985,8 @@ class PanelController extends Controller
 	                          
 			$_model=$this->uri(2);
 			$id=$this->uri(3);
+			$attr1=$this->uri(4);
+			$attr2=$this->uri(5);
 
 
 			$model=ucfirst($_model);
@@ -976,7 +1004,7 @@ class PanelController extends Controller
 			if($model->save()){						
 				switch ($_model) {
 					case 'menu':
-						$link='links';
+						$link='links/'.$attr1;
 						break;
 					case 'user':
 						$link='users';
@@ -985,7 +1013,7 @@ class PanelController extends Controller
 						$link='messages';
 						break;
 					case 'post':
-						$link='posts';
+						$link='posts/'.$attr1.'/'.$attr2;
 						break;
 					case 'page':
 						$link='pages';
@@ -1027,6 +1055,7 @@ class PanelController extends Controller
         if (!$cat) {
             $cat_model=new Category();
             $cat_model->category="fb_".$type_sync;
+            $cat_model->tag="facebook";
             $cat_model->save();
         }
 
@@ -1194,7 +1223,7 @@ class PanelController extends Controller
 			
 
 			$model->attributes=$_POST['Configuration'];
-
+			$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
 			
 			if($model->save()){	
 				
@@ -1220,7 +1249,6 @@ class PanelController extends Controller
 					$model->save();	
 				}				
 
-				$message="Successfully Updated";
 				$this->redirect(array('config','message'=>$message));
 			}
 				

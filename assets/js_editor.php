@@ -72,10 +72,14 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/angular-summernote.js"></script>
 <script type="text/javascript">
+
+  
+          
   var $froala=angular.module('froala', []);
   // angular.module('froala', []).
     $froala.value('froalaConfig', {
           toolbarInline: true,
+          enter: $.FroalaEditor.ENTER_BR,
           language: '<?=Yii::app()->language?>',
           charCounterCount: false,
           imageUploadURL: 'api/upload',
@@ -116,6 +120,7 @@
     
     $froala.value('froalaConfigModal', {
           toolbarInline: false,
+          enter: $.FroalaEditor.ENTER_BR,
           height: '270',
           language: '<?=Yii::app()->language?>',
           charCounterCount: false,

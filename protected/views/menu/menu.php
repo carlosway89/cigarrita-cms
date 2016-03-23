@@ -16,7 +16,8 @@
 									'page'=>$page,
 									'block'=>$block,
 									'language'=>$language,
-									'message'=>$message
+									'message'=>$message,
+									'hierarchy'=>$hierarchy
 								)
 							); 
 						?>

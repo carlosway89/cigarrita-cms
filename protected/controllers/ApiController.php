@@ -321,7 +321,7 @@ class ApiController extends Controller
                 $fileName = $_FILES["images"]["name"];
                 $moved=move_uploaded_file($_FILES["images"]["tmp_name"],$output_dir.$string.$fileName);
                 if ($moved) {
-                    $ret= ['name'=>$fileName,'url'=>$output_dir.$string.$fileName,'link'=>$output_dir.$string.$fileName];
+                    $ret= ['name'=>$fileName,'url'=>"/".$output_dir.$string.$fileName,'link'=>"/".$output_dir.$string.$fileName];
                 }else{
                     $ret= ['error'=>'Error, try again!!, Imagen max. 2 Mb','type'=>'error'];
                 }
@@ -488,7 +488,7 @@ class ApiController extends Controller
 
         // $criteria->with=array('pageHasBlocks.blockIdblock.blockHasPosts.postIdpost');
         $criteria->with=array('pageHasBlocks.blockIdblock.category0.posts');
-        $criteria->order = 'posts.position ASC';
+        $criteria->order = 'posts.position DESC, posts.date_created DESC';
 
         $criteria->together = true; 
 
@@ -508,7 +508,8 @@ class ApiController extends Controller
 
                     
                     $subarray=array();
-                    
+                    $post_pos=0;
+
                     foreach ($has_block->blockIdblock->category0->posts as $key_post => $has_post) {
 
                         if ($filter->language==$has_post->language && $filter->state==$has_post->state && $filter->is_deleted==$has_post->is_deleted ){
@@ -518,9 +519,12 @@ class ApiController extends Controller
                             foreach ($has_post->attributes0 as $key_attr => $has_attr) { 
                                 $attr=$has_attr;                     
                                 $attr_val=CJSON::decode($attr->value)!=null?CJSON::decode($attr->value):$attr->value;
-                                $subarray[$key_post]=array_merge($subarray[$key_post],array($attr->key=>$attr_val));                        
-
+                                if (is_array($subarray[$post_pos])) {
+                                    $subarray[$post_pos]=array_merge($subarray[$post_pos],array($attr->key=>$attr_val));                        
+                                }
                             }
+
+                            $post_pos=$post_pos+1;
                             /* [end extra attributes] */
                         }
 

@@ -131,7 +131,7 @@ cigarritaDirective
     link: function (scope, element, attrs) {
       
       setTimeout(function(){
-        element.append('<div id="alert-msg" class="alert alert-success" style="display:none" >Your message has been successfully sent</div>');
+        element.append('<div id="alert-msg" class="alert alert-success" style="display:none;margin-top: 20px;background-color: rgba(223, 240, 216, 0.57);color: rgb(21, 42, 22);" >Your message has been successfully sent</div>');
 
         element.find('form').submit(function(event){
           event.preventDefault();
@@ -154,6 +154,7 @@ cigarritaDirective
           }
 
           setTimeout(function(){
+            $("#alert-msg").fadeOut(3000);
             $rootScope.$broadcast('form.contact.saving',contact_model);
           },1000);
 

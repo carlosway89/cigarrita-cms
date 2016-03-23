@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Post</h4>
+			<h4><?=Yii::t('app','panel.posts')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -13,6 +13,7 @@
 									'model'=>$model,
 									'message'=>$message,
 									'category'=>$category,
+									'post_page'=>$post_page,
 									'language'=>$language,
 									'attr'=>$attr,
 								)

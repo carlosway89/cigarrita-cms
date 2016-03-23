@@ -10,6 +10,7 @@
  * @property string $type
  * @property integer $state
  * @property integer $position
+ * @property integer $hierarchy
  * @property integer $is_deleted
  * @property string $language
  * @property integer $page
@@ -44,7 +45,7 @@ class Menu extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idmenu, state, position, is_deleted, page', 'numerical', 'integerOnly'=>true),
+			array('idmenu, state, position, hierarchy, is_deleted, page', 'numerical', 'integerOnly'=>true),
 			array('url, name', 'length', 'max'=>100),
 			array('type, language', 'length', 'max'=>10),
 			array('source', 'safe'),
@@ -78,6 +79,7 @@ class Menu extends CActiveRecord
 			'type' => 'Type',
 			'state' => 'State',
 			'position' => 'Position',
+			'hierarchy'=>'Hierarchy',
 			'is_deleted' => 'Is Deleted',
 			'language' => 'Language',
 			'page' => 'Page',
@@ -103,6 +105,7 @@ class Menu extends CActiveRecord
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('state',$this->state);
 		$criteria->compare('position',$this->position);
+		$criteria->compare('hierarchy',$this->hierarchy);
 		$criteria->compare('is_deleted',$this->is_deleted);
 		$criteria->compare('language',$this->language,true);
 		$criteria->compare('page',$this->page);

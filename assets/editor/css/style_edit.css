@@ -197,6 +197,9 @@
 	color: rgb(194, 194, 194);
 	font-size: 40px;
 	height: 60px;
+	margin-bottom: 10px;
+	position: absolute;
+	top: 0px;
 }
 .new-external-modal a i{
 	position: absolute;

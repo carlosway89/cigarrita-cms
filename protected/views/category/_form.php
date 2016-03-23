@@ -12,13 +12,17 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nombre de categoria  *'); ?>
-		<?php echo $form->textField($model,'category',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->textField($model,'category',array('required'=>'required','size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'category'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'tag'); ?>
-		<?php echo $form->textField($model,'tag',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->labelEx($model,'Editar por'); ?>
+		<select name="Category[tag]" class="browser-default">
+			<option value="">Ninguno</option>
+			<option value="panel">Entrada</option>
+			<option value="editor">Diseño</option>
+		</select>
 		<?php echo $form->error($model,'tag'); ?>
 	</div>
 

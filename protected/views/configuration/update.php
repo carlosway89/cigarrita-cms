@@ -10,7 +10,7 @@
 					<div class="panel-body">
 						<?php		
 							if (isset($_GET['message'])) {
-								echo "<h4 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET['message']."</h4><br>";
+								echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET['message']."</h6><br>";
 							}
 						?>	
 						<div class="form">

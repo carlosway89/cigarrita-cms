@@ -1,10 +1,9 @@
 
 <?php
 
-	// print_r($attr);
 
-	if (isset($message)) {
-		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h6><br>";
+	if (isset($_GET["message"]) && !$model->isNewRecord) {
+		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
 	}
 
 	if (isset($lang)) {
@@ -23,7 +22,18 @@
 	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'categoria'); ?>
+		
+		
+		<?php			
+		if ($model->isNewRecord) {
+		?>
+		<input type="hidden" name="Post[category]" value="<?=$post_page?>">
+		<?php 
+		}else{
+			if (Yii::app()->user->checkAccess("webmaster")){
+
+		?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.table.category')); ?>
 		<select name="Post[category]" class="browser-default">
 		<?php foreach ($category as $val_cat) {
 		 ?>			 
@@ -31,30 +41,36 @@
 		<?php	
 		}?>
 		</select>
+		<?php }
+		}?>
 		<?php echo $form->error($model,'category'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Cabecera'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.cabecera')); ?>
 		<?php echo $form->textField($model,'header',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'header'); ?>
 	</div>
-
 	<div class="row">
-		<?php echo $form->labelEx($model,'Parrafo'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.teaser')); ?>
+		<textarea  class="materialize-textarea" height="200" name="Post[teaser]"><?=$model->teaser?></textarea>
+		<?php echo $form->error($model,'teaser'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.container')); ?>
 		<textarea  class="froala-editor" name="Post[subheader]"><?=$model->subheader?></textarea>
 		<?php //echo $form->textField($model,'subheader',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'subheader'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Recurso'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.source')); ?>
 		<textarea  class="froala-editor-inline" name="Post[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
 		<?php echo $form->error($model,'source'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'idioma'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.language')); ?>
 		<select name="Post[language]" class="browser-default">
 		<?php foreach ($language as $key => $value) {
 		?>
@@ -66,7 +82,7 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'estado'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.table.state')); ?>
 		<div class="switch">
           <label>
             Off
@@ -82,8 +98,8 @@
 	</div>
 
 	<div class="row buttons">
-		<button class="btn btn-info" type="submit">Guardar</button>
-		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts">Regresar</a>
+		<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
+		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$model->category?$model->category:$post_page?>/<?=isset($lang)?$lang:$model->language?>"><?=Yii::t('app','panel.back')?></a>
 	</div>
 
 <?php $this->endWidget(); ?>
