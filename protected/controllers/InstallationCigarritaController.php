@@ -163,20 +163,16 @@ class InstallationCigarritaController extends Controller
 		$html->save($root."/themes/design/views/site/".$page.".php");
 		$html->clear();
 
-		if ($page!="index") {
+		if ($page=="index") {
     		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
-			$html->find('link',-1)->outertext=$html->find('link',-1)->outertext.'<?php include($request."assets/css_editor.php"); ?>';
+			$html->find('link',-1)->outertext=$html->find('link',-1)->outertext.'<?php if($this->editor){ include($request."assets/css_editor.php"); } ?>';
 			$html->save($root."/themes/design/views/site/".$page.".php");
 	    	$html->clear();
     	}
 
 		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
 		if ($page=="index") {
-			$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php include($request."assets/js_index.php"); ?>';
-		
-		}else{
-			$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php include($request."assets/js_editor.php"); ?>';
-		
+			$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php if ($this->editor){ include($request."assets/js_editor.php"); }else{ include($request."assets/js_index.php"); } ?>';
 		}
 
 		$html_page=$html->save();
@@ -267,7 +263,7 @@ class InstallationCigarritaController extends Controller
 			        	$file->fwrite($page);
 
 			        	$this->generatePHP("index");	
-			        	$this->generatePHP("editor_cigarrita_worker");			        	
+			        	//$this->generatePHP("editor_cigarrita_worker");			        	
 			        	
 	        		}
 	        		

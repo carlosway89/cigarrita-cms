@@ -24,12 +24,11 @@
   <!-- Summernote -->
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/css/plugins/summernote/summernote.css" /> 
 
-  <!-- Codemirror-->
-  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/lib/codemirror.css" />
   
   <!-- Fonts  -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
   <!--[inline-editor] -->
+  <!--
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/froala_editor.css">
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/froala_style.css">
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/code_view.css">
@@ -44,6 +43,11 @@
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/video.css">
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/emoticons.css">
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/css/plugins/fullscreen.css">
+
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/lib/codemirror.css" />
+  
+  -->
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=inlineEditorCSS">
   <style type="text/css">
     .modal-backdrop {
         z-index: 99;
@@ -389,7 +393,7 @@
     
     
     <!-- JQuery v1.9.1 -->
-	   <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+	  <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/underscore/underscore-min.js"></script>
@@ -405,12 +409,6 @@
     <!-- Materialize -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/materialize/materialize.min.js"></script>
     
-    <!-- Wysihtml5 -->
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.js"></script>
-
-    <!-- Summernote -->
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/plugins/summernote/summernote.min.js"></script>
 
     <!-- Codemirror-->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/lib/codemirror.js"></script>
@@ -431,6 +429,7 @@
      var $baseURL="<?=Yii::app()->getBaseUrl(true)?>/panel";
   </script>
   <!--[inline editor]-->
+<!--
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/froala_editor.min.js"></script>
@@ -458,6 +457,8 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/inline_style.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/save.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/fullscreen.min.js"></script>
+-->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=inlineEditorJs"></script>
 <!--language plugin version-->
 
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/languages/<?=Yii::app()->language?>.js"></script>

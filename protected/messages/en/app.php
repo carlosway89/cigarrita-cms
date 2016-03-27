@@ -60,6 +60,7 @@ return
         'panel.users.create'=>'Crear Usuario',
         'panel.users.email'=>'Email',
         'panel.users.user'=>'Usuario',
+        'panel.users.password'=>'Contraseña',
         'panel.users.name'=>'Nombre',
         'panel.users.type'=>'Tipo',
 

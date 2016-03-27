@@ -61,6 +61,7 @@ return
         'panel.users.create'=>'Neue Benutzer',
         'panel.users.email'=>'Email',
         'panel.users.user'=>'Benutzer',
+        'panel.users.password'=>'Kennwort',
         'panel.users.name'=>'Name',
         'panel.users.type'=>'Tipo',
 

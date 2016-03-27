@@ -24,6 +24,11 @@
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
             <link href='https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,400,400italic' rel='stylesheet' type='text/css'>
             <link href='https://fonts.googleapis.com/css?family=Great+Vibes:400' rel='stylesheet' type='text/css'>
+            <?php 
+                if ($this->editor) {
+                     include($request."assets/css_editor.php"); 
+                }               
+            ?>
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
@@ -94,6 +99,13 @@
             <script src="/themes/design/js/contact_me.js"></script>
             <!-- Custom Theme JavaScript -->
             <script src="/themes/design/js/agency.js"></script>
-            <?php include($request."assets/js_index.php"); ?>
+            <?php 
+                if ($this->editor) {
+                    include($request."assets/js_editor.php");
+                }else{
+                    include($request."assets/js_index.php");
+                }
+                 
+            ?>
             </body>
         </html>

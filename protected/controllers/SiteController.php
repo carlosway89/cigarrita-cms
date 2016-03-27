@@ -7,7 +7,8 @@ class SiteController extends Controller
 	 * Declares class-based actions.
 	 */
 	public $layout='//site/index';
-	
+	public $editor=false;
+
 	public function filters()
 	{
 		return array('accessControl');
@@ -51,12 +52,18 @@ class SiteController extends Controller
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
-	public function actionIndex()
+	public function actionIndex($editor=false)
 	{
 		
 		$is_instaled=Configuration::model()->findByPk(1)->is_installed;
 		if ($is_instaled) {
-			$this->render('index');
+			if (Yii::app()->user->id) {
+				$this->editor=$editor;
+			}else{
+				$this->editor=false;
+			}
+
+			$this->render('index');		
 		}else{
 			$this->redirect(array('/installationCigarrita'));
 		}
