@@ -42,16 +42,6 @@ cigarritaServices
         update:{method:'PUT'}
     });
 })
-// .factory('Content', ['$resource',
-//   function($resource){
-//     return $resource('api/content/language:condition/:language:attr', {
-//         language:"@lang",
-//         condition:"@condition",
-//         attr:"@attr"
-//     }, {
-//       query: {method:'GET', params:{language:'es'}, isArray:true}
-//     });
-//   }])
 .factory('Content', ['$resource',
   function($resource){
     return $resource($base_url+'/api/content/:query', {

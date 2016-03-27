@@ -9,7 +9,6 @@ var cigarritaApp = angular.module('cigarritaWeb', [
   'cigarritaFilters',
   'cigarritaDirective',
   'cigarritaServices',
-  'summernote',
   'froala'
 ]);
 

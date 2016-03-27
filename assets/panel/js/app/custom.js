@@ -230,12 +230,12 @@ $(function(){
 	/******************************
 	summernote Bootstrap
 	*******************************/
-	if( $.isFunction($.fn.summernote) ){
-		$('.summernote').summernote({
-	      height: 200,
+	// if( $.isFunction($.fn.summernote) ){
+	// 	$('.summernote').summernote({
+	//       height: 200,
 	      
-	  });
-	}
+	//   });
+	// }
 
 	/********************************
 	wysihtml5

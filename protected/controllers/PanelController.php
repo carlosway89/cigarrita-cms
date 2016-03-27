@@ -456,7 +456,10 @@ class PanelController extends Controller
 
 		if(isset($_POST['User']))
 		{	
-			
+
+			$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
+				
+
 			$pass=$model->password;
 			$model->attributes=$_POST['User'];
 			$model->estado=$model->estado=='on'?1:0;
@@ -466,8 +469,10 @@ class PanelController extends Controller
 			$model->password=$pass==$model->password?$model->password:md5($model->password);
 
 			
-			if($model->save()){									
-				$message="Successfully Updated";
+			if($model->save()){		
+				$id=$id!=null?"/".$id:"";
+				$this->redirect(array("panel/users".$id."?message=".$message));
+											
 				
 			}
 				

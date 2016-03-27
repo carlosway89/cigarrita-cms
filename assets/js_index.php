@@ -46,7 +46,7 @@
   {
      var script = document.createElement('script');
      script.type = "text/javascript";
-     script.src = "https://code.jquery.com/jquery-2.1.0.min.js";
+     script.src = "<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/plugins/jquery-2.1.0.min.js";
      document.getElementsByTagName('head')[0].appendChild(script);
   }
 </script>
@@ -59,10 +59,13 @@
 </script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/dropdown_cw.js"></script>
 
+<!--
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+-->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=angularJs"></script>
 
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/cigarrita.js"></script>
 <script type="text/javascript">
@@ -134,11 +137,13 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
   }]);
 
 </script>
-
+<!--
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/controllers/controllers.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/modules/animations.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/modules/filters.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/modules/directives.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/models/services.js"></script>
+-->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=cigarritaAppWeb"></script>
 
 <!--[/cigarrita Angular Path]-->

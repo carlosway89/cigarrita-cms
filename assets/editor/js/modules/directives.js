@@ -242,20 +242,20 @@ cigarritaDirective
 
                 // console.log(element.height());
 
-                var plus=element.height() - 200;
+                // var plus=element.height() - 200;
 
-                if (attrs.elementObject=="block") {
-                  var new_position=element.offset().top - 100;
-                }else{
-                  var new_position=element.offset().top + plus;
-                }
+                // if (attrs.elementObject=="block") {
+                //   var new_position=element.offset().top - 100;
+                // }else{
+                //   var new_position=element.offset().top + plus;
+                // }
 
 
                 $rootScope.$broadcast('init.editor.inline',element);
 
-                $('html, body').animate({
-                    scrollTop: new_position
-                }, 1500);
+                // $('html, body').animate({
+                //     scrollTop: new_position
+                // }, 1500);
                 
               });
               
@@ -531,130 +531,4 @@ cigarritaDirective
               
           }
     }
-})
-.directive('wysiwyg', function($document) {
-
-    return {
-      restrict: 'EA',
-      transclude: true,
-      // restrict: "A",
-
-      require: "ngModel",
-
-      template: "<textarea class='form-control' style='width: 100%;height:200px' placeholder='Enter your text ...'></textarea>",
-
-      replace: true,
-
-      link: function (scope, element, attrs, controller) {
-
-        var styleSheets,
-
-            synchronize, editor,
-
-            wysihtml5ParserRules = {
-
-              tags: {
-
-                strong: {}, b: {}, i: 1, em: 1, br: {}, p: 1,
-                form:1, input:{} , textarea:{}, button:1,
-                div: 1, span: 1, ul: 1, ol: 1, li: 1,
-                table:1,td:1,tr:1,th:1, tbody:1,thead:1,
-                h1: {}, h2: {}, h3: {}, 
-
-                a: {
-
-                  set_attributes: {
-                    target: "_blank",
-
-                    rel:    "nofollow"
-
-                  },
-
-                  check_attributes: {
-
-                    href:   "url" // important to avoid XSS
-
-                  }
-
-                }
-
-              }
-
-            };
-
-
-        styleSheets = _($document[0].styleSheets)
-
-          .filter(function(ss) { return ss.href; })
-
-          .pluck('href').value();
-
-
-        editor = new wysihtml5.Editor(element[0], {
-
-          toolbar: attrs.wysiwygToolbar, // id of toolbar element
-
-          parserRules: wysihtml5ParserRules, // defined in parser rules set
-
-          useLineBreaks: false,
-
-          stylesheets: styleSheets
-
-        });
-
-
-        synchronize = function() {
-
-          controller.$setViewValue(editor.getValue());
-
-          scope.$apply();
-
-        };
-
-
-        editor.on('redo:composer', synchronize);
-
-        editor.on('undo:composer', synchronize);
-
-        editor.on('paste', synchronize);
-
-        editor.on('aftercommand:composer', synchronize);
-
-        editor.on('change', synchronize);
-
-
-        // the secret sauce to update every keystroke, may be cheating but it works
-
-        editor.on('load', function() {
-
-          wysihtml5.dom.observe(
-
-            editor.currentView.iframe.contentDocument.body, 
-
-            ['keyup'], synchronize);
-
-        });
-
-
-        // handle changes to model from outside the editor
-
-        scope.$watch(attrs.ngModel, function(newValue) {
-
-                editor.clear();
-                // necessary to prevent thrashing
-
-                if (newValue && (newValue !== editor.getValue())) {
-
-                  element.html(newValue);
-
-                  editor.setValue(newValue);
-
-                }
-
-            });
-
-      }
-
-    };
-
 });

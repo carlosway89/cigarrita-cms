@@ -150,7 +150,7 @@
               }
             ?>
             <div class="user text-center">
-                  <img src="<?php echo $logo?>" class="img-circle" alt="cigarrita worker">
+                  <img src="<?php echo Yii::app()->request->baseUrl."/".$logo?>" class="img-circle" alt="cigarrita worker">
                   <h4 class="user-name"><?php echo Yii::app()->user->getState('fullname');?></h4>
             </div>
             

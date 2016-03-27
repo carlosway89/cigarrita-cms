@@ -2,23 +2,28 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manejar Usuarios</h4>
+			<h4><?=Yii::t('app','panel.users')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Nuevo Usuario</button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.users.create')?></button>
 						<br><br>
+						<?php 
+						if (isset($_GET["message"]) && !$model->isNewRecord) {
+							echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
+						}
+						?>
 						<table id="userList" class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="name">Email</th>
-						            <th data-field="flag">Usuario</th>
-						            <th data-field="state">Nombre</th>
-						            <th data-field="state">Tipo</th>
-						            <th data-field="state">Estado</th>
-						            <th>Opciones</th>
+						            <th data-field="email"><?=Yii::t('app','panel.users.email')?></th>
+						            <th data-field="user"><?=Yii::t('app','panel.users.user')?></th>
+						            <th data-field="name"><?=Yii::t('app','panel.users.user')?></th>
+						            <th data-field="type"><?=Yii::t('app','panel.users.type')?></th>
+						            <th data-field="state"><?=Yii::t('app','panel.table.state')?></th>
+						            <th><?=Yii::t('app','panel.table.options')?></th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -36,12 +41,12 @@
 										}
 									?>
 									</td>
-									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?'Enable':'Disable'?></td>
+									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></td>
 									<td>
 										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           				?>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users/<?=$value->iduser?>" class="text-info"><i class="fa fa-pencil "></i> Editar</a>&nbsp;&nbsp;
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/user/<?=$value->iduser?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users/<?=$value->iduser?>" class="text-info"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/user/<?=$value->iduser?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
 										<?php }?>
 									</td>
 								</tr>
@@ -59,7 +64,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Crear Nuevo Usuario</h4>
+        <h4 class="modal-title" id="myModalLabel"><?=Yii::t('app','panel.users.create')?></h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//user/_form', 
