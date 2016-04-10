@@ -1289,6 +1289,10 @@ class PanelController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 
+		//to set a redirect url and save 
+		$url=Yii::app()->getRequest()->getRequestUri();
+		Yii::app()->user->setReturnUrl($url);
+
 		$this->render('index');
 	}
 

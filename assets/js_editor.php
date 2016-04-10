@@ -26,35 +26,6 @@
 
 <!--[inline editor]-->
 
-<!--
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/plugins/codemirror.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/plugins/xml.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/froala_editor.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/align.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/code_beautifier.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/code_view.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/colors.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/emoticons.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/font_size.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/font_family.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/image.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/image_manager.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/line_breaker.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/link.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/lists.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/paragraph_format.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/paragraph_style.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/video.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/table.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/url.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/emoticons.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/file.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/entities.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/char_counter.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/inline_style.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/save.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/plugins/fullscreen.min.js"></script>
--->
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=inlineEditorJs"></script>
 
 <!--language plugin version-->
@@ -65,15 +36,11 @@
 <script type="text/javascript">
 	var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
   var $is_master="<?php echo Yii::app()->user->checkAccess('webmaster')?Yii::app()->user->checkAccess('webmaster'):0;?>";
+  $('body').append('<div class="loading-container"><svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><path fill="#fff" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z"><animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="2s" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform></path><path fill="#fff" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z"><animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50" to="-360 50 50" repeatCount="indefinite"></animateTransform></path><path fill="#fff" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5L82,35.7z"><animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="2s" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform></path></svg></div>');
 </script>
 
 <!-- AngularJs version 1.3.15-->
-<!--
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/plugins/angular.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/plugins/angular-animate.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/plugins/angular-route.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/plugins/angular-resource.min.js"></script>
--->
+
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=angularJs"></script>
 
 <script type="text/javascript">
@@ -194,9 +161,11 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     foreach ($menu as $value) {
 
       if ($value->type=="new") {
+        $_template=$this->render_page('site',$value->url);
     ?>
       when('<?=$value->url?>', {
-        templateUrl: $base_url+'/api/template<?=$value->url?>/site',
+        // templateUrl: $base_url+'/api/template<?=$value->url?>/site',
+        template:'<?php echo $_template; ?>',
         controller: 'pageCtrl',
         pageid: <?=$value->page?>,
         reloadOnSearch: false
@@ -208,11 +177,12 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     <?php 
     foreach ($pages as $pag_val) { 
       if ($pag_val->single_page) {
-      
+        $_template=$this->render_page('site',$pag_val->name);
     ?>
       
       when('/<?=$pag_val->name?>/:id/:name', {
-        templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
+        // templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
+        template:'<?php echo $_template; ?>',
         controller: 'singleCtrl'
       }).
     <?php 
@@ -222,10 +192,11 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     <?php 
     foreach ($pages as $pag_val) { 
       if ($pag_val->name=="home") {
-      
+        $_template=$this->render_page('site','home');
     ?>
       when('/:link', {
-        templateUrl: $base_url+'/api/template/home/site', //router template with api
+        // templateUrl: $base_url+'/api/template/home/site', //router template with api
+        template:'<?php echo $_template; ?>',
         controller: 'homeCtrl',
         pageid: <?=$pag_val->idpage?>
       }).
@@ -241,13 +212,6 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
 
 </script>
 
-<!--
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/controllers/controllers.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/modules/animations.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/modules/filters.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/modules/directives.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/models/services.js"></script>
--->
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=cigarritaApp"></script>
 
 <!--[/cigarrita Angular Path]-->

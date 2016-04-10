@@ -8,6 +8,7 @@
         </div>
     </div>
 </header>
+<?=$modules["mod_language"]?>
 <!-- Services Section -->
 <section id="services" element-block="services">
     <div class="container">

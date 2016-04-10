@@ -91,9 +91,11 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     foreach ($menu as $value) {
 
 			if ($value->type=="new") {
+        $_template=$this->render_page('site',$value->name);
     ?>
       when('<?=$value->url?>', {
-        templateUrl: $base_url+'/api/template<?=$value->url?>/site',
+        // templateUrl: $base_url+'/api/template<?=$value->url?>/site',
+        template:'<?php echo $_template; ?>',
         controller: 'pageCtrl',
         pageid: <?=$value->page?>,
         reloadOnSearch: false
@@ -105,11 +107,12 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     <?php 
     foreach ($pages as $pag_val) { 
       if ($pag_val->single_page) {
-      
+        $_template=$this->render_page('site',$pag_val->name);
     ?>
       
       when('/<?=$pag_val->name?>/:id/:name', {
-        templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
+        // templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
+        template:'<?php echo $_template; ?>',
         controller: 'singleCtrl'
       }).
     <?php 
@@ -119,10 +122,12 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     <?php 
     foreach ($pages as $pag_val) { 
       if ($pag_val->name=="home") {
-      
+        $_template=$this->render_page('site','home');
     ?>
       when('/:link', {
-        templateUrl: $base_url+'/api/template/home/site', //router template with api
+
+        // templateUrl: $base_url+'/api/template/home/site', //router template with api
+        template:'<?php echo $_template; ?>',
         controller: 'homeCtrl',
         pageid: <?=$pag_val->idpage?>
       }).
@@ -145,5 +150,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/models/services.js"></script>
 -->
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=cigarritaAppWeb"></script>
+<script type="text/javascript">
 
+</script>
 <!--[/cigarrita Angular Path]-->

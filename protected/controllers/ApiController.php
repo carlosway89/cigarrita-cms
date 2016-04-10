@@ -87,7 +87,8 @@ class ApiController extends Controller
         $template=strtolower($this->uri(2));
         $type=$this->uri(3);
         $var="";
-        $this->render("/$type/".$template,array("var"=>$var));
+        echo preg_replace("/[\r\n]*/","",$this->renderPartial("//$type/$template",null,true));
+        //$this->render("/$type/".$template,array("var"=>$var));
         // echo $id;
     }
 
@@ -661,45 +662,6 @@ class ApiController extends Controller
 
         echo 'Not Allowed';
 
-        // switch ($called) {
-        //     case 'GET':
-        //         if ($this->uri(4)) {
-        //             $this->actionList($model,$this->uri(4)); 
-        //         }else{
-        //             if ($this->uri(3)) {
-        //                 $this->actionView($model,$this->uri(3));
-        //             }
-        //             else{                        
-        //                $this->actionList($model,null); 
-        //             }
-                    
-        //         }                
-                
-        //         break;
-
-        //     case 'POST':
-
-        //             $requestBody = Yii::app()->request->getRawBody();
-
-        //             $parsedRequest = CJSON::decode($requestBody);
-                  
-        //             $this->actionCreate($model);
-                
-        //         break;
-        //     case 'PUT':
-
-        //         $requestBody = Yii::app()->request->getRawBody();
-
-        //         $parsedRequest = CJSON::decode($requestBody);
-        //         $this->actionUpdate($model,$this->uri(3));
-        //     case 'DELETE':
-              
-        //         $this->actionDelete($model,$this->uri(3));
-            
-        //     break;
-        //     default:
-        //         break;
-        // }
     }
 
     public static function class_exists($className) {
@@ -863,6 +825,7 @@ class ApiController extends Controller
         $this->_checkAuth();
 
         $model=ucfirst($model);
+        $_model=$model;
 
         $requestBody = Yii::app()->request->getRawBody();
 
@@ -885,7 +848,7 @@ class ApiController extends Controller
         }
 
         
-        $this->saveLog("create:".$modelo);
+        $this->saveLog("create:".$_model);
 
         if ($model!='user') {
             // Try to save the model
@@ -933,6 +896,7 @@ class ApiController extends Controller
         // Get PUT parameters
         // parse_str(file_get_contents('php://input'), $put_vars);
         $model=ucfirst($model);
+        $_model=$model;
 
         $requestBody = Yii::app()->request->getRawBody();
 
@@ -940,7 +904,7 @@ class ApiController extends Controller
         
         $model = $model::model()->findByPk($id);    
 
-        $this->saveLog("update:".$modelo);
+        $this->saveLog("update:".$_model);
 
         if(is_null($model))
             $this->_sendResponse(400, sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",$_GET['model'], $_GET['id']) );

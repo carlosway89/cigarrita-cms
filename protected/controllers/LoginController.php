@@ -57,6 +57,13 @@ class LoginController extends Controller
 
 		$model=new LoginForm;
 
+		//to set a redirect url and save 
+		//$url=Yii::app()->getRequest()->getRequestUri();
+		//Yii::app()->user->setReturnUrl($url);
+		$returnUrl=Yii::app()->user->returnUrl;
+		$returnUrl=$returnUrl!="/"?$returnUrl:"/panel";
+		//Yii::app()->user->setState('iduser',null);
+
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
@@ -72,14 +79,18 @@ class LoginController extends Controller
 			// $model->rememberMe=$_POST['LoginForm[3]']=='on'?1:0;
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect('/panel');
+				//$this->redirect('/panel');
+				$this->redirect($returnUrl);
 		}
 
 		if (!Yii::app()->user->getState('iduser')) {
+			Yii::app()->user->setState('iduser',null);
 			$this->render('index');
 		}
 		else{
-			$this->redirect('/panel');
+			// get the url saved and redirect
+			$this->redirect($returnUrl);
+			//$this->redirect('/panel');
 		}
 
 		

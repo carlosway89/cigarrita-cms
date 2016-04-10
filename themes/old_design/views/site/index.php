@@ -12,15 +12,15 @@
             <meta name="author" lang="en" content="Cigarrita Worker"/>
             <meta name="keywords" content="keywords"/>
             <meta name="robots" content="INDEX,FOLLOW">
-            <link rel="stylesheet" type="text/css" href="/themes/design/css/bootstrap.css" />
-            <link rel="stylesheet" type="text/css" href="/themes/design/css/semantic.min.css" />
-            <link rel="stylesheet" type="text/css" href="/themes/design/css/style.css" />
-            <script type="text/javascript" src="/themes/design/js/jquery-2.1.1.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="/themes/old_design/css/bootstrap.css" />
+            <link rel="stylesheet" type="text/css" href="/themes/old_design/css/semantic.min.css" />
+            <link rel="stylesheet" type="text/css" href="/themes/old_design/css/style.css" />
+            <script type="text/javascript" src="/themes/old_design/js/jquery-2.1.1.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-            <script type="text/javascript" src="/themes/design/js/webfont.js"></script>
-            <script type="text/javascript" src="/themes/design/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="/themes/design/js/semantic.js"></script>
-            <script type="text/javascript" src="/themes/design/js/outsider.js"></script>
+            <script type="text/javascript" src="/themes/old_design/js/webfont.js"></script>
+            <script type="text/javascript" src="/themes/old_design/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="/themes/old_design/js/semantic.js"></script>
+            <script type="text/javascript" src="/themes/old_design/js/outsider.js"></script>
             <?php include($request."assets/js_index.php"); ?>
             </head>
             <body ng-controller="indexCtrl">

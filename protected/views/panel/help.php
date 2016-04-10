@@ -17,7 +17,7 @@
 	                            </a>
 	                          </h4>
 	                        </div>
-	                        <div style="height: 0px;" id="collapseOne" class="panel-collapse collapse">
+	                        <div id="collapseOne" class="panel-collapse collapse in">
 	                          <div class="panel-body">
 	                          	
 	                          	<h4>Enabling Templates</h4>
@@ -173,6 +173,7 @@ element-block='category-name'
                       					<li>- data-limit: number and limit of items </li>
                       					<li>- data-order: ASC(-idpost) or DESC(idpost) </li>
                       					<li>- ng-class: "{active : $first}" set a active Class to the first Item</li>
+	                          			<li>- element-contenido="non-editor" : disable the inline editor</li>
 	                          		</ul>
 	                          	</blockquote>
 	                          </div>

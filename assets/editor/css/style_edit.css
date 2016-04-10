@@ -35,19 +35,27 @@
 	display:block;
 }*/
 .plus-gray span{
-	font-size: 70px;
-	line-height: 70px;
+	font-size: 50px !important;
+	line-height: 55px !important;
 	padding: 0px;
 	font-weight: 100;
 	color: gray;
 	display: block;
+	font-family: verdana !important;
+	-webkit-box-sizing:content-box !important;
+	-moz-box-sizing:content-box !important;
+	box-sizing:content-box !important;
 
 }
 .plus-gray label{
-	font-size: 10px;
+	font-size: 12px !important;
 	color: gray;
 	margin-bottom: 10px;
 	display: block;
+	font-family: verdana !important;
+	-webkit-box-sizing:content-box !important;
+	-moz-box-sizing:content-box !important;
+	box-sizing:content-box !important;
 }
 .inline-add{
 	margin-top: 50px;
@@ -68,23 +76,35 @@
 .inline-add a{
 	text-decoration: none !important;	
 	background-color: transparent !important;
+	font-family: verdana !important;
+	display: table !important;
+	width: 100% !important;
+	-webkit-box-sizing:content-box !important;
+	-moz-box-sizing:content-box !important;
+	box-sizing:content-box !important;
 }
 #inline-editors{
 	position:absolute;
 	z-index: 1000;
-	right:0;
-	margin-right: 5px;
-	top:0;
-	margin-top: 5px;
-
-
+	right:0 !important;
+	margin-right: 5px !important;
+	top:0 !important;
+	margin-top: 5px !important;
+	line-height: 0px !important;
 }
 #inline-editors span{
-	font-size: 20px;	
-	width:70px;
+	font-size: 20px !important;	
+	line-height: 20px !important;
+	width:70px !important;
+	height:22px !important;
+	padding:5px !important;
 	text-align: center;
 	color:rgba(255,255,255,0.9);
 	cursor: pointer;
+	font-family: verdana !important;
+	-webkit-box-sizing:content-box !important;
+	-moz-box-sizing:content-box !important;
+	box-sizing:content-box !important;
 
 }
 
@@ -140,13 +160,16 @@
 	font-size: 16px !important;
 }
 #inline-saver span{
-	font-size: 16px;	
-	width:70px;
+	font-size: 12px !important;
+	width: 70px !important;
 	text-align: center;
 	cursor: pointer;
-	border:1px solid;
-
-
+	border: 1px solid;
+	font-family: verdana !important;
+	-webkit-box-sizing:content-box !important;
+	-moz-box-sizing:content-box !important;
+	box-sizing:content-box !important;
+	padding: 10px 4px !important;
 }
 
 #inline-saver span:first-child{
@@ -222,8 +245,10 @@
   visibility: hidden;
   position: absolute;
   bottom: 110%;
-  font-size: 14px;
+  font-size: 14px  !important;
   font-weight: 100 !important;
+  font-style: normal !important; 
+  text-transform: initial !important;
   /*left: -70px;*/
   opacity: 0;
   content: attr(data-tool); /* might also use attr(title) */
@@ -238,6 +263,10 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  font-family: verdana !important;
+	-webkit-box-sizing:content-box !important;
+	-moz-box-sizing:content-box !important;
+	box-sizing:content-box !important;
 }
 .tooling-top:before {
   position: absolute;

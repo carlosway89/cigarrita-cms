@@ -63,7 +63,7 @@ class SiteController extends Controller
 				$this->editor=false;
 			}
 
-			$this->render('index');		
+			$this->render('index',array("modules"=>$this->get_modules()));	
 		}else{
 			$this->redirect(array('/installationCigarrita'));
 		}
@@ -71,7 +71,34 @@ class SiteController extends Controller
 		
 		
 	}
+	public function render_page($type,$template){
 
+		
+        return preg_replace("/[\r\n]*/","",$this->renderPartial("//$type/$template",array("modules"=>$this->get_modules()),true));
+ 		
+    }
+    public function get_modules($extra=null){
+    	
+    	$modules=array();
+
+    	$core=array(
+				"Language"=>Language::model(),
+				"Post"=>Post::model(),
+				"Menu"=>Menu::model(),
+				"Block"=>Block::model(),
+				"Category"=>Category::model(),
+				"Page"=>Page::model(),
+				"extra"=>$extra,
+				"editor"=>$this->editor,
+				"login"=>Yii::app()->user
+			);
+		$root=$_SERVER['DOCUMENT_ROOT'];
+
+    	$modules["mod_language"] = $this->renderInternal($root."/assets/modules/mod_language/php/mod_language.php",$core,true);
+
+
+    	return $modules;
+    }
 	/**
 	 * This is the action to handle external exceptions.
 	 */
@@ -84,7 +111,7 @@ class SiteController extends Controller
 
 			$is_instaled=Configuration::model()->findByPk(1)->is_installed;
 			if ($is_instaled) {
-				$this->render('index');
+				$this->render('index',array("modules"=>$this->get_modules()));
 			}else{
 				$this->redirect(array('/installationCigarrita'));
 			}
@@ -95,31 +122,6 @@ class SiteController extends Controller
 		
 	}
 
-	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
-	}
 
 	/**
 	 * Displays the login page

@@ -17,7 +17,7 @@
 				sleep(1);
 				$res3=$gen->create_config();
 				if ($res3=="1") {
-					sleep(5);
+					sleep(3);
 					header("Location: /installationCigarrita");
 				}else{
 					$message=$res3;
