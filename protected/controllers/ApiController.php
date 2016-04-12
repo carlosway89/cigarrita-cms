@@ -12,6 +12,10 @@ class ApiController extends Controller
     private $language_initial='en';
 
     private $uri=null;
+
+    public $modules=array();
+
+    public $editor=true;
     /**
      * @return array action filters
      */
@@ -71,7 +75,6 @@ class ApiController extends Controller
         $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model) );
 
     }
-
     public function uri($i){
 
         // $url=Yii::app()->request->url;
@@ -86,10 +89,36 @@ class ApiController extends Controller
         
         $template=strtolower($this->uri(2));
         $type=$this->uri(3);
-        $var="";
-        echo preg_replace("/[\r\n]*/","",$this->renderPartial("//$type/$template",null,true));
-        //$this->render("/$type/".$template,array("var"=>$var));
-        // echo $id;
+        
+        echo  preg_replace("/[\r\n]*/","",$this->renderPartial("//$type/$template",array("modules"=>$this->get_modules()),true));
+    
+
+    }
+    public function get_modules($extra=null){
+        
+        $modules=array();
+
+        $core=array(
+                "Language"=>Language::model(),
+                "Post"=>Post::model(),
+                "Menu"=>Menu::model(),
+                "Block"=>Block::model(),
+                "Category"=>Category::model(),
+                "Page"=>Page::model(),
+                "extra"=>$extra,
+                "editor"=>$this->editor,
+                "login"=>Yii::app()->user->id
+            );
+        $root=$_SERVER['DOCUMENT_ROOT'];
+
+        $_modules=Modules::model()->findAll("is_deleted='0'");
+        foreach ( $_modules as $mod_val) {
+            $modules[$mod_val->name] = $this->renderInternal($root."/assets/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
+        }
+        
+
+
+        return $modules;
     }
 
     public function actionMyuser(){
@@ -419,11 +448,12 @@ class ApiController extends Controller
 
     }
 
-    public function actionContent(){
+    public function actionContent($return=false,$filter=null){
+        
 
         $criteria = new CDbCriteria;
 
-        $filter=$this->uri(2);
+        $filter=$filter?$filter:$this->uri(2);
 
         $criteria->condition="";
         
@@ -537,7 +567,12 @@ class ApiController extends Controller
 
         }
 
-        $this->_sendResponse(200, CJSON::encode($array));
+        if (!$return) {
+            $this->_sendResponse(200, CJSON::encode($array));
+        }else{
+            return CJSON::encode($array);
+        }
+        
     }
 
 
@@ -668,7 +703,7 @@ class ApiController extends Controller
         return file_exists(Yii::getPathOfAlias('application.models').DIRECTORY_SEPARATOR.$className.'.php');
     }
 
-    public function actionList($model,$filter)
+    public function actionList($model,$filter=null,$return=false)
     {   
         
         $model=ucfirst($model);
@@ -780,8 +815,11 @@ class ApiController extends Controller
         if(is_null($models)) {
              $this->_sendResponse(200, sprintf('No items where found for model <b>%s</b>', $_GET['model']) );
         } else {
-                 
-             $this->_sendResponse(200, CJSON::encode($models));
+            if (!$return) {
+                    $this->_sendResponse(200, CJSON::encode($models));
+            }else{
+                    return CJSON::encode($models);
+            }
         }
 
     }
@@ -790,7 +828,7 @@ class ApiController extends Controller
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($model,$id)
+    public function actionView($model,$id,$return=false)
     {
         
        $model=ucfirst($model);
@@ -805,7 +843,11 @@ class ApiController extends Controller
         if(is_null($model)) {
             $this->_sendResponse(404, 'No Item found with id '.$_GET['id']);
         } else {
-            $this->_sendResponse(200, CJSON::encode($model));
+            if (!$return) {
+                    $this->_sendResponse(200, CJSON::encode($model));
+            }else{
+                    return CJSON::encode($model);
+            }
             // $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model->attributes));
         }
     }

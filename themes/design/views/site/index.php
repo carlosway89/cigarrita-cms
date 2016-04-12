@@ -47,11 +47,7 @@
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right header-options">
-                            <li class="hidden"> <a href="#page-top"></a> </li>
-                            <li  ng-repeat="link in links"  > <a ng-href="{{link.url}}" menu-links="{{link.type}}" >{{link.name}}</a> </li>
-                            
-                        </ul>
+                        <?=$modules["mod_menu"]?>
                     </div>
                     <!-- /.navbar-collapse -->
                 </div>

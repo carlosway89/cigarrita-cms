@@ -1,8 +1,11 @@
 <?php
-	echo "hallo ich bin ein Modul";
 
-	$lang=$Language->find();
+	
+// assert framework initialization
+defined('cigarrita') || die('Illegal call: Missing framework initialization - request aborted.');
+
+echo "hallo ich bin ein Modul";
+
 	
 ?>
-<h1>hallo MODUL</h2>
-<p><?php echo $lang->name; ?></p>
+<h1>hallo MODUL language</h2>

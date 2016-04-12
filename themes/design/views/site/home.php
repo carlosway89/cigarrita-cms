@@ -1,5 +1,5 @@
 <!-- Header -->
-<header>
+<header id="home">
     <div class="container" element-block="slider">
         <div class="intro-text">
             <div class="intro-lead-in" element-object="block" element-contenido>{{block.header}}</div>
@@ -8,7 +8,7 @@
         </div>
     </div>
 </header>
-<?=$modules["mod_language"]?>
+
 <!-- Services Section -->
 <section id="services" element-block="services">
     <div class="container">

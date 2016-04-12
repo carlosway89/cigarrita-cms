@@ -132,19 +132,19 @@ var modal_options=function($scope,$http,$compile,$rootScope){
 cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$http','Model',function($rootScope,$scope,$compile,$http,Model){
 
 
-    var obj_lang={
-      estado:1,
-      is_deleted:0
-    };
+    // var obj_lang={
+    //   estado:1,
+    //   is_deleted:0
+    // };
 
-    Model.query({
-      model:'language',
-      id:'query',
-      query:JSON.stringify(obj_lang)
-    },function(data){
-      $scope.current=beans.readCookie('language.initial');
-      $scope.language=data;
-    });
+    // Model.query({
+    //   model:'language',
+    //   id:'query',
+    //   query:JSON.stringify(obj_lang)
+    // },function(data){
+    //   $scope.current=beans.readCookie('language.initial');
+    //   $scope.language=data;
+    // });
 
     
     var links=function(){
@@ -161,7 +161,7 @@ cigarritaControllers.controller('indexCtrl',['$rootScope','$scope','$compile','$
       });
     }
     
-    links();
+    //links();
 
     $scope.$on('language.changed', function() {
         links();

@@ -8,6 +8,7 @@ class SiteController extends Controller
 	 */
 	public $layout='//site/index';
 	public $editor=false;
+	public $modules=array();
 
 	public function filters()
 	{
@@ -63,7 +64,10 @@ class SiteController extends Controller
 				$this->editor=false;
 			}
 
-			$this->render('index',array("modules"=>$this->get_modules()));	
+			$this->modules=$this->get_modules();
+			
+			$this->render('index');	
+		
 		}else{
 			$this->redirect(array('/installationCigarrita'));
 		}
@@ -90,11 +94,15 @@ class SiteController extends Controller
 				"Page"=>Page::model(),
 				"extra"=>$extra,
 				"editor"=>$this->editor,
-				"login"=>Yii::app()->user
+				"login"=>Yii::app()->user->id,
 			);
 		$root=$_SERVER['DOCUMENT_ROOT'];
 
-    	$modules["mod_language"] = $this->renderInternal($root."/assets/modules/mod_language/php/mod_language.php",$core,true);
+		$_modules=Modules::model()->findAll("is_deleted='0'");
+		foreach ( $_modules as $mod_val) {
+			$modules[$mod_val->name] = $this->renderInternal($root."/assets/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
+		}
+    	
 
 
     	return $modules;
@@ -111,7 +119,8 @@ class SiteController extends Controller
 
 			$is_instaled=Configuration::model()->findByPk(1)->is_installed;
 			if ($is_instaled) {
-				$this->render('index',array("modules"=>$this->get_modules()));
+				$this->modules=$this->get_modules();				
+				$this->render('index');
 			}else{
 				$this->redirect(array('/installationCigarrita'));
 			}

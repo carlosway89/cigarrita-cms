@@ -9,4 +9,5 @@
 
   $theme=Yii::app()->theme->baseUrl;
   $request=Yii::app()->request->baseUrl;
+  $modules=$this->modules;
 ?>

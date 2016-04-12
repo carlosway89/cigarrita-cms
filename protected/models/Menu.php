@@ -8,6 +8,9 @@
  * @property string $url
  * @property string $name
  * @property string $type
+ * @property string $SEO_title
+ * @property string $SEO_description
+ * @property string $SEO_keywords
  * @property integer $state
  * @property integer $position
  * @property integer $hierarchy
@@ -52,7 +55,7 @@ class Menu extends CActiveRecord
 			array('parent_id', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idmenu, url, name, type, state, position, is_deleted, language, page, parent_id, source', 'safe', 'on'=>'search'),
+			array('idmenu, url, name, SEO_title, SEO_description, SEO_keywords, type, state, position, is_deleted, language, page, parent_id, source', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +79,9 @@ class Menu extends CActiveRecord
 			'idmenu' => 'Idmenu',
 			'url' => 'Url',
 			'name' => 'Name',
+			'SEO_title'=>'SEO title',
+			'SEO_description'=>'SEO description',
+			'SEO_keywords'=>'SEO keywords',
 			'type' => 'Type',
 			'state' => 'State',
 			'position' => 'Position',
