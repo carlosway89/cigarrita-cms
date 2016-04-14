@@ -9,6 +9,7 @@ class SiteController extends Controller
 	public $layout='//site/index';
 	public $editor=false;
 	public $modules=array();
+	public $seo=array();
 
 	public function filters()
 	{
@@ -56,22 +57,25 @@ class SiteController extends Controller
 	public function actionIndex($editor=false)
 	{
 		
-		$is_instaled=Configuration::model()->findByPk(1)->is_installed;
-		if ($is_instaled) {
-			if (Yii::app()->user->id) {
-				$this->editor=$editor;
-			}else{
-				$this->editor=false;
-			}
+		try {
+			error_reporting(0);
+			http_response_code(200);
 
-			$this->modules=$this->get_modules();
-			
-			$this->render('index');	
-		
-		}else{
-			$this->redirect(array('/installationCigarrita'));
+			$is_instaled=Configuration::model()->findByPk(1)->is_installed;
+			if ($is_instaled) {
+				if (Yii::app()->user->id) {
+					$this->editor=$editor;
+				}else{
+					$this->editor=false;
+				}
+				$this->layout="//layouts/web";				
+				$this->render('index',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
+			}else{
+				$this->redirect(array('/installationCigarrita'));
+			}
+		} catch (Exception $e) {
+			header("Location: /install");
 		}
-		
 		
 		
 	}
@@ -94,8 +98,10 @@ class SiteController extends Controller
 				"Page"=>Page::model(),
 				"extra"=>$extra,
 				"editor"=>$this->editor,
-				"login"=>Yii::app()->user->id,
+				"login"=>Yii::app()->user->id
 			);
+    	
+
 		$root=$_SERVER['DOCUMENT_ROOT'];
 
 		$_modules=Modules::model()->findAll("is_deleted='0'");
@@ -119,8 +125,8 @@ class SiteController extends Controller
 
 			$is_instaled=Configuration::model()->findByPk(1)->is_installed;
 			if ($is_instaled) {
-				$this->modules=$this->get_modules();				
-				$this->render('index');
+				$this->layout="//layouts/web";				
+				$this->render('index',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
 			}else{
 				$this->redirect(array('/installationCigarrita'));
 			}

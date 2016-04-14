@@ -1,13 +1,12 @@
-<!DOCTYPE html>
     <html lang="en" ng-app="cigarritaWeb">
         <head>
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title><?=$seo->title?></title>
-            <meta name="description" content="<?=$seo->description?>"/>
-            <meta name="author" lang="<?=$seo->language?>" content="Cigarrita Worker"/>
-            <meta name="keywords" content="<?=$seo->keywords?>"/>
+            <title><?=$config->title?></title>
+            <meta name="description" content="<?=$config->description?>"/>
+            <meta name="author" lang="<?=$config->language?>" content="Cigarrita Worker"/>
+            <meta name="keywords" content="<?=$config->keywords?>"/>
             <meta name="robots" content="INDEX,FOLLOW">
 
             <!-- Bootstrap Core CSS -->
@@ -32,7 +31,6 @@
         </head>
         <body id="page-top" class="index" ng-controller="indexCtrl">
             <!-- Navigation -->
-
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->

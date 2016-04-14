@@ -15,7 +15,7 @@ class ApiController extends Controller
 
     public $modules=array();
 
-    public $editor=true;
+    //public $editor=true;
     /**
      * @return array action filters
      */
@@ -106,8 +106,9 @@ class ApiController extends Controller
                 "Category"=>Category::model(),
                 "Page"=>Page::model(),
                 "extra"=>$extra,
-                "editor"=>$this->editor,
-                "login"=>Yii::app()->user->id
+                //"editor"=>$this->editor,
+                "login"=>Yii::app()->user->id,
+                "seo"=>Configuration::model()->find()
             );
         $root=$_SERVER['DOCUMENT_ROOT'];
 
