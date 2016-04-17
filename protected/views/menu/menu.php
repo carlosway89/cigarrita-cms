@@ -13,6 +13,7 @@
 							array(
 									'model'=>$model,
 									'list'=>$list,
+									'tree'=>$tree,
 									'page'=>$page,
 									'block'=>$block,
 									'language'=>$language,

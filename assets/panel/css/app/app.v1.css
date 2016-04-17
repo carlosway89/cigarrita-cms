@@ -61,7 +61,11 @@ a:hover{
 #type_table .tbody .tr{
 	width: 100%;
 	padding-bottom: 10px;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
+	margin-top: 20px;
+}
+#type_table .tbody .tr[class*="parent-"]{
+	display:none;
 }
 #type_table .tbody .tr div{
 	display: table-cell;

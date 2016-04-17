@@ -968,7 +968,45 @@ class PanelController extends Controller
 			
 		}
 
+		$tree_array=array();
+
+		$pos=0;
+
+
+		foreach ($list as $val) {
+			$tree_array[$pos]=$val->attributes;
+			$pos++;
+		}
+
+
+		$pidKey="parent_id";
+		$idKey="idmenu";
+
+		$grouped = array();
+		foreach ($tree_array as $sub){
+		    $grouped[$sub[$pidKey]][] = $sub;
+		}
+
+
+		$fnBuilder = function($siblings) use (&$fnBuilder, $grouped, $idKey) {
+		    foreach ($siblings as $k => $sibling) {
+		        $id = $sibling[$idKey];
+		        if(isset($grouped[$id])) {
+		            $sibling['sub_menu'] = $fnBuilder($grouped[$id]);
+		        }
+		        $siblings[$k] = $sibling;
+		    }
+
+		    return $siblings;
+		};
+
+		if ($tree_array) {
+			$tree = $fnBuilder($grouped[0]);
+		}else{
+			$tree=array();
+		}
 		
+
 
 		$this->render($render,array(
 				'model'=>$model,
@@ -977,6 +1015,7 @@ class PanelController extends Controller
 				'language'=>$language,
 				'message'=>$message,
 				'list'=>$list,
+				'tree'=>$tree,
 				'lang'=>!is_numeric($lang)?$lang:'es',
 				'hierarchy'=>$hierarchy
 		));

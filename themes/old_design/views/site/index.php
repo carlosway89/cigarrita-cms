@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php include(Yii::app()->
-    request->baseUrl."assets/init_config.php"); ?>
     <html ng-app="cigarritaWeb" >
         <head>
             
@@ -12,16 +10,16 @@
             <meta name="author" lang="en" content="Cigarrita Worker"/>
             <meta name="keywords" content="keywords"/>
             <meta name="robots" content="INDEX,FOLLOW">
-            <link rel="stylesheet" type="text/css" href="/themes/old_design/css/bootstrap.css" />
-            <link rel="stylesheet" type="text/css" href="/themes/old_design/css/semantic.min.css" />
-            <link rel="stylesheet" type="text/css" href="/themes/old_design/css/style.css" />
-            <script type="text/javascript" src="/themes/old_design/js/jquery-2.1.1.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" />
+            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/semantic.min.css" />
+            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
+            <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-2.1.1.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-            <script type="text/javascript" src="/themes/old_design/js/webfont.js"></script>
-            <script type="text/javascript" src="/themes/old_design/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="/themes/old_design/js/semantic.js"></script>
-            <script type="text/javascript" src="/themes/old_design/js/outsider.js"></script>
-            <?php include($request."assets/js_index.php"); ?>
+            <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/webfont.js"></script>
+            <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/semantic.js"></script>
+            <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/outsider.js"></script>
+
             </head>
             <body ng-controller="indexCtrl">
                 <div class="header fast-animated clearfix" >
@@ -32,7 +30,7 @@
                                 <div class="default text">Select Language</div>
                                 <i class="dropdown icon"></i> 
                                 <div class="menu laguage-select" style="z-index: 1000;" >
-                                    <!--Languages Availables-->
+                                    
                                 </div>
                             </div>
                         </div>
@@ -49,7 +47,7 @@
                         </div>
                         <div class="ui secondary pull-right menu">
                             <a href="javascript:;;" class="menu-side-icon"><i class="align justify icon"></i></a>
-                            <div class="menu header-options"><a class='item' ng-href="{{link.url}}" ng-repeat="link in links" menu-links="{{link.type}}" >{{link.name}}</a></div>
+                            <?=$modules["mod_menu"]?>
                         </div>
                     </div>
                 </div>

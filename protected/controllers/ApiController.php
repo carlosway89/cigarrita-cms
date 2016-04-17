@@ -790,20 +790,49 @@ class ApiController extends Controller
             }
             
 
-            if ($model=="Menu") {
-                $criteria->condition=$criteria->condition." AND parent_id IS NULL";
-            }
+            
 
             $models=$model::model()->findAll($criteria);
 
             if ($model=="Menu") {
 
-                $lister=array();
-                foreach ($models as $key_model => $val_model) {                    
-                    $_menu=Menu::model()->findAll("parent_id='".$val_model->idmenu."'");
-                    $lister[]=array_merge($val_model->attributes,array("sub_menu"=>$_menu));
+                $tree_array=array();
+                $pos=0;
+                
+                //$models=$model::model()->findAll(" language='es' ");
+
+                foreach ($models as $val) {
+                    $tree_array[$pos]=$val->attributes;
+                    $pos++;
                 }
-                $models=$lister;
+
+
+                $pidKey="parent_id";
+                $idKey="idmenu";
+
+                $grouped = array();
+                foreach ($tree_array as $sub){
+                    $grouped[$sub[$pidKey]][] = $sub;
+                }
+
+
+                $fnBuilder = function($siblings) use (&$fnBuilder, $grouped, $idKey) {
+                    foreach ($siblings as $k => $sibling) {
+                        $id = $sibling[$idKey];
+                        if(isset($grouped[$id])) {
+                            $sibling['sub_menu'] = $fnBuilder($grouped[$id]);
+                        }
+                        $siblings[$k] = $sibling;
+                    }
+
+                    return $siblings;
+                };
+
+                if ($tree_array) {
+                    $models=$fnBuilder($grouped[0]);
+                }
+                
+                //$models=$tree_array;
             }
 
         }else{

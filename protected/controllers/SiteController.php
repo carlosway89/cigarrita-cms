@@ -74,6 +74,7 @@ class SiteController extends Controller
 				$this->redirect(array('/installationCigarrita'));
 			}
 		} catch (Exception $e) {
+			//print_r($e);
 			header("Location: /install");
 		}
 		
@@ -131,6 +132,7 @@ class SiteController extends Controller
 				$this->redirect(array('/installationCigarrita'));
 			}
 		} catch (Exception $e) {
+			//print_r($e);
 			header("Location: /install");
 		}
 		

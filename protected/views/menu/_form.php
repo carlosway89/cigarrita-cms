@@ -74,26 +74,38 @@
 			<?php echo $form->labelEx($model,'Sub menu'); ?>
 			<select id="parent_id" name="Menu[parent_id]" class="browser-default">
 				<option value="">Ninguno</option>
-				<?php foreach ($list as $key => $value) {
-					if ($value->hierarchy==0) {				?>
+				<?php foreach ($tree as $value) {
+					$value=(object)$value;
+					if ($value->hierarchy==0) {				
+				?>
 				<option <?=$model->parent_id==$value->idmenu?'selected':''?> value="<?=$value->idmenu?>" ><?=$value->name?></option>
 				<?php 
-					for ($i=0; $i <= $hierarchy; $i++) { 											
-						foreach ($list as $key_list => $val_list) {													
-							if ($val_list->parent_id==$value->idmenu && $val_list->hierarchy==$i) {
-								$size=($i)*20;
-								$left="padding-left: ".$size."px;";
-								$style=$left;
+					$fnChildren=function($array,$pos,$idparent) use (&$fnChildren,$model){
+						foreach ($array as $val_list) {
+																										
+							$val_list=(object) $val_list;
+							$size=($pos)*20;
+							$with="width: calc(100% - ".$size."px);";
+							$left="margin-left: ".$size."px;";
+							$style=$left.$with;
 				?>
 					<option style="<?=$style?>" <?=$model->parent_id==$val_list->idmenu?'selected':''?> value="<?=$val_list->idmenu?>" >> <?=$val_list->name?></option>
 				<?php
-								break;
+							if (isset($val_list->sub_menu)) {
+								$i=$pos+1;
+								$fnChildren($val_list->sub_menu,$i,$val_list->idmenu);
 							}
+
 						}
-					}
+					};
 				?>
 				<?php }
-				}?>
+					if (isset($value->sub_menu)) {
+						$fnChildren($value->sub_menu,1,$value->idmenu);
+					}
+				}
+
+				?>
 			</select>
 			
 			

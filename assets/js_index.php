@@ -81,11 +81,12 @@
 cigarritaApp.config(['$routeProvider','$locationProvider',
   function($routeProvider,$locationProvider) {
 
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    });
-    
+        $locationProvider.html5Mode({
+          enabled: true,
+          requireBase: false
+        });
+
+
     $routeProvider.
     <?php 
     foreach ($menu as $value) {
