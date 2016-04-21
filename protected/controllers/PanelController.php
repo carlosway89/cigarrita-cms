@@ -761,6 +761,14 @@ class PanelController extends Controller
 					$model->attributes=$_POST['Page'];
 					$model->state=$model->state=='on'?1:0;
 					$model->single_page=$model->single_page=='on'?1:0;
+					$model->layout=0;
+					
+					$_name=strtolower($model->name);
+					$_name=preg_replace('/\s+/', '-', $_name);
+					$sr=array('Ä','Ë','Ï','Ö','Ü','Á','É','Í','Ó','Ú','ä','ë','ï','ö','ü','ß','é','ñ','Ñ','í','ó','ú','á','é','à','è','ì','ò','ù');
+					$rp=array('ae','ee','ie','oe','ue','a','e','i','o','u','ae','ee','ie','oe','ue','ss','e','nh','nh','i','o','u','e','a','e','i','o','u' );
+					$model->name=str_replace($sr,$rp, $_name);
+
 					$page=$model->source;
 					$model->source="";
 					
@@ -860,7 +868,7 @@ class PanelController extends Controller
 
 			if (!is_numeric($id)){
 				
-				$list=Page::model()->findAll("is_deleted='0'");
+				$list=Page::model()->findAll("is_deleted='0' AND layout='0' ");
 				$render='//page/admin';
 				
 			}
@@ -929,19 +937,20 @@ class PanelController extends Controller
 			$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
 			if ($model->isNewRecord) {
 				
-				$_lang=Language::model()->findAll("is_deleted='0'");
+				// $_lang=Language::model()->findAll("is_deleted='0'");
 
-				foreach ($_lang as $value) {					
+				// foreach ($_lang as $value) {					
 					$model=new Menu();
 					$model->attributes=$_POST['Menu'];
+					// $model->name=preg_replace('/\s+/', '-', $model->name);
 					$model->state=$model->state=='on'?1:0;					
-					$model->language=$value->flag;
+					$model->language=Yii::app()->user->getState('language_initial');
 
 					if ($model->save()) {
 						
 					}				
 					
-				}
+				// }
 
 				$this->redirect(array("panel/links/".$lang."?message=".$message));	
 			}else{
@@ -1032,6 +1041,7 @@ class PanelController extends Controller
 			$attr1=$this->uri(4);
 			$attr2=$this->uri(5);
 
+			$root=$_SERVER['DOCUMENT_ROOT'];
 
 			$model=ucfirst($_model);
 
@@ -1061,6 +1071,8 @@ class PanelController extends Controller
 						break;
 					case 'page':
 						$link='pages';
+						unlink($root."/themes/design/views/site/$model->name".".php");
+						$model->delete();
 						break;	
 					case 'block':
 						$link='blocks';

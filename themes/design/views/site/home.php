@@ -1,6 +1,6 @@
 <!-- Header -->
 <header id="home">
-    <div class="container" element-block="slider">
+    <div class="container" element-block="slider" >
         <div class="intro-text">
             <div class="intro-lead-in" element-object="block" element-contenido>{{block.header}}</div>
             <div class="intro-heading" element-object="block" element-contenido >{{block.subheader}}</div>

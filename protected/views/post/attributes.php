@@ -2,27 +2,26 @@
 	<label class="active" for="Post_header">Atributos externos</label>
 	<?php foreach ($attr as $key => $value) {
 	?>
-	<div class="col-sm-12 attributes_inputs">
-		<div class="col-sm-2">
-			<br>
-			<a href="javascript:;;" class="btn-link add-new-attr">
-				+Nuevo
-			</a>
-		</div>
-		<div class="col-sm-4">
+	<div class="col-sm-12 attributes_inputs" style="margin-top: 15px;">
+		<div class="col-sm-offset-1 col-sm-3">
 			<input rows="6" cols="50" name="Attr[idattributes][]" id="Post_header"  type="hidden" value="<?=$value['idattributes']?>" >
 			<input rows="6" cols="50" name="Attr[idpost][]" id="Post_header"  type="hidden" value="<?=$value['idpost']?>" >
-		
-			<input rows="6" cols="50" name="Attr[key][]" id="Post_header" placeholder="@Key" type="text" value="<?=$value['key']?>" >
+			
+			<strong style="line-height: 35px;">hola:</strong>
+			
 		</div>
-		<div class="col-sm-5">
-			<input rows="6" cols="50" name="Attr[value][]" id="Post_header" placeholder="@Value" type="text" value="<?=$value['value']?>" >
-		</div>
-		<div class="col-sm-1">
-			<br>
-			<a href="javascript:;;" class="btn-link delete-new-attr text-danger">
-				<i class="fa fa-trash-o"></i>
-			</a>
+		<div class="col-sm-6">
+			<select name="Attr[value][]" class="browser-default  chosen-select" data-placeholder="Elegir" required>
+					<option></option>
+					<?php 
+						$subcategory=array("1" =>"holavalue" , "2" =>"holavalue2" );
+						foreach ($subcategory as $key => $value) {
+					?>
+						<option value="name"><?=$value?></option>
+					<?php
+						}
+					?>
+			</select>
 		</div>
 		
 	</div>

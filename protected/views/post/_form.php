@@ -108,19 +108,8 @@
 <script type="text/javascript">
 	
 	window.onload = function(){ 
-		$('.add-new-attr').on('click',function(event){
-
-			var html_attr=$('.attributes_inputs').html();
-
-			$( '<div class="col-sm-12 attributes_inputs">'+html_attr+'</div>').insertAfter(".attributes_inputs:last-child");
-			
-			setTimeout(function(){
-				$('.attributes_inputs:last-child').find('.add-new-attr').hide();
-				$('.delete-new-attr').on('click',function(event){
-					$(event.currentTarget).parent().parent().remove();
-				});
-			},100)
-		});
+		
+		
 		
 		
 	};

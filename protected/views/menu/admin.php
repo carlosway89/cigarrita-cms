@@ -158,7 +158,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;width: 60%;max-height: 90%;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -235,7 +235,7 @@
 				select_type();
 			});
 
-			$("select#page_name").on('change',function(){
+			$("#page_name select").on('change',function(){
 				if (!$('select#type_page option#scroll_page').is(':selected')) {
 					$('#Menu_url').val("/"+$("#page_name option:selected").text());
 				}

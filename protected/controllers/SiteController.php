@@ -69,21 +69,39 @@ class SiteController extends Controller
 					$this->editor=false;
 				}
 				$this->layout="//layouts/web";				
-				$this->render('index',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
+				$this->render('//layout/layout_standard',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
 			}else{
 				$this->redirect(array('/installationCigarrita'));
 			}
 		} catch (Exception $e) {
-			//print_r($e);
-			header("Location: /install");
+			
+			if ($e->getCode()=="1049" || $e->getCode()=="0" || $e->getCode()=="1045" || $e->getCode()=="2005" ) {
+				header("Location: /install");
+			}else{
+				$root=$_SERVER['DOCUMENT_ROOT'];
+				$date=date("Y-m-d");
+				$msg="";
+				$file = new SplFileObject($root."/protected/runtime/cigarrita.log-".$date,'w+');
+				while (!$file->eof()) {
+				   $msg=$file->fgets()."\n".$msg;
+				}	
+				$msg=$msg."\n".$date.": ".$e->getMessage();	            
+	            $file->fwrite($msg); 
+
+	           
+			}
+		
 		}
 		
 		
 	}
 	public function render_page($type,$template){
 
-		
-        return preg_replace("/[\r\n]*/","",$this->renderPartial("//$type/$template",array("modules"=>$this->get_modules()),true));
+		$_template=$this->renderPartial("//$type/$template",array("modules"=>$this->get_modules()),true);
+        $_template=$data=str_replace(array("'"),array("\'"),$_template);
+        $_template=preg_replace("/[\r\n]*/","",$_template);
+
+        return $_template;
  		
     }
     public function get_modules($extra=null){
@@ -107,7 +125,7 @@ class SiteController extends Controller
 
 		$_modules=Modules::model()->findAll("is_deleted='0'");
 		foreach ( $_modules as $mod_val) {
-			$modules[$mod_val->name] = $this->renderInternal($root."/assets/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
+			$modules[$mod_val->name] = $this->renderInternal($root."/themes/".Yii::app()->theme->name."/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
 		}
     	
 
@@ -118,22 +136,37 @@ class SiteController extends Controller
 	 * This is the action to handle external exceptions.
 	 */
 	public function actionError()
-	{
+	{	
 
-		try {
-			error_reporting(0);
-			http_response_code(200);
+		if (! YII_DEBUG ) {
+		
+			try {
+				error_reporting(0);
+				http_response_code(200);
 
-			$is_instaled=Configuration::model()->findByPk(1)->is_installed;
-			if ($is_instaled) {
-				$this->layout="//layouts/web";				
-				$this->render('index',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
-			}else{
-				$this->redirect(array('/installationCigarrita'));
+				$is_instaled=Configuration::model()->findByPk(1)->is_installed;
+				if ($is_instaled) {
+					$this->layout="//layouts/web";				
+					$this->render('//layout/layout_standard',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
+				}else{
+					$this->redirect(array('/installationCigarrita'));
+				}
+			} catch (Exception $e) {
+				if ($e->getCode()=="1049" || $e->getCode()=="0" || $e->getCode()=="1045" || $e->getCode()=="2005" ) {
+					header("Location: /install");
+				}else{
+					$root=$_SERVER['DOCUMENT_ROOT'];
+					$date=date("Y-m-d");
+					$msg="";
+					$file = new SplFileObject($root."/protected/runtime/cigarrita.log-".$date,'w+');
+					while (!$file->eof()) {
+					   $msg=$file->fgets()."\n".$msg;
+					}	
+					$msg=$msg."\n".$date.": ".$e->getMessage();	            
+		            $file->fwrite($msg); 
+
+				}
 			}
-		} catch (Exception $e) {
-			//print_r($e);
-			header("Location: /install");
 		}
 		
 		

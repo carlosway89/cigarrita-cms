@@ -8,6 +8,7 @@ $lang=Yii::app()->request->cookies["language_initial"]->value;
 $lang=$lang!=""?$lang:Configuration::model()->find()->language;
 $links=$Menu->findAll("state='1' AND is_deleted='0' AND language='".$lang."' order by position");
 
+
 $tree_array=array();
 
 $pos=0;

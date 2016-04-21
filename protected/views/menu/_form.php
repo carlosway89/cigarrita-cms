@@ -18,62 +18,14 @@
 		<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'nombre'); ?>
+			<?php echo $form->labelEx($model,Yii::t('app','panel.table.name')); ?>
 			<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100,'required'=>'required')); ?>
 			<?php echo $form->error($model,'name'); ?>
 		</div>
-
-		<?php if (Yii::app()->user->checkAccess("webmaster")) {
-        ?>
 		<div class="row">
-			<?php echo $form->labelEx($model,'url'); ?>
-
-			<?php 
-				
-				if ($model->type=='redirect') {
-					echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100)); 
-				}else{
-					echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100,'readonly'=>true)); 
-				}
-				
-			?>
-			<?php echo $form->error($model,'url'); ?>
-		</div>
-
-		
-
-		<div class="row">
-			<?php echo $form->labelEx($model,'tipo'); ?>
-			<select id="type_page" name="Menu[type]" class="browser-default">
-				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll</option>
-				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >Page</option>
-				<option id="redirect_page" value="redirect" <?=$model->type=='redirect'?'selected':''?> >Redirect</option>
-			</select>
-			<br>
-			<select id="url_page"  class="browser-default">
-				<?php foreach ($block as $key => $value) {?>
-				<option <?=$model->url=='/'.$value->category?'selected':''?> value="<?=$value->category?>" ><?=$value->category?></option>
-				<?php }?>
-			</select>
-			<?php echo $form->error($model,'type'); ?>
-		</div>
-		<div class="row">
-			<?php echo $form->labelEx($model,'pagina'); ?>
-			<select id="page_name" name="Menu[page]" class="browser-default">
-			<?php foreach ($page as $val_pag) {
-			 ?>			 
-			 	<option <?=$model->page==$val_pag->idpage?'selected':''?> value="<?=$val_pag->idpage?>"><?=$val_pag->name?></option>	 
-			<?php	
-			}?>
-			</select>
-			
-			<?php echo $form->error($model,'page'); ?>
-		</div>
-
-		<div class="row">
-			<?php echo $form->labelEx($model,'Sub menu'); ?>
+			<?php echo $form->labelEx($model,Yii::t('app','panel.menus.submenu')); ?>
 			<select id="parent_id" name="Menu[parent_id]" class="browser-default">
-				<option value="">Ninguno</option>
+				<option value=""><?=Yii::t('app','panel.none')?></option>
 				<?php foreach ($tree as $value) {
 					$value=(object)$value;
 					if ($value->hierarchy==0) {				
@@ -112,18 +64,68 @@
 			<?php echo $form->error($model,'parent_id'); ?>
 		</div>
 
+		<?php if (Yii::app()->user->checkAccess("webmaster")) {
+        ?>		
+
+		<div class="row">
+			<?php echo $form->labelEx($model,'tipo'); ?>
+			<select id="type_page" name="Menu[type]" class="browser-default">
+				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll</option>
+				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >Page</option>
+				<option id="redirect_page" value="redirect" <?=$model->type=='redirect'?'selected':''?> >Redirect</option>
+			</select>
+			<br>
+			<select id="url_page"  class="browser-default">
+				<?php foreach ($block as $key => $value) {?>
+				<option <?=$model->url=='/'.$value->category?'selected':''?> value="<?=$value->category?>" ><?=$value->category?></option>
+				<?php }?>
+			</select>
+			<?php echo $form->error($model,'type'); ?>
+		</div>		
+		<div id="page_name" class="row">
+			<?php echo $form->labelEx($model,'pagina'); ?>
+			<select  name="Menu[page]" class="browser-default">
+			<?php foreach ($page as $val_pag) {
+			 ?>			 
+			 	<option <?=$model->page==$val_pag->idpage?'selected':''?> value="<?=$val_pag->idpage?>"><?=$val_pag->name?></option>	 
+			<?php	
+			}?>
+			</select>
+			
+			<?php echo $form->error($model,'page'); ?>
+		</div>	
+		<div class="row">
+			<?php echo $form->labelEx($model,'url'); ?>
+
+			<?php 
+				
+				if ($model->type=='redirect') {
+					echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100)); 
+				}else{
+					echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100,'readonly'=>true)); 
+				}
+				
+			?>
+			<?php echo $form->error($model,'url'); ?>
+		</div>
 		
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'idioma'); ?>
-			<select name="Menu[language]" class="browser-default">
-			<?php foreach ($language as $key => $value) {
+			<?php 
+			if (!$model->isNewRecord) {
+				
+				echo $form->labelEx($model,'idioma'); ?>
+				<select name="Menu[language]" class="browser-default">
+				<?php foreach ($language as $key => $value) {
+				?>
+				<option <?=$model->language==$value->min?'selected':''?> value="<?=$value->min?>" ><?=$value->name?></option>
+				<?php
+				}?>
+				</select>
+			<?php 
+				echo $form->error($model,'language'); 
+			}
 			?>
-			<option <?=$model->language==$value->min?'selected':''?> value="<?=$value->min?>" ><?=$value->name?></option>
-			<?php
-			}?>
-			</select>
-			<?php echo $form->error($model,'language'); ?>
 		</div>
 
 		
@@ -192,7 +194,7 @@
 			select_type();
 		});
 
-		$("select#page_name").on('change',function(){
+		$("#page_name select").on('change',function(){
 			if (!$('select#type_page option#scroll_page').is(':selected')) {
 				$('#Menu_url').val("/"+$("#page_name option:selected").text());
 			}

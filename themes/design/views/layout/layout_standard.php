@@ -1,20 +1,21 @@
+<!DOCTYPE html>
     <html lang="en" ng-app="cigarritaWeb">
         <head>
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title><?=$config->title?></title>
-            <meta name="description" content="<?=$config->description?>"/>
-            <meta name="author" lang="<?=$config->language?>" content="Cigarrita Worker"/>
-            <meta name="keywords" content="<?=$config->keywords?>"/>
+            <title><?=$seo->title?></title>
+            <meta name="description" content="<?=$seo->description?>"/>
+            <meta name="author" lang="<?=$seo->language?>" content="Cigarrita Worker"/>
+            <meta name="keywords" content="<?=$seo->keywords?>"/>
             <meta name="robots" content="INDEX,FOLLOW">
 
             <!-- Bootstrap Core CSS -->
-            <link href="/themes/design/css/bootstrap.min.css" rel="stylesheet">
+            <link href="<?=Yii::app()->theme->baseUrl?>/css/bootstrap.min.css" rel="stylesheet">
             <!-- Custom CSS -->
-            <link href="/themes/design/css/agency.css" rel="stylesheet">
+            <link href="<?=Yii::app()->theme->baseUrl?>/css/agency.css" rel="stylesheet">
             <!-- Custom Fonts -->
-            <link href="/themes/design/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <link href="<?=Yii::app()->theme->baseUrl?>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
             <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
             <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -31,6 +32,7 @@
         </head>
         <body id="page-top" class="index" ng-controller="indexCtrl">
             <!-- Navigation -->
+
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,18 +78,18 @@
                 </div>
             </footer>
             <!-- jQuery -->
-            <script src="/themes/design/js/jquery.js"></script>
+            <script src="<?=Yii::app()->theme->baseUrl?>/js/jquery.js"></script>
             <!-- Bootstrap Core JavaScript -->
-            <script src="/themes/design/js/bootstrap.min.js"></script>
+            <script src="<?=Yii::app()->theme->baseUrl?>/js/bootstrap.min.js"></script>
             <!-- Plugin JavaScript -->
             <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-            <script src="/themes/design/js/classie.js"></script>
-            <script src="/themes/design/js/cbpAnimatedHeader.js"></script>
+            <script src="<?=Yii::app()->theme->baseUrl?>/js/classie.js"></script>
+            <script src="<?=Yii::app()->theme->baseUrl?>/js/cbpAnimatedHeader.js"></script>
             <!-- Contact Form JavaScript -->
-            <script src="/themes/design/js/jqBootstrapValidation.js"></script>
-            <script src="/themes/design/js/contact_me.js"></script>
+            <script src="<?=Yii::app()->theme->baseUrl?>/js/jqBootstrapValidation.js"></script>
+            <script src="<?=Yii::app()->theme->baseUrl?>/js/contact_me.js"></script>
             <!-- Custom Theme JavaScript -->
-            <script src="/themes/design/js/agency.js"></script>
+            <script src="<?=Yii::app()->theme->baseUrl?>/js/agency.js"></script>
 
             </body>
         </html>

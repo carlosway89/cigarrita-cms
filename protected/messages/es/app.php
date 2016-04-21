@@ -90,6 +90,7 @@ return
         //Menus views
         'panel.menus'=>'Menu/Links de la web',
         'panel.menus.create'=>'Crear Link ',
+        'panel.menus.submenu'=>'sub-menu de:',
         'panel.menus.table.url'=>'Link',
         'panel.menus.table.type'=>'Tipo',
         'panel.menus.table.page'=>'Pagina',

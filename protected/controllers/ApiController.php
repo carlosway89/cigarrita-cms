@@ -41,7 +41,7 @@ class ApiController extends Controller
                 'users'=>array('@'),
                 ),
             array('allow',
-                'actions'=>array('index','list','view','formContact','flag','tester','content','facebook','template','checkStatus','realTimeUpdate','searchPost','images'),
+                'actions'=>array('index','list','view','formContact','flag','tester','content','facebook','template','checkStatus','realTimeUpdate','searchPost','images','getImage'),
                 'users'=>array('*'),
                 ),
             array('deny',  // deny all to users
@@ -90,7 +90,11 @@ class ApiController extends Controller
         $template=strtolower($this->uri(2));
         $type=$this->uri(3);
         
-        echo  preg_replace("/[\r\n]*/","",$this->renderPartial("//$type/$template",array("modules"=>$this->get_modules()),true));
+        $_template=$this->renderPartial("//$type/$template",array("modules"=>$this->get_modules()),true);
+        $_template=$data=str_replace(array("'"),array("\'"),$_template);
+        $_template=preg_replace("/[\r\n]*/","",$_template);
+
+        echo  $_template;
     
 
     }
@@ -113,10 +117,10 @@ class ApiController extends Controller
         $root=$_SERVER['DOCUMENT_ROOT'];
 
         $_modules=Modules::model()->findAll("is_deleted='0'");
-        foreach ( $_modules as $mod_val) {
-            $modules[$mod_val->name] = $this->renderInternal($root."/assets/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
-        }
         
+        foreach ( $_modules as $mod_val) {
+            $modules[$mod_val->name] = $this->renderInternal($root."/themes/".Yii::app()->theme->name."/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
+        }
 
 
         return $modules;
@@ -161,7 +165,15 @@ class ApiController extends Controller
         }
 
     }
+    public function actionGetImage(){
 
+        $_name=$this->uri(2);
+
+        $_image=new PhpthumbCW();
+
+        $_image->showImage("files/".$_name);
+
+    }
     public function actionRealTimeUpdate(){        
 
         // $token_verify="verificacioncigarritaworker";

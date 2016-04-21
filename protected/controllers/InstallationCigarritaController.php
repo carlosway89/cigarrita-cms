@@ -122,7 +122,7 @@ class InstallationCigarritaController extends Controller
 
     	$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
     	foreach($html->find('link') as $key => $element){
-			$element->href=Yii::app()->theme->baseUrl."/".$element->href;			
+			$element->href="<?=Yii::app()->theme->baseUrl?>/".$element->href;			
 		}
 		$html->save($root."/themes/design/views/site/".$page.".php");
 		$html->clear();
@@ -130,27 +130,12 @@ class InstallationCigarritaController extends Controller
 		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
     	foreach($html->find('script') as $key => $element){
     		if (!preg_match("/(http|https):\/\/(.*?)$/i", $element->src))
-				$element->src=Yii::app()->theme->baseUrl."/".$element->src;			
+				$element->src="<?=Yii::app()->theme->baseUrl?>/".$element->src;	
+
 		}
 		$html->save($root."/themes/design/views/site/".$page.".php");
 		$html->clear();
 		
-		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
-		foreach ($html->find('.header-options') as $element) {
-			
-			$element->children(1)->setAttribute('ng-repeat','link in links');
-
-			$element->children(1)->find('a',0)->setAttribute('ng-href','{{link.url}}');
-			
-			$element->children(1)->find('a',0)->setAttribute('menu-links','{{link.type}}');
-			$element->children(1)->find('a',0)->innertext='{{link.name}}';
-
-			$element->innertext=$element->children(1)->outertext;
-			
-			
-		}
-		$html->save($root."/themes/design/views/site/".$page.".php");
-		$html->clear();
 
 		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
 

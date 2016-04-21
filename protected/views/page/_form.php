@@ -16,7 +16,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.table.name')); ?>
-		<?php echo $form->textField($model,'name',array('size'=>100,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'name',array('required'=>'required','size'=>100,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
@@ -45,7 +45,7 @@ color: #66AFE9;" ><?=$model->source?></textarea>
 		<div class="switch">
           <label>
             Off
-            <input name="Page[single_page]" <?=$model->single_page?'checked="1"':''?> type="checkbox">
+            <input name="Page[single_page]" <?=$model->single_page?'checked="on"':''?> type="checkbox">
             <span class="lever"></span>
             On
           </label>

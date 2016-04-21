@@ -9,6 +9,7 @@
  * @property integer $is_deleted
  * @property integer $state
  * @property integer $single_page
+ * @property integer $layout
  * @property string $source
  *
  * The followings are the available model relations:
@@ -42,12 +43,12 @@ class Page extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idpage, is_deleted, state, single_page', 'numerical', 'integerOnly'=>true),
+			array('idpage, is_deleted, state, layout, single_page', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
 			array('source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idpage, name, is_deleted, state, source', 'safe', 'on'=>'search'),
+			array('idpage, name, is_deleted, state, layout, source', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +74,7 @@ class Page extends CActiveRecord
 			'name' => 'Name',
 			'is_deleted' => 'Is Deleted',
 			'state' => 'State',
+			'layout' => 'Layout',
 			'source' => 'Source',
 			'single_page'=>'Single Page'
 		);
@@ -93,6 +95,7 @@ class Page extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('is_deleted',$this->is_deleted);
 		$criteria->compare('state',$this->state);
+		$criteria->compare('layout',$this->layout);
 		$criteria->compare('single_page',$this->single_page);
 		$criteria->compare('source',$this->source,true);
 

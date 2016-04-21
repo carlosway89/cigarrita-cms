@@ -18,7 +18,8 @@ strong, b{
 	transition: all 0.5s;
 	-moz-transition: all 0.5s; 
 	-webkit-transition: all 0.5s; 
-	-o-transition: all 0.5s;}
+	-o-transition: all 0.5s;
+}
 
 
 a:focus{
@@ -36,7 +37,10 @@ a:hover{
 	display:block;
 	padding-top: 100%;
 }
-
+.chosen-container-single .chosen-search input[type="text"] {
+    width: 90% !important;
+    height: 20px !important;
+}
 #type_table{
 	display:table;
 	width:100%;
