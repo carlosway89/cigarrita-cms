@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'variable_type':
  * @property integer $idtype
- * @property string $name
+ * @property string $language
  * @property integer $is_deleted
  * @property string $value
  */
@@ -37,11 +37,11 @@ class VariableType extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, is_deleted, value', 'required'),
+			array('value', 'required'),
 			array('is_deleted', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idtype, name, is_deleted, value', 'safe', 'on'=>'search'),
+			array('idtype, language, is_deleted, value', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +63,7 @@ class VariableType extends CActiveRecord
 	{
 		return array(
 			'idtype' => 'Idtype',
-			'name' => 'Name',
+			'language' => 'Language',
 			'is_deleted' => 'Is Deleted',
 			'value' => 'Value',
 		);
@@ -81,7 +81,7 @@ class VariableType extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idtype',$this->idtype);
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('language',$this->language,true);
 		$criteria->compare('is_deleted',$this->is_deleted);
 		$criteria->compare('value',$this->value,true);
 

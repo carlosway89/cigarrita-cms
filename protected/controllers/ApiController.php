@@ -168,12 +168,37 @@ class ApiController extends Controller
     public function actionGetImage(){
 
         $_name=$this->uri(2);
+        
 
         $_image=new PhpthumbCW();
 
-        $_image->showImage("files/".$_name);
+        $_quality=isset($_GET["q"])?$_GET["q"]:90;
+        $_width=isset($_GET["w"])?$_GET["w"]:1000;
+        $_height=isset($_GET["h"])?$_GET["h"]:1000;
+        $_crop=isset($_GET["c"])?$_GET["c"]:0;
+
+
+        $parm=array(
+            'quality' =>$_quality,
+            'width' =>$_width,
+            'height' =>$_height,
+            'crop' =>$_crop
+        );
+
+
+        $_image->showImage("files/".$_name,$parm);
 
     }
+
+    public function createThumbImage($original_path,$new_path,$parm){
+
+        
+        $_image=new PhpthumbCW();
+
+        $_image->saveImage($original_path,$new_path,$parm);
+
+    }
+
     public function actionRealTimeUpdate(){        
 
         // $token_verify="verificacioncigarritaworker";
@@ -364,9 +389,10 @@ class ApiController extends Controller
                 $fileName = $_FILES["images"]["name"];
                 $moved=move_uploaded_file($_FILES["images"]["tmp_name"],$output_dir.$string.$fileName);
                 if ($moved) {
-                    $ret= ['name'=>$fileName,'url'=>"/".$output_dir.$string.$fileName,'link'=>"/".$output_dir.$string.$fileName];
+                    $this->createThumbImage($output_dir.$string.$fileName,$output_dir."thumb/".$string.$fileName,null);
+                    $ret= ['name'=>$fileName,'url'=>"/".$output_dir."thumb/".$string.$fileName,'link'=>"/".$output_dir."thumb/".$string.$fileName];
                 }else{
-                    $ret= ['error'=>'Error, try again!!, Imagen max. 2 Mb','type'=>'error'];
+                    $ret= ['error'=>'Error, try again!!, Imagen max. 40 Mb','type'=>'error'];
                 }
                 
             }

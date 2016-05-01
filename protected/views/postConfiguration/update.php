@@ -8,15 +8,10 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-						<?php echo $this->renderPartial('//post/_form', 
+						<?php echo $this->renderPartial('//postConfiguration/_form', 
 							array(
 									'model'=>$model,
-									'message'=>$message,
-									'category'=>$category,
-									'post_page'=>$post_page,
-									'language'=>$language,
-									'variables'=>$variables,
-									'attr'=>$attr,
+									'message'=>$message
 								)
 							); 
 						?>

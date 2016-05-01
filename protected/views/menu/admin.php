@@ -251,7 +251,7 @@
 
 			    setTimeout(function(){
 			    	$( "#sortable" ).sortable({
-			    		items: "div.tr:not(.enabled-sortable)",
+			    		items: "div.tr:not(.child)",
 						cursor: "move",
 						// handle:".text-success",
 						start:function(event, ui){
@@ -281,6 +281,7 @@
 					        
 					    }
 			    	});
+					
     				// $( "#sortable" ).disableSelection();
 			    },1000);
 

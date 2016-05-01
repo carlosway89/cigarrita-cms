@@ -1,4 +1,9 @@
 
+<style type="text/css">
+	.chosen-container {
+	    width: 300px !important;
+	}
+</style>
 <?php
 
 
@@ -94,13 +99,14 @@
 		<?php echo $form->error($model,'state'); ?>
 	</div>
 	<div id="attributes_post">
-		<?php echo $this->renderPartial('//post/attributes', array('attr'=>$attr,'model'=>$model)); ?>
+		<?php echo $this->renderPartial('//post/attributes', array('attr'=>$attr,'variables'=>$variables,'model'=>$model)); ?>
 	</div>
 
 	<div class="row buttons">
 		<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
 		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$model->category?$model->category:$post_page?>/<?=isset($lang)?$lang:$model->language?>"><?=Yii::t('app','panel.back')?></a>
 	</div>
+	<br><br>
 
 <?php $this->endWidget(); ?>
 

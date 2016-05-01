@@ -10,17 +10,19 @@
 					<div class="panel-body">
 						<div class="dropdown col-sm-2">
 		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#"><?=Yii::t('app','panel.posts.language')?> <span class="caret"></span></a>
+		                  
 		                  <ul class="dropdown-menu">
 		                    <?php foreach ($language as $key => $value) {
 		                    ?>
 		                    <li>
-		                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$post_page?>/<?=$value->min?> "><?=$value->name?> 
+		                      <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$post_page?>/<?=$value->min?>"><?=$value->name?> 
 		                      </a>
 		                    </li>
 		                    <?php } ?>
 		                  </ul>
 		                </div>
 		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.posts.create')?></button>
+		                <a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/postConfig/<?=$post_page?>" ><i class="fa fa-cogs text-white"></i></a>
 		                <br><br><br>
 		                <?php 
 		                	if (isset($_GET["message"])) {
@@ -72,6 +74,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
         <h4 class="modal-title" id="myModalLabel"><?=Yii::t('app','panel.posts.create')?></h4>
       </div>
       <div class="modal-body">
@@ -83,6 +86,7 @@
 					'post_page'=>$post_page,
 					'language'=>$language,
 					'lang'=>$lang,
+					'variables'=>$variables,
 					'attr'=>$attr
 				)
 			); 
