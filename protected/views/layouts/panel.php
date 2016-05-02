@@ -507,7 +507,9 @@
               ?>
               imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
               toolbarButtons:['bold', 'italic', 'underline', 'strikeThrough','fontFamily', 'fontSize', '|', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertTable','-', 'undo', 'redo', 'clearFormatting', 'selectAll'],
+              
               <?php } ?>
+              videoDefaultDisplay: 'inline',
               linkList: [
                 {
                   text: 'Cigarrita',
@@ -544,7 +546,7 @@
                   target: '_blank'
                 }
               ],
-      })
+      });
       
 
       setTimeout(function(){

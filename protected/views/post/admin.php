@@ -87,7 +87,8 @@
 					'language'=>$language,
 					'lang'=>$lang,
 					'variables'=>$variables,
-					'attr'=>$attr
+					'attr'=>$attr,
+					'post_config'=>$post_config
 				)
 			); 
 		?>
@@ -98,12 +99,51 @@
 <script type="text/javascript">
 	
 	window.onload = function(){ 
+		$('.froala-editor-source').froalaEditor({
+              toolbarInline: true,
+              width: '1000',
+              zIndex: 2501,
+              imageDefaultWidth: '<?=$post_config->max_width?>',
+              imageOutputSize: true,
+              enter: $.FroalaEditor.ENTER_BR,
+              language: '<?=Yii::app()->language?>',
+              charCounterCount: false,
+              imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
+              imageUploadParam: 'images',
+              imageUploadParams: {
+				width: '<?=$post_config->max_width?>',
+				crop: '<?=$post_config->crop?>',
+				height: '<?=$post_config->max_height?>',
+				quality: '<?=$post_config->quality?>',
+				is_image:true
+			  },
+              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+              linkAttributes: {
+                'title':'Titulo'
+              },
+              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
+              imageStyles: {
+                "lightboxImage": 'lightboxImage',
+              },              
+              imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+              toolbarButtons:['insertImage']
+              <?php }?>
+              <?php if ($post_config->type_source=="video") { ?>
+              toolbarButtons:['insertVideo'],
+              videoDefaultDisplay: 'inline'
+              <?php } ?>
+              <?php if ($post_config->type_source=="file") { ?>
+              toolbarButtons:['insertFile']
+              <?php } ?>
+      	});
 
 		setTimeout(function(){
 			var beans=new Beans();
 	        beans.generate_data_table('postList');
 	        
 	    },200);
+
 	    
 	    $('.add-new-attr').on('click',function(event){
 

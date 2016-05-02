@@ -50,6 +50,10 @@
 			?>
 			<input name="Attr[value][]" type="text" style="width:200px" value="<?=$valattr?>" >
 			<?php		
+					}else{
+			?>
+			<textarea class="materialize-textarea" name="Attr[value][]" style="width:300px"><?=$valattr?></textarea>
+			<?php			
 					}
 				}
 			?>

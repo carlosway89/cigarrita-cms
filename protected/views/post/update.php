@@ -17,6 +17,7 @@
 									'language'=>$language,
 									'variables'=>$variables,
 									'attr'=>$attr,
+									'post_config'=>$post_config
 								)
 							); 
 						?>

@@ -22,7 +22,7 @@ class PanelController extends Controller
 		//$test=Configuration::model()->findAll();
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','variableType','modules'),
+				'actions'=>array('index','language','config','users','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','variableType','modules','rendering'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("webmaster")')
 					),
@@ -559,18 +559,22 @@ class PanelController extends Controller
 
 				$model=Post::model()->findByPk($id);
 
-				$_variables=Variable::model()->findAll("category='".$model->category."' and is_deleted='0'");
+				if ($model) {
+					$_variables=Variable::model()->findAll("category='".$model->category."' and is_deleted='0'");
 
+					foreach ($model->attributes0 as $has_attr) { 
 
+		                $attr[]=$has_attr->Attributes;                                           
 
-				foreach ($model->attributes0 as $has_attr) { 
+		            }
+		            $post_config=PostConfiguration::model()->findByAttributes(array("category"=>$model->category));
+		          
+					
 
-	                $attr[]=$has_attr->Attributes;                                           
-
-	            }
-				
-
-				$render='//post/update';
+					$render='//post/update';
+				}else{
+					$this->redirect(array("panel/posts/"));
+				}
 
 			}
 			if(isset($_POST['Post']))
@@ -619,6 +623,8 @@ class PanelController extends Controller
 			if (!is_numeric($post_page)){
 				
 				$_variables=Variable::model()->findAll("category='".$post_page."' and is_deleted='0'");
+				
+				$post_config=PostConfiguration::model()->findByAttributes(array("category"=>$post_page));
 
 				$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."'AND category='".$post_page."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
 				$render='//post/admin';
@@ -634,16 +640,13 @@ class PanelController extends Controller
 				'lang'=>$lang,
 				'language'=>$language,
 				'variables'=>$_variables,
-				'attr'=>$attr
+				'attr'=>$attr,
+				'post_config'=>$post_config
 			));
 		}else{
 			$this->redirect(array('/panel'));
 		}
-		
-		
-
-
-		
+			
 	}
 
 	public function actionPostConfig(){
@@ -691,14 +694,39 @@ class PanelController extends Controller
 
 		if(isset($_POST['Variable']))
 		{
-			$_variable->attributes=$_POST['Variable'];
-			$_variable->category=$_cat;
-			if($_variable->save()){				
+			$vars=$_POST['Variable'];
+						
+			
+			
+			
+			for ($i=0; $i < count($vars['idvariable']); $i++) {
 
-				$message=1;
-				$_variable->unsetAttributes();	
-				$this->redirect(array("panel/postConfig/".$_cat));
+				
+				
+				$idvariable=$vars['idvariable'][$i];
+
+				if ($idvariable!=0) {
+					$_variable=Variable::model()->findByPk($idvariable);
+					
+				}else{
+					$_variable=new Variable();
+				}
+
+
+				$_variable->type=$vars['type'][$i];
+				$_variable->value=$vars['value'][$i];
+				$_variable->category=$_cat;
+				
+				if ($_variable->type!="" && $_variable->value!="") {
+					$_variable->save();
+				}
+				
+			
+
 			}
+
+			$this->redirect(array("panel/postConfig/".$_cat));
+			
 		}
 		
 		$render='//postConfiguration/admin';
@@ -723,7 +751,6 @@ class PanelController extends Controller
 			$model=new VariableType();
 		}else{
 			if (is_numeric($type_id)) {
-
 				$model=VariableType::model()->findByPk($type_id);	
 				$render='//variableType/update';
 			}
@@ -776,10 +803,8 @@ class PanelController extends Controller
 
 			$model=new Block();
 
-			
 			$message=null;
 			$list=null;
-
 			
 			if (is_numeric($lang)) {
 				$id=$lang;
@@ -798,7 +823,6 @@ class PanelController extends Controller
 				
 				if($model->save()){				
 					$model=Block::model()->findByPk($model->idpost);		
-
 					$message="Successfully Updated";
 					
 				}
@@ -1139,7 +1163,10 @@ class PanelController extends Controller
 		));
 
 	}
+	public function actionRendering(){
 
+
+	}
 	public function actionDelete(){
 		
 
@@ -1191,7 +1218,10 @@ class PanelController extends Controller
 						break;
 					case 'variableType':
 						$link='variableType/'.$attr1;
-						break;					
+						break;	
+					case 'variable':
+						$link='postConfig/'.$attr1;
+						break;				
 					default:
 						$link=$_model;
 						break;

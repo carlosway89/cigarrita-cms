@@ -386,11 +386,24 @@ class ApiController extends Controller
             //If Any browser does not support serializing of multiple files using FormData() 
             if(!is_array($_FILES["images"]["name"])) //single file
             {
+                
                 $fileName = $_FILES["images"]["name"];
                 $moved=move_uploaded_file($_FILES["images"]["tmp_name"],$output_dir.$string.$fileName);
                 if ($moved) {
-                    $this->createThumbImage($output_dir.$string.$fileName,$output_dir."thumb/".$string.$fileName,null);
-                    $ret= ['name'=>$fileName,'url'=>"/".$output_dir."thumb/".$string.$fileName,'link'=>"/".$output_dir."thumb/".$string.$fileName];
+                    if (isset($_POST["is_image"])) {
+                        
+                        $parm=array(
+                            'width'=>$_POST["width"], 
+                            'height'=>$_POST["height"], 
+                            'crop'=>$_POST["crop"], 
+                            'quality'=>$_POST["quality"]
+                        );
+
+                        $this->createThumbImage($output_dir.$string.$fileName,$output_dir."thumb/".$string.$fileName,$parm);
+                        $ret= ['name'=>$fileName,'url'=>"/".$output_dir."thumb/".$string.$fileName,'link'=>"/".$output_dir."thumb/".$string.$fileName];
+                    }else{
+                        $ret= ['name'=>$fileName,'url'=>"/".$output_dir."".$string.$fileName,'link'=>"/".$output_dir."".$string.$fileName];
+                    }                    
                 }else{
                     $ret= ['error'=>'Error, try again!!, Imagen max. 40 Mb','type'=>'error'];
                 }

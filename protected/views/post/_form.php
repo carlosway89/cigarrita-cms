@@ -51,29 +51,50 @@
 		<?php echo $form->error($model,'category'); ?>
 	</div>
 
+	<?php if ($post_config->has_header) {		
+	?>
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.cabecera')); ?>
 		<?php echo $form->textField($model,'header',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'header'); ?>
 	</div>
+	<?php }?>
+	<?php if ($post_config->has_teaser) {		
+	?>
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.teaser')); ?>
 		<textarea  class="materialize-textarea" height="200" name="Post[teaser]"><?=$model->teaser?></textarea>
 		<?php echo $form->error($model,'teaser'); ?>
 	</div>
+	<?php }?>
+	<?php if ($post_config->has_subheader) {		
+	?>
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.container')); ?>
 		<textarea  class="froala-editor" name="Post[subheader]"><?=$model->subheader?></textarea>
 		<?php //echo $form->textField($model,'subheader',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'subheader'); ?>
 	</div>
-
+	<?php }?>
+	<?php if ($post_config->has_source) {		
+	?>
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.source')); ?>
-		<textarea  class="froala-editor-inline" name="Post[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
+
+		<?php 
+			if ($post_config->type_source=="embed") {
+				$class_source="";
+				$id_source="codemirror";
+			}else{
+				$id_source="";
+				$class_source="froala-editor-source";
+			}
+		?>
+
+		<textarea  id="<?=$id_source?>" class="<?=$class_source?>" name="Post[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
 		<?php echo $form->error($model,'source'); ?>
 	</div>
-
+	<?php }?>
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.language')); ?>
 		<select name="Post[language]" class="browser-default">
@@ -99,7 +120,7 @@
 		<?php echo $form->error($model,'state'); ?>
 	</div>
 	<div id="attributes_post">
-		<?php echo $this->renderPartial('//post/attributes', array('attr'=>$attr,'variables'=>$variables,'model'=>$model)); ?>
+		<?php echo $this->renderPartial('//post/attributes', array('attr'=>$attr,'variables'=>$variables,'model'=>$model,'post_config'=>$post_config)); ?>
 	</div>
 
 	<div class="row buttons">
@@ -115,9 +136,48 @@
 	
 	window.onload = function(){ 
 		
+		$('.froala-editor-source').froalaEditor({
+              toolbarInline: true,
+              width: '1000',
+              imageDefaultWidth: '<?=$post_config->max_width?>',
+              imageOutputSize: true,
+              enter: $.FroalaEditor.ENTER_BR,
+              language: '<?=Yii::app()->language?>',
+              charCounterCount: false,
+              imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
+              imageUploadParam: 'images',
+              imageUploadParams: {
+				width: '<?=$post_config->max_width?>',
+				crop: '<?=$post_config->crop?>',
+				height: '<?=$post_config->max_height?>',
+				quality: '<?=$post_config->quality?>',
+				is_image:true
+			  },
+              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+              linkAttributes: {
+                'title':'Titulo'
+              },
+              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
+              imageStyles: {
+                "lightboxImage": 'lightboxImage',
+              },              
+              imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+              toolbarButtons:['insertImage']
+              <?php }?>
+              <?php if ($post_config->type_source=="video") { ?>
+              toolbarButtons:['insertVideo'],
+              videoDefaultDisplay: 'inline'
+              <?php } ?>
+              <?php if ($post_config->type_source=="file") { ?>
+              toolbarButtons:['insertFile']
+              <?php } ?>
+
+      	});
 		
-		
-		
+		setTimeout(function(){
+	        $("body").find('a[href="https://froala.com/wysiwyg-editor"]').remove();
+	      },100)
 	};
 	
 </script>

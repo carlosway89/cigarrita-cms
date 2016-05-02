@@ -34,6 +34,7 @@
 			<?php echo $form->labelEx($config,''); ?>
 			<select name="PostConfiguration[type_source]" class="browser-default" required>
 				<option <?=$config->type_source=="image"?'selected':''?> value="image">Image</option>
+				<option <?=$config->type_source=="gallery"?'selected':''?> value="gallery">Gallery / slider</option>
 				<option <?=$config->type_source=="video"?'selected':''?> value="video">Video</option>
 				<option <?=$config->type_source=="embed"?'selected':''?> value="embed">Embed HTML</option>
 				<option <?=$config->type_source=="file"?'selected':''?> value="file">File</option>
@@ -132,8 +133,29 @@
 				<?php foreach ($list as $key => $value) {
 				?>
 				<tr>
-					<td><?=$value->value?></td>
-					<td><?=$value->type?></td>
+					<td>
+						<input type="hidden" name="Variable[idvariable][]" value="<?=$value->idvariable?>" disabled="disabled" />
+						<input type="text" name="Variable[value][]" value="<?=$value->value?>"  style="width: 250px;height: 40px;margin-left: auto;margin-right: auto;" disabled="disabled" /></td>
+					<td>
+						<?php
+						
+							$types_list=array(
+								"input" =>"input", 
+								"textarea" =>"textarea", 
+								"select" =>"select", 
+								"multi" =>"multi-select", 
+							);
+
+						?>
+						<select name="Variable[type][]" class="browser-default text-center" style="width: 180px;height: 40px;margin-left: auto;margin-right: auto;" disabled="disabled">
+							<option value="">--type--</option>
+							<?php
+								foreach ($types_list as $types_key => $types_val) {						
+							?>
+								<option <?=$value->type==$types_key?"selected='selected'":""?> value="<?=$types_key?>"><?=$types_val?></option>
+							<?php }?>
+						</select>
+					</td>
 					<td>
 						<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
           				?>
@@ -141,7 +163,7 @@
 						?>
           				<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/variableType/<?=$value->idvariable?>" class="text-info" target="_blank"><i class="fa fa-plus"></i> Agregar Valores</a>&nbsp;&nbsp;
 						<?php } ?>
-						<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/variable/<?=$value->idvariable?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;
+						<a id="<?=$value->idvariable?>" href="javascript:;;" class="edit-variable-type text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;
 						
 						<?php }
 						if (Yii::app()->user->checkAccess("webmaster")) {
@@ -152,11 +174,13 @@
 				</tr>
 				<?php } ?>
 				<tr>
-					<td><input name="Variable[value]" placeholder="attribute name" style="width: 250px;height: 40px;margin-left: auto;margin-right: auto;"  type="text" ></td>
 					<td>
-						<select name="Variable[type]" class="browser-default text-center" style="width: 180px;height: 40px;margin-left: auto;margin-right: auto;">
-							<option value="">--type--</option>
-							<option value="input">input</option>
+						<input type="hidden" name="Variable[idvariable][]" value="0">
+						<input name="Variable[value][]" placeholder="attribute name" style="width: 250px;height: 40px;margin-left: auto;margin-right: auto;"  type="text" >
+					</td>
+					<td>
+						<select name="Variable[type][]" class="browser-default text-center" style="width: 180px;height: 40px;margin-left: auto;margin-right: auto;">
+							<option selected value="input">input</option>
 							<option value="textarea">textarea</option>
 							<option value="select">select</option>
 							<option value="multi">multi-select</option>
@@ -177,3 +201,13 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<script type="text/javascript">
+
+	window.onload = function(){ 
+		$(".edit-variable-type").on("click",function(){
+			$(this).parent().parent().find("input").removeAttr("disabled");
+			$(this).parent().parent().find("select").removeAttr("disabled");
+			$(this).parent().parent().find("input[type='text']").focus();
+		});
+	}
+</script>
