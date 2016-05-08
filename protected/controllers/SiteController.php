@@ -123,7 +123,7 @@ class SiteController extends Controller
 
 		$root=$_SERVER['DOCUMENT_ROOT'];
 
-		$_modules=Modules::model()->findAll("is_deleted='0'");
+		$_modules=Modules::model()->findAll("is_deleted='0' and state='1'");
 		foreach ( $_modules as $mod_val) {
 			$modules[$mod_val->name] = $this->renderInternal($root."/themes/".Yii::app()->theme->name."/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
 		}

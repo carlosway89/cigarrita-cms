@@ -126,19 +126,17 @@
 				echo $form->error($model,'language'); 
 			}
 			?>
-		</div>
-
-		
+		</div>	
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'recurso'); ?>
+			<?php echo $form->labelEx($model,Yii::t('app','panel.posts.source')); ?>
 			<?php echo $form->textField($model,'source',array('rows'=>6, 'cols'=>50)); ?>
 			<?php echo $form->error($model,'source'); ?>
 		</div>
 		<?php }?>
 		<div class="row">
 
-			<?php echo $form->labelEx($model,'estado'); ?>
+			<?php echo $form->labelEx($model,Yii::t('app','panel.table.state')); ?>
 			<div class="switch">
               <label>
                 Off
@@ -149,10 +147,29 @@
             </div>
 			<?php echo $form->error($model,'state'); ?>
 		</div>
+		<?php if (!$model->isNewRecord) {			
+		?>
+		<div class="row">		
+			<?php echo $form->labelEx($model,'SEO_title'); ?>
+			<?php echo $form->textField($model,'SEO_title',array('size'=>60,'maxlength'=>200)); ?>
+			<?php echo $form->error($model,'SEO_title'); ?>		
+		</div>
+		<div class="row">		
+			<?php echo $form->labelEx($model,'SEO_description'); ?>
+			<?php echo $form->textField($model,'SEO_description',array('size'=>100,'maxlength'=>200,'class'=>'counter_char')); ?>
+			<?php echo $form->error($model,'SEO_description'); ?>
+		
+		</div>
+		<div class="row">		
+			<?php echo $form->labelEx($model,'SEO_keywords'); ?>
+			<?php echo $form->textField($model,'SEO_keywords',array('size'=>60,'maxlength'=>200)); ?>
+			<?php echo $form->error($model,'SEO_keywords'); ?>		
+		</div>
+		<?php }?>
 
 		<div class="row buttons">
-			<button class="btn btn-info" type="submit">Guardar</button>
-			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=isset($lang)?$lang:$model->language?>">Regresar</a>
+			<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
+			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=isset($lang)?$lang:$model->language?>"><?=Yii::t('app','panel.back')?></a>
 		</div>
 
 	<?php $this->endWidget(); ?>

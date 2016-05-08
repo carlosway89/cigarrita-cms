@@ -116,7 +116,7 @@ class ApiController extends Controller
             );
         $root=$_SERVER['DOCUMENT_ROOT'];
 
-        $_modules=Modules::model()->findAll("is_deleted='0'");
+        $_modules=Modules::model()->findAll("is_deleted='0' and state='1'");
         
         foreach ( $_modules as $mod_val) {
             $modules[$mod_val->name] = $this->renderInternal($root."/themes/".Yii::app()->theme->name."/modules/".$mod_val->name."/php/".$mod_val->name.".php",$core,true);
@@ -600,8 +600,15 @@ class ApiController extends Controller
                             $subarray[]=$has_post->attributes;
                             /* [if has extra attributes] */
                             foreach ($has_post->attributes0 as $key_attr => $has_attr) { 
-                                $attr=$has_attr;                     
+                                $attr=$has_attr;      
+                                if (is_numeric($attr->key)){                                   
+                                    $val_var=Variable::model()->findByPk($attr->key)->value;
+                                    $attr->key=$val_var;
+                                }
+                                
                                 $attr_val=CJSON::decode($attr->value)!=null?CJSON::decode($attr->value):$attr->value;
+                                               
+                                
                                 if (is_array($subarray[$post_pos])) {
                                     $subarray[$post_pos]=array_merge($subarray[$post_pos],array($attr->key=>$attr_val));                        
                                 }
@@ -788,7 +795,7 @@ class ApiController extends Controller
                                     $val_like=str_replace("'","",$val_like);
 
                                     if($_model->hasAttribute($key_like)) {
-                                        $condition[]=$key_like." LIKE '%".$val_like."%'";
+                                        $condition[]="t.".$key_like." LIKE '%".$val_like."%'";
                                     }
                                 } 
                             }                   
@@ -818,7 +825,7 @@ class ApiController extends Controller
                                     }                                    
                                 }else{
                                     if($_model->hasAttribute($key)) {
-                                        $condition[]=$key."='".$value."'";
+                                        $condition[]="t.".$key."='".$value."'";
                                     }
                                 }
                             }
@@ -832,15 +839,20 @@ class ApiController extends Controller
                         $string.=" AND ".$condition[$i];
                     }
 
-                    $criteria->condition=$string;
+                    $criteria->condition=$string?$string:1;
 
                     if ($_model->hasAttribute("position")) {
-                        $criteria->order="position";
+                        $criteria->order="t."."position";
                     }
                 }
             }
             
 
+            if ($model=="Post") {
+                $criteria->with=array('attributes0');
+                $criteria->order='t.position DESC, t.date_created DESC';                
+                $criteria->together = true; 
+            }
             
 
             $models=$model::model()->findAll($criteria);
@@ -885,6 +897,34 @@ class ApiController extends Controller
                 
                 //$models=$tree_array;
             }
+            if ($model=="Post") {
+
+                $post_pos=0;
+                foreach ($models as $model_val) {
+                    $subarray[$post_pos]=$model_val->attributes;                   
+                    
+                    if ($model_val->attributes0) {
+                        foreach ($model_val->attributes0 as $has_attr) { 
+                            $attr=$has_attr;      
+                            if (is_numeric($attr->key)){                                   
+                                $val_var=Variable::model()->findByPk($attr->key)->value;
+                                $attr->key=$val_var;
+                            }
+                            
+                            $attr_val=CJSON::decode($attr->value)!=null?CJSON::decode($attr->value):$attr->value;                                       
+                            
+                            if (is_array($subarray[$post_pos])) {
+                                $subarray[$post_pos]=array_merge($subarray[$post_pos],array($attr->key=>$attr_val));                        
+                            }
+
+                        }
+                    }
+
+                    $post_pos=$post_pos+1;
+                }
+                $models=$subarray;
+
+            }
 
         }else{
             $models=array("error"=>204,"message"=>"doesn't exits such a model");            
@@ -913,13 +953,45 @@ class ApiController extends Controller
     {
         
        $model=ucfirst($model);
+       $_model=$model;
 
        $this->_checkAuth($model);
         // if(!isset($_GET['id']))
         //     $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing' );
 
-        $model = $model::model()->findByPk($id);
+        if ($_model=="Post") {
+        $model = $model::model()
+            ->with(array('attributes0'=>array('order'=>'t.position DESC, t.date_created DESC')))
+            ->findByPk($id);
 
+            $post_pos=0;
+            
+            $subarray=$model->attributes;                   
+            
+            if ($model->attributes0) {
+                foreach ($model->attributes0 as $has_attr) { 
+                    $attr=$has_attr;      
+                    if (is_numeric($attr->key)){                                   
+                        $val_var=Variable::model()->findByPk($attr->key)->value;
+                        $attr->key=$val_var;
+                    }
+                    
+                    $attr_val=CJSON::decode($attr->value)!=null?CJSON::decode($attr->value):$attr->value;                                       
+                    
+                    if (is_array($subarray)) {
+                        $subarray=array_merge($subarray,array($attr->key=>$attr_val));                        
+                    }
+
+                }
+            }
+
+                
+            
+            $model=$subarray;
+
+        }else{
+            $model = $model::model()->findByPk($id);
+        }
     
         if(is_null($model)) {
             $this->_sendResponse(404, 'No Item found with id '.$_GET['id']);

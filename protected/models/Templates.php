@@ -1,24 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "modules".
+ * This is the model class for table "templates".
  *
- * The followings are the available columns in table 'modules':
- * @property integer $idmodules
+ * The followings are the available columns in table 'templates':
+ * @property integer $idtemplates
  * @property string $name
- * @property integer $is_deleted
- * @property integer $editable
- * @property string $date_created
- * @property string $type
  * @property integer $state
- * @property integer $deletable
+ * @property integer $is_deleted
+ * @property string $date_created
+ * @property string $block
  */
-class Modules extends CActiveRecord
+class Templates extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Modules the static model class
+	 * @return Templates the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -30,7 +28,7 @@ class Modules extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'modules';
+		return 'templates';
 	}
 
 	/**
@@ -41,13 +39,12 @@ class Modules extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, state', 'required'),
-			array('is_deleted, editable, state, deletable', 'numerical', 'integerOnly'=>true),
+			array('name, date_created, block', 'required'),
+			array('state, is_deleted', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>300),
-			array('type', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idmodules, name, is_deleted, editable, date_created, type, state, deletable', 'safe', 'on'=>'search'),
+			array('idtemplates, name, state, is_deleted, date_created, block', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,14 +65,12 @@ class Modules extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idmodules' => 'Idmodules',
+			'idtemplates' => 'Idtemplates',
 			'name' => 'Name',
-			'is_deleted' => 'Is Deleted',
-			'editable' => 'Editable',
-			'date_created' => 'Date Created',
-			'type' => 'Type',
 			'state' => 'State',
-			'deletable' => 'Deletable',
+			'is_deleted' => 'Is Deleted',
+			'date_created' => 'Date Created',
+			'block' => 'Block',
 		);
 	}
 
@@ -90,14 +85,12 @@ class Modules extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idmodules',$this->idmodules);
+		$criteria->compare('idtemplates',$this->idtemplates);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('is_deleted',$this->is_deleted);
-		$criteria->compare('editable',$this->editable);
-		$criteria->compare('date_created',$this->date_created,true);
-		$criteria->compare('type',$this->type,true);
 		$criteria->compare('state',$this->state);
-		$criteria->compare('deletable',$this->deletable);
+		$criteria->compare('is_deleted',$this->is_deleted);
+		$criteria->compare('date_created',$this->date_created,true);
+		$criteria->compare('block',$this->block,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

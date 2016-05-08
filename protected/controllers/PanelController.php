@@ -527,16 +527,11 @@ class PanelController extends Controller
 				'model'=>$model,
 			));
 		}
-
-		
-		
-
-
-		
+	
 	}
 	public function actionPosts(){
 
-		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+		// if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
 
 			$post_page=$this->uri(2)?$this->uri(2):Category::model()->find("tag='panel'")->category;
 			$lang=$this->uri(3)?$this->uri(3):Configuration::model()->findByPk(1)->language;
@@ -643,9 +638,9 @@ class PanelController extends Controller
 				'attr'=>$attr,
 				'post_config'=>$post_config
 			));
-		}else{
-			$this->redirect(array('/panel'));
-		}
+		// }else{
+		// 	$this->redirect(array('/panel'));
+		// }
 			
 	}
 
@@ -785,7 +780,87 @@ class PanelController extends Controller
 	}
 	public function actionModules(){
 
+
+		$message=null;
+		$model=new Modules();
+		$list=Modules::model()->findAll("is_deleted='0'");
+		$root=$_SERVER['DOCUMENT_ROOT'];
+		$render="";
+		$source=new stdClass();
+		$source->php_source="";
+		$source->js_source="";
+
+		$id=$this->uri(2)?$this->uri(2):"";
+
+		if (is_numeric($id)) {
+			$model=Modules::model()->findByPk($id);
+			if ($model) {
+				if (!file_exists($root."/themes/design/modules")) {
+				    mkdir($root."/themes/design/modules", 0777, true);
+				}
+				if (!file_exists($root."/themes/design/modules/$model->name")) {
+				    mkdir($root."/themes/design/modules/$model->name", 0777, true);
+				}
+				if (!file_exists($root."/themes/design/modules/$model->name/php")) {
+				    mkdir($root."/themes/design/modules/$model->name/php", 0777, true);
+				}
+				if (!file_exists($root."/themes/design/modules/$model->name/js")) {
+				    mkdir($root."/themes/design/modules/$model->name/js", 0777, true);
+				}
+				
+				$php_source=file_get_contents($root."/themes/design/modules/$model->name/php/$model->name".".php");
+				$js_source=file_get_contents($root."/themes/design/modules/$model->name/js/$model->name".".js");
+				
+				$source->php_source=$php_source;
+				$source->js_source=$js_source;
+				$render='//modules/update';
+			}else{
+				$this->redirect(array("panel/modules/"));
+			}
+			
+		}else{
+			$render='//modules/admin';
+		}
+
+		if (isset($_POST["Modules"])) {
+			$model->attributes=$_POST["Modules"];
+			$model->state=$model->state=='on'?1:0;
+
+			$source->php_source=$_POST["php_code"];
+			$source->js_source=$_POST["js_code"];
+			$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
+
+			if ($model->save()) {
+				if (!file_exists($root."/themes/design/modules")) {
+				    mkdir($root."/themes/design/modules", 0777, true);
+				}
+				if (!file_exists($root."/themes/design/modules/$model->name")) {
+				    mkdir($root."/themes/design/modules/$model->name", 0777, true);
+				}
+				if (!file_exists($root."/themes/design/modules/$model->name/php")) {
+				    mkdir($root."/themes/design/modules/$model->name/php", 0777, true);
+				}
+				if (!file_exists($root."/themes/design/modules/$model->name/js")) {
+				    mkdir($root."/themes/design/modules/$model->name/js", 0777, true);
+				}
+
+				$file_php = new SplFileObject($root."/themes/design/modules/$model->name/php/$model->name".".php",'w+');
+				$file_js = new SplFileObject($root."/themes/design/modules/$model->name/js/$model->name".".js",'w+');		            
+	            
+	            $file_php->fwrite($source->php_source); 
+	            $file_js->fwrite($source->js_source); 
+
+	            $this->redirect(array("panel/modules/".$id."?message=".$message));	
+			}
+		}
 		
+
+		$this->render($render,array(
+				'list'=>$list,
+				'model'=>$model,
+				'message'=>$message,
+				'source'=>$source
+		));
 
 		
 	}

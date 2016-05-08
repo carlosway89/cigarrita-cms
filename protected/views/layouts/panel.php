@@ -133,6 +133,8 @@
               $pages_active="";
               $links_active="";
               $facebook_active="";
+              $modules_active="";
+              $users_active="";
               $panel_active="";
 
               switch ($current_uri) {
@@ -143,11 +145,17 @@
                   $pages_active="active";
                   break;
                 case 'links':
-                  $links_active="active";
+                  $pages_active="active";
                   break;
                 case 'facebook':
                   $facebook_active="active";
-                  break;                
+                  break; 
+                case 'users':
+                  $users_active="active";
+                  break; 
+                case 'modules':
+                  $modules_active="active";
+                  break;               
                 default:
                   $panel_active="active";
                   break;
@@ -178,22 +186,29 @@
                           ?>
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages"><?=Yii::t('app','panel.pages')?></a></li>
                           <?php }?>
+
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links"><?=Yii::t('app','panel.menus')?></a></li>
+                          
                           <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           ?>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks"><?=Yii::t('app','panel.blocks')?></a></li>                
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><?=Yii::t('app','panel.users')?></a></li>                          
+                                                   
                           <?php }?>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config"><?=Yii::t('app','panel.config')?></a></li>
                         </ul>
-                    </li>
-                    
-                    <li class="<?=$links_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links"><i class="fa fa-link"></i> <span class="nav-label"><?=Yii::t('app','panel.menus')?></span></a>
-                    	<ul class="list-unstyled">
-                        	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links"><?=Yii::t('app','panel.menus')?></a></li>
-                        </ul>
+                    </li>                    
+                    <li class="<?=$users_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><i class="fa fa-group"></i> <span class="nav-label"><?=Yii::t('app','panel.users')?></span></a>
+                      <ul class="list-unstyled">
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><?=Yii::t('app','panel.users')?></a></li>
+                      </ul>
                     </li>
                     <?php if (Yii::app()->user->checkAccess("webmaster")) {
-                          ?>
+                          ?>                     
+                    <li class="<?=$modules_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/modules"><i class="fa fa-code"></i> <span class="nav-label"><?=Yii::t('app','panel.modules')?></span></a>
+                      <ul class="list-unstyled">
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/modules"><?=Yii::t('app','panel.modules')?></a></li>
+                        </ul>
+                    </li>
                     <li class="<?=$facebook_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook"><i class="fa fa-facebook"></i> <span class="nav-label"><?=Yii::t('app','panel.facebook')?></span></a>
                     	<ul class="list-unstyled">
                         	<li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/facebook#feeds" target="_self">Feeds</a></li>
@@ -410,14 +425,7 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/materialize/materialize.min.js"></script>
     
 
-    <!-- Codemirror-->
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/lib/codemirror.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/xml/xml.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/javascript/javascript.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/css/css.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/addon/edit/matchbrackets.js"></script>
-    
+
     <!-- Globalize -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/globalize/globalize.min.js"></script>
     
@@ -460,6 +468,15 @@
 -->
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=inlineEditorJs"></script>
 <!--language plugin version-->
+   
+  <!-- Codemirror-->
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/lib/codemirror.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/xml/xml.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/javascript/javascript.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/css/css.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/panel/js/codemirror/addon/edit/matchbrackets.js"></script>
+    
 
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/languages/<?=Yii::app()->language?>.js"></script>
   <!-- 

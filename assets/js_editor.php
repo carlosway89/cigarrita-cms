@@ -32,7 +32,27 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/inline_editor/js/languages/<?=Yii::app()->language?>.js"></script>
 
 <!--[end]-->
-
+<style type="text/css">
+  .loading-container {
+    position: fixed;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 9;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    cursor: wait;
+    text-align: center;
+    padding-top: 250px;
+  }
+  svg{
+      width: 100px;
+      height: 100px;
+      margin: 20px;
+      display:inline-block;
+  }
+  
+</style>
 <script type="text/javascript">
 	var $base_url="<?php echo Yii::app()->request->baseUrl;?>";
   var $is_master="<?php echo Yii::app()->user->checkAccess('webmaster')?Yii::app()->user->checkAccess('webmaster'):0;?>";
@@ -213,6 +233,16 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
 </script>
 
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=cigarritaApp"></script>
-
+<script type="text/javascript">
+<?php
+  $mod_directives=Modules::model()->findAll("is_deleted='0' and state='1'");
+?>
+cigarritaDirective
+<?php foreach ($mod_directives as $mod_val) {
+  echo $this->renderInternal($_SERVER['DOCUMENT_ROOT']."/themes/".Yii::app()->theme->name."/modules/".$mod_val->name."/js/".$mod_val->name.".js",null,true);
+?>
+<?php } ?>
+;
+</script>
 <!--[/cigarrita Angular Path]-->
 	

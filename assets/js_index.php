@@ -143,15 +143,16 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
   }]);
 
 </script>
-<!--
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/controllers/controllers.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/modules/animations.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/modules/filters.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/modules/directives.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/models/services.js"></script>
--->
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/min/?g=cigarritaAppWeb"></script>
 <script type="text/javascript">
-
+<?php
+  $mod_directives=Modules::model()->findAll("is_deleted='0' and state='1'");
+?>
+cigarritaDirective
+<?php foreach ($mod_directives as $mod_val) {
+  echo $this->renderInternal($_SERVER['DOCUMENT_ROOT']."/themes/".Yii::app()->theme->name."/modules/".$mod_val->name."/js/".$mod_val->name.".js",null,true);
+?>
+<?php } ?>
+;
 </script>
 <!--[/cigarrita Angular Path]-->

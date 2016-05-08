@@ -8,17 +8,17 @@
  * @property string $url
  * @property string $name
  * @property string $type
- * @property string $SEO_title
- * @property string $SEO_description
- * @property string $SEO_keywords
  * @property integer $state
  * @property integer $position
- * @property integer $hierarchy
  * @property integer $is_deleted
  * @property string $language
  * @property integer $page
  * @property integer $parent_id
  * @property string $source
+ * @property integer $hierarchy
+ * @property string $SEO_title
+ * @property string $SEO_description
+ * @property string $SEO_keywords
  */
 class Menu extends CActiveRecord
 {
@@ -48,14 +48,15 @@ class Menu extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idmenu, state, position, hierarchy, is_deleted, page', 'numerical', 'integerOnly'=>true),
+			array('state, position, is_deleted, page, parent_id, hierarchy', 'numerical', 'integerOnly'=>true),
 			array('url, name', 'length', 'max'=>100),
 			array('type, language', 'length', 'max'=>10),
+			array('SEO_title, SEO_keywords, SEO_description', 'length', 'max'=>200),
 			array('source', 'safe'),
 			array('parent_id', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idmenu, url, name, SEO_title, SEO_description, SEO_keywords, type, state, position, is_deleted, language, page, parent_id, source', 'safe', 'on'=>'search'),
+			array('idmenu, url, name, type, state, position, is_deleted, language, page, parent_id, source, hierarchy, SEO_title, SEO_description, SEO_keywords', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,18 +80,18 @@ class Menu extends CActiveRecord
 			'idmenu' => 'Idmenu',
 			'url' => 'Url',
 			'name' => 'Name',
-			'SEO_title'=>'SEO title',
-			'SEO_description'=>'SEO description',
-			'SEO_keywords'=>'SEO keywords',
 			'type' => 'Type',
 			'state' => 'State',
 			'position' => 'Position',
-			'hierarchy'=>'Hierarchy',
 			'is_deleted' => 'Is Deleted',
 			'language' => 'Language',
 			'page' => 'Page',
 			'parent_id' => 'Parent',
 			'source' => 'Source',
+			'hierarchy' => 'Hierarchy',
+			'SEO_title' => 'Seo Title',
+			'SEO_description' => 'Seo Description',
+			'SEO_keywords' => 'Seo Keywords',
 		);
 	}
 
@@ -111,12 +112,15 @@ class Menu extends CActiveRecord
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('state',$this->state);
 		$criteria->compare('position',$this->position);
-		$criteria->compare('hierarchy',$this->hierarchy);
 		$criteria->compare('is_deleted',$this->is_deleted);
 		$criteria->compare('language',$this->language,true);
 		$criteria->compare('page',$this->page);
 		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('source',$this->source,true);
+		$criteria->compare('hierarchy',$this->hierarchy);
+		$criteria->compare('SEO_title',$this->SEO_title,true);
+		$criteria->compare('SEO_description',$this->SEO_description,true);
+		$criteria->compare('SEO_keywords',$this->SEO_keywords,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

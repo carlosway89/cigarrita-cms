@@ -36,7 +36,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<textarea id="codemirror" name="Page[source]" style="height: 360px;overflow-y: scroll;background-color: rgba(0, 0, 0, 0.8);
-color: #66AFE9;" ><?=$model->source?></textarea>
+color: #66AFE9;" ><?=htmlspecialchars($model->source)?></textarea>
 		</div>
 	</div>
 	<div class="row">

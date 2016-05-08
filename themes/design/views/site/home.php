@@ -176,13 +176,12 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading" element-object="block" element-contenido>{{block.header}}</h2>
-                <h3 class="section-subheading text-muted" element-object="block" element-contenido>{{block.subheader}}</h3>
-            </div>
+            </div>           
         </div>
         <div class="row">
-            <div class="col-lg-12" element-post element-object="post" data-type="slider">
-                <div element-contenido element-form >{{post.subheader}}</div>
-                <!--contact-->
+            <div class="col-lg-12" >
+                <!--contact form-->
+                <?=$modules['mod_form_contact']?>                
             </div>
         </div>
     </div>

@@ -256,6 +256,32 @@ $(function(){
 		  lineNumbers: true,
 		  lineWrapping: true
 		});
+		
+		$("button[data-toggle='modal']").on("click",function(){
+			
+			setTimeout(function() {
+			    editor.refresh();
+			},300);
+		})
+		// console.log('editor',editor);
+		// var editor = CodeMirror.fromTextArea($('.codemirror'), {
+	 //    lineNumbers: true
+	 //  	});
+	}
+	if( $('#codemirror2').length ){
+		var editor_2 = CodeMirror.fromTextArea(document.getElementById("codemirror2"), {
+		  mode: "text/javascript",
+		  styleActiveLine: true,
+		  lineNumbers: true,
+		  lineWrapping: true
+		});
+		$("a[href='#angular_code']").on("click",function(){
+			
+			setTimeout(function() {
+			    editor_2.refresh();
+			},300);
+		})
+		
 		// console.log('editor',editor);
 		// var editor = CodeMirror.fromTextArea($('.codemirror'), {
 	 //    lineNumbers: true
