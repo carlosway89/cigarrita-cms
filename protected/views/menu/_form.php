@@ -193,7 +193,19 @@
 					$('#url_page').hide();
 					$('#page_name').show();
 					$('#Menu_url').attr("readonly","readonly");
-					$('#Menu_url').val("/"+$("#page_name option:selected").text());
+					//$('#Menu_url').val("/"+$("#page_name option:selected").text());
+					var menu_name=$("input#Menu_name").val();
+					menu_name = menu_name.replace(/\s/g, "-");
+					menu_name=menu_name.toLowerCase();
+					var sr=["ä","ë","ï","ö","ü","ñ","ß","á","é","í","ó","ú","'",'"',"ç","à","è","ì","ò","ù"];
+					var rp=["ae","e","i","oe","ue","nh","ss","a","e","i","o","u","","","c","a","e","i","o","u"];
+					for(i=0;i<sr.length;i++){
+
+						menu_name = menu_name.replace(new RegExp(sr[i], 'g'), rp[i]);
+					}
+
+					$('#Menu_url').val("/"+menu_name);
+
 				}else{
 					$('#url_page').hide();
 					$('#page_name').hide();					
@@ -209,6 +221,23 @@
 
 		$("select#type_page").on('change',function(){
 			select_type();
+		});
+		$("input#Menu_name").on("keyup",function(event) {
+			var that=$(this);
+			var menu_name=that.val();
+			menu_name = menu_name.replace(/\s/g, "-");
+			menu_name=menu_name.toLowerCase();
+			var sr=["ä","ë","ï","ö","ü","ñ","ß","á","é","í","ó","ú","'",'"',"ç","à","è","ì","ò","ù"];
+			var rp=["ae","e","i","oe","ue","nh","ss","a","e","i","o","u","","","c","a","e","i","o","u"];
+			for(i=0;i<sr.length;i++){
+				
+				menu_name = menu_name.replace(new RegExp(sr[i], 'g'), rp[i]);
+			}
+			
+			if ($('select#type_page option#new_page').is(':selected')) {
+				$('#Menu_url').val("/"+menu_name);
+			}
+			
 		});
 
 		$("#page_name select").on('change',function(){

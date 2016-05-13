@@ -181,7 +181,14 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     foreach ($menu as $value) {
 
       if ($value->type=="new") {
-        $_template=$this->render_page('site',$value->url);
+        $page_name="home";
+        foreach ($pages as $pag_val) {
+          if ($value->page==$pag_val->idpage) {
+            $page_name=$pag_val->name;
+            break;
+          }
+        }
+        $_template=$this->render_page('site',$page_name);
     ?>
       when('<?=$value->url?>', {
         // templateUrl: $base_url+'/api/template<?=$value->url?>/site',
