@@ -24,6 +24,8 @@ return
         'panel.delete'=>'Eliminar',
         'panel.details'=>'Detalles',
         'panel.add'=>'Agregar',
+        'panel.sync'=>'Sincronizar',
+        'panel.language.sync'=>'Sincronizar Idioma',
         'panel.new'=>'Nuevo',
         'panel.required'=>'Los campos con <span class="required">*</span> son requeridos.',
         'panel.save'=>'Guardar',
@@ -35,7 +37,7 @@ return
         'panel.message.success.update'=>'Item actualizado correctamente',
         'panel.message.error'=>'Lo sentimos!! Ocurrio un error, intentar de nuevo',
         //General Attributes
-        'panel.table.name'=>'Nombre',
+        'panel.table.name'=>'Nombre *',
         'panel.table.state'=>'Estado',
         'panel.table.state.on'=>'Habilitado',
         'panel.table.state.off'=>'Deshabilitado',
@@ -50,6 +52,12 @@ return
         'panel.pages.new'=>'Agregar Pagina',
         'panel.pages.create'=>'Crear Pagina',
         'panel.pages.single'=>'Pagina Individual',
+        //Language views
+        'panel.language'=>'Idiomas',
+        'panel.language.list'=>'Lista de los Idiomas',
+        'panel.language.new'=>'Agregar Idioma',
+        'panel.language.update'=>'Actualizar Idioma',
+        'panel.language.flag'=>'Bandera',
         //Category views
         'panel.category'=>'Categorias de la web',
         'panel.category.create'=>'Crear Categoria',
@@ -68,7 +76,10 @@ return
         'panel.users.password'=>'Contraseña',
         'panel.users.name'=>'Nombre',
         'panel.users.type'=>'Tipo',
-
+        //Modules views
+        'panel.modules'=>'Modulos de la web',
+        'panel.modules.create'=>'Crear Modulo',
+        'panel.modules.update'=>'Actualizar Modulo',
         //Blocks views
         'panel.blocks'=>'Blocks de la web',
         'panel.blocks.create'=>'Crear Block',

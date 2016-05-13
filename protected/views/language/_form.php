@@ -1,6 +1,6 @@
 <?php		
-	if (isset($message)) {
-		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h6><br>";
+	if (isset($_GET["message"]) && !$model->isNewRecord) {
+		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
 	}
 ?>	
 
@@ -11,18 +11,17 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
-
+	<p class="note"><?=Yii::t('app','panel.required')?></p>
 	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'nombre'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.table.name')); ?>
 		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'bandera'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.language.flag')); ?>
 		<select name="Language[flag]" class="browser-default">
 			<?php foreach ($flags as $value) {
 			?>
@@ -33,7 +32,7 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'estado'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.table.state')); ?>
 		<div class="switch">
           <label>
             Off
@@ -46,8 +45,8 @@
 	</div>
 
 	<div class="row buttons">
-		<button class="btn btn-info" type="submit">Guardar</button>
-		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/language">Regresar</a>
+		<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
+		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/language"><?=Yii::t('app','panel.back')?></a>
 	</div>
 
 <?php $this->endWidget(); ?>

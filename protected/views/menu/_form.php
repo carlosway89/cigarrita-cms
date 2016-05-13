@@ -70,8 +70,8 @@
 		<div class="row">
 			<?php echo $form->labelEx($model,'tipo'); ?>
 			<select id="type_page" name="Menu[type]" class="browser-default">
-				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll</option>
 				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >Page</option>
+				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll</option>
 				<option id="redirect_page" value="redirect" <?=$model->type=='redirect'?'selected':''?> >Redirect</option>
 			</select>
 			<br>

@@ -96,7 +96,7 @@
 </div>
 
 <!-- Modal Block-->
-<div class="modal fade" id="modal_block" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+<div class="modal fade" id="modal_block" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;height: 465px;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -117,7 +117,7 @@
 </div>
 
 <!-- Modal Category -->
-<div class="modal fade" id="modal_category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;">
+<div class="modal fade" id="modal_category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;height: 440px;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

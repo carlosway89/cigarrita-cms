@@ -2,21 +2,21 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manejar Idiomas</h4>
+			<h4><?=Yii::t('app','panel.language.list')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_language">Add Language</button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_language"><?=Yii::t('app','panel.language.new')?></button>
 						<br><br>
 						<table id="langList" class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="name">Nombre</th>
-						            <th data-field="flag">Bandera</th>
-						            <th data-field="state">Estado</th>
-						            <th>Opciones</th>
+						            <th data-field="name"><?=Yii::t('app','panel.table.name')?></th>
+						            <th data-field="flag"><?=Yii::t('app','panel.language.flag')?></th>
+						            <th data-field="state"><?=Yii::t('app','panel.table.state')?></th>
+						            <th><?=Yii::t('app','panel.table.options')?></th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -25,10 +25,10 @@
 								<tr>
 									<td><?=$value->name?></td>
 									<td><i class="flag-icon-<?=$value->flag?> flag-icon"></i></td>
-									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?'Enable':'Disable'?></td>
+									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></td>
 									<td>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language/<?=$value->idlanguage?>" class="text-success"><i class="fa fa-pencil "></i> Editar</a>&nbsp;&nbsp;
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/language/<?=$value->idlanguage?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language/<?=$value->idlanguage?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/language/<?=$value->idlanguage?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
 									</td>
 								</tr>
 								<?php } ?>

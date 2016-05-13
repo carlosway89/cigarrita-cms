@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'menu':
  * @property integer $idmenu
+ * @property integer $idlink
  * @property string $url
  * @property string $name
  * @property string $type
@@ -48,6 +49,7 @@ class Menu extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('name', 'required'),
 			array('state, position, is_deleted, page, parent_id, hierarchy', 'numerical', 'integerOnly'=>true),
 			array('url, name', 'length', 'max'=>100),
 			array('type, language', 'length', 'max'=>10),
@@ -56,7 +58,7 @@ class Menu extends CActiveRecord
 			array('parent_id', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idmenu, url, name, type, state, position, is_deleted, language, page, parent_id, source, hierarchy, SEO_title, SEO_description, SEO_keywords', 'safe', 'on'=>'search'),
+			array('idmenu,idlink, url, name, type, state, position, is_deleted, language, page, parent_id, source, hierarchy, SEO_title, SEO_description, SEO_keywords', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,6 +80,7 @@ class Menu extends CActiveRecord
 	{
 		return array(
 			'idmenu' => 'Idmenu',
+			'idlink' => 'Idlink',
 			'url' => 'Url',
 			'name' => 'Name',
 			'type' => 'Type',
@@ -107,6 +110,7 @@ class Menu extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idmenu',$this->idmenu);
+		$criteria->compare('idlink',$this->idlink);
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('type',$this->type,true);

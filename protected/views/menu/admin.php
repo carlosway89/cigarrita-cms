@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4><?=Yii::t('app','panel.menus')?></h4>
+			<h4><?=Yii::t('app','panel.menus')?> - <strong>( <?=$lang?> )</strong></h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -15,7 +15,7 @@
 					<div class="panel-body">
 
 						<div class="row">
-							<div class="dropdown col-sm-2">
+							<div class="dropdown" style="float:left">
 			                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#"><?=Yii::t('app','panel.menus.language')?> <span class="caret"></span></a>
 			                  <ul class="dropdown-menu">
 			                    <?php foreach ($language as $key => $value) {
@@ -27,10 +27,18 @@
 			                    <?php } ?>
 			                  </ul>
 			                </div>
-			                <?php if (Yii::app()->user->checkAccess("webmaster")) {
+			                <?php if($lang!=Configuration::model()->findByPk(1)->language){ ?>
+			                <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/syncLanguage/menu/<?=$lang?>" class="btn-link col-sm-2" style="padding: 8px;text-align: center;"><i class="fa fa-random"></i> <?=Yii::t('app','panel.language.sync')?></a>
+			                <?php 
+			            	}else{
+			            		echo "&nbsp;&nbsp;&nbsp;";
+			            	}
+
+			                if (Yii::app()->user->checkAccess("webmaster")) {
                           	?>
 			                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.menus.create')?></button>
 							<?php }?>
+
 							<br><br>
 							<?php 
 			                	if (isset($_GET["message"])) {

@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'post':
  * @property integer $idpost
+ * @property integer $idsync
  * @property string $category
  * @property string $header
  * @property string $subheader
@@ -54,7 +55,7 @@ class Post extends CActiveRecord
 			array('header, subheader, teaser, source, date_created', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idpost, category, header, subheader, teaser, source, language, state, is_deleted, position, date_created', 'safe', 'on'=>'search'),
+			array('idpost,idsync, category, header, subheader, teaser, source, language, state, is_deleted, position, date_created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,6 +80,7 @@ class Post extends CActiveRecord
 	{
 		return array(
 			'idpost' => 'Idpost',
+			'idsync' => 'Idsync',
 			'category' => 'Category',
 			'header' => 'Header',
 			'subheader' => 'Subheader',
@@ -104,6 +106,7 @@ class Post extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idpost',$this->idpost);
+		$criteria->compare('idsync',$this->idsync);
 		$criteria->compare('category',$this->category,true);
 		$criteria->compare('header',$this->header,true);
 		$criteria->compare('subheader',$this->subheader,true);

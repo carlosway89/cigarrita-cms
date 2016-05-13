@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'block':
  * @property integer $idblock
+ * @property integer $idsync
  * @property string $category
  * @property string $header
  * @property string $subheader
@@ -47,12 +48,12 @@ class Block extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			// array('idblock, category', 'required'),
-			array('idblock, is_deleted, state', 'numerical', 'integerOnly'=>true),
+			array('idblock,idsync, is_deleted, state', 'numerical', 'integerOnly'=>true),
 			array('category, language', 'length', 'max'=>10),
 			array('header, subheader, source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idblock, category, header, subheader, is_deleted, state, language, source', 'safe', 'on'=>'search'),
+			array('idblock,idsync, category, header, subheader, is_deleted, state, language, source', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +78,7 @@ class Block extends CActiveRecord
 	{
 		return array(
 			'idblock' => 'Idblock',
+			'idsync'=>'Idsync',
 			'category' => 'Category',
 			'header' => 'Header',
 			'subheader' => 'Subheader',
@@ -99,6 +101,7 @@ class Block extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idblock',$this->idblock);
+		$criteria->compare('idsync',$this->idsync);
 		$criteria->compare('category',$this->category,true);
 		$criteria->compare('header',$this->header,true);
 		$criteria->compare('subheader',$this->subheader,true);

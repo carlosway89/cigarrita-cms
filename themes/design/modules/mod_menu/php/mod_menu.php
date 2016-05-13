@@ -21,7 +21,7 @@ foreach ($links as $val) {
 
 
 $pidKey="parent_id";
-$idKey="idmenu";
+$idKey="idlink";
 
 $grouped = array();
 foreach ($tree_array as $sub){

@@ -8,7 +8,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-						<div class="dropdown col-sm-2">
+						<div class="dropdown"  style="float:left">
 		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Idiomas <span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
 		                    <?php foreach ($language as $key => $value) {
@@ -20,6 +20,13 @@
 		                    <?php } ?>
 		                  </ul>
 		                </div>
+		                <?php if($lang!=Configuration::model()->findByPk(1)->language){ ?>
+			                <a href="<?=Yii::app()->getBaseUrl(true)?>/panel/syncLanguage/block/<?=$lang?>" class="btn-link col-sm-2" style="padding: 8px;text-align: center;"><i class="fa fa-random"></i> <?=Yii::t('app','panel.language.sync')?></a>
+			                <?php 
+			            	}else{
+			            		echo "&nbsp;&nbsp;&nbsp;";
+			            	}
+                        ?>
 		                <br><br><br>
 						<table id="postList" class="hoverable centered">
 							<thead>

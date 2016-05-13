@@ -18,7 +18,7 @@
 	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.table.name')); ?>
 		<?php echo $form->textField($model,'name',array('required'=>'required','size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>

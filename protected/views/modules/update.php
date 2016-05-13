@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4><?=Yii::t('app','panel.modules')?></h4>
+			<h4><?=Yii::t('app','panel.modules.update')?></h4>
 			<br>
 				
 				<div class="panel panel-default">

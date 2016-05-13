@@ -22,7 +22,7 @@ class PanelController extends Controller
 		//$test=Configuration::model()->findAll();
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','variableType','modules','rendering'),
+				'actions'=>array('index','language','config','users','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','variableType','modules','rendering','syncLanguage'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("webmaster")')
 					),
@@ -351,54 +351,58 @@ class PanelController extends Controller
 			if(isset($_POST['Language']))
 			{	
 				
+				$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
+			
 				$model->attributes=$_POST['Language'];
 				$model->estado=$model->estado=='on'?1:0;
 				$model->min=$model->flag;
 
-				
-				
-				if ($model->isNewRecord) {
-					if($model->save()){	
-						$_block=Block::model()->findAll("language='".Configuration::model()->findByPk(1)->language."'");
-						$_menu=Menu::model()->findAll("language='".Configuration::model()->findByPk(1)->language."'");
-
-						foreach ($_block as  $value) {
-							$model_block=new Block();
-							$model_block->attributes=$value->attributes;
-							unset($model_block->idblock);
-							$model_block->language=$model->flag;
-
-							if ($model_block->save()) {
-								foreach ($value->pageHasBlocks as $val_page) {
-									$model_page_block=new PageHasBlock();
-									$model_page_block->block_idblock=$model_block->idblock; 
-									$model_page_block->page_idpage=$val_page->page_idpage;
-									if ($model_page_block->save()) {
-										$message="Successfully Updated";
-									}
-								}
-							}
-							
-						}	
-
-						foreach ($_menu as $menu_val) {
-							$model_menu=new Menu();
-							$model_menu->attributes=$menu_val->attributes;
-							unset($model_menu->idmenu);
-							$model_menu->language=$model->flag;
-
-							if ($model_menu->save()) {
-								$message="Successfully Updated";
-							}
-
-						}
-
-					}
-				}else{
-					if($model->save()){
-						$message="Successfully Updated";
-					}
+				if($model->save()){
+					$this->redirect(array("panel/language".$id."?message=".$message));					
 				}
+				
+				// if ($model->isNewRecord) {
+				// 	if($model->save()){	
+				// 		$_block=Block::model()->findAll("language='".Configuration::model()->findByPk(1)->language."'");
+				// 		$_menu=Menu::model()->findAll("language='".Configuration::model()->findByPk(1)->language."'");
+
+				// 		foreach ($_block as  $value) {
+				// 			$model_block=new Block();
+				// 			$model_block->attributes=$value->attributes;
+				// 			unset($model_block->idblock);
+				// 			$model_block->language=$model->flag;
+
+				// 			if ($model_block->save()) {
+				// 				foreach ($value->pageHasBlocks as $val_page) {
+				// 					$model_page_block=new PageHasBlock();
+				// 					$model_page_block->block_idblock=$model_block->idblock; 
+				// 					$model_page_block->page_idpage=$val_page->page_idpage;
+				// 					if ($model_page_block->save()) {
+				// 						$message="Successfully Updated";
+				// 					}
+				// 				}
+				// 			}
+							
+				// 		}	
+
+				// 		foreach ($_menu as $menu_val) {
+				// 			$model_menu=new Menu();
+				// 			$model_menu->attributes=$menu_val->attributes;
+				// 			unset($model_menu->idmenu);
+				// 			$model_menu->language=$model->flag;
+
+				// 			if ($model_menu->save()) {
+				// 				$message="Successfully Updated";
+				// 			}
+
+				// 		}
+
+				// 	}
+				// }else{
+				// 	if($model->save()){
+				// 		$message="Successfully Updated";
+				// 	}
+				// }
 				
 					
 			}
@@ -433,6 +437,92 @@ class PanelController extends Controller
 			$model->save();
 		}
 
+
+	}
+	public function actionSyncLanguage(){
+		$model=$this->uri(2)?$this->uri(2):"";
+		$default_lang=Configuration::model()->findByPk(1)->language;
+		$lang=$this->uri(3)?$this->uri(3):$default_lang;
+		$_model=$model;
+		$model=ucfirst($model);
+		
+
+		$message=Yii::t('app','panel.message.success.update');
+
+		switch ($_model) {
+			case 'menu':
+				$page='links';
+				$list=$model::model()->findAll("language='".$default_lang."' and is_deleted='0'");
+				
+				foreach ($list as $value) {
+					$model_exist=$model::model()->findByAttributes(array("language"=>$lang,"idlink"=>$value->idlink));
+					if (!$model_exist) {
+						$menu=new $model();
+						$menu->attributes=$value->attributes;
+						$menu->language=$lang;
+						$menu->idlink=$value->idlink;					
+						unset($menu->idmenu);
+						
+						if ($menu->save()) {
+							
+						}
+					}
+					
+				}
+
+				break;
+			case 'block':
+				$page='blocks';
+				$list=$model::model()->findAll("language='".$default_lang."' and is_deleted='0'");
+				
+
+				foreach ($list as $value) {
+					$model_exist=$model::model()->findByAttributes(array("language"=>$lang,"idsync"=>$value->idsync));
+					
+					if (!$model_exist) {
+						$block=new $model();
+						$block->attributes=$value->attributes;
+						$block->language=$lang;
+						$block->idsync=$value->idsync;					
+						unset($block->idblock);
+						
+						if ($block->save()) {
+							
+						}
+					}
+					
+				}
+
+				break;
+			case 'post':
+				$page='posts';
+				$list=$model::model()->findAll("language='".$default_lang."' and is_deleted='0'");
+				$cat=$this->uri(4)?$this->uri(4):Category::model()->find("tag='panel'")->category;
+
+				foreach ($list as $value) {
+					$model_exist=$model::model()->findByAttributes(array("language"=>$lang,"idsync"=>$value->idsync));
+					
+					if (!$model_exist) {
+						$post=new $model();
+						$post->attributes=$value->attributes;
+						$post->language=$lang;
+						$post->idsync=$value->idsync;					
+						unset($post->idpost);
+						
+						if ($post->save()) {
+							
+						}
+					}
+					
+				}
+				$this->redirect(array("panel/".$page."/".$cat."/".$lang."?message=".$message));
+				break;
+			default:
+				$page='links';
+				break;
+
+		}
+		$this->redirect(array("panel/".$page."/".$lang."?message=".$message));
 
 	}
 	public function actionHelp(){
@@ -579,9 +669,14 @@ class PanelController extends Controller
 				$model->state=$model->state=='on'?1:0;
 
 				$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
-				
-				if($model->save()){		
+				$is_new=$model->isNewRecord;
 
+				if($model->save()){	
+					if ($is_new) {
+						$model->idsync=$model->idpost;
+						$model->save();
+					}	
+					
 					if (isset($_POST['Attr'])) {
 
 						$new_attr=$_POST['Attr'];
@@ -891,14 +986,19 @@ class PanelController extends Controller
 			}
 			if(isset($_POST['Block']))
 			{	
-				
+				$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
+				$is_new=$model->isNewRecord;
 				$model->attributes=$_POST['Block'];
 				$model->state=$model->state=='on'?1:0;
 
 				
-				if($model->save()){				
-					$model=Block::model()->findByPk($model->idpost);		
-					$message="Successfully Updated";
+				if($model->save()){	
+					if ($is_new) {
+						$model->idsync=$model->idblock;
+						$model->save();	
+					}
+									
+					$this->redirect(array("panel/blocks/".$lang."?message=".$message));					
 					
 				}
 					
@@ -1155,7 +1255,8 @@ class PanelController extends Controller
 					$model->language=Configuration::model()->findByPk(1)->language;
 
 					if ($model->save()) {
-						
+						$model->idlink=$model->idmenu;
+						$model->save();
 					}				
 					
 				// }
@@ -1197,7 +1298,7 @@ class PanelController extends Controller
 
 
 		$pidKey="parent_id";
-		$idKey="idmenu";
+		$idKey="idlink";
 
 		$grouped = array();
 		foreach ($tree_array as $sub){
@@ -1233,7 +1334,7 @@ class PanelController extends Controller
 				'message'=>$message,
 				'list'=>$list,
 				'tree'=>$tree,
-				'lang'=>!is_numeric($lang)?$lang:'es',
+				'lang'=>$lang,
 				'hierarchy'=>$hierarchy
 		));
 

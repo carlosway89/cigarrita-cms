@@ -45,7 +45,7 @@ color: #66AFE9;" ><?=htmlspecialchars($model->source)?></textarea>
 		<div class="switch">
           <label>
             Off
-            <input name="Page[single_page]" <?=$model->single_page?'checked="on"':''?> type="checkbox">
+            <input name="Page[single_page]" <?=$model->single_page?'checked="1"':''?> type="checkbox">
             <span class="lever"></span>
             On
           </label>

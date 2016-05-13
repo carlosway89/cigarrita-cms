@@ -43,6 +43,7 @@ class Page extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('name', 'required'),
 			array('is_deleted, state, single_page, layout', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
 			array('source', 'safe'),
