@@ -47,11 +47,12 @@ return
         'panel.table.options'=>'Opciones',
         
         //Pages views
-        'panel.pages'=>'Paginas',
-        'panel.pages.list'=>'Lista de las Paginas',
-        'panel.pages.new'=>'Agregar Pagina',
-        'panel.pages.create'=>'Crear Pagina',
-        'panel.pages.single'=>'Pagina Individual',
+        'panel.pages'=>'Plantillas',
+        'panel.pages.list'=>'Lista de las Plantillas',
+        'panel.pages.new'=>'Agregar Plantilla',
+        'panel.pages.update'=>'Actualizar Plantilla',
+        'panel.pages.create'=>'Crear Plantilla',
+        'panel.pages.single'=>'Plantilla Individual',
         //Language views
         'panel.language'=>'Idiomas',
         'panel.language.list'=>'Lista de los Idiomas',

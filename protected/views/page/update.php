@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Pagina</h4>
+			<h4><?=Yii::t('app','panel.pages.update')?></h4>
 			<br>
 				
 				<div class="panel panel-default">

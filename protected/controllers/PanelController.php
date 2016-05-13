@@ -1111,7 +1111,7 @@ class PanelController extends Controller
 
 				if(isset($_POST['Block']))
 				{	
-					$_lang=Language::model()->findAll("is_deleted='0'");
+					//$_lang=Language::model()->findAll("is_deleted='0'");
 
 					$has_same_block=$_POST['idblock']!=""?1:0;
 
@@ -1129,11 +1129,11 @@ class PanelController extends Controller
 							}
 					}else{
 
-						foreach ($_lang as $value) {					
+						// foreach ($_lang as $value) {					
 					
 							$model_block=new Block();
 							$model_block->attributes=$_POST['Block'];
-							$model_block->language=$value->flag;
+							$model_block->language=Configuration::model()->findByPk(1)->language;
 							if ($model_block->isNewRecord) {
 								$model_block->state=1;
 							}else{
@@ -1141,6 +1141,8 @@ class PanelController extends Controller
 							}				
 							
 							if($model_block->save()){
+								$model_block->idsync=$model_block->idblock;
+								$model_block->save();
 								$page_has_block=new PageHasBlock();
 								$page_has_block->page_idpage=$_POST['page_id'];
 								$page_has_block->block_idblock=$model_block->idblock;
@@ -1162,7 +1164,7 @@ class PanelController extends Controller
 								}
 								
 							}
-						}
+						// }
 					
 					}
 						

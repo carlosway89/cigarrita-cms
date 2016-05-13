@@ -210,7 +210,8 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
       when('/<?=$pag_val->name?>/:id/:name', {
         // templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
         template:'<?php echo $_template; ?>',
-        controller: 'singleCtrl'
+        controller: 'singleCtrl',
+        pageid: <?=$pag_val->idpage?>
       }).
     <?php 
       } 
