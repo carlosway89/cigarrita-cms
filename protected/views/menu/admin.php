@@ -93,7 +93,9 @@
 												</div>
 												<?php
 												if (isset($value->sub_menu)) {
+													echo "<div class='sub_menu_wrapper' style='width: 100%;display: table;'>";
 													 	$fnChildren($value->sub_menu,1,$value->idmenu);
+													 echo "</div>";
 												}
 												?>
 											</div>
@@ -133,7 +135,10 @@
 															<?php 
 																if (isset($val_list->sub_menu)) {
 																	$i=$pos;
+																	echo "<div class='sub_menu_wrapper' style='width: 100%;display: table;'>";
 																	$fnChildren($val_list->sub_menu,$i,$val_list->idmenu);
+																	echo "</div>";
+
 																}
 															?>
 														</div>
@@ -226,12 +231,25 @@
 						$('#url_page').hide();
 						$('#page_name').show();
 						$('#Menu_url').attr("readonly","readonly");
-						$('#Menu_url').val("/"+$("#page_name option:selected").text());
+						//$('#Menu_url').val("/"+$("#page_name option:selected").text());
+						var menu_name=$("input#Menu_name").val();
+						menu_name = menu_name.replace(/\s/g, "-");
+						menu_name=menu_name.toLowerCase();
+						var sr=["ä","ë","ï","ö","ü","ñ","ß","á","é","í","ó","ú","'",'"',"ç","à","è","ì","ò","ù"];
+						var rp=["ae","e","i","oe","ue","nh","ss","a","e","i","o","u","","","c","a","e","i","o","u"];
+						for(i=0;i<sr.length;i++){
+
+							menu_name = menu_name.replace(new RegExp(sr[i], 'g'), rp[i]);
+						}
+
+						$('#Menu_url').val("/"+menu_name);
+
 					}else{
 						$('#url_page').hide();
-						$('#page_name').hide();
+						$('#page_name').hide();					
 						$('#Menu_url').attr("readonly",false);
-						$('#Menu_url').val("");
+						$('#Menu_url').val("<?=$model->url?>");
+						
 					}
 					
 				}
@@ -241,6 +259,24 @@
 
 			$("select#type_page").on('change',function(){
 				select_type();
+			});
+
+			$("input#Menu_name").on("keyup",function(event) {
+				var that=$(this);
+				var menu_name=that.val();
+				menu_name = menu_name.replace(/\s/g, "-");
+				menu_name=menu_name.toLowerCase();
+				var sr=["ä","ë","ï","ö","ü","ñ","ß","á","é","í","ó","ú","'",'"',"ç","à","è","ì","ò","ù"];
+				var rp=["ae","e","i","oe","ue","nh","ss","a","e","i","o","u","","","c","a","e","i","o","u"];
+				for(i=0;i<sr.length;i++){
+					
+					menu_name = menu_name.replace(new RegExp(sr[i], 'g'), rp[i]);
+				}
+				
+				if ($('select#type_page option#new_page').is(':selected')) {
+					$('#Menu_url').val("/"+menu_name);
+				}
+				
 			});
 
 			$("#page_name select").on('change',function(){
@@ -270,6 +306,37 @@
 					        endPosition = ui.item.prevAll().length;
 					        var json={};
 				        	$("#sortable .ui-state-default").each(function(index){
+				        		json[index+1]=$(this).attr('id');			   
+					        });
+				        	var serverUrl="<?php echo Yii::app()->request->baseUrl; ?>/api/menuSort";
+
+				        	json=JSON.stringify(json);
+
+					        $.ajax({
+		                        type: "POST",
+		                        url: serverUrl,
+		                        data: json,
+		                        contentType: 'application/json; charset=utf-8',	 
+		                        dataType: "json",              
+		                        success: function(data) {
+
+		                        }
+		                    });
+					        
+					    }
+			    	});
+					$( ".sub_menu_wrapper" ).sortable({
+			    		items: "div.tr",
+						cursor: "move",
+						// handle:".text-success",
+						start:function(event, ui){
+					        startPosition = ui.item.prevAll().length;
+					        // console.log(startPosition);
+					    },
+					    update: function(event, ui) {
+					        endPosition = ui.item.prevAll().length;
+					        var json={};
+				        	$(this).find(".ui-state-default").each(function(index){
 				        		json[index+1]=$(this).attr('id');			   
 					        });
 				        	var serverUrl="<?php echo Yii::app()->request->baseUrl; ?>/api/menuSort";

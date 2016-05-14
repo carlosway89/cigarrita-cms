@@ -4,7 +4,7 @@
         link: function(scope, element, attrs) {
             
             var links=attrs.menuLinks;
-
+          
             if (links=="scroll") {
 
               element.attr("target", "_self");

@@ -455,7 +455,7 @@ class PanelController extends Controller
 				$list=$model::model()->findAll("language='".$default_lang."' and is_deleted='0'");
 				
 				foreach ($list as $value) {
-					$model_exist=$model::model()->findByAttributes(array("language"=>$lang,"idlink"=>$value->idlink));
+					$model_exist=$model::model()->findByAttributes(array("is_deleted"=>0,"language"=>$lang,"idlink"=>$value->idlink));
 					if (!$model_exist) {
 						$menu=new $model();
 						$menu->attributes=$value->attributes;
@@ -477,7 +477,7 @@ class PanelController extends Controller
 				
 
 				foreach ($list as $value) {
-					$model_exist=$model::model()->findByAttributes(array("language"=>$lang,"idsync"=>$value->idsync));
+					$model_exist=$model::model()->findByAttributes(array("is_deleted"=>0,"language"=>$lang,"idsync"=>$value->idsync));
 					
 					if (!$model_exist) {
 						$block=new $model();
@@ -500,7 +500,7 @@ class PanelController extends Controller
 				$cat=$this->uri(4)?$this->uri(4):Category::model()->find("tag='panel'")->category;
 
 				foreach ($list as $value) {
-					$model_exist=$model::model()->findByAttributes(array("language"=>$lang,"idsync"=>$value->idsync));
+					$model_exist=$model::model()->findByAttributes(array("is_deleted"=>0,"language"=>$lang,"idsync"=>$value->idsync));
 					
 					if (!$model_exist) {
 						$post=new $model();
@@ -1206,7 +1206,7 @@ class PanelController extends Controller
 		
 		$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
 
-		$page=Page::model()->findAll("state=1 AND is_deleted='0'");
+		$page=Page::model()->findAll("state=1 AND is_deleted='0' and layout='0'");
 		
 		$criteria_block = new CDbCriteria;
 		$criteria_block->select = "DISTINCT category";
