@@ -46,6 +46,22 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
   
   var pageid = $route.current.$$route.pageid;
+  
+  var seo = {
+    title:$route.current.$$route.seo_title,
+    description:$route.current.$$route.seo_description,
+    keywords:$route.current.$$route.seo_keywords
+  };
+
+  if (seo.title!="") {
+    $("title").html(seo.title);
+  }
+  if (seo.description!="") {
+    $("meta[name='description']").attr("content",seo.description);
+  }
+  if (seo.keywords!="") {
+    $("meta[name='keywords']").attr("content",seo.keywords);
+  }
 
   var page=function(){
     
@@ -94,6 +110,22 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
 
   var pageid = $route.current.$$route.pageid;
 
+  var seo = {
+    title:$route.current.$$route.seo_title,
+    description:$route.current.$$route.seo_description,
+    keywords:$route.current.$$route.seo_keywords
+  };
+
+  if (seo.title!="") {
+    $("title").html(seo.title);
+  }
+  if (seo.description!="") {
+    $("meta[name='description']").attr("content",seo.description);
+  }
+  if (seo.keywords!="") {
+    $("meta[name='keywords']").attr("content",seo.keywords);
+  }
+  
   var page=function(){
 
     var obj={
