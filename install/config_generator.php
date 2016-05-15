@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'CIGARRITA',
-	'language'=>'es',
+	'language'=>'{#language}',
 	'sourceLanguage'=>'00',
 	'charset'=>'utf-8',
 	'theme'=>'design',
@@ -20,8 +20,12 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.components.*',
 	),
-
+	'modules'=>array(
+		// uncomment the following to enable the Gii tool
+		'pluginsCigarrita',
+	),
 	// application components
 	'components'=>array(
 		'db'=>array(

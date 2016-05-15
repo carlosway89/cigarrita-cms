@@ -41,13 +41,29 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.users.name')); ?>
-		<?php echo $form->textField($model,'full_name',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textField($model,'full_name',array('required'=>'required','rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'full_name'); ?>
 	</div>
-
+	<?php if(Yii::app()->user->checkAccess("webmaster")) {
+		$user_type="";
+		foreach ($model->auth as $value_auth) {
+			$user_type=$value_auth->itemname;
+		}
+	?>
+	<div class="row">
+		<label for=""><?=Yii::t('app','panel.users.type')?></label>
+		<select name="user_type" class="browser-default" required>
+			<option value=""><?=Yii::t('app','panel.none')?></option>
+			<?php foreach ($users_groups as $users_groups_val) {				
+			?>
+			<option <?=$user_type==$users_groups_val->name?"selected":""?> value="<?=$users_groups_val->name?>"><?=$users_groups_val->name?></option>
+			<?php }?>
+		</select>
+	</div>
+	<?php }?>
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.users.email')); ?>
-		<?php echo $form->textField($model,'email',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textField($model,'email',array('required'=>'required','rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 

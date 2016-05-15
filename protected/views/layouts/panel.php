@@ -200,6 +200,10 @@
                     <li class="<?=$users_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><i class="fa fa-group"></i> <span class="nav-label"><?=Yii::t('app','panel.users')?></span></a>
                       <ul class="list-unstyled">
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><?=Yii::t('app','panel.users')?></a></li>
+                          <?php if (Yii::app()->user->checkAccess("webmaster")) {
+                          ?> 
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/usersGroups"><?=Yii::t('app','panel.usersgroups')?></a></li>
+                          <?php }?>
                       </ul>
                     </li>
                     <?php if (Yii::app()->user->checkAccess("webmaster")) {
@@ -265,7 +269,7 @@
                     </li>
                     <?php } ?>
                     <li class="divider"></li>
-                    <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language#modal_language">+ <?=Yii::t('app','panel.new_language')?></a></li>
+                    <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/language">+ <?=Yii::t('app','panel.language')?></a></li>
                   </ul>
                 </li>
                 <?php }?>

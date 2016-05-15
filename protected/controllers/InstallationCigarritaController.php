@@ -224,6 +224,9 @@ class InstallationCigarritaController extends Controller
 			        if ($name=='index') {
 			        	$name="home";
 			        }
+			        if ($name=='blank') {
+			        	$page->layout=1;
+			        }
 			        $page->name=$name;
 			        if ($page->save()) {
 			        }
@@ -244,8 +247,8 @@ class InstallationCigarritaController extends Controller
 			        chmod($root."/themes/design/views/site/$value".".php", 0777);
 
 	        		if ($key=="blank.html") {
-	        			$file = new SplFileObject($root."/themes/design/views/site/editor_cigarrita_worker".".php",'w+');		            
-			        	$file->fwrite($page);
+	        			// $file = new SplFileObject($root."/themes/design/views/site/editor_cigarrita_worker".".php",'w+');		            
+			        	// $file->fwrite($page);
 
 			        	$this->generatePHP("index");	
 			        	//$this->generatePHP("editor_cigarrita_worker");			        	

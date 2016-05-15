@@ -717,8 +717,8 @@ body.dimmed.dimmable > :not(.dimmer) {
     padding: 0.65em 1em;
     line-height: 1.33;
     color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) !important;
-    border-radius: 0.3125em !important;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 0.3125em;
 }
 .ui.dropdown .menu {
     cursor: auto;
@@ -875,7 +875,7 @@ i.closing.icon:before{
   position: relative;
 }
 
-.selection.dropdown{
+/*.selection.dropdown{
   margin: 10px;
   float: left !important;
   position: fixed !important;
@@ -883,8 +883,6 @@ i.closing.icon:before{
   display: inline-block !important;
 }
 .menu.laguage-select{
-    /*top: -250% !important;
-    border-radius: 5px !important;*/
     height: 100px;
     bottom: -200px !important;
     top: -170% !important;
@@ -892,5 +890,5 @@ i.closing.icon:before{
 }
 .menu.laguage-select .item{
     font-size: 12px !important;
-}
+}*/
 

@@ -72,11 +72,21 @@ return
         //Users views
         'panel.users'=>'Usuarios de la web',
         'panel.users.create'=>'Crear Usuario',
+        'panel.users.update'=>'Actualizar Usuario',
         'panel.users.email'=>'Email',
         'panel.users.user'=>'Usuario',
         'panel.users.password'=>'Contraseña',
         'panel.users.name'=>'Nombre',
         'panel.users.type'=>'Tipo',
+        //Users Groups views
+        'panel.usersgroups'=>'Grupos de Usuario de la web',
+        'panel.usersgroups.list'=>'Lista Grupos de Usuario de la web',
+        'panel.usersgroups.create'=>'Crear Grupo de Usuario',
+        'panel.usersgroups.name'=>'Nombre de Grupo',
+        'panel.usersgroups.description'=>'Descripción',
+        'panel.usersgroups.permition'=>'Permisos',
+        'panel.usersgroups.permition.update'=>'Actualizar Permisos',
+        'panel.usersgroups.type'=>'Tipo',
         //Modules views
         'panel.modules'=>'Modulos de la web',
         'panel.modules.create'=>'Crear Modulo',

@@ -8,12 +8,14 @@ class generator_model{
 		private $dbuser="root";
 		private $dbpass=" ";
 		private $dbname="cigarrita";
+		private $language="es";
 
-		public function __construct($dbhost,$dbuser,$dbpass,$dbname="cigarrita_web") {
+		public function __construct($dbhost,$dbuser,$dbpass,$dbname="cigarrita_web",$language="es") {
 			$this->dbhost=$dbhost;
 			$this->dbuser=$dbuser;
 			$this->dbpass=$dbpass;
 			$this->dbname=$dbname;
+			$this->language=$language;
 			$this->root=$_SERVER['DOCUMENT_ROOT'];
 
 	  	}
@@ -26,6 +28,7 @@ class generator_model{
 		  		$config=str_replace("{#dbuser}", $this->dbuser, $config);
 		  		$config=str_replace("{#dbpass}", $this->dbpass, $config);
 		  		$config=str_replace("{#dbname}", $this->dbname, $config);
+		  		$config=str_replace("{#language}", $this->language, $config);
 
 		  		$file = new SplFileObject($this->root."/protected/config/main.php",'w+');		            
 				$file->fwrite($config);

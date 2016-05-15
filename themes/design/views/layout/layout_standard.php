@@ -51,6 +51,7 @@
             <div ng-view="">
                 <!--content-->
             </div>
+            <?=$modules["mod_language"]?>
             <footer>
                 <div class="container">
                     <div class="row">

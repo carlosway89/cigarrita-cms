@@ -71,7 +71,8 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
       idpage:pageid,
       is_deleted:0
     };
-
+    $("#wrapper-pre-loader").show();
+    $('.preloader').show();
     $scope.page = Content.query({
       query:JSON.stringify(obj)
     },function(data){
@@ -128,6 +129,9 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
   
   var page=function(){
 
+    $("#wrapper-pre-loader").show();
+    $('.preloader').show();
+
     var obj={
       language:beans.readCookie('language.initial'),
       state:1,
@@ -168,6 +172,9 @@ cigarritaControllers.controller('singleCtrl',['$scope','Post','Language','$route
     
     // console.log($route.current.params);
 
+    $("#wrapper-pre-loader").show();
+    $('.preloader').show();
+    
     $scope.post = Post.get({
       id:$route.current.params.id
     },function(data){

@@ -7,7 +7,8 @@
 		$dbuser=$_POST["dbuser"];
 		$dbpass=$_POST["dbpass"];
 		$dbname=$_POST["dbname"];
-		$gen=new generator_model($dbhost,$dbuser,$dbpass,$dbname);
+		$language=$_POST["language"];
+		$gen=new generator_model($dbhost,$dbuser,$dbpass,$dbname,$language);
 		$res=$gen->create_db();
 		$message="";
 		if ($res=="1") {
@@ -104,7 +105,7 @@
 	                                	<div class="form-group">
 										    <label for="dbhost" class="col-sm-2 control-label">Host o Servidor:</label>
 										    <div class="col-sm-10">
-										    	<input type="text" class="form-control" name="dbhost" id="dbhost" placeholder="Database Host" required>
+										    	<input type="text" class="form-control" name="dbhost" id="dbhost" placeholder="Host or Server" required>
 											</div>
 										</div>
 										<div class="form-group">
@@ -123,6 +124,16 @@
 										    <label for="dbpass" class="col-sm-2 control-label">BD Contraseña:</label>
 										    <div class="col-sm-10">
 										    	<input type="password" class="form-control" name="dbpass" id="dbpass" placeholder="Database Password" required>
+											</div>
+										</div>
+										<div class="form-group">
+										    <label for="language" class="col-sm-2 control-label">Languaje por defecto:</label>
+										    <div class="col-sm-10">
+										    	<select name="language" id="language" class="browser-default">
+										    		<option value="de">Deutsch</option>
+										    		<option value="es" selected>Español</option>
+										    		<option value="en">Englich</option>
+										    	</select>										    	
 											</div>
 										</div>
 										<div class="form-group">

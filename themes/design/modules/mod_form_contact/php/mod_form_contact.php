@@ -2,6 +2,16 @@
 	section#contact .form-group {
         margin-bottom: 15px !important;
     }
+    #contact-form-position{
+      display: table;
+      width: 100%;
+      padding: 30px;
+      border: 1px dashed;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: rgb(255, 255, 255);
+      text-align: center;
+    }
 </style>
 
 <div class="section-subheading text-muted" element-form="">
@@ -33,6 +43,6 @@
       </div>
     </form>
   <?php }else{?>
-  <div>Form Contact Module</div>
+  <div id="contact-form-position">Form Contact Module</div>
   <?php }?>
 </div>

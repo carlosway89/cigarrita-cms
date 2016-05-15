@@ -52,13 +52,15 @@
 											<div class="col-sm-12">
 												<?php 
 												foreach($value->pageHasBlocks as $key_block => $has_block){
-													if (!$has_block->is_deleted && !$has_block->blockIdblock->is_deleted && $lang==$has_block->blockIdblock->language) {
+													if (!$has_block->is_deleted && !$has_block->blockIdblock->is_deleted ) {
+														if ($lang==$has_block->blockIdblock->language) {														
 												?>
 												<div class="col-sm-1 page-has-block">
 													<a class="text-danger delete-link" href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/pageHasBlock/<?=$has_block->id_page_has_block?>"><i class="fa fa-trash-o "></i></a>
 													<?=$has_block->blockIdblock->category?>
 												</div>
 												<?php 
+														}
 													}
 												} ?>
 												<button type="button" data-page-id="<?=$value->idpage?>" data-toggle="modal" data-target="#modal_block" class="col-sm-1 page-has-block btn-default new_block_button">

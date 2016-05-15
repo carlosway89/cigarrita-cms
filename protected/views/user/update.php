@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4><?=Yii::t('app','panel.users.user')?></h4>
+			<h4><?=Yii::t('app','panel.users.update')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -12,7 +12,8 @@
 						<?php echo $this->renderPartial('//user/_form', 
 							array(
 									'model'=>$model,
-									'message'=>$message
+									'message'=>$message,
+									'users_groups'=>$users_groups
 								)
 							); 
 						?>

@@ -69,7 +69,8 @@
       <div class="modal-body">
         <?php echo $this->renderPartial('//user/_form', 
 			array(
-					'model'=>$model
+					'model'=>$model,
+					'users_groups'=>$users_groups
 				)
 			); 
 		?>

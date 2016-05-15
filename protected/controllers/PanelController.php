@@ -22,7 +22,7 @@ class PanelController extends Controller
 		//$test=Configuration::model()->findAll();
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','variableType','modules','rendering','syncLanguage'),
+				'actions'=>array('index','language','config','users','usersGroups','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','variableType','modules','rendering','syncLanguage'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("webmaster")')
 					),
@@ -361,48 +361,7 @@ class PanelController extends Controller
 					$this->redirect(array("panel/language".$id."?message=".$message));					
 				}
 				
-				// if ($model->isNewRecord) {
-				// 	if($model->save()){	
-				// 		$_block=Block::model()->findAll("language='".Configuration::model()->findByPk(1)->language."'");
-				// 		$_menu=Menu::model()->findAll("language='".Configuration::model()->findByPk(1)->language."'");
-
-				// 		foreach ($_block as  $value) {
-				// 			$model_block=new Block();
-				// 			$model_block->attributes=$value->attributes;
-				// 			unset($model_block->idblock);
-				// 			$model_block->language=$model->flag;
-
-				// 			if ($model_block->save()) {
-				// 				foreach ($value->pageHasBlocks as $val_page) {
-				// 					$model_page_block=new PageHasBlock();
-				// 					$model_page_block->block_idblock=$model_block->idblock; 
-				// 					$model_page_block->page_idpage=$val_page->page_idpage;
-				// 					if ($model_page_block->save()) {
-				// 						$message="Successfully Updated";
-				// 					}
-				// 				}
-				// 			}
-							
-				// 		}	
-
-				// 		foreach ($_menu as $menu_val) {
-				// 			$model_menu=new Menu();
-				// 			$model_menu->attributes=$menu_val->attributes;
-				// 			unset($model_menu->idmenu);
-				// 			$model_menu->language=$model->flag;
-
-				// 			if ($model_menu->save()) {
-				// 				$message="Successfully Updated";
-				// 			}
-
-				// 		}
-
-				// 	}
-				// }else{
-				// 	if($model->save()){
-				// 		$message="Successfully Updated";
-				// 	}
-				// }
+				
 				
 					
 			}
@@ -537,6 +496,7 @@ class PanelController extends Controller
 		$message=null;
 		$list=null;
 		$criteria = new CDbCriteria;
+		$users_groups=AuthItem::model()->findAll();
 
 		if ($id!=null) {
 			$model=User::model()->findByPk($id);
@@ -546,22 +506,39 @@ class PanelController extends Controller
 
 		if(isset($_POST['User']))
 		{	
+			
 
 			$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
+			
+			
+			if ($model->isNewRecord) {
+				$auth=new AuthAssignment();
 				
+			}else{
+				$user_type="";
+				foreach ($model->auth as $value_auth) {
+					$user_type=$value_auth->itemname;
+				}
+				$auth=AuthAssignment::model()->findByAttributes(array('itemname' =>$user_type));
+
+			}
 
 			$pass=$model->password;
 			$model->attributes=$_POST['User'];
-			$model->estado=$model->estado=='on'?1:0;
-			
-			
-
+			$model->estado=$model->estado=='on'?1:0;			
 			$model->password=$pass==$model->password?$model->password:md5($model->password);
 
 			
 			if($model->save()){		
-				$id=$id!=null?"/".$id:"";
-				$this->redirect(array("panel/users".$id."?message=".$message));
+
+				$auth->itemname=isset($_POST['user_type'])?$_POST['user_type']:$user_type;
+				$auth->userid=$model->username;
+				$auth->iduser=$model->iduser;
+				if ($auth->save()) {
+					$id=$id!=null?"/".$id:"";
+					$this->redirect(array("panel/users".$id."?message=".$message));
+				}
+				
 											
 				
 			}
@@ -590,8 +567,13 @@ class PanelController extends Controller
 			'model'=>$model,
 			'message'=>$message,
 			'list'=>$list,
+			'users_groups'=>$users_groups
 
 		));
+	}
+	public function actionUsersGroups($id=null)
+	{
+		
 	}
 
 	public function actionMessages($id=null){
