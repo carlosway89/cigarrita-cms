@@ -192,9 +192,9 @@
                           <?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           ?>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks"><?=Yii::t('app','panel.blocks')?></a></li>                
-                                                   
+                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config"><?=Yii::t('app','panel.config')?></a></li>                        
                           <?php }?>
-                          <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config"><?=Yii::t('app','panel.config')?></a></li>
+                          
                         </ul>
                     </li>                    
                     <li class="<?=$users_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users"><i class="fa fa-group"></i> <span class="nav-label"><?=Yii::t('app','panel.users')?></span></a>
@@ -354,7 +354,7 @@
                             <a href="http://cigarrita-worker.com/contact" target="_blank" class="list-group-item">
                               welcome to CMS Cigarrita Worker, keep updated to clicking here
                             </a>
-                            <p class="list-group-item">Current <strong>version 1.3 </strong> Cigarrita CMS!!</p>
+                            <p class="list-group-item">Current <strong>version 1.4 </strong> Cigarrita CMS!!</p>
                             <p class="list-group-item" >
                               - Developed by Cigarrita Worker<br/>
                               - Author: Carlos Manay<br/>
@@ -373,9 +373,10 @@
                         <div class="panel-body text-center">
                         	<div class="row">
                             	<div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn"><?=Yii::t('app','panel.messages')?></p></a></div>
-                                
+                                <?php if (Yii::app()->user->checkAccess("webmaster") || Yii::app()->user->checkAccess("admin")) {
+                                ?>
                                 <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/config" class="text-purple"><span class="h2"><i class="fa fa-file-text-o"></i></span><p class="text-gray no-margn"><?=Yii::t('app','panel.configurations')?></p></a></div>
-                                
+                                <?php }?>
                                 <div class="col-xs-12 visible-xs-block"><hr></div>
                                 
                                 <div class="col-xs-6 col-sm-4"><a href="<?=Yii::app()->request->baseUrl?>/site/logout" class="text-red"><span class="h2"><i class="fa fa-sign-out"></i></span><p class="text-gray no-margn"><?=Yii::t('app','panel.logout')?></p></a></div>

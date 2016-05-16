@@ -64,7 +64,7 @@
 			<?php echo $form->error($model,'parent_id'); ?>
 		</div>
 
-		<?php if (Yii::app()->user->checkAccess("webmaster")) {
+		<?php if (Yii::app()->user->checkAccess("webmaster") || Yii::app()->user->checkAccess("admin")) {
         ?>		
 
 		<div class="row">
@@ -203,9 +203,9 @@
 
 						menu_name = menu_name.replace(new RegExp(sr[i], 'g'), rp[i]);
 					}
-
+					<?php if($model->language==Configuration::model()->findByPk(1)->language){?>
 					$('#Menu_url').val("/"+menu_name);
-
+					<?php }?>
 				}else{
 					$('#url_page').hide();
 					$('#page_name').hide();					
@@ -222,6 +222,7 @@
 		$("select#type_page").on('change',function(){
 			select_type();
 		});
+		<?php if($model->language==Configuration::model()->findByPk(1)->language){?>
 		$("input#Menu_name").on("keyup",function(event) {
 			var that=$(this);
 			var menu_name=that.val();
@@ -239,6 +240,7 @@
 			}
 			
 		});
+		<?php }?>
 
 		$("#page_name select").on('change',function(){
 			if (!$('select#type_page option#scroll_page').is(':selected')) {

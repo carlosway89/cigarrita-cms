@@ -34,7 +34,7 @@
 			            		echo "&nbsp;&nbsp;&nbsp;";
 			            	}
 
-			                if (Yii::app()->user->checkAccess("webmaster")) {
+			                if (Yii::app()->user->checkAccess("webmaster") || Yii::app()->user->checkAccess("admin")) {
                           	?>
 			                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.menus.create')?></button>
 							<?php }?>

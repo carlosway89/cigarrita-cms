@@ -29,7 +29,10 @@
 			            	}
                         ?>
 		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.posts.create')?></button>
+		                <?php if (Yii::app()->user->checkAccess("webmaster")) {
+    					?>
 		                <a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/postConfig/<?=$post_page?>" ><i class="fa fa-cogs text-white"></i></a>
+		                <?php }?>
 		                <br><br><br>
 		                <?php 
 		                	if (isset($_GET["message"])) {
@@ -56,10 +59,9 @@
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></td>
 									<td><?=$value->date_created?></td>
 									<td>
-										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
-                          				?>
+										
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$value->idpost?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;
-										<?php }
+										<?php 
 										if (Yii::app()->user->checkAccess("webmaster")) {
 											?>
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/post/<?=$value->idpost?>/<?=$post_page?>/<?=$lang?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>

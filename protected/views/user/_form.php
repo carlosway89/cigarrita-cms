@@ -25,8 +25,9 @@
 		<?php echo $form->passwordField($model,'password',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
+	<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+    ?>	
 	<div class="row">
-
 			<?php echo $form->labelEx($model,Yii::t('app','panel.table.state')); ?>
 			<div class="switch">
               <label>
@@ -38,7 +39,7 @@
             </div>
 			<?php echo $form->error($model,'estado'); ?>
 		</div>
-
+	<?php }?>
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.users.name')); ?>
 		<?php echo $form->textField($model,'full_name',array('required'=>'required','rows'=>6, 'cols'=>50)); ?>

@@ -8,8 +8,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
+						<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+                        ?>
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.users.create')?></button>
 						<br><br>
+						<?php }?>
 						<?php 
 						if (isset($_GET["message"]) && !$model->isNewRecord) {
 							echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
@@ -20,7 +23,7 @@
 								<tr>
 						            <th data-field="email"><?=Yii::t('app','panel.users.email')?></th>
 						            <th data-field="user"><?=Yii::t('app','panel.users.user')?></th>
-						            <th data-field="name"><?=Yii::t('app','panel.users.user')?></th>
+						            <th data-field="name"><?=Yii::t('app','panel.users.name')?></th>
 						            <th data-field="type"><?=Yii::t('app','panel.users.type')?></th>
 						            <th data-field="state"><?=Yii::t('app','panel.table.state')?></th>
 						            <th><?=Yii::t('app','panel.table.options')?></th>
@@ -43,9 +46,9 @@
 									</td>
 									<td><i class="fa fa-circle <?=$value->estado?'text-success':'text-warning'?>"></i> <?=$value->estado?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></td>
 									<td>
-										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
-                          				?>
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/users/<?=$value->iduser?>" class="text-info"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;&nbsp;
+										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+                          				?>										
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/user/<?=$value->iduser?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
 										<?php }?>
 									</td>

@@ -73,7 +73,7 @@ a:hover{
 }
 #type_table .tbody .tr div{
 	display: table-cell;
-	width: 10%;
+	width: 1%;
 	text-align: center;
 }
 #type_table .tbody .tr div a.collapse-link{

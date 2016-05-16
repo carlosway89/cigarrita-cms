@@ -358,7 +358,7 @@ class PanelController extends Controller
 				$model->min=$model->flag;
 
 				if($model->save()){
-					$this->redirect(array("panel/language".$id."?message=".$message));					
+					$this->redirect(array("panel/language/".$id."?message=".$message));					
 				}
 				
 				
@@ -498,9 +498,22 @@ class PanelController extends Controller
 		$criteria = new CDbCriteria;
 		$users_groups=AuthItem::model()->findAll();
 
-		if ($id!=null) {
-			$model=User::model()->findByPk($id);
-			$render='//user/update';
+		$check_user=User::model()->findByAttributes(array('username'=>Yii::app()->user->id));
+
+		if ($id!=null && is_numeric($id)) {
+			if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+				$model=User::model()->findByPk($id);
+				$render='//user/update';
+			}else{
+				if ($id==$check_user->iduser) {
+					$model=User::model()->findByPk($id);
+					$render='//user/update';
+				}else{
+					$this->redirect(array("panel/users"));
+				}
+			}
+			
+			
 
 		}
 
@@ -547,19 +560,21 @@ class PanelController extends Controller
 		if ($id==null) {
 			$criteria->with=array('auth');
 			if (!Yii::app()->user->checkAccess("webmaster")) {
-				$criteria->condition="is_deleted='0' and auth.itemname!='webmaster'";
-			}else{
-				$criteria->condition="is_deleted='0'";
+				if (Yii::app()->user->checkAccess("admin")) {
+					$criteria->condition="is_deleted='0' and auth.itemname!='webmaster'";
+				}else{
+					$this->redirect(array("panel/users/".$check_user->iduser));					
+				}								
+			}else{				
+				$criteria->condition="is_deleted='0'";				
 			}
 			
         	$criteria->together = true; 
 
 			$list=User::model()->findAll($criteria);
 			$render='//user/admin';
+			
 		}
-
-		
-		
 
 		
 
@@ -573,7 +588,29 @@ class PanelController extends Controller
 	}
 	public function actionUsersGroups($id=null)
 	{
+		$model=new AuthItem();
+		$message=null;
+		$list=AuthItem::model()->findAll();
+		$render='//authItem/admin';
+
+		if(isset($_POST['AuthItem']))
+		{	
+			
+			$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
 		
+			$model->attributes=$_POST['AuthItem'];
+
+			if($model->save()){
+				$this->redirect(array("panel/usersgroups/".$id."?message=".$message));					
+			}
+				
+		}
+
+		$this->render($render,array(
+			'model'=>$model,
+			'message'=>$message,
+			'list'=>$list
+		));
 	}
 
 	public function actionMessages($id=null){

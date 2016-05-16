@@ -1,21 +1,24 @@
-<?php
-/* @var $this AuthItemController */
-/* @var $model AuthItem */
 
-$this->breadcrumbs=array(
-	'Auth Items'=>array('index'),
-	$model->name=>array('view','id'=>$model->name),
-	'Update',
-);
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<br>
+			<h4><?=Yii::t('app','panel.usersgroups.update')?></h4>
+			<br>
+				
+				<div class="panel panel-default">
+					<div class="panel-heading clean"></div>
+					<div class="panel-body">
+						<?php echo $this->renderPartial('//authItem/_form', 
+							array(
+									'model'=>$model,
+									'message'=>$message
+								)
+							); 
+						?>
+					</div>
+				</div>
 
-$this->menu=array(
-	array('label'=>'List AuthItem', 'url'=>array('index')),
-	array('label'=>'Create AuthItem', 'url'=>array('create')),
-	array('label'=>'View AuthItem', 'url'=>array('view', 'id'=>$model->name)),
-	array('label'=>'Manage AuthItem', 'url'=>array('admin')),
-);
-?>
-
-<h1>Update AuthItem <?php echo $model->name; ?></h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+		</div>	
+	</div>
+</div>

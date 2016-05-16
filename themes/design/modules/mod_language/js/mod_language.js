@@ -1,4 +1,4 @@
-.directive('languageSelect',[ '$parse','$rootScope','Model',function($parse,$rootScope,Model){ //Step 1
+.directive('languageSelect',[ '$parse','$rootScope','$window','Model',function($parse,$rootScope,$window,Model){ //Step 1
 
     return {
           // require : 'ngModel',            //Step 2
@@ -12,8 +12,11 @@
 
                 $(element).on('change',function(event){
                     var value=$(element).find('input').val();
-                    beans.createCookie('language.initial',value,10);                    
-                    $rootScope.$broadcast('language.changed');                   
+                    beans.createCookie('language.initial',value,10); 
+                    setTimeout(function(){
+                       $window.location.reload();
+                    },100);                   
+                    //$rootScope.$broadcast('language.changed');                   
                 });
               
           }

@@ -1,7 +1,7 @@
-<?php
-/* @var $this AuthItemController */
-/* @var $model AuthItem */
-/* @var $form CActiveForm */
+<?php		
+	if (isset($_GET["message"]) && !$model->isNewRecord) {
+		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
+	}
 ?>
 
 <div class="form">
@@ -11,42 +11,26 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><?=Yii::t('app','panel.required')?></p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
+
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.usersgroups.name')." *"); ?>
+		<?php echo $form->textField($model,'name',array('required'=>'required','size'=>60,'maxlength'=>64)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type'); ?>
-		<?php echo $form->error($model,'type'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->labelEx($model,Yii::t('app','panel.usersgroups.description')." *"); ?>
+		<?php echo $form->textField($model,'description',array('required'=>'required','rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'bizrule'); ?>
-		<?php echo $form->textArea($model,'bizrule',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'bizrule'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'data'); ?>
-		<?php echo $form->textArea($model,'data',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'data'); ?>
-	</div>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+			<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
+			<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/usersgroups"><?=Yii::t('app','panel.back')?></a>
 	</div>
 
 <?php $this->endWidget(); ?>
