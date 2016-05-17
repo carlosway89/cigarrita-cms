@@ -474,7 +474,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $('.delete-link').click(function(event){
-        if(!confirm('Esta seguro que desea eliminar este item?')) return false;
+        if(!confirm("<?=Yii::t('app','editor.popout.delete')?>")) return false;
       });
 
     });

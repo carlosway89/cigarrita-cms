@@ -50,6 +50,7 @@ return
         'panel.pages'=>'Plantillas',
         'panel.pages.list'=>'Lista de las Plantillas',
         'panel.pages.new'=>'Agregar Plantilla',
+        'panel.pages.details'=>'Detalles',
         'panel.pages.update'=>'Actualizar Plantilla',
         'panel.pages.create'=>'Crear Plantilla',
         'panel.pages.single'=>'Plantilla Individual',
@@ -62,6 +63,8 @@ return
         //Category views
         'panel.category'=>'Categorias de la web',
         'panel.category.create'=>'Crear Categoria',
+        'panel.category.name'=>'Nombre de la Categoria',
+        'panel.category.type'=>'Tipo de Categoria',
         //Posts views
         'panel.posts'=>'Posts de la web',
         'panel.posts.create'=>'Crear Posts',
@@ -69,6 +72,9 @@ return
         'panel.posts.container'=>'Contenido',
         'panel.posts.source'=>'Recurso',
         'panel.posts.language'=>'Idioma',
+        'panel.posts.attributes'=>'otros atributos',
+        'panel.posts.attributes.select'=>'Seleccionar valor',
+        'panel.posts.attributes.new'=>'+ Agregar valores',
         //Users views
         'panel.users'=>'Usuarios de la web',
         'panel.users.create'=>'Crear Usuario',
@@ -143,7 +149,7 @@ return
         'editor.buttons.close'=>'Cerrar',
         'editor.popout.delete'=>'Esta seguro que desea eliminar este Item?',
         'editor.modal.details'=>'Editar detalles',
-        'editor.modal.image'=>'Imagen <small>(max: 2Mb)</small>',
+        'editor.modal.image'=>'Imagen <small>(max: 40Mb)</small>',
         'editor.modal.image.upload'=>'Subir Imagen',
         'editor.modal.image.change'=>'Cambiar Imagen',
         'editor.modal.subheader'=>'Parrafo/Contenido',

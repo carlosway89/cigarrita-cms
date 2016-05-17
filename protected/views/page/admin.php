@@ -38,7 +38,7 @@
 									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
 									
 									<td>
-										<a href="#page-<?=$value->idpage?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="page-<?=$value->idpage?>"><i class="fa fa-plus "></i> <?=Yii::t('app','panel.details')?></a>&nbsp;
+										<a href="#page-<?=$value->idpage?>" data-toggle="collapse" data-parent="#table-acordion" aria-expanded="false" aria-controls="page-<?=$value->idpage?>"><i class="fa fa-plus "></i> <?=Yii::t('app','panel.pages.details')?></a>&nbsp;
 										<?php if (Yii::app()->user->checkAccess("webmaster")) {
 										?>
 										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages/<?=$value->idpage?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;

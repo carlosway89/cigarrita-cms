@@ -161,7 +161,7 @@
           				?>
           				<?php if ($value->type=="select" || $value->type=="multi") {
 						?>
-          				<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/variableType/<?=$value->idvariable?>" class="text-info" target="_blank"><i class="fa fa-plus"></i> Agregar Valores</a>&nbsp;&nbsp;
+          				<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/variableType/<?=$value->idvariable?>" class="text-info" target="_blank"><i class="fa fa-plus"></i> <?=Yii::t('app','panel.posts.attributes.new')?></a>&nbsp;&nbsp;
 						<?php } ?>
 						<a id="<?=$value->idvariable?>" href="javascript:;;" class="edit-variable-type text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;
 						

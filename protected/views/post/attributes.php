@@ -1,5 +1,5 @@
 <div class="row">
-	<label class="active" for="Post_header">Atributos externos</label>
+	<label class="active" for="Post_header"><?=Yii::t('app','panel.posts.attributes')?></label>
 	<?php 
 	foreach ($variables as $val) {
 	?>
@@ -26,7 +26,7 @@
 			<?php 
 				if ($val->type=="select" || $val->type=="multi" ) {
 			?>
-			<select name="Attr[value][]" class="browser-default  chosen-select" data-placeholder="Elegir" >
+			<select name="Attr[value][]" class="browser-default  chosen-select" data-placeholder="<?=Yii::t('app','panel.posts.attributes.select')?>" >
 					<option val=""></option>
 					<?php 
 						$list_variablestype=VariableType::model()->findAll("idvariable='".$val->idvariable."' and is_deleted='0'");
@@ -43,7 +43,7 @@
 					?>
 			</select>
 			&nbsp;&nbsp;
-			<a class="btn-link" target="_blank" href="<?=Yii::app()->getBaseUrl(true)?>/panel/variableType/<?=$val->idvariable?>"> + Agregar valores</a>
+			<a class="btn-link" target="_blank" href="<?=Yii::app()->getBaseUrl(true)?>/panel/variableType/<?=$val->idvariable?>"> <?=Yii::t('app','panel.posts.attributes.new')?></a>
 			<?php		
 				}else{								
 					if ($val->type=="input") {
