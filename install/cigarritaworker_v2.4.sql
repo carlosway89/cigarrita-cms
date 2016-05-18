@@ -49,6 +49,13 @@ CREATE TABLE IF NOT EXISTS `AuthAssignment` (
   `iduser` int(11) NOT NULL,
   PRIMARY KEY (`itemname`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Volcado de datos para la tabla `AuthAssignment`
+--
+
+INSERT INTO `AuthAssignment` (`itemname`, `userid`, `bizrule`, `data`, `iduser`) VALUES
+('admin', 'admin', NULL, NULL, 4),
+('webmaster', 'webmaster', NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -64,6 +71,14 @@ CREATE TABLE IF NOT EXISTS `AuthItem` (
   `data` text,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Volcado de datos para la tabla `AuthItem`
+--
+
+INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
+('admin', 3, 'manage user and edit the complete information', NULL, NULL),
+('standard', 2, 'change content and add new posts', NULL, NULL),
+('webmaster', 1, 'allow to access everything and everywere', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -145,7 +160,12 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `id_facebook_page` varchar(300) NOT NULL,
   PRIMARY KEY (`idconfig`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+--
+-- Volcado de datos para la tabla `configuration`
+--
 
+INSERT INTO `configuration` (`idconfig`, `title`, `logo`, `description`, `language`, `analytic_id`, `keywords`, `is_installed`, `id_facebook`, `id_facebook_page`) VALUES
+(1, 'website', '', 'description', 'es', '', 'keywords', 0, '', '');
 -- --------------------------------------------------------
 
 --
@@ -180,7 +200,14 @@ CREATE TABLE IF NOT EXISTS `language` (
   `is_deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`idlanguage`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+--
+-- Volcado de datos para la tabla `language`
+--
 
+INSERT INTO `language` (`idlanguage`, `name`, `flag`, `estado`, `min`, `is_deleted`) VALUES
+(30, 'Español', 'es', 1, 'es', 0),
+(31, 'English', 'en', 1, 'en', 0),
+(32, 'Deutsch', 'de', 1, 'de', 0);
 -- --------------------------------------------------------
 
 --
@@ -334,6 +361,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`iduser`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`iduser`, `username`, `password`, `estado`, `full_name`, `email`, `is_deleted`) VALUES
+(3, 'webmaster', 'c33367701511b4f6020ec61ded352059', 1, 'carlos manay', 'carlos@cigarrita-worker.com', 0),
+(4, 'admin', 'c33367701511b4f6020ec61ded352059', 1, 'Admin Website', 'info@cigarrita-worker.com', 0);
 
 -- --------------------------------------------------------
 
