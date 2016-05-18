@@ -9,7 +9,8 @@
 		$dbname=$_POST["dbname"];
 		$language=$_POST["language"];
 		$gen=new generator_model($dbhost,$dbuser,$dbpass,$dbname,$language);
-		$res=$gen->create_db();
+		//$res=$gen->create_db();
+		$res=1; //hostinger database generated
 		$message="";
 		if ($res=="1") {
 			sleep(1);

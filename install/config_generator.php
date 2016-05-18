@@ -23,7 +23,6 @@ return array(
 		'application.components.*',
 	),
 	'modules'=>array(
-		// uncomment the following to enable the Gii tool
 		'pluginsCigarrita',
 	),
 	// application components
