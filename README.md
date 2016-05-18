@@ -27,11 +27,10 @@ Sigue las instrucciones...
 - Virtual Host o domain, ej: tuweb.dev
 - mod rewrite activado
 - CURL
-- Felicidad
 
 ## LICENCIA
 
-Profavor ve [license file](https://cigarrita-worker.com/licence) para más información.
+Por favor ve a [license file](https://cigarrita-worker.com/licence) para más información.
 
 ## ERRORES Y CONTRIBUCION
-si encuantras algun error, problema o tienes alguna contribución porfavor envíanos un email a [carlos@cigarrita-worker.com](mailto:carlos@cigarrita-worker.com)
+si encuentras algun error, problema o tienes alguna contribución porfavor envíanos un email a [carlos@cigarrita-worker.com](mailto:carlos@cigarrita-worker.com)
