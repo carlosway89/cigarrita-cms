@@ -1,5 +1,5 @@
 # cigarrita Worker
-presenta: CMS Cigarrita Worker
+presenta: CMS Cigarrita Worker v1.4
 
 ## INSTALACION
 The CMS Cigarrita Worker puede ser instalado con [Composer](https://getcomposer.org/). Agregar el paquete a tu `composer.json` archivo.
@@ -7,7 +7,7 @@ The CMS Cigarrita Worker puede ser instalado con [Composer](https://getcomposer.
 ```json
 {
     "require": {
-        "cigarrita-worker/cigarrita-api": "v1.3-es"
+        "cigarrita-worker/cigarrita-api": "master"
     }
 }
 ```
