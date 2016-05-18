@@ -2,13 +2,13 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4><?=Yii::t('app','panel.posts')?></h4>
+			<h4><?=Yii::t('app','panel.posts.config.variable')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
-		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.posts.create')?></button>
+		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.posts.config.variable.create')?></button>
 		                <br><br><br>
 		                <?php 
 		                	if (isset($_GET["message"])) {
@@ -18,7 +18,7 @@
 						<table id="postList" class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="header"><?=Yii::t('app','panel.table.header')?></th>
+						            <th data-field="header"><?=Yii::t('app','panel.posts.config.variable.name')?></th>
 						            <th><?=Yii::t('app','panel.table.options')?></th>
 						        </tr>
 							</thead>
@@ -54,7 +54,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-        <h4 class="modal-title" id="myModalLabel"><?=Yii::t('app','panel.posts.create')?></h4>
+        <h4 class="modal-title" id="myModalLabel"><?=Yii::t('app','panel.posts.config.variable.create')?></h4>
       </div>
       <div class="modal-body">
         <?php echo $this->renderPartial('//variableType/_form', 

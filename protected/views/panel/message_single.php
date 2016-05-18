@@ -3,7 +3,7 @@
     	<div class="row">
 
         	<div class="col-lg-9 col-xs-5">
-        		<h4>Mensaje</h4>
+        		<h4><?=Yii::t('app','panel.messages.table.message')?></h4>
 	            <a class="btn btn-default" href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages"><i class="fa fa-fw fa-level-up fa-rotate-270"></i></a>
 	            
 	            <div class="btn-group visible-lg-inline-block">
@@ -39,14 +39,14 @@
 		                    <div class="col-lg-6 text-right">
 		                    	<small class="form-control-static text-gray"><?=$model->date?></small>
 		                        <div class="btn-group">
-		                          <a href="mailto:<?=$model->email?>?subject=<?=substr($model->subject, 0, 30)."..."?>&cc=admin@example.org&body=<?=$model->subject?>" class="btn btn-default btn-sm">Responder</a>
+		                          <a href="mailto:<?=$model->email?>?subject=<?=substr($model->subject, 0, 30)."..."?>&cc=admin@example.org&body=<?=$model->subject?>" class="btn btn-default btn-sm"><?=Yii::t('app','panel.messages.reply')?></a>
 		                          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
 		                            <span class="caret"></span>
 		                            <span class="sr-only">Toggle Dropdown</span>
 		                          </button>
 		                          <ul role="menu" class="dropdown-menu pull-right">
-		                            <li><a href="javascript:window.print()">Imprimir</a></li>
-		                            <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$model->idform?>">Eliminar este mensaje</a></li>
+		                            <li><a href="javascript:window.print()"><?=Yii::t('app','panel.messages.print')?></a></li>
+		                            <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$model->idform?>"><?=Yii::t('app','panel.messages.delete')?></a></li>
 		                          </ul>
 		                        </div>
 		                    </div>
@@ -63,19 +63,19 @@
 		                <div class="row">
 		                	<div class="col-sm-4">
 		                		<address>
-				                  <strong>Pais</strong>
+				                  <strong><?=Yii::t('app','panel.messages.table.country')?></strong>
 				                  <code><?=$model->country_name?></code>
 				                </address>
 		                	</div>
 		                	<div class="col-sm-4">
 		                		<address>
-				                  <strong>Dispositivo</strong>
+				                  <strong><?=Yii::t('app','panel.messages.device')?></strong>
 				                  <code><?=$model->browser?></code>
 				                </address>
 		                	</div>
 		                	<div class="col-sm-4">
 		                		<address>
-		                			<strong>Dirección IP</strong>
+		                			<strong><?=Yii::t('app','panel.messages.ip')?></strong>
 		                  			<code><?=$model->ip_address?></code>
 		                		</address>
 		                	</div>

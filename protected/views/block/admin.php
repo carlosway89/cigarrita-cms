@@ -2,14 +2,14 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Manejar Blocks</h4>
+			<h4><?=yii::t('app','panel.blocks')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
 						<div class="dropdown"  style="float:left">
-		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#">Idiomas <span class="caret"></span></a>
+		                  <a data-toggle="dropdown" class="dropdown-toggle btn grey lighten-1" href="#"><?=Yii::t('app','panel.posts.language')?> <span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
 		                    <?php foreach ($language as $key => $value) {
 		                    ?>
@@ -31,11 +31,11 @@
 						<table id="postList" class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="name">Cabecera</th>
+						            <th data-field="name"><?=yii::t('app','panel.table.header')?></th>
 						            <!-- <th data-field="flag">Subheader</th> -->
-						            <th data-field="flag">Categoria</th>
-						            <th data-field="state">Estado</th>
-						            <th>Opciones</th>
+						            <th data-field="flag"><?=yii::t('app','panel.table.category')?></th>
+						            <th data-field="state"><?=yii::t('app','panel.table.state')?></th>
+						            <th><?=yii::t('app','panel.table.options')?></th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -44,16 +44,16 @@
 								<tr>
 									<td><?=$value->header?></td>
 									<td><?=$value->category?></td>
-									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?'Enable':'Disable'?></td>
+									<td><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></td>
 									
 									<td>
 										<?php if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
                           				?>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks/<?=$value->idblock?>" class="text-success"><i class="fa fa-pencil "></i> Editar</a>&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks/<?=$value->idblock?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;
 										<?php }
 										if (Yii::app()->user->checkAccess("webmaster")) {
 											?>
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/block/<?=$value->idblock?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/block/<?=$value->idblock?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
 										<?php }?>
 									</td>
 								</tr>

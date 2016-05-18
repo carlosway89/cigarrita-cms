@@ -9,8 +9,8 @@
 					<div class="panel-heading clean"></div>
 					<div class="panel-body">
 						<?php		
-							if (isset($_GET['message'])) {
-								echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET['message']."</h6><br>";
+							if (isset($_GET["message"]) && !$model->isNewRecord) {
+								echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
 							}
 						?>	
 						<div class="form">
@@ -19,19 +19,18 @@
 								'enableAjaxValidation'=>false,								
         						'htmlOptions' => array('enctype' => 'multipart/form-data'),
 							)); ?>
-								<p class="note">Campos con<span class="required">*</span> son requeridos.</p>
-								
+								<p class="note"><?=Yii::t('app','panel.required')?></p>
 								<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
-								
+
 
 								<div class="row">
-									<?php echo $form->labelEx($model,'titulo'); ?>
+									<?php echo $form->labelEx($model,Yii::t('app','panel.config.titulo')); ?>
 									<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
 									<?php echo $form->error($model,'title'); ?>
 								</div>
 
 								<div class="row">
-									<?php echo $form->labelEx($model,'logo'); ?>
+									<?php echo $form->labelEx($model,Yii::t('app','panel.config.logo')); ?>
 									<img class="img-responsive" width="100px" src="<?php echo Yii::app()->request->baseUrl."/".$model->logo; ?>">
 									<div class="file-field input-field">
 								      <input class="file-path validate" type="text" value="<?=$model->logo?>" style="padding-left: 20px;"/>
@@ -45,14 +44,14 @@
 								</div>
 
 								<div class="row">
-									<?php echo $form->labelEx($model,'descripcion'); ?>
+									<?php echo $form->labelEx($model,Yii::t('app','panel.config.description')); ?>
 									<?php echo $form->textField($model,'description',array('size'=>60,'length'=>'120','maxlength'=>400,'class'=>'counter_char')); ?>
 									<?php echo $form->error($model,'description'); ?>
 								</div>
 								<?php if (Yii::app()->user->checkAccess("webmaster")) {
 								?>
 								<div class="row">
-									<?php echo $form->labelEx($model,'idioma por defecto'); ?>
+									<?php echo $form->labelEx($model,Yii::t('app','panel.config.language')); ?>
 									<select name="Configuration[language]" class="browser-default">
 									<?php foreach ($language as $key => $value) {
 									?>
@@ -84,7 +83,7 @@
 								<?php } ?>
 
 								<div class="row buttons">
-									<button type="submit" class="btn btn-info">Actualizar</button>
+									<button type="submit" class="btn btn-info"><?=Yii::t('app','panel.save')?></button>
 								</div>
 							<?php $this->endWidget(); ?>
 

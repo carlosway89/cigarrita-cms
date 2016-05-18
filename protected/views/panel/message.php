@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Lista de Mensajes</h4>
+			<h4><?=Yii::t('app','panel.messages.list')?></h4>
 			<br>
 				
 				<div class="panel panel-default">
@@ -11,12 +11,12 @@
 						<table id="emailList" class="hoverable centered">
 							<thead>
 								<tr>
-						            <th data-field="name">Email</th>
-						            <th data-field="flag">Mensaje</th>
-						            <th data-field="state">Fecha</th>
-						            <th data-field="state">Pais</th>
-						            <th data-field="state">Estado</th>
-						            <th>Opciones</th>
+						            <th data-field="email"><?=Yii::t('app','panel.messages.table.email')?></th>
+						            <th data-field="message"><?=Yii::t('app','panel.messages.table.message')?></th>
+						            <th data-field="date"><?=Yii::t('app','panel.table.date')?></th>
+						            <th data-field="country"><?=Yii::t('app','panel.messages.table.country')?></th>
+						            <th data-field="state"><?=Yii::t('app','panel.table.state')?></th>
+						            <th><?=Yii::t('app','panel.table.options')?></th>
 						        </tr>
 							</thead>
 							<tbody>
@@ -30,8 +30,8 @@
 									<td><span class="text-warning"><?=$value->state?></span></td>
 									<td>
 										
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="text-info"><i class="fa fa-eye "></i> Ver</a>&nbsp;&nbsp;
-										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$value->idform?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> Eliminar</a>
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/messages/<?=$value->idform?>" class="text-info"><i class="fa fa-eye "></i> <?=Yii::t('app','panel.details')?></a>&nbsp;&nbsp;
+										<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/form/<?=$value->idform?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
 									</td>
 								</tr>
 								<?php } ?>

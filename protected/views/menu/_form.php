@@ -68,7 +68,7 @@
         ?>		
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'tipo'); ?>
+			<?php echo $form->labelEx($model,Yii::t('app','panel.menus.table.type')); ?>
 			<select id="type_page" name="Menu[type]" class="browser-default">
 				<option id="new_page" value="new" <?=$model->type=='new'?'selected':''?> >Page</option>
 				<option id="scroll_page" value="scroll" <?=$model->type=='scroll'?'selected':''?> >Scroll</option>
@@ -83,7 +83,7 @@
 			<?php echo $form->error($model,'type'); ?>
 		</div>		
 		<div id="page_name" class="row">
-			<?php echo $form->labelEx($model,'pagina'); ?>
+			<?php echo $form->labelEx($model,Yii::t('app','panel.menus.table.page')); ?>
 			<select  name="Menu[page]" class="browser-default">
 			<?php foreach ($page as $val_pag) {
 			 ?>			 
@@ -114,7 +114,7 @@
 			<?php 
 			if (!$model->isNewRecord) {
 				
-				echo $form->labelEx($model,'idioma'); ?>
+				echo $form->labelEx($model,Yii::t('app','panel.menus.language')); ?>
 				<select name="Menu[language]" class="browser-default">
 				<?php foreach ($language as $key => $value) {
 				?>
@@ -150,18 +150,18 @@
 		<?php if (!$model->isNewRecord) {			
 		?>
 		<div class="row">		
-			<?php echo $form->labelEx($model,'SEO_title'); ?>
+			<?php echo $form->labelEx($model,'SEO title'); ?>
 			<?php echo $form->textField($model,'SEO_title',array('size'=>60,'maxlength'=>200)); ?>
 			<?php echo $form->error($model,'SEO_title'); ?>		
 		</div>
 		<div class="row">		
-			<?php echo $form->labelEx($model,'SEO_description'); ?>
+			<?php echo $form->labelEx($model,'SEO description'); ?>
 			<?php echo $form->textField($model,'SEO_description',array('size'=>100,'maxlength'=>200,'class'=>'counter_char')); ?>
 			<?php echo $form->error($model,'SEO_description'); ?>
 		
 		</div>
 		<div class="row">		
-			<?php echo $form->labelEx($model,'SEO_keywords'); ?>
+			<?php echo $form->labelEx($model,'SEO keywords'); ?>
 			<?php echo $form->textField($model,'SEO_keywords',array('size'=>60,'maxlength'=>200)); ?>
 			<?php echo $form->error($model,'SEO_keywords'); ?>		
 		</div>

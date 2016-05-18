@@ -67,6 +67,10 @@ return
         'panel.category.type'=>'Typ',
         //Posts views
         'panel.posts'=>'Webposts',
+        'panel.posts.config'=>'Post Konfigurationen',
+        'panel.posts.config.variable'=>'Items der Variable',
+        'panel.posts.config.variable.create'=>'Neue Item der Variable erstellen',
+        'panel.posts.config.variable.name'=>'Variable',
         'panel.posts.create'=>'Posts erstellen',
         'panel.posts.cabecera'=>'Header',
         'panel.posts.container'=>'Inhalt',
@@ -111,6 +115,7 @@ return
         //Config views
         'panel.config'=>'Konfigurationen & WebSEO',
         'panel.config.titulo'=>'Titel der Website',
+        'panel.config.description'=>'Beschreibung der Website',
         'panel.config.logo'=>'Logo',
         'panel.config.language'=>'Standardsprache',
         'panel.config.source'=>'Quell',

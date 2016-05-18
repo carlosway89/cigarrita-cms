@@ -25,7 +25,11 @@
 
 	<div class="row buttons">
 		<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
-		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/"><?=Yii::t('app','panel.back')?></a>
+		<?php 
+			$ext_id=Yii::app()->request->getPathInfo();
+	        $ext_id = explode("/", $ext_id);
+		?>
+		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/variableType/<?=isset($ext_id[4])?$ext_id[4]:$ext_id[2]?>"><?=Yii::t('app','panel.back')?></a>
 	</div>
 
 <?php $this->endWidget(); ?>

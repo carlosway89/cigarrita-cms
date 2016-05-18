@@ -67,6 +67,10 @@ return
         'panel.category.type'=>'Tipo de Categoria',
         //Posts views
         'panel.posts'=>'Posts de la web',
+        'panel.posts.config'=>'Configuraciones del Post',
+        'panel.posts.config.variable'=>'Items de las Variables',
+        'panel.posts.config.variable.create'=>'crear nuevo Item para las Variables',
+        'panel.posts.config.variable.name'=>'Variable',
         'panel.posts.create'=>'Crear Posts',
         'panel.posts.cabecera'=>'Cabecera',
         'panel.posts.container'=>'Contenido',
@@ -111,6 +115,7 @@ return
         //Config views
         'panel.config'=>'Configuraciones & SEO de la web',
         'panel.config.titulo'=>'Titulo de la web',
+        'panel.config.description'=>'Descripción de la web',
         'panel.config.logo'=>'Logo / Icon',
         'panel.config.language'=>'Idioma por defecto',
         'panel.config.source'=>'Recurso',
