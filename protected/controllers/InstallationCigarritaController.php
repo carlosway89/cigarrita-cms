@@ -101,6 +101,7 @@ class InstallationCigarritaController extends Controller
 
 		$this->render("//panel/first_user",array(
 			'model'=>$model,
+			'users_groups'=>AuthItem::model()->findAll("name='admin'")
 		));
 	}
 
@@ -109,40 +110,38 @@ class InstallationCigarritaController extends Controller
 		$root=$_SERVER['DOCUMENT_ROOT'];
 		$html_dom=new HTMLDOM();
 
-		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
-    	$html->find("html",0)->outertext='<?php include(Yii::app()->request->baseUrl."assets/init_config.php"); ?>'.$html->find("html",0)->outertext;
-    	$html->save($root."/themes/design/views/site/".$page.".php");
-    	$html->clear();
+		
 
-    	$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+    	$html=$html_dom->get($root."/themes/design/views/layout/".$page.".php");
     	$html->find("html",0)->setAttribute("ng-app","cigarritaWeb");
-    	$html->save($root."/themes/design/views/site/".$page.".php");
+    	$html->save($root."/themes/design/views/layout/".$page.".php");
     	$html->clear();
     	
-    	$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+    	$html=$html_dom->get($root."/themes/design/views/layout/".$page.".php");
     	$html->find("body",0)->setAttribute("ng-controller","indexCtrl");
-    	$html->save($root."/themes/design/views/site/".$page.".php");
+    	$html->save($root."/themes/design/views/layout/".$page.".php");
     	$html->clear();
 
 
-    	$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+    	$html=$html_dom->get($root."/themes/design/views/layout/".$page.".php");
     	foreach($html->find('link') as $key => $element){
-			$element->href="<?=Yii::app()->theme->baseUrl?>/".$element->href;			
+			$element->href="/themes/design/".$element->href;			
 		}
-		$html->save($root."/themes/design/views/site/".$page.".php");
+		$html->save($root."/themes/design/views/layout/".$page.".php");
 		$html->clear();
 
-		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+		$html=$html_dom->get($root."/themes/design/views/layout/".$page.".php");
     	foreach($html->find('script') as $key => $element){
     		if (!preg_match("/(http|https):\/\/(.*?)$/i", $element->src))
-				$element->src="<?=Yii::app()->theme->baseUrl?>/".$element->src;	
+				$element->src="/themes/design/".$element->src;	
 
 		}
-		$html->save($root."/themes/design/views/site/".$page.".php");
+
+		$html->save($root."/themes/design/views/layout/".$page.".php");
 		$html->clear();
 		
 
-		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
+		$html=$html_dom->get($root."/themes/design/views/layout/".$page.".php");
 
 		foreach ($html->find('comment') as $value) {
 			if ($value->outertext=='<!--content-->') {
@@ -150,32 +149,20 @@ class InstallationCigarritaController extends Controller
 			}
 		}
 		
-		$html->save($root."/themes/design/views/site/".$page.".php");
+		$html_page=$html->save($root."/themes/design/views/layout/".$page.".php");
 		$html->clear();
 
-		if ($page=="index") {
-    		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
-			$html->find('link',-1)->outertext=$html->find('link',-1)->outertext.'<?php if($this->editor){ include($request."assets/css_editor.php"); } ?>';
-			$html->save($root."/themes/design/views/site/".$page.".php");
-	    	$html->clear();
-    	}
-
-		$html=$html_dom->get($root."/themes/design/views/site/".$page.".php");
-		if ($page=="index") {
-			$html->find('script',-1)->outertext=$html->find('script',-1)->outertext.'<?php if ($this->editor){ include($request."assets/js_editor.php"); }else{ include($request."assets/js_index.php"); } ?>';
-		}
-
-		$html_page=$html->save();
-    	$html->clear();
+		
 
     	
 
     	$indent=new DINDENT();
     	$result=$indent->get($html_page);
-		$file = new SplFileObject($root."/themes/design/views/site/".$page.".php",'w+');		            
+		$file = new SplFileObject($root."/themes/design/views/layout/".$page.".php",'w+');		            
         $file->fwrite($result);
 
-        chmod($root."/themes/design/views/site/".$page.".php", 0777);
+        chmod($root."/themes/design/views/layout/".$page.".php", 0777);
+
 	}
 
 
@@ -184,7 +171,7 @@ class InstallationCigarritaController extends Controller
 
 
 		$dir = 'themes/design/';
-		// $dir = 'themes/design/views/site/';
+		
 
 		$files=array();
 
@@ -196,8 +183,7 @@ class InstallationCigarritaController extends Controller
 
 	        foreach(glob($dir.'*.html') as $file) {
 	          
-	          if ($file!=$dir."blank.html")
-	          	$files[]=str_replace($dir, "", $file);
+	            $files[]=str_replace($dir, "", $file);
 
 	        }
 
@@ -238,12 +224,16 @@ class InstallationCigarritaController extends Controller
 	        		}
 	        		$file->fwrite($page);
 
-			        chmod($root."/themes/design/views/site/$name".".php", 0777);
+	        		if ($name=='blank') {
+	        			chmod($root."/themes/design/views/layout/layout_standard.php", 0777);				        
+				    }else{
+						chmod($root."/themes/design/views/site/$name".".php", 0777);
+				    }
+
 			        $page=new Page();
-			        if ($name=='index') {
-			        	$name="home";
-			        }
+			        
 			        if ($name=='blank') {
+			        	$name="layout_standard";
 			        	$page->layout=1;
 			        }
 			        $page->name=$name;
@@ -253,29 +243,23 @@ class InstallationCigarritaController extends Controller
 
 	        	}
 
-	        	$_files=array("blank.html"=>"index","index.html"=>"home");
+	        	$_files=array("blank.html"=>"layout_standard","index.html"=>"home");
 	        	
+	        	$this->generatePHP("layout_standard");
 	        	
 
-	        	foreach ($_files as $key => $value) {
-	        		$page=file_get_contents($root."/themes/design/$key");
+	        	// foreach ($_files as $key => $value) {
+	        	// 	$page=file_get_contents($root."/themes/design/$key");
 
-	        		$file = new SplFileObject($root."/themes/design/views/site/$value".".php",'w+');		            
-			        $file->fwrite($page);
+	        	// 	$file = new SplFileObject($root."/themes/design/views/site/$value".".php",'w+');		            
+			       //  $file->fwrite($page);
 
-			        chmod($root."/themes/design/views/site/$value".".php", 0777);
+			       //  chmod($root."/themes/design/views/site/$value".".php", 0777);
 
-	        		if ($key=="blank.html") {
-	        			// $file = new SplFileObject($root."/themes/design/views/site/editor_cigarrita_worker".".php",'w+');		            
-			        	// $file->fwrite($page);
-
-			        	$this->generatePHP("index");	
-			        	//$this->generatePHP("editor_cigarrita_worker");			        	
-			        	
-	        		}
+	        		
 	        		
 
-	        	}
+	        	// }
 
 	        
 

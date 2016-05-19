@@ -641,8 +641,8 @@ class PanelController extends Controller
 	public function actionPosts(){
 
 		// if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
-
-			$post_page=$this->uri(2)?$this->uri(2):Category::model()->find("tag='panel'")->category;
+			$default_cat=Category::model()->find("tag='panel'");
+			$post_page=$this->uri(2)?$this->uri(2):($default_cat?$default_cat->category:"none");
 			$lang=$this->uri(3)?$this->uri(3):Configuration::model()->findByPk(1)->language;
 
 			$language=Language::model()->findAll("estado=1 AND is_deleted='0'");
@@ -736,7 +736,13 @@ class PanelController extends Controller
 				$post_config=PostConfiguration::model()->findByAttributes(array("category"=>$post_page));
 
 				$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."'AND category='".$post_page."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
-				$render='//post/admin';
+				
+				if($list){
+					$render='//post/admin';
+				}else{
+					$this->redirect(array("panel/pages"));
+				}
+				
 				
 			}
 
@@ -1070,13 +1076,17 @@ class PanelController extends Controller
 
 					$model=Page::model()->findByPk($id);
 					
+					if ($model) {						
 					
-					$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
-					// $file = new SplFileObject($root.'/themes/design/views/site/home'.'.php','w+');
+						$source=file_get_contents($root."/themes/design/views/site/$model->name".".php");
+						// $file = new SplFileObject($root.'/themes/design/views/site/home'.'.php','w+');
 
-					$model->source=$source;
+						$model->source=$source;
 
-					$render='//page/update';
+						$render='//page/update';
+					}else{
+						$this->redirect(array("panel/pages/"));	
+					}
 
 				}
 

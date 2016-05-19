@@ -16,11 +16,12 @@
                     	<div class="col-md-offset-2 col-md-8 panel panel-default">
                     		
                     		<div class="panel-body ">
-                    			<h5 class="text-center">Crear un usuario<h5>
+                    			<h5 class="text-center"><?=Yii::t('app','panel.users.create')?><h5>
                                     <br>
                                 <?php echo $this->renderPartial('//user/_form', 
                                     array(
-                                            'model'=>$model
+                                            'model'=>$model,
+                                            'users_groups'=>$users_groups
                                         )
                                     ); 
                                 ?>

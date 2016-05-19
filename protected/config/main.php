@@ -8,21 +8,22 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'CIGARRITA',
-	'language'=>'es',
+	'language'=>'de',
 	'sourceLanguage'=>'00',
 	'charset'=>'utf-8',
 	'theme'=>'design',
 
+	// preloading 'log' component
+	// 'preload'=>array('log'),
+
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
-		'application.modules.*',
 		'application.components.*',
-		//'application.controllers.*',
+		'application.components.*',
 	),
 	'modules'=>array(
-		// uncomment the following to enable the Gii tool
-		'pluginsCigarrita',		
+		'pluginsCigarrita',
 	),
 	// application components
 	'components'=>array(
@@ -30,7 +31,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=dbname',
 			'emulatePrepare' => true,
 			'username' => 'username',
-			'password' => '********',
+			'password' => '******',
 			'charset' => 'utf8',
 		),
 		'user'=>array(

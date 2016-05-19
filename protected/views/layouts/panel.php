@@ -174,10 +174,16 @@
                       <ul class="list-unstyled">
                           <?php 
                           $list_category=Category::model()->findAll("tag='panel'");
-                          foreach ($list_category as $cat_val) {                            
+                          if ($list_category) {
+                            foreach ($list_category as $cat_val) {                            
                           ?>
                           <li><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/posts/<?=$cat_val->category?>"><?=Yii::t('app','panel.posts')?> - <strong><?=$cat_val->category?></strong></a></li>                         
-                          <?php }?>
+                          <?php }
+                          }else{
+                            echo Yii::t('app','panel.none');
+                          }
+                          ?>
+                          
                       </ul>
                     </li>
                     <li class="<?=$pages_active?> has-submenu"><a href="<?=Yii::app()->getBaseUrl(true)?>/panel/pages"><i class="fa fa-file-o"></i> <span class="nav-label"><?=Yii::t('app','panel.pages')?></span></a>
