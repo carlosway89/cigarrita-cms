@@ -205,6 +205,16 @@ class InstallationCigarritaController extends Controller
 	    			mkdir($dir."views/site",0777);
 	    			umask($oldmask);
 	    		}
+	    		if (!is_dir($dir."views/layout")) {
+	    			$oldmask = umask(0);
+	    			mkdir($dir."views/layout",0777);
+	    			umask($oldmask);
+	    		}
+			}
+			if(!is_dir($dir."modules")){
+				$oldmask = umask(0);
+	    		mkdir($dir."modules",0777);
+	    		umask($oldmask);
 			}
 
 	        if (isset($_POST['File'])) {
@@ -216,8 +226,12 @@ class InstallationCigarritaController extends Controller
 
 					$page=file_get_contents($root."/themes/design/$single_file");
 	        		$name=str_replace(".html","", $single_file);
-	        		$file = new SplFileObject($root."/themes/design/views/site/$name".".php",'w+');		            
-			        $file->fwrite($page);
+	        		if ($name=='blank') {
+						$file = new SplFileObject($root."/themes/design/views/layout/layout_standard.php",'w+');           
+	        		}else{
+	        			$file = new SplFileObject($root."/themes/design/views/site/$name".".php",'w+');		            
+	        		}
+	        		$file->fwrite($page);
 
 			        chmod($root."/themes/design/views/site/$name".".php", 0777);
 			        $page=new Page();

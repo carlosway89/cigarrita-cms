@@ -295,7 +295,7 @@ cigarritaDirective
 
 
         elem.find('[element-editable]').froalaEditor('edit.on');
-        elem.find('[element-editable]').froalaEditor('events.focus');
+        //elem.find('[element-editable]').froalaEditor('events.focus');
 
       });
      
