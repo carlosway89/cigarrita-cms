@@ -193,7 +193,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     ?>
       when('<?=$value->url?>', {
         // templateUrl: $base_url+'/api/template<?=$value->url?>/site',
-        template:'<?php echo htmlentities($_template); ?>',
+        template:'<?php echo $_template; ?>',
         controller: 'pageCtrl',
         pageid: <?=$value->page?>,
         reloadOnSearch: false
@@ -210,7 +210,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
       
       when('/<?=$pag_val->name?>/:id/:name', {
         // templateUrl: $base_url+'/api/template/<?=$pag_val->name?>/site',
-        template:'<?php echo htmlentities($_template); ?>',
+        template:'<?php echo $_template; ?>',
         controller: 'singleCtrl',
         pageid: <?=$pag_val->idpage?>
       }).
@@ -225,7 +225,7 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
     ?>
       when('/:link', {
         // templateUrl: $base_url+'/api/template/home/site', //router template with api
-        template:'<?php echo htmlentities($_template); ?>',
+        template:'<?php echo $_template; ?>',
         controller: 'homeCtrl',
         pageid: <?=$pag_val->idpage?>
       }).
