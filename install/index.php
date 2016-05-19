@@ -20,7 +20,7 @@
 				$res3=$gen->create_config();
 				if ($res3=="1") {
 					sleep(3);
-					header("Location: /installationCigarrita");
+					header("Location: /installationCigarrita?language=".$language);
 				}else{
 					$message=$res3;
 				}

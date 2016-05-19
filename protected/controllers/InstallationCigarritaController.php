@@ -49,7 +49,12 @@ class InstallationCigarritaController extends Controller
 	public function actionIndex()
 	{
 		
-		
+		if (isset($_GET['language'])) {
+			$model=Configuration::model()->findByPk(1);
+			$model->language=$_GET['language'];
+			$model->save();
+		}
+
 		if (isset($_POST['continue'])) {
 			$this->redirect(array('pages'));
 		}
