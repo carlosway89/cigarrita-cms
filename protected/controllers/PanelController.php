@@ -1350,7 +1350,11 @@ class PanelController extends Controller
 		};
 
 		if ($tree_array) {
-			$tree = $fnBuilder($grouped[0]);
+			if (isset($grouped[0])) {
+				$tree = $fnBuilder($grouped[0]);
+			}else{				
+				$tree = $fnBuilder($grouped[""]);
+			}			
 		}else{
 			$tree=array();
 		}

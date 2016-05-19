@@ -65,41 +65,7 @@
 
 										
 									?>
-									<?php
-
-										foreach ($tree as $key => $value) {
-											$value=(object) $value;
-											if ($value->parent_id==0) {
-										?>
-											<div id="<?=$value->idmenu?>" class="tr ui-state-default">
-												<div>
-													<?php if (isset($value->sub_menu)) {														
-													?>
-													<a id="<?=$value->idmenu?>" class="collapse-link" href="javascript:;;"><i class="fa fa-plus"></i></a>													
-													<?php }else{ ?>
-													<a id="<?=$value->idmenu?>" class="collapse-link" href="javascript:;;"><i class="fa fa-minus"></i></a>
-													<?php }?>
-													&nbsp;&nbsp;<?=$value->name?>
-												</div>
-												<div><?=$value->url?></div>
-												<div><?=$value->type?></div>
-												<div><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></div>
-												<div>
-													<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;&nbsp;
-													<?php if (Yii::app()->user->checkAccess("webmaster")) {
-	                          						?>
-													<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>/<?=$lang?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
-													<?php }?>
-												</div>
-												<?php
-												if (isset($value->sub_menu)) {
-													echo "<div class='sub_menu_wrapper' style='width: 100%;display: table;'>";
-													 	$fnChildren($value->sub_menu,1,$value->idmenu);
-													 echo "</div>";
-												}
-												?>
-											</div>
-											<?php 
+									<?php 
 												
 												$fnChildren=function($array,$pos,$idparent) use (&$fnChildren,$lang){
 																											
@@ -150,6 +116,43 @@
 											
 
 												};
+											?>
+									<?php
+
+										foreach ($tree as $key => $value) {
+											$value=(object) $value;
+											if ($value->parent_id==0) {
+										?>
+											<div id="<?=$value->idmenu?>" class="tr ui-state-default">
+												<div>
+													<?php if (isset($value->sub_menu)) {														
+													?>
+													<a id="<?=$value->idmenu?>" class="collapse-link" href="javascript:;;"><i class="fa fa-plus"></i></a>													
+													<?php }else{ ?>
+													<a id="<?=$value->idmenu?>" class="collapse-link" href="javascript:;;"><i class="fa fa-minus"></i></a>
+													<?php }?>
+													&nbsp;&nbsp;<?=$value->name?>
+												</div>
+												<div><?=$value->url?></div>
+												<div><?=$value->type?></div>
+												<div><i class="fa fa-circle <?=$value->state?'text-success':'text-warning'?>"></i> <?=$value->state?Yii::t('app','panel.table.state.on'):Yii::t('app','panel.table.state.off')?></div>
+												<div>
+													<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/links/<?=$value->idmenu?>" class="text-success"><i class="fa fa-pencil "></i> <?=Yii::t('app','panel.edit')?></a>&nbsp;&nbsp;
+													<?php if (Yii::app()->user->checkAccess("webmaster")) {
+	                          						?>
+													<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/delete/menu/<?=$value->idmenu?>/<?=$lang?>" class="text-danger delete-link"><i class="fa fa-trash-o "></i> <?=Yii::t('app','panel.delete')?></a>
+													<?php }?>
+												</div>
+												<?php
+												if (isset($value->sub_menu)) {
+													echo "<div class='sub_menu_wrapper' style='width: 100%;display: table;'>";
+													 	$fnChildren($value->sub_menu,1,$value->idmenu);
+													 echo "</div>";
+												}
+												?>
+											</div>
+											
+											<?php
 												
 												
 												

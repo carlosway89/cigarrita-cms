@@ -892,7 +892,12 @@ class ApiController extends Controller
                 };
 
                 if ($tree_array) {
-                    $models=$fnBuilder($grouped[0]);
+                    if (isset($grouped[0])) {
+                        $models = $fnBuilder($grouped[0]);
+                    }else{              
+                        $models = $fnBuilder($grouped[""]);
+                    }
+                    //$models=$fnBuilder($grouped[0]);
                 }
                 
                 //$models=$tree_array;
