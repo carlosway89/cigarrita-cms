@@ -87,12 +87,16 @@
 
 		<div class="row">
 			<input type="hidden" name="page_id" id="page_id" />
+			<?php if($model->isNewRecord){?>
 			<input type="hidden" name="Block[language]" value="<?=$lang?>" />
+			<?php }else{?>
+			<input type="hidden" name="Block[language]" value="<?=$model->language?>" />
+			<?php }?>
 		</div>
 
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.blocks.source')); ?>
-			<textarea  class="froala-editor-inline" name="Post[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
+			<textarea  class="froala-editor-inline" name="Block[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
 			<?php echo $form->error($model,'source'); ?>
 		</div>
 
