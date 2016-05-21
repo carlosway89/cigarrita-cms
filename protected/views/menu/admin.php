@@ -284,7 +284,18 @@
 
 			$("#page_name select").on('change',function(){
 				if (!$('select#type_page option#scroll_page').is(':selected')) {
-					$('#Menu_url').val("/"+$("#page_name option:selected").text());
+					var menu_name=$("input#Menu_name").val();
+					menu_name = menu_name.replace(/\s/g, "-");
+					menu_name=menu_name.toLowerCase();
+					var sr=["ä","ë","ï","ö","ü","ñ","ß","á","é","í","ó","ú","'",'"',"ç","à","è","ì","ò","ù"];
+					var rp=["ae","e","i","oe","ue","nh","ss","a","e","i","o","u","","","c","a","e","i","o","u"];
+					for(i=0;i<sr.length;i++){
+
+						menu_name = menu_name.replace(new RegExp(sr[i], 'g'), rp[i]);
+					}
+					<?php if($model->language==Configuration::model()->findByPk(1)->language){?>
+					$('#Menu_url').val("/"+menu_name);
+					<?php }?>
 				}
 				
 			});
