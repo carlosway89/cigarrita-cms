@@ -737,7 +737,7 @@ class PanelController extends Controller
 
 				$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."'AND category='".$post_page."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
 				
-				if($list){
+				if ($post_page!="none") {
 					$render='//post/admin';
 				}else{
 					$this->redirect(array("panel/pages"));
