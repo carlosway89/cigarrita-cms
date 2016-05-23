@@ -27,6 +27,7 @@
 			            		echo "&nbsp;&nbsp;&nbsp;";
 			            	}
                         ?>
+                        
 		                <br><br><br>
 						<table id="postList" class="hoverable centered">
 							<thead>

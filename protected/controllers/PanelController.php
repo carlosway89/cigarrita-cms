@@ -22,7 +22,7 @@ class PanelController extends Controller
 		//$test=Configuration::model()->findAll();
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','usersGroups','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','variableType','modules','rendering','syncLanguage'),
+				'actions'=>array('index','language','config','users','usersGroups','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','blockConfig','variableType','modules','rendering','syncLanguage'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("webmaster")')
 					),
@@ -782,6 +782,9 @@ class PanelController extends Controller
 		
 		if ($_idpost=="") {
 			$config=PostConfiguration::model()->find("idpost='0' and category='".$_cat."'");
+			if (!$config) {
+				$config=new PostConfiguration();
+			}
 		}else{
 			if (is_numeric($_idpost)) {
 				$config=PostConfiguration::model()->find("idpost='".$_idpost."' and category='".$_cat."'");
@@ -851,6 +854,58 @@ class PanelController extends Controller
 			'message'=>$message,
 			'config'=>$config,
 			'list'=>$list
+		));
+	}
+
+	public function actionBlockConfig(){
+
+		$model=new BlockConfiguration();
+		$_variable=new Variable();
+		$message=null;
+		$config=null;
+		$list=null;
+
+
+
+		$_cat=$this->uri(2)?$this->uri(2):Category::model()->find("tag='panel'")->category;
+		$_idblock=$this->uri(3)?$this->uri(3):"";
+		
+		if ($_idblock=="") {
+			$config=BlockConfiguration::model()->find("idblock='0' and category='".$_cat."'");
+			if (!$config) {
+				$config=new BlockConfiguration();
+			}
+		}else{
+			if (is_numeric($_idblock)) {
+				$config=BlockConfiguration::model()->find("idblock='".$_idblock."' and category='".$_cat."'");
+			}
+		}
+
+		if(isset($_POST['BlockConfiguration']))
+		{	
+			
+			$config->attributes=$_POST['BlockConfiguration'];
+			$config->crop=$config->crop=='on'?1:0;
+			$config->has_source=$config->has_source=='on'?1:0;
+			$config->has_header=$config->has_header=='on'?1:0;
+			$config->has_subheader=$config->has_subheader=='on'?1:0;
+			$config->has_teaser=$config->has_teaser=='on'?1:0;
+
+			
+			if($config->save()){				
+
+				$message=1;
+				unset($_POST['BlockConfiguration']);				
+			}
+				
+		}
+
+		$render='//blockConfiguration/admin';
+
+		$this->render($render,array(
+			'model'=>$model,
+			'message'=>$message,
+			'config'=>$config
 		));
 	}
 

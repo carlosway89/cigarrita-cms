@@ -49,7 +49,12 @@
 	<div id="new_block" style="<?=isset($edit_block)?'':'display:none' ?>">
 		<p class="note"><?=Yii::t('app','panel.required')?></p>
 		<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
-
+		<div class="row">
+		<?php if (Yii::app()->user->checkAccess("webmaster")) {
+		?>
+        	<a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blockConfig/<?=$model->category?>" ><i class="fa fa-cogs text-white"></i></a>
+        <?php }?>
+    	</div>
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.table.category')); ?>
 			<select id="url_page"  class="browser-default" name="Block[category]">

@@ -35,6 +35,7 @@
 			<select name="PostConfiguration[type_source]" class="browser-default" required>
 				<option <?=$config->type_source=="image"?'selected':''?> value="image">Image</option>
 				<option <?=$config->type_source=="gallery"?'selected':''?> value="gallery">Gallery / slider</option>
+				<option <?=$config->type_source=="background"?'selected':''?> value="background">Background</option>
 				<option <?=$config->type_source=="video"?'selected':''?> value="video">Video</option>
 				<option <?=$config->type_source=="embed"?'selected':''?> value="embed">Embed HTML</option>
 				<option <?=$config->type_source=="file"?'selected':''?> value="file">File</option>
