@@ -11,7 +11,9 @@
 						<?php echo $this->renderPartial('//blockConfiguration/_form', 
 							array(
 									'model'=>$model,
-									'message'=>$message
+									'message'=>$message,
+									'category'=>$category,
+									'idblock'=>$idblock
 								)
 							); 
 						?>

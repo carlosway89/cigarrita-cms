@@ -877,7 +877,12 @@ class PanelController extends Controller
 			}
 		}else{
 			if (is_numeric($_idblock)) {
-				$config=BlockConfiguration::model()->find("idblock='".$_idblock."' and category='".$_cat."'");
+				$config=BlockConfiguration::model()->find("idblock='0' and category='".$_cat."'");
+				if (!$config) {
+					$config=new BlockConfiguration();
+				}
+			}else{
+				$this->redirect(array("panel/blocks/"));
 			}
 		}
 
@@ -905,7 +910,9 @@ class PanelController extends Controller
 		$this->render($render,array(
 			'model'=>$model,
 			'message'=>$message,
-			'config'=>$config
+			'config'=>$config,
+			'category'=>$_cat,
+			'idblock'=>$_idblock
 		));
 	}
 
@@ -1055,11 +1062,17 @@ class PanelController extends Controller
 
 			$message=null;
 			$list=null;
+			$block_config=null;
 			
 			if (is_numeric($lang)) {
 				$id=$lang;
 
 				$model=Block::model()->findByPk($id);
+				$block_config=BlockConfiguration::model()->findByAttributes(array("category"=>$model->category));
+
+				if (!$block_config) {
+					$block_config=new BlockConfiguration();
+				}
 
 				$render='//block/update';
 
@@ -1097,7 +1110,8 @@ class PanelController extends Controller
 				'category'=>$category,
 				'language'=>$language,
 				'list_blocks'=>$list_blocks,
-				'lang'=>$lang
+				'lang'=>$lang,
+				'block_config'=>$block_config
 			));
 			
 			
@@ -1121,6 +1135,10 @@ class PanelController extends Controller
 
 			$message=null;
 			$list=null;
+
+
+			$block_config=new BlockConfiguration();
+			
 
 			$root=$_SERVER['DOCUMENT_ROOT'];
 
@@ -1206,6 +1224,8 @@ class PanelController extends Controller
 							$page_has_block=new PageHasBlock();
 							$page_has_block->page_idpage=$_POST['page_id'];
 							$page_has_block->block_idblock=$_POST['idblock'];
+
+
 							if ($page_has_block->save()) {
 								$message="Successfully Updated";
 							}else{
@@ -1224,7 +1244,12 @@ class PanelController extends Controller
 								$model_block->state=$model->state=='on'?1:0;
 							}				
 							
+							$block_config=new BlockConfiguration();
+							$block_config->category=$model_block->category;
+
 							if($model_block->save()){
+								$block_config->save();
+
 								$model_block->idsync=$model_block->idblock;
 								$model_block->save();
 								$page_has_block=new PageHasBlock();
@@ -1276,6 +1301,7 @@ class PanelController extends Controller
 				'model_block'=>$model_block,
 				'model_category'=>$model_category,
 				'message'=>$message,
+				'block_config'=>$block_config
 			));
 		}else{
 			$this->redirect(array('//panel/'));

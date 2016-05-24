@@ -516,35 +516,48 @@
                   target: '_blank'
                 }
               ],
-      })
+      });
+
+      <?php
+        $block_config=isset($block_config)?$block_config:(new BlockConfiguration());
+      ?>
+      
       $('.froala-editor-inline').froalaEditor({
-              toolbarInline: true,
-              enter: $.FroalaEditor.ENTER_BR,
-              language: '<?=Yii::app()->language?>',
-              charCounterCount: false,
-              imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
-              imageUploadParam: 'images',
-              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
-              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
-              linkAttributes: {
-                'title':'Titulo'
-              },
-              imageStyles: {
-                "lightboxImage": 'lightboxImage',
-              },
-              <?php
-              if (!Yii::app()->user->checkAccess("webmaster")){
-              ?>
-              imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
-              toolbarButtons:['insertImage'],
-              <?php } ?>
-              linkList: [
-                {
-                  text: 'Cigarrita',
-                  href: 'http://cigarrita-worker.com',
-                  target: '_blank'
-                }
-              ],
+            toolbarInline: true,
+            width: '1000',
+            imageDefaultWidth: '<?=$block_config->max_width?>',
+            imageOutputSize: true,
+            enter: $.FroalaEditor.ENTER_BR,
+            language: '<?=Yii::app()->language?>',
+            charCounterCount: false,
+            imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
+            imageUploadParam: 'images',
+            imageUploadParams: {
+              width: '<?=$block_config->max_width?>',
+              crop: '<?=$block_config->crop?>',
+              height: '<?=$block_config->max_height?>',
+              quality: '<?=$block_config->quality?>',
+              is_image:true
+            },
+            imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+            imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+            linkAttributes: {
+              'title':'Titulo'
+            },
+            <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery") { ?>
+            imageStyles: {
+              "lightboxImage": 'lightboxImage',
+            },              
+            imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+            toolbarButtons:['insertImage']
+            <?php }?>
+            <?php if ($block_config->type_source=="video") { ?>
+            toolbarButtons:['insertVideo'],
+            videoDefaultDisplay: 'inline'
+            <?php } ?>
+            <?php if ($block_config->type_source=="file") { ?>
+            toolbarButtons:['insertFile']
+            <?php } ?>
       });
       
 

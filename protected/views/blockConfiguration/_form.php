@@ -118,12 +118,12 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->hiddenField($config,'category',array('size'=>60,'maxlength'=>100)); ?>
+		<input size="60" maxlength="100" name="BlockConfiguration[category]" id="BlockConfiguration_category" value="<?=$category?>" class="error" type="hidden">
 	</div>
 
 	<div class="row buttons">
 		<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>
-		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks/<?=$config->category?>"><?=Yii::t('app','panel.back')?></a>
+		<a class="btn grey lighten-1" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blocks/<?=$idblock?>"><?=Yii::t('app','panel.back')?></a>
 	</div>
 
 <?php $this->endWidget(); ?>

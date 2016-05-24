@@ -12,7 +12,9 @@
 							array(
 									'model'=>$model,
 									'config'=>$config,
-									'message'=>$message
+									'message'=>$message,
+									'category'=>$category,
+									'idblock'=>$idblock
 								)
 							); 
 						?>

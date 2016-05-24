@@ -17,7 +17,8 @@
 									'language'=>$language,
 									'list_blocks'=>$list_blocks,
 									'lang'=>$lang,
-									'edit_block'=>true
+									'edit_block'=>true,
+									'block_config'=>$block_config
 								)
 							); 
 						?>

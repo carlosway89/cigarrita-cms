@@ -1,11 +1,10 @@
 
 <?php		
-	if (isset($message)) {
-		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$message."</h6><br>";
+	if (isset($_GET["message"]) && !$model->isNewRecord) {
+		echo "<h6 id='message_updated' class='green-text light-green lighten-4 center-align alert'>".$_GET["message"]."</h6><br>";
 	}
-
+	$block_config=$block_config?$block_config:(new BlockConfiguration());
 ?>	
-
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -50,10 +49,14 @@
 		<p class="note"><?=Yii::t('app','panel.required')?></p>
 		<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 		<div class="row">
-		<?php if (Yii::app()->user->checkAccess("webmaster")) {
+		<?php 
+		if (!$model->isNewRecord) {			
+			if (Yii::app()->user->checkAccess("webmaster")) {
 		?>
-        	<a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blockConfig/<?=$model->category?>" ><i class="fa fa-cogs text-white"></i></a>
-        <?php }?>
+        	<a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blockConfig/<?=$model->category?>/<?=$model->idblock?>" ><i class="fa fa-cogs text-white"></i></a>
+        <?php }
+    	}
+        ?>
     	</div>
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.table.category')); ?>
@@ -101,8 +104,16 @@
 
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.blocks.source')); ?>
+			<?php 
+			if ($model->isNewRecord) {				
+			?>
 			<textarea  class="froala-editor-inline" name="Block[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
-			<?php echo $form->error($model,'source'); ?>
+			<?php }else{?>
+			<textarea  class="froala-editor-source" name="Block[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
+			<?php 
+			}
+				echo $form->error($model,'source'); 
+			?>
 		</div>
 
 		<div class="row buttons">
@@ -118,3 +129,52 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<script type="text/javascript">
+	
+	window.onload = function(){ 
+		
+		$('.froala-editor-source').froalaEditor({
+              toolbarInline: true,
+              width: '1000',
+              imageDefaultWidth: '<?=$block_config->max_width?>',
+              imageOutputSize: true,
+              enter: $.FroalaEditor.ENTER_BR,
+              language: '<?=Yii::app()->language?>',
+              charCounterCount: false,
+              imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
+              imageUploadParam: 'images',
+              imageUploadParams: {
+				width: '<?=$block_config->max_width?>',
+				crop: '<?=$block_config->crop?>',
+				height: '<?=$block_config->max_height?>',
+				quality: '<?=$block_config->quality?>',
+				is_image:true
+			  },
+              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+              linkAttributes: {
+                'title':'Titulo'
+              },
+              <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery") { ?>
+              imageStyles: {
+                "lightboxImage": 'lightboxImage',
+              },              
+              imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
+              toolbarButtons:['insertImage']
+              <?php }?>
+              <?php if ($block_config->type_source=="video") { ?>
+              toolbarButtons:['insertVideo'],
+              videoDefaultDisplay: 'inline'
+              <?php } ?>
+              <?php if ($block_config->type_source=="file") { ?>
+              toolbarButtons:['insertFile']
+              <?php } ?>
+
+      	});
+		
+		setTimeout(function(){
+	        $("body").find('a[href="https://froala.com/wysiwyg-editor"]').remove();
+	      },100)
+	};
+	
+</script>
