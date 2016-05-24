@@ -535,7 +535,11 @@
             fileUploadURL: '<?=Yii::app()->getBaseUrl(true)?>/api/upload',
             fileUploadParam: 'images',            
             imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
-            imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+            imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",            
+            linkAttributes: {
+              'title':'Titulo'
+            },
+            <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery") { ?>
             imageUploadParams: {
               width: '<?=$block_config->max_width?>',
               crop: '<?=$block_config->crop?>',
@@ -543,10 +547,6 @@
               quality: '<?=$block_config->quality?>',
               is_image:true
             },
-            linkAttributes: {
-              'title':'Titulo'
-            },
-            <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery") { ?>
             imageStyles: {
               "lightboxImage": 'lightboxImage',
             },              

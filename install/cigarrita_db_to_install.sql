@@ -132,6 +132,29 @@ CREATE TABLE IF NOT EXISTS `block_has_post` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `block_configuration`
+--
+
+CREATE TABLE IF NOT EXISTS `block_configuration` (
+  `idblockconfiguration` int(11) NOT NULL AUTO_INCREMENT,
+  `max_width` int(11) NOT NULL DEFAULT '1000',
+  `max_height` int(11) NOT NULL DEFAULT '1000',
+  `crop` tinyint(1) NOT NULL DEFAULT '1',
+  `quality` varchar(100) NOT NULL DEFAULT '90',
+  `type_source` varchar(100) NOT NULL DEFAULT 'image',
+  `has_source` tinyint(1) NOT NULL DEFAULT '1',
+  `has_header` tinyint(1) NOT NULL DEFAULT '1',
+  `has_subheader` tinyint(1) NOT NULL DEFAULT '1',
+  `has_teaser` tinyint(1) NOT NULL DEFAULT '1',
+  `category` varchar(100) NOT NULL,
+  `idblock` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idblockconfiguration`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `category`
 --
 
