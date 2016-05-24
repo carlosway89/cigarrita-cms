@@ -532,6 +532,10 @@
             charCounterCount: false,
             imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
             imageUploadParam: 'images',
+            fileUploadURL: '<?=Yii::app()->getBaseUrl(true)?>/api/upload',
+            fileUploadParam: 'images',            
+            imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+            imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
             imageUploadParams: {
               width: '<?=$block_config->max_width?>',
               crop: '<?=$block_config->crop?>',
@@ -539,8 +543,6 @@
               quality: '<?=$block_config->quality?>',
               is_image:true
             },
-            imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
-            imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
             linkAttributes: {
               'title':'Titulo'
             },

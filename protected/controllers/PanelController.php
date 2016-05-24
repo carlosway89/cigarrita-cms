@@ -877,7 +877,7 @@ class PanelController extends Controller
 			}
 		}else{
 			if (is_numeric($_idblock)) {
-				$config=BlockConfiguration::model()->find("idblock='0' and category='".$_cat."'");
+				$config=BlockConfiguration::model()->find("idblock='".$_idblock."' and category='".$_cat."'");
 				if (!$config) {
 					$config=new BlockConfiguration();
 				}
@@ -895,7 +895,7 @@ class PanelController extends Controller
 			$config->has_header=$config->has_header=='on'?1:0;
 			$config->has_subheader=$config->has_subheader=='on'?1:0;
 			$config->has_teaser=$config->has_teaser=='on'?1:0;
-
+			$config->idblock=$_idblock;
 			
 			if($config->save()){				
 
@@ -1248,6 +1248,7 @@ class PanelController extends Controller
 							$block_config->category=$model_block->category;
 
 							if($model_block->save()){
+								$block_config->idblock=$model_block->idsync;
 								$block_config->save();
 
 								$model_block->idsync=$model_block->idblock;

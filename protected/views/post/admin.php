@@ -29,9 +29,11 @@
 			            	}
                         ?>
 		                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal1"><?=Yii::t('app','panel.posts.create')?></button>
-		                <?php if (Yii::app()->user->checkAccess("webmaster")) {
-    					?>
-		                <a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/postConfig/<?=$post_page?>" ><i class="fa fa-cogs text-white"></i></a>
+		                <?php if($lang==Configuration::model()->findByPk(1)->language){ ?>
+			                <?php if (Yii::app()->user->checkAccess("webmaster")) {
+	    					?>
+			                <a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/postConfig/<?=$post_page?>" ><i class="fa fa-cogs text-white"></i></a>
+			                <?php }?>
 		                <?php }?>
 		                <br><br><br>
 		                <?php 
@@ -118,7 +120,15 @@
               language: '<?=Yii::app()->language?>',
               charCounterCount: false,
               imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
-              imageUploadParam: 'images',
+              imageUploadParam: 'images',              
+			  fileUploadURL: '<?=Yii::app()->getBaseUrl(true)?>/api/upload',
+			  fileUploadParam: 'images',
+              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+              linkAttributes: {
+                'title':'Titulo'
+              },
+              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
               imageUploadParams: {
 				width: '<?=$post_config->max_width?>',
 				crop: '<?=$post_config->crop?>',
@@ -126,12 +136,6 @@
 				quality: '<?=$post_config->quality?>',
 				is_image:true
 			  },
-              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
-              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
-              linkAttributes: {
-                'title':'Titulo'
-              },
-              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
               imageStyles: {
                 "lightboxImage": 'lightboxImage',
               },              

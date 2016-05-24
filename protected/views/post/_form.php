@@ -145,7 +145,15 @@
               language: '<?=Yii::app()->language?>',
               charCounterCount: false,
               imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
-              imageUploadParam: 'images',
+              imageUploadParam: 'images',              
+			  fileUploadURL: '<?=Yii::app()->getBaseUrl(true)?>/api/upload',
+			  fileUploadParam: 'images',
+              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
+              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
+              linkAttributes: {
+                'title':'Titulo'
+              },
+              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
               imageUploadParams: {
 				width: '<?=$post_config->max_width?>',
 				crop: '<?=$post_config->crop?>',
@@ -153,12 +161,6 @@
 				quality: '<?=$post_config->quality?>',
 				is_image:true
 			  },
-              imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
-              imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
-              linkAttributes: {
-                'title':'Titulo'
-              },
-              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
               imageStyles: {
                 "lightboxImage": 'lightboxImage',
               },              

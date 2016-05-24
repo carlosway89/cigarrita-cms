@@ -50,13 +50,20 @@
 		<?php echo $form->errorSummary($model, '', '', array('class' => 'red-text red lighten-4  alert')); ?>
 		<div class="row">
 		<?php 
-		if (!$model->isNewRecord) {			
-			if (Yii::app()->user->checkAccess("webmaster")) {
+		if($model->isNewRecord){
+			$language_default=$lang;
+		}else{
+			$language_default=$model->language;
+		}
+
+		if($language_default==Configuration::model()->findByPk(1)->language){ 
+			if (!$model->isNewRecord) {			
+				if (Yii::app()->user->checkAccess("webmaster")) {
 		?>
-        	<a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blockConfig/<?=$model->category?>/<?=$model->idblock?>" ><i class="fa fa-cogs text-white"></i></a>
-        <?php }
-    	}
-        ?>
+	        	<a class="btn blue-grey lighten-2 pull-right" href="<?=Yii::app()->getBaseUrl(true)?>/panel/blockConfig/<?=$model->category?>/<?=$model->idsync?>" ><i class="fa fa-cogs text-white"></i></a>
+	    <?php }
+	    	}
+	    }?>
     	</div>
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.table.category')); ?>
@@ -139,39 +146,41 @@
 	window.onload = function(){ 
 		
 		$('.froala-editor-source').froalaEditor({
-              toolbarInline: true,
+               toolbarInline: true,
               width: '1000',
-              imageDefaultWidth: '<?=$block_config->max_width?>',
+              imageDefaultWidth: '<?=$post_config->max_width?>',
               imageOutputSize: true,
               enter: $.FroalaEditor.ENTER_BR,
               language: '<?=Yii::app()->language?>',
               charCounterCount: false,
               imageUploadURL: "<?=Yii::app()->getBaseUrl(true)?>/api/upload",
-              imageUploadParam: 'images',
-              imageUploadParams: {
-				width: '<?=$block_config->max_width?>',
-				crop: '<?=$block_config->crop?>',
-				height: '<?=$block_config->max_height?>',
-				quality: '<?=$block_config->quality?>',
-				is_image:true
-			  },
+              imageUploadParam: 'images',              
+			  fileUploadURL: '<?=Yii::app()->getBaseUrl(true)?>/api/upload',
+			  fileUploadParam: 'images',
               imageManagerLoadURL:"<?=Yii::app()->getBaseUrl(true)?>/api/images",
               imageManagerDeleteURL:"<?=Yii::app()->getBaseUrl(true)?>/api/deleteImage/files",
               linkAttributes: {
                 'title':'Titulo'
               },
-              <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery") { ?>
+              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
+              imageUploadParams: {
+				width: '<?=$post_config->max_width?>',
+				crop: '<?=$post_config->crop?>',
+				height: '<?=$post_config->max_height?>',
+				quality: '<?=$post_config->quality?>',
+				is_image:true
+			  },
               imageStyles: {
                 "lightboxImage": 'lightboxImage',
               },              
               imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
               toolbarButtons:['insertImage']
               <?php }?>
-              <?php if ($block_config->type_source=="video") { ?>
+              <?php if ($post_config->type_source=="video") { ?>
               toolbarButtons:['insertVideo'],
               videoDefaultDisplay: 'inline'
               <?php } ?>
-              <?php if ($block_config->type_source=="file") { ?>
+              <?php if ($post_config->type_source=="file") { ?>
               toolbarButtons:['insertFile']
               <?php } ?>
 
