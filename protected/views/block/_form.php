@@ -62,24 +62,28 @@
 			<?php echo $form->labelEx($model,yii::t('app','panel.table.category')); ?>
 			<select id="url_page"  class="browser-default" name="Block[category]">
 				<?php foreach ($list_category as $key => $value) {?>
-				<option value="<?=$value->category?>" ><?=$value->category?></option>
+				<option <?=$model->category==$value->category?"selected":""?> value="<?=$value->category?>" ><?=$value->category?></option>
 				<?php }?>
 			</select>
 			<?php echo $form->error($model,'category'); ?>
 		</div>
-
+		<?php if ($block_config->has_header) {		
+		?>
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.blocks.cabecera')); ?>
 			<?php echo $form->textField($model,'header',array('rows'=>6, 'cols'=>50)); ?>
 			<?php echo $form->error($model,'header'); ?>
 		</div>
-
+		<?php }?>
+		<?php if ($block_config->has_subheader) {		
+		?>
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.blocks.container')); ?>
 			<textarea class="froala-editor" name="Block[subheader]" ><?=$model->subheader?></textarea>
 			<?php echo $form->error($model,'subheader'); ?>
 		</div>
-
+		<?php }?>
+	
 		<div class="row">
 			<?php echo $form->labelEx($model,Yii::t('app','panel.table.state')); ?>
 			<div class="switch">
@@ -101,7 +105,8 @@
 			<input type="hidden" name="Block[language]" value="<?=$model->language?>" />
 			<?php }?>
 		</div>
-
+		<?php if ($block_config->has_source) {		
+		?>
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.blocks.source')); ?>
 			<?php 
@@ -115,7 +120,7 @@
 				echo $form->error($model,'source'); 
 			?>
 		</div>
-
+		<?php }?>
 		<div class="row buttons">
 			<button class="btn btn-info" type="submit"><?=Yii::t('app','panel.save')?></button>&nbsp;
 			<?php if (!isset($edit_block)) {
