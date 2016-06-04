@@ -583,12 +583,13 @@ class ApiController extends Controller
         foreach($model as $value)
         {   
 
+            
             foreach($value->pageHasBlocks as $key_block => $has_block)
             {  
                 
                                 
-                    $array[]=$has_block->blockIdblock->attributes;
-
+                    $array[$key_block]=$has_block->blockIdblock->attributes;
+                    $array[$key_block]["url_source"]=CJSON::decode($array[$key_block]["url_source"])!=null?CJSON::decode($array[$key_block]["url_source"]):$array[$key_block]["url_source"];
                     
                     $subarray=array();
                     $post_pos=0;
@@ -597,7 +598,9 @@ class ApiController extends Controller
 
                         if ($filter->language==$has_post->language && $filter->state==$has_post->state && $filter->is_deleted==$has_post->is_deleted ){
 
-                            $subarray[]=$has_post->attributes;
+                            $subarray[$post_pos]=$has_post->attributes;
+                            $subarray[$post_pos]["url_source"]=CJSON::decode($subarray[$post_pos]["url_source"])!=null?CJSON::decode($subarray[$post_pos]["url_source"]):$subarray[$post_pos]["url_source"];
+                    
                             /* [if has extra attributes] */
                             foreach ($has_post->attributes0 as $key_attr => $has_attr) { 
                                 $attr=$has_attr;      
@@ -623,6 +626,7 @@ class ApiController extends Controller
                     $array[$key_block]=array_merge($array[$key_block],array('posts'=>$subarray));
                 
             }
+            
 
         }
 

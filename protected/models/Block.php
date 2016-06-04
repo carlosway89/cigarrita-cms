@@ -13,6 +13,7 @@
  * @property integer $state
  * @property string $language
  * @property string $source
+ * @property string $url_source
  *
  * The followings are the available model relations:
  * @property Category $category0
@@ -50,10 +51,10 @@ class Block extends CActiveRecord
 			// array('idblock, category', 'required'),
 			array('idblock,idsync, is_deleted, state', 'numerical', 'integerOnly'=>true),
 			array('category, language', 'length', 'max'=>10),
-			array('header, subheader, source', 'safe'),
+			array('header, subheader, source, url_source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idblock,idsync, category, header, subheader, is_deleted, state, language, source', 'safe', 'on'=>'search'),
+			array('idblock,idsync, category, header, subheader, is_deleted, state, language, source, url_source', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,6 +87,7 @@ class Block extends CActiveRecord
 			'state' => 'State',
 			'language' => 'Language',
 			'source' => 'Source',
+			'url_source' => 'Url Source',
 		);
 	}
 
@@ -109,6 +111,7 @@ class Block extends CActiveRecord
 		$criteria->compare('state',$this->state);
 		$criteria->compare('language',$this->language,true);
 		$criteria->compare('source',$this->source,true);
+		$criteria->compare('url_source',$this->url_source,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

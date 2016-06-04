@@ -14,18 +14,22 @@ cigarritaDirective
 
       var type=attrs.elementContenido;
 
-      
-
+        
         var temp=element[0].innerHTML;
 
-        var model= temp.replace('{{','');
-        model=model.replace('}}','');
+        if (type!="source") {          
+          var model= temp.replace('{{','');
+          model=model.replace('}}','');
+        }
+        else{
+          model="post.source";
+        }
+
         if (type=="non-editor") {
           temp="<span element-editable  class='fr-view' ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</span>";
         
-        }else{
+        }else{          
           temp="<textarea element-editable  class='fr-view' froala ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</textarea>";
-        
         }
 
         $(element).html(temp);
@@ -121,9 +125,11 @@ cigarritaDirective
           }
           var model={
             category:category,
-            header:"[Texto Cabecera]",
-            subheader:"[Texto Parrafo]",
+            header:"[Text header]",
+            subheader:"[Text subheader]",
+            teaser:"[Text teaser]",
             source:source,
+            url_source:$base_url+"/assets/editor/images/default-image.jpg",
             language:beans.readCookie('language.initial')
           }
 
@@ -257,6 +263,19 @@ cigarritaDirective
                 event.stopImmediatePropagation();
 
                 var type=attrs.elementObject;
+                var urls=[];
+
+                element.find("img").each(function(){
+                  urls.push($(this).attr("src"));
+                });
+                
+                if (urls.length==1 || urls.length==0) {
+                  $data_model.url_source=urls[0]?urls[0]:"";
+                }else{
+                  $data_model.url_source=JSON.stringify(urls);
+                }
+
+                
                 $rootScope.$broadcast('inline.saving.'+type,$data_model);                
 
                 $(".inline-saving").addClass('success').html('&#x2713;');

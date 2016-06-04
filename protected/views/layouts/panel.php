@@ -539,7 +539,7 @@
             linkAttributes: {
               'title':'Titulo'
             },
-            <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery") { ?>
+            <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery" || $block_config->type_source=="background" ) { ?>
             imageUploadParams: {
               width: '<?=$block_config->max_width?>',
               crop: '<?=$block_config->crop?>',
@@ -560,7 +560,36 @@
             <?php if ($block_config->type_source=="file") { ?>
             toolbarButtons:['insertFile']
             <?php } ?>
+      })
+      <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery" || $block_config->type_source=="background" ) { ?>
+      .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+            var urls=[];
+            
+            $("#row_source").find("img").each(function(){
+                urls.push($(this).attr("src"));
+            });
+                
+            if (urls.length==1 || urls.length==0) {                
+                var url_source=urls[0]?urls[0]:"";
+                $("#Block_url_source").val(url_source);
+            }else{
+                var url_source=JSON.stringify(urls);
+                $("#Block_url_source").val(url_source);
+            }
       });
+      <?php }?>
+      <?php if ($block_config->type_source=="file") { ?>
+      .on('froalaEditor.file.inserted', function (e, editor, $file, response) {
+          var url_source=$file[0].href;
+          $("#Block_url_source").val(url_source);
+      });
+      <?php } ?>
+      <?php if ($block_config->type_source=="video") { ?>
+      .on('froalaEditor.video.inserted', function (e, editor, $video) {
+          var url_source=$file[0].firstChild.src;
+          $("#Block_url_source").val(url_source);
+      });
+      <?php } ?>
       
 
       setTimeout(function(){

@@ -30,8 +30,8 @@ var modal_options=function($scope,$http,$compile,$rootScope){
     var model={
             notclose:true,
             category:category,
-            header:"[Texto Cabecera]",
-            subheader:"[Texto Parrafo]",
+            header:"[Texto header]",
+            subheader:"[Texto subheader]",
             source:$base_url+"/assets/editor/images/default-image.jpg",
             language:beans.readCookie('language.initial')
           }

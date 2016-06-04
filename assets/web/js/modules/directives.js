@@ -12,13 +12,17 @@ cigarritaDirective
     priority: 1003, // must higher than ng-repeat
     link: function (scope, element, attrs) {
 
+      var type=attrs.elementContenido;
       var temp=element[0].innerHTML;
 
-      var model= temp.replace('{{','');
-      model=model.replace('}}','');
+      if (type!="source") {          
+        var model= temp.replace('{{','');
+        model=model.replace('}}','');
+        temp="<span ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</span>";
+        $(element).html(temp);
+      }
       
-      temp="<span element-editable ng-model='"+model+"' ng-bind-html='"+model+" | sanitize' >"+temp+"</span>";
-      $(element).html(temp);
+      
       
       attrs.$set('elementContenido', null);
 

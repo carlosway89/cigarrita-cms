@@ -114,7 +114,7 @@
 		</div>
 		<?php if ($block_config->has_source) {		
 		?>
-		<div class="row">
+		<div id="row_source" class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.blocks.source')); ?>
 			<?php 
 			if ($model->isNewRecord) {				
@@ -126,6 +126,7 @@
 			}
 				echo $form->error($model,'source'); 
 			?>
+			<?php echo $form->hiddenField($model,'url_source',array()); ?>
 		</div>
 		<?php }?>
 		<div class="row buttons">
@@ -145,10 +146,11 @@
 	
 	window.onload = function(){ 
 		
+
 		$('.froala-editor-source').froalaEditor({
                toolbarInline: true,
               width: '1000',
-              imageDefaultWidth: '<?=$post_config->max_width?>',
+              imageDefaultWidth: '<?=$block_config->max_width?>',
               imageOutputSize: true,
               enter: $.FroalaEditor.ENTER_BR,
               language: '<?=Yii::app()->language?>',
@@ -162,12 +164,12 @@
               linkAttributes: {
                 'title':'Titulo'
               },
-              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
+              <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery" || $block_config->type_source=="background") { ?>
               imageUploadParams: {
-				width: '<?=$post_config->max_width?>',
-				crop: '<?=$post_config->crop?>',
-				height: '<?=$post_config->max_height?>',
-				quality: '<?=$post_config->quality?>',
+				width: '<?=$block_config->max_width?>',
+				crop: '<?=$block_config->crop?>',
+				height: '<?=$block_config->max_height?>',
+				quality: '<?=$block_config->quality?>',
 				is_image:true
 			  },
               imageStyles: {
@@ -176,15 +178,44 @@
               imageEditButtons: ['imageReplace', 'imageRemove', 'imageStyle', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', 'imageSize'],
               toolbarButtons:['insertImage']
               <?php }?>
-              <?php if ($post_config->type_source=="video") { ?>
+              <?php if ($block_config->type_source=="video") { ?>
               toolbarButtons:['insertVideo'],
               videoDefaultDisplay: 'inline'
               <?php } ?>
-              <?php if ($post_config->type_source=="file") { ?>
+              <?php if ($block_config->type_source=="file") { ?>
               toolbarButtons:['insertFile']
               <?php } ?>
 
-      	});
+      	})
+		<?php if ($block_config->type_source=="image" || $block_config->type_source=="galery" || $block_config->type_source=="background" ) { ?>
+	      .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+	        	var urls=[];
+
+	        	$("#row_source").find("img").each(function(){
+                  urls.push($(this).attr("src"));
+                });
+                
+                if (urls.length==1 || urls.length==0) {                
+                  var url_source=urls[0]?urls[0]:"";
+                  $("#Block_url_source").val(url_source);
+                }else{
+                  var url_source=JSON.stringify(urls);
+                  $("#Block_url_source").val(url_source);
+                }
+	      });
+	    <?php }?>
+	    <?php if ($block_config->type_source=="file") { ?>
+	      .on('froalaEditor.file.inserted', function (e, editor, $file, response) {
+		      	var url_source=$file[0].href;
+		      	$("#Block_url_source").val(url_source);
+	      });
+	    <?php } ?>
+	    <?php if ($block_config->type_source=="video") { ?>
+	      .on('froalaEditor.video.inserted', function (e, editor, $video) {
+		      	var url_source=$file[0].firstChild.src;
+		      	$("#Block_url_source").val(url_source);
+	      });
+	    <?php } ?>
 		
 		setTimeout(function(){
 	        $("body").find('a[href="https://froala.com/wysiwyg-editor"]').remove();

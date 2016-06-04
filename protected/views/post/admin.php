@@ -110,6 +110,8 @@
 <script type="text/javascript">
 	
 	window.onload = function(){ 
+		
+
 		$('.froala-editor-source').froalaEditor({
               toolbarInline: true,
               width: '1000',
@@ -149,7 +151,36 @@
               <?php if ($post_config->type_source=="file") { ?>
               toolbarButtons:['insertFile']
               <?php } ?>
-      	});
+      	})
+		<?php if ($post_config->type_source=="image" || $post_config->type_source=="galery" || $post_config->type_source=="background" ) { ?>
+	      .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+	        	var urls=[];
+
+	        	$("#row_source").find("img").each(function(){
+                  urls.push($(this).attr("src"));
+                });
+                
+                if (urls.length==1 || urls.length==0) {                
+                  var url_source=urls[0]?urls[0]:"";
+                  $("#Post_url_source").val(url_source);
+                }else{
+                  var url_source=JSON.stringify(urls);
+                  $("#Post_url_source").val(url_source);
+                }
+	      });
+	    <?php }?>
+	    <?php if ($post_config->type_source=="file") { ?>
+	      .on('froalaEditor.file.inserted', function (e, editor, $file, response) {
+	      		var url_source=$file[0].href;
+	      		$("#Post_url_source").val(url_source);
+	      });
+	    <?php } ?>
+	    <?php if ($post_config->type_source=="video") { ?>
+	      .on('froalaEditor.video.inserted', function (e, editor, $video) {
+	      		var url_source=$file[0].firstChild.src;
+	      		$("#Post_url_source").val(url_source);
+	      });
+	    <?php } ?>
 
 		setTimeout(function(){
 			var beans=new Beans();

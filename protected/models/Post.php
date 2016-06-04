@@ -11,6 +11,7 @@
  * @property string $subheader
  * @property string $teaser
  * @property string $source
+ * @property string $url_source
  * @property string $language
  * @property integer $state
  * @property integer $is_deleted
@@ -52,10 +53,10 @@ class Post extends CActiveRecord
 		return array(
 			array('state, is_deleted, position', 'numerical', 'integerOnly'=>true),
 			array('category, language', 'length', 'max'=>10),
-			array('header, subheader, teaser, source, date_created', 'safe'),
+			array('header, subheader, teaser, source, url_source, date_created', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idpost,idsync, category, header, subheader, teaser, source, language, state, is_deleted, position, date_created', 'safe', 'on'=>'search'),
+			array('idpost,idsync, category, header, subheader, teaser, source, url_source, language, state, is_deleted, position, date_created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,6 +87,7 @@ class Post extends CActiveRecord
 			'subheader' => 'Subheader',
 			'teaser' => 'teaser',
 			'source' => 'Source',
+			'url_source' => 'Url Source',
 			'language' => 'Language',
 			'state' => 'State',
 			'is_deleted' => 'Is Deleted',
@@ -112,6 +114,7 @@ class Post extends CActiveRecord
 		$criteria->compare('subheader',$this->subheader,true);
 		$criteria->compare('teaser',$this->teaser,true);
 		$criteria->compare('source',$this->source,true);
+		$criteria->compare('url_source',$this->url_source,true);
 		$criteria->compare('language',$this->language,true);
 		$criteria->compare('state',$this->state);
 		$criteria->compare('is_deleted',$this->is_deleted);

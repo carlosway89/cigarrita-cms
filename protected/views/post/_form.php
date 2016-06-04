@@ -69,7 +69,7 @@
 	<?php }?>
 	<?php if ($post_config->has_subheader) {		
 	?>
-	<div class="row">
+	<div  class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.container')); ?>
 		<textarea  class="froala-editor" name="Post[subheader]"><?=$model->subheader?></textarea>
 		<?php //echo $form->textField($model,'subheader',array('rows'=>6, 'cols'=>50)); ?>
@@ -78,7 +78,7 @@
 	<?php }?>
 	<?php if ($post_config->has_source) {		
 	?>
-	<div class="row">
+	<div id="row_source" class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.posts.source')); ?>
 
 		<?php 
@@ -89,9 +89,9 @@
 				$id_source="";
 				$class_source="froala-editor-source";
 			}
-		?>
-
+		?>		
 		<textarea  id="<?=$id_source?>" class="<?=$class_source?>" name="Post[source]"><?=$model->isNewRecord?'<img style="width:200px" src="/assets/editor/images/default-image.jpg" alt="default image">':$model->source?></textarea>
+		<?php echo $form->hiddenField($model,'url_source',array()); ?>
 		<?php echo $form->error($model,'source'); ?>
 	</div>
 	<?php }?>
@@ -136,6 +136,7 @@
 	
 	window.onload = function(){ 
 		
+
 		$('.froala-editor-source').froalaEditor({
               toolbarInline: true,
               width: '1000',
@@ -153,7 +154,7 @@
               linkAttributes: {
                 'title':'Titulo'
               },
-              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery") { ?>
+              <?php if ($post_config->type_source=="image" || $post_config->type_source=="galery" || $post_config->type_source=="background" ) { ?>
               imageUploadParams: {
 				width: '<?=$post_config->max_width?>',
 				crop: '<?=$post_config->crop?>',
@@ -175,7 +176,36 @@
               toolbarButtons:['insertFile']
               <?php } ?>
 
-      	});
+      	})
+		<?php if ($post_config->type_source=="image" || $post_config->type_source=="galery" || $post_config->type_source=="background" ) { ?>
+	      .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+	        	var urls=[];
+
+                $("#row_source").find("img").each(function(){
+                  urls.push($(this).attr("src"));
+                });
+                
+                if (urls.length==1 || urls.length==0) {                
+                  var url_source=urls[0]?urls[0]:"";
+                  $("#Post_url_source").val(url_source);
+                }else{
+                  var url_source=JSON.stringify(urls);
+                  $("#Post_url_source").val(url_source);
+                }
+	      });
+	    <?php }?>
+	    <?php if ($post_config->type_source=="file") { ?>
+	      .on('froalaEditor.file.inserted', function (e, editor, $file, response) {
+	      	var url_source=$file[0].href;
+	      	$("#Post_url_source").val(url_source);
+	      });
+	    <?php } ?>
+	    <?php if ($post_config->type_source=="video") { ?>
+	      .on('froalaEditor.video.inserted', function (e, editor, $video) {
+	      	var url_source=$file[0].firstChild.src;
+	      	$("#Post_url_source").val(url_source);
+	      });
+	    <?php } ?>
 		
 		setTimeout(function(){
 	        $("body").find('a[href="https://froala.com/wysiwyg-editor"]').remove();
