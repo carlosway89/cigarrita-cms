@@ -48,7 +48,7 @@ cigarritaDirective
     terminal: true, // prevent ng-repeat from compiled twice
     priority: 1002, // must higher than ng-repeat
     link: function (scope, element, attrs) {
-      var repeat="block in page | filter:{category:'"+attrs.elementBlock+"'} as results";
+      var repeat="block in page | filter:{category:'"+attrs.elementBlock+"'}:true | limitTo:1 as results";
       
       if (attrs.elementBlock!='slider') {
         element.attr('id',attrs.elementBlock);
