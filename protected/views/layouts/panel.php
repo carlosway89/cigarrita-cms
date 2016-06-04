@@ -562,7 +562,7 @@
             <?php } ?>
       })
       <?php if ($block_config->type_source=="image" || $block_config->type_source=="galery" || $block_config->type_source=="background" ) { ?>
-      .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+      .on('froalaEditor.image.loaded', function (e, editor, $img) {
             var urls=[];
             
             $("#row_source").find("img").each(function(){

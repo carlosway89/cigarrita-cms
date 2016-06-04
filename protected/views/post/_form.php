@@ -178,7 +178,7 @@
 
       	})
 		<?php if ($post_config->type_source=="image" || $post_config->type_source=="galery" || $post_config->type_source=="background" ) { ?>
-	      .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+	      .on('froalaEditor.image.loaded', function (e, editor, $img) {
 	        	var urls=[];
 
                 $("#row_source").find("img").each(function(){
