@@ -532,7 +532,7 @@ class PanelController extends Controller
 				foreach ($model->auth as $value_auth) {
 					$user_type=$value_auth->itemname;
 				}
-				$auth=AuthAssignment::model()->findByAttributes(array('itemname' =>$user_type));
+				$auth=AuthAssignment::model()->findByAttributes(array('itemname' =>$user_type,'iduser'=>$model->iduser));
 
 			}
 
@@ -544,12 +544,22 @@ class PanelController extends Controller
 			
 			if($model->save()){		
 
-				$auth->itemname=isset($_POST['user_type'])?$_POST['user_type']:$user_type;
-				$auth->userid=$model->username;
-				$auth->iduser=$model->iduser;
-				if ($auth->save()) {
-					$id=$id!=null?"/".$id:"";
-					$this->redirect(array("panel/users".$id."?message=".$message));
+				if(isset($_POST['user_type']) && $auth->itemname!=$_POST['user_type'] )
+				{	
+					$auth->itemname=isset($_POST['user_type'])?$_POST['user_type']:$user_type;
+					$auth->userid=$model->username;
+					$auth->iduser=$model->iduser;
+					if ($auth->save()) {
+						$id=$id!=null?"/".$id:"";
+						$this->redirect(array("panel/users".$id."?message=".$message));
+					}
+				}else{
+					$auth->userid=$model->username;
+					$auth->iduser=$model->iduser;
+					if ($auth->save()) {
+						$id=$id!=null?"/".$id:"";
+						$this->redirect(array("panel/users".$id."?message=".$message));
+					}
 				}
 				
 											
