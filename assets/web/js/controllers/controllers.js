@@ -88,8 +88,10 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
         // }        
         
 
-        $('.loading-container').hide();
-        $('.preloader').hide();
+        setTimeout(function(){
+          $('.loading-container').hide();
+          $('.preloader').hide();
+        },500);
       },300);
       
 
@@ -152,8 +154,10 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
         // }        
         
 
-        $('.loading-container').hide();
-        $('.preloader').hide();
+        setTimeout(function(){
+          $('.loading-container').hide();
+          $('.preloader').hide();
+        },500);
     });
     
   }
@@ -191,8 +195,10 @@ cigarritaControllers.controller('singleCtrl',['$scope','Post','Language','$route
         // }        
         
 
-        $('.loading-container').hide();
-        $('.preloader').hide();
+        setTimeout(function(){
+          $('.loading-container').hide();
+          $('.preloader').hide();
+        },500);
       },300);
       
 
