@@ -22,7 +22,7 @@ class PanelController extends Controller
 		//$test=Configuration::model()->findAll();
 		return array(
 			array('allow',
-				'actions'=>array('index','language','config','users','usersGroups','messages','pages','posts','blocks','links','facebook','delete','change','help','postConfig','blockConfig','variableType','modules','rendering','syncLanguage'),
+				'actions'=>array('index','language','config','users','usersGroups','messages','pages','posts','blocks','category','links','facebook','delete','change','help','postConfig','blockConfig','variableType','modules','rendering','syncLanguage'),
 				'users'=>array('@')
 					// 'users'=>array('Yii::app()->user->checkAccess("webmaster")')
 					),
@@ -1122,6 +1122,66 @@ class PanelController extends Controller
 				'list_blocks'=>$list_blocks,
 				'lang'=>$lang,
 				'block_config'=>$block_config
+			));
+			
+			
+		}else{
+			$this->redirect(array('/panel'));
+		}
+
+		
+	}
+	public function actionCategory(){
+
+
+		if (Yii::app()->user->checkAccess("admin") || Yii::app()->user->checkAccess("webmaster")) {
+
+			$id=$this->uri(2)?$this->uri(2):"";
+
+			
+
+			$list=Category::model()->findAll();
+			
+			$model=new Category();
+
+			$message=null;
+			
+			
+			if ($id!="") {				
+
+				$model=Category::model()->findByPk($id);
+
+				if ($model) {
+					$render='//category/update';
+				}else{
+					$this->redirect(array("panel/category/"));
+				}
+
+			}else{
+				$render='//category/admin';
+			}
+
+			if(isset($_POST['Category']))
+			{	
+				$message=$model->isNewRecord?Yii::t('app','panel.message.success.save'):Yii::t('app','panel.message.success.update');
+				
+				$model->attributes=$_POST['Category'];
+
+				
+				if($model->save()){	
+								
+					$this->redirect(array("panel/category/".$model->category."?message=".$message));					
+					
+				}
+					
+			}
+			
+
+			$this->render($render,array(
+				'list'=>$list,
+				'model'=>$model,
+				'message'=>$message,
+				'id'=>$id
 			));
 			
 			

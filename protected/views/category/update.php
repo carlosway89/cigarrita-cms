@@ -1,21 +1,24 @@
-<?php
-/* @var $this CategoryController */
-/* @var $model Category */
 
-$this->breadcrumbs=array(
-	'Categorias'=>array('index'),
-	$model->category=>array('view','id'=>$model->category),
-	'Update',
-);
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<br>
+			<h4><?=Yii::t('app','panel.category.update')?></h4>
+			<br>
+				
+				<div class="panel panel-default">
+					<div class="panel-heading clean"></div>
+					<div class="panel-body">
+						<?php echo $this->renderPartial('//category/_form', 
+							array(
+									'model'=>$model,
+									'category_updater'=>true,
+								)
+							); 
+						?>
+					</div>
+				</div>
 
-$this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Create Category', 'url'=>array('create')),
-	array('label'=>'View Category', 'url'=>array('view', 'id'=>$model->category)),
-	array('label'=>'Manage Category', 'url'=>array('admin')),
-);
-?>
-
-<h1>Actualizar Categoria <?php echo $model->category; ?></h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+		</div>	
+	</div>
+</div>

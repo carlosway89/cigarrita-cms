@@ -67,11 +67,18 @@
     	</div>
 		<div class="row">
 			<?php echo $form->labelEx($model,yii::t('app','panel.table.category')); ?>
-			<select id="url_page"  class="browser-default" name="Block[category]">
+			<select id="url_page"  class="browser-default" name="Block[category]" required>
 				<?php foreach ($list_category as $key => $value) {?>
 				<option <?=$model->category==$value->category?"selected":""?> value="<?=$value->category?>" ><?=$value->category?></option>
 				<?php }?>
 			</select>
+			<?php
+				if ($model->isNewRecord) {
+			?>
+			<button type="button" data-toggle="modal" data-target="#modal_category" class="btn btn-default btn-xs"><?=Yii::t('app','panel.category.create')?></button>
+			<?php
+				}
+			?>
 			<?php echo $form->error($model,'category'); ?>
 		</div>
 		<?php if ($block_config->has_header) {		

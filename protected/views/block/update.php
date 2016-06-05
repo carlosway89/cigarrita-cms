@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
-			<h4>Block</h4>
+			<h4><?=Yii::t('app','panel.blocks.update')?></h4>
 			<br>
 				
 				<div class="panel panel-default">

@@ -15,8 +15,8 @@
 						?>	
 						<?php if (Yii::app()->user->checkAccess("webmaster")) {
 										?>
-						<button type="button" data-toggle="modal" data-target="#modal_category" class="btn btn-primary"><?=Yii::t('app','panel.category.create')?></button>
 						<button type="button" data-toggle="modal" data-target="#modal_page" class="btn "><?=Yii::t('app','panel.pages.new')?></button>
+						<a href="<?=Yii::app()->getBaseUrl(true)?>/panel/category" class="btn btn-primary"><?=Yii::t('app','panel.category')?></a>
 						
 						<br><br>
 						<?php }?>
@@ -120,7 +120,7 @@
 </div>
 
 <!-- Modal Category -->
-<div class="modal fade" id="modal_category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;height: 440px;">
+<div class="modal fade" id="modal_category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000 !important;width:50%;height: 440px;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

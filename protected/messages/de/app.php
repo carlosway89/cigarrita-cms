@@ -63,6 +63,7 @@ return
         //Category views
         'panel.category'=>'Webkategorien',
         'panel.category.create'=>'Kategorie erstellen',
+        'panel.category.update'=>'Kategorie aktualisieren',
         'panel.category.name'=>'Name',
         'panel.category.type'=>'Typ',
         //Posts views
@@ -104,6 +105,7 @@ return
         //Blocks views
         'panel.blocks'=>'Webblock',
         'panel.blocks.create'=>'Block erstellen',
+        'panel.blocks.update'=>'Block aktualisieren',
         'panel.blocks.new'=>'Neuer Block',
         'panel.blocks.new.exists'=>'Vorhandenen Block benutzen',
         'panel.blocks.cabecera'=>'Header',
