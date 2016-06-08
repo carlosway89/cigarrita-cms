@@ -269,10 +269,12 @@ cigarritaDirective
                   urls.push($(this).attr("src"));
                 });
                 
-                if (urls.length==1 || urls.length==0) {
-                  $data_model.url_source=urls[0]?urls[0]:"";
-                }else{
-                  $data_model.url_source=JSON.stringify(urls);
+                if (urls.length!=0) {
+                  if (urls.length==1) {
+                    $data_model.url_source=urls[0]?urls[0]:"";
+                  }else{
+                    $data_model.url_source=JSON.stringify(urls);
+                  }
                 }
 
                 
