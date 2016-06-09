@@ -50,7 +50,8 @@ class Block extends CActiveRecord
 		return array(
 			// array('idblock, category', 'required'),
 			array('idblock,idsync, is_deleted, state', 'numerical', 'integerOnly'=>true),
-			array('category, language', 'length', 'max'=>10),
+			array('language', 'length', 'max'=>10),
+			array('category', 'length', 'max'=>100),
 			array('header, subheader, source, url_source', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

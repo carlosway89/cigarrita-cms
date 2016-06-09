@@ -52,7 +52,8 @@ class Post extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('state, is_deleted, position', 'numerical', 'integerOnly'=>true),
-			array('category, language', 'length', 'max'=>10),
+			array('language', 'length', 'max'=>10),
+			array('category', 'length', 'max'=>100),
 			array('header, subheader, teaser, source, url_source, date_created', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

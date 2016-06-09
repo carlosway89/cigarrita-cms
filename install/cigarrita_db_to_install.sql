@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `AuthItemChild` (
 
 CREATE TABLE IF NOT EXISTS `block` (
   `idblock` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(10) NOT NULL,
+  `category` varchar(100) NOT NULL,
   `header` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `subheader` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `is_deleted` tinyint(1) DEFAULT '0',
@@ -333,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `page_has_block` (
 
 CREATE TABLE IF NOT EXISTS `post` (
   `idpost` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(10) DEFAULT NULL,
+  `category` varchar(100) DEFAULT NULL,
   `header` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `subheader` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `source` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
