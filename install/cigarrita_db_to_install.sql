@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-05-2016 a las 13:18:16
+-- Tiempo de generación: 09-06-2016 a las 20:08:20
 -- Versión del servidor: 5.5.46-0ubuntu0.14.04.2
 -- Versión de PHP: 5.5.9-1ubuntu4.14
 
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `AuthAssignment` (
   `iduser` int(11) NOT NULL,
   PRIMARY KEY (`itemname`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Volcado de datos para la tabla `AuthAssignment`
 --
@@ -65,7 +66,7 @@ INSERT INTO `AuthAssignment` (`itemname`, `userid`, `bizrule`, `data`, `iduser`)
 
 CREATE TABLE IF NOT EXISTS `AuthItem` (
   `name` varchar(64) NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` int(11) DEFAULT NULL,
   `description` text,
   `bizrule` text,
   `data` text,
@@ -79,7 +80,6 @@ INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 ('admin', 3, 'manage user and edit the complete information', NULL, NULL),
 ('standard', 2, 'change content and add new posts', NULL, NULL),
 ('webmaster', 1, 'allow to access everything and everywere', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -118,21 +118,6 @@ CREATE TABLE IF NOT EXISTS `block` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `block_has_post`
---
-
-CREATE TABLE IF NOT EXISTS `block_has_post` (
-  `block_idblock` int(11) NOT NULL,
-  `post_idpost` int(11) NOT NULL,
-  `id_block_has_post` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_block_has_post`,`block_idblock`,`post_idpost`),
-  KEY `fk_block_has_post_post1_idx` (`post_idpost`),
-  KEY `fk_block_has_post_block1_idx` (`block_idblock`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `block_configuration`
 --
 
@@ -152,6 +137,20 @@ CREATE TABLE IF NOT EXISTS `block_configuration` (
   PRIMARY KEY (`idblockconfiguration`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `block_has_post`
+--
+
+CREATE TABLE IF NOT EXISTS `block_has_post` (
+  `block_idblock` int(11) NOT NULL,
+  `post_idpost` int(11) NOT NULL,
+  `id_block_has_post` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_block_has_post`,`block_idblock`,`post_idpost`),
+  KEY `fk_block_has_post_post1_idx` (`post_idpost`),
+  KEY `fk_block_has_post_block1_idx` (`block_idblock`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -160,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `block_configuration` (
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `category` varchar(10) NOT NULL,
+  `category` varchar(100) NOT NULL,
   `tag` varchar(100) NOT NULL,
   PRIMARY KEY (`category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -224,6 +223,7 @@ CREATE TABLE IF NOT EXISTS `language` (
   `is_deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`idlanguage`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
 --
 -- Volcado de datos para la tabla `language`
 --
@@ -232,6 +232,7 @@ INSERT INTO `language` (`idlanguage`, `name`, `flag`, `estado`, `min`, `is_delet
 (30, 'Español', 'es', 1, 'es', 0),
 (31, 'English', 'en', 1, 'en', 0),
 (32, 'Deutsch', 'de', 1, 'de', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -386,6 +387,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`iduser`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
 --
 -- Volcado de datos para la tabla `user`
 --
@@ -393,6 +395,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`iduser`, `username`, `password`, `estado`, `full_name`, `email`, `is_deleted`) VALUES
 (3, 'webmaster', 'c33367701511b4f6020ec61ded352059', 1, 'carlos manay', 'carlos@cigarrita-worker.com', 0),
 (4, 'admin', 'c33367701511b4f6020ec61ded352059', 1, 'Admin Website', 'info@cigarrita-worker.com', 0);
+
 
 -- --------------------------------------------------------
 
@@ -452,7 +455,7 @@ ALTER TABLE `AuthItemChild`
 -- Filtros para la tabla `block`
 --
 ALTER TABLE `block`
-  ADD CONSTRAINT `fk_block_category1` FOREIGN KEY (`category`) REFERENCES `category` (`category`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_block_category1` FOREIGN KEY (`category`) REFERENCES `category` (`category`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `block_has_post`
@@ -472,7 +475,7 @@ ALTER TABLE `page_has_block`
 -- Filtros para la tabla `post`
 --
 ALTER TABLE `post`
-  ADD CONSTRAINT `fk_post_category1` FOREIGN KEY (`category`) REFERENCES `category` (`category`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_post_category1` FOREIGN KEY (`category`) REFERENCES `category` (`category`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

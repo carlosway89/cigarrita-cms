@@ -40,7 +40,7 @@ class Category extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('category', 'required'),
-			array('category', 'length', 'max'=>10),
+			array('category', 'length', 'max'=>100),
 			array('tag', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

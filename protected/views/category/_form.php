@@ -15,7 +15,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,Yii::t('app','panel.category.name')."*"); ?>
-		<?php echo $form->textField($model,'category',array('required'=>'required','size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->textField($model,'category',array('required'=>'required','size'=>100,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'category'); ?>
 	</div>
 
