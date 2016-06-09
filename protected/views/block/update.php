@@ -1,5 +1,5 @@
 
-<div class="container-fluid">
+<div class="container-fluid embed-panel">
 	<div class="row">
 		<div class="col-sm-12">
 			<br>
