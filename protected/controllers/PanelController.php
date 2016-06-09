@@ -682,7 +682,10 @@ class PanelController extends Controller
 
 		            }
 		            $post_config=PostConfiguration::model()->findByAttributes(array("category"=>$model->category));
-		          
+		          	
+		          	if (!$post_config) {
+						$post_config=new PostConfiguration();
+					}
 					
 
 					$render='//post/update';
@@ -744,6 +747,10 @@ class PanelController extends Controller
 				$_variables=Variable::model()->findAll("category='".$post_page."' and is_deleted='0'");
 				
 				$post_config=PostConfiguration::model()->findByAttributes(array("category"=>$post_page));
+
+				if (!$post_config) {
+					$post_config=new PostConfiguration();
+				}
 
 				$list=Post::model()->findAll("is_deleted='0' AND language = '".$lang."'AND category='".$post_page."' AND category!='fb_about' AND category!='fb_feed' AND category!='fb_event' AND category!='fb_gallery' AND category!='fb_contact' ");
 				
