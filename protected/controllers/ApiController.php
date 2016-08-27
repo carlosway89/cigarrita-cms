@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+
 class ApiController extends Controller
 {
     /**
@@ -711,16 +712,23 @@ class ApiController extends Controller
         $country = new GeofromIp();
 
         $model = new Form();  
+        
+        $is_bestell=0;
+        $body="";
 
-        foreach($attributes as $var=>$value) {
+        foreach($attributes as $var=>$value) {            
             
+            if ($var=="bestell") {
+                $is_bestell=1;
+            }
+            if ($var=="body") {
+                $body= $value;
+            }
+
             if($model->hasAttribute($var)) {
                 $model->$var = $value;
             } 
             
-            // else {
-            //     $this->_sendResponse(500, sprintf('Parameter <b>%s</b> is not allowed for model <b>%s</b>', $var, $_GET['model']) );
-            // }
 
         }
             // $model->date = date('');
@@ -731,7 +739,33 @@ class ApiController extends Controller
         // Try to save the model
         if($model->save()) {
             // Saving was OK
-            $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model->attributes) );
+            $mail=new Mailer();
+
+            $to="info@cajon-tajon.de";
+            $to_copy=$model["email"];
+            
+            
+            $subject_msg=$is_bestell?"Bestellung des Kunden - ":"Nachricht des Kunden - ";
+            
+
+            $message= (object) array(
+                "subject"=>$subject_msg.$model["subject"],
+                "body"=>$body,
+                "email"=>$model["email"]
+            );
+
+            $message_copy= (object) array(
+                "subject"=>"Kopie - ".$subject_msg.$model["subject"],
+                "body"=>$body,
+                "email"=>$to
+            );
+
+            $message=$mail->send($to,$message,null);
+
+            $mail->send($to_copy,$message_copy,null);
+
+            $value_returned=array("message"=>$message,"data"=>$model->attributes);
+            $this->_sendResponse(200, CJSON::encode($value_returned));
         } else {
             // Errors occurred
             $msg = "<h1>Error</h1>";
@@ -911,7 +945,8 @@ class ApiController extends Controller
                 $post_pos=0;
                 foreach ($models as $model_val) {
                     $subarray[$post_pos]=$model_val->attributes;                   
-                    
+                    $subarray[$post_pos]["url_source"]=CJSON::decode($subarray[$post_pos]["url_source"])!=null?CJSON::decode($subarray[$post_pos]["url_source"]):$subarray[$post_pos]["url_source"];
+
                     if ($model_val->attributes0) {
                         foreach ($model_val->attributes0 as $has_attr) { 
                             $attr=$has_attr;      
@@ -976,7 +1011,7 @@ class ApiController extends Controller
             $post_pos=0;
             
             $subarray=$model->attributes;                   
-            
+            $subarray["url_source"]=CJSON::decode($subarray["url_source"])!=null?CJSON::decode($subarray["url_source"]):$subarray["url_source"];
             if ($model->attributes0) {
                 foreach ($model->attributes0 as $has_attr) { 
                     $attr=$has_attr;      

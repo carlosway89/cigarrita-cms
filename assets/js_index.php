@@ -65,6 +65,8 @@
 cigarritaApp.config(['$routeProvider','$locationProvider',
   function($routeProvider,$locationProvider) {
 
+      $compileProvider.debugInfoEnabled(false);
+      
         $locationProvider.html5Mode({
           enabled: true,
           requireBase: false

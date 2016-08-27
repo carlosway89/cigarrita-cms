@@ -57,6 +57,7 @@
 		                <div class="row">
 		                	<div class="col-sm-12">
 		                		<p style="white-space: pre;"><?=$model->subject?></p>
+												<p style="white-space: pre;"><?=$model->body?></p>
 		                	</div>
 		                </div>
 		                <hr>

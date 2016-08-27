@@ -487,7 +487,6 @@
     $(function() {
       $('.froala-editor').froalaEditor({
               toolbarInline: false,
-              height: 250,
               enter: $.FroalaEditor.ENTER_BR,
               language: '<?=Yii::app()->language?>',
               charCounterCount: false,

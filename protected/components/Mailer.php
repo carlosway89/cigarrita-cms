@@ -10,22 +10,22 @@ class Mailer{
 
 		$mail = new PHPMailer;
 
-		// $mail->SMTPDebug = 2;                               // Enable verbose debug output
+		//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 		$mail->isSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = "smtp.gmail.com";  // Specify main and backup SMTP servers
+		$mail->Host = "mx1.hostinger.de";  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'email';                 // SMTP username
-		$mail->Password = 'password';                           // SMTP password
-		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-		$mail->Port = 587;                                    // TCP port to connect to
+		$mail->Username = 'info@cajon-tajon.de';                 // SMTP username
+		$mail->Password = 'y7$QHa>6l5Bl';                           // SMTP password
+		$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+		$mail->Port = 465;                                    // TCP port to connect to
 
-		$mail->From = 'noreply@cigarrita-worker.com';
-		$mail->FromName = 'Cigarrita Worker';
+		$mail->From = 'info@cajon-tajon.de';
+		$mail->FromName = 'Cajon Tajon';
 		$mail->addAddress($to, $to);     // Add a recipient
 		// $mail->addAddress('ellen@example.com');               // Name is optional
-		// $mail->addReplyTo('info@example.com', 'Information');
-		$mail->addCC('carlos@cigarrita-worker.com');
+		$mail->addReplyTo($message->email, 'Kunde');
+		//$mail->addCC('info@tajon-cajon.de');
 		// $mail->addBCC('bcc@example.com');
 		if ($file) {
 			$mail->addAttachment($file);         // Add attachments
@@ -39,9 +39,9 @@ class Mailer{
 		$mail->AltBody = $message->body;
 
 		if(!$mail->send()) {
-		    return 'Message could not be sent..Mailer Error: ' . $mail->ErrorInfo;
+		    return 'The message could not sent..Error Mail: ' . $mail->ErrorInfo;
 		} else {
-		    return 'Message has been Sent';
+		    return 'The message has be succesfully sent';
 		}
 
 

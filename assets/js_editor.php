@@ -168,15 +168,18 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/editor/js/app.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/router.js"></script>
 <script type="text/javascript">
-	
+  
 cigarritaApp.config(['$routeProvider','$locationProvider',
   function($routeProvider,$locationProvider) {
 
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    });
-    
+      $compileProvider.debugInfoEnabled(false);
+      
+        $locationProvider.html5Mode({
+          enabled: true,
+          requireBase: false
+        });
+
+
     $routeProvider.
     <?php 
     foreach ($menu as $value) {
@@ -196,6 +199,9 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
         template:'<?php echo $_template; ?>',
         controller: 'pageCtrl',
         pageid: <?=$value->page?>,
+        seo_title:'<?=$value->SEO_title?$value->SEO_title:$config->title?>',
+        seo_description:'<?=$value->SEO_description?$value->SEO_description:$config->description?>',
+        seo_keywords:'<?=$value->SEO_keywords?$value->SEO_keywords:$config->keywords?>',
         reloadOnSearch: false
       }).
     <?php 
@@ -224,9 +230,13 @@ cigarritaApp.config(['$routeProvider','$locationProvider',
         $_template=$this->render_page('site','home');
     ?>
       when('/:link', {
+
         // templateUrl: $base_url+'/api/template/home/site', //router template with api
         template:'<?php echo $_template; ?>',
         controller: 'homeCtrl',
+        seo_title:'<?=$config->title?>',
+        seo_description:'<?=$config->description?>',
+        seo_keywords:'<?=$config->keywords?>',
         pageid: <?=$pag_val->idpage?>
       }).
     <?php 

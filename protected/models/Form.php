@@ -7,6 +7,7 @@
  * @property integer $idform
  * @property string $email
  * @property string $subject
+ * @property string $body
  * @property string $ip_address
  * @property string $country_name
  * @property string $browser
@@ -49,7 +50,7 @@ class Form extends CActiveRecord
 			array('ip_address, country_name, browser, state', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idform, email, subject, ip_address, country_name, browser, state, date', 'safe', 'on'=>'search'),
+			array('idform, email, subject, body, ip_address, country_name, browser, state, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +74,7 @@ class Form extends CActiveRecord
 			'idform' => 'Idform',
 			'email' => 'Email',
 			'subject' => 'Subject',
+			'body' => 'Message',
 			'ip_address' => 'Ip Address',
 			'country_name' => 'Country Name',
 			'browser' => 'Browser',
@@ -95,6 +97,7 @@ class Form extends CActiveRecord
 		$criteria->compare('idform',$this->idform);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('subject',$this->subject,true);
+		$criteria->compare('body',$this->body,true);
 		$criteria->compare('ip_address',$this->ip_address,true);
 		$criteria->compare('country_name',$this->country_name,true);
 		$criteria->compare('browser',$this->browser,true);

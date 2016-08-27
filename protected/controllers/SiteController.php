@@ -68,7 +68,8 @@ class SiteController extends Controller
 				}else{
 					$this->editor=false;
 				}
-				$this->layout="//layouts/web";				
+				$this->layout="//layouts/web";
+
 				$this->render('//layout/layout_standard',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
 			}else{
 				$this->redirect(array('/installationCigarrita'));
@@ -146,8 +147,19 @@ class SiteController extends Controller
 
 				$is_instaled=Configuration::model()->findByPk(1)->is_installed;
 				if ($is_instaled) {
-					$this->layout="//layouts/web";				
-					$this->render('//layout/layout_standard',array("modules"=>$this->get_modules(),"seo"=>Configuration::model()->find(),"editor"=>$this->editor));	
+					$this->layout="//layouts/web";	
+					
+					$url=Yii::app()->request->getPathInfo();
+        			$uri = explode("/", $url);
+					$menu=Menu::model()->find("url='/".$uri[0]."'");
+					
+					if($menu){
+						$seo=(object)["title"=>$menu->SEO_title,"description"=>$menu->SEO_description,"language"=>$menu->language,"keywords"=>$menu->SEO_keywords];
+					}else{
+						$seo=Configuration::model()->find();
+					}
+
+					$this->render('//layout/layout_standard',array("modules"=>$this->get_modules(),"seo"=>$seo,"editor"=>$this->editor));	
 				}else{
 					$this->redirect(array('/installationCigarrita'));
 				}

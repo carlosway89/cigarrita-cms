@@ -1,44 +1,6 @@
 cigarritaControllers.controller('indexCtrl',['$scope','Language','Links','Model',function($scope,Language,Links,Model){
 
 
-    // var obj_lang={
-    //   estado:1,
-    //   is_deleted:0
-    // };
-
-    // Model.query({
-    //   model:'language',
-    //   id:'query',
-    //   query:JSON.stringify(obj_lang)
-    // },function(data){
-    //   $scope.current=beans.readCookie('language.initial');
-    //   $scope.language=data;
-    // });
-
-    
-    // var links=function(){
-    //   var obj_link={
-    //     state:1,
-    //     is_deleted:0,
-    //     language:beans.readCookie('language.initial')
-    //   };
-
-    //   $scope.links=Model.query({
-    //       model:'menu',
-    //       id:'query',
-    //       query:JSON.stringify(obj_link)
-    //   });
-    // }
-    
-    // links();
-
-    // $scope.$on('language.changed', function() {
-    //     links();
-    // });
-
-    // $('.selection.dropdown').dropdown();
-
-    
 
 }]);
 cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootScope',function($scope,Content,$route,$rootScope){
@@ -55,14 +17,11 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
   if (seo.title!="") {
     $("title").html(seo.title);
-  }
-  if (seo.description!="") {
-    $("meta[name='description']").attr("content",seo.description);
-  }
-  if (seo.keywords!="") {
-    $("meta[name='keywords']").attr("content",seo.keywords);
+    document.title=seo.title;
+    $('meta[property="og:title"]').attr("content",seo.keywords);
   }
 
+  var handle_error_page=0;
   var page=function(){
     
     var obj={
@@ -87,14 +46,25 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
           document.body.appendChild(js);
         // }        
         
-
         setTimeout(function(){
           $('.loading-container').hide();
           $('.preloader').hide();
         },500);
+        
       },300);
       
 
+    },
+    function(err){
+        handle_error_page=handle_error_page+1;
+        if (handle_error_page>3) {
+            setTimeout(function(){
+              alert("Error conection or offline!!");
+            },2000);
+        }else{
+          page();
+        }
+                  
     });
 
   }
@@ -109,7 +79,7 @@ cigarritaControllers.controller('homeCtrl',['$scope','Content','$route','$rootSc
 
 }]);
 
-cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$route',function($scope,Content,Language,$route){
+cigarritaControllers.controller('pageCtrl',['$scope','$rootScope','Content','Language','$route','$location',function($scope,$rootScope,Content,Language,$route,$location){
 
   var pageid = $route.current.$$route.pageid;
 
@@ -121,14 +91,19 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
 
   if (seo.title!="") {
     $("title").html(seo.title);
+    document.title=seo.title;
+    $('meta[property="og:title"]').attr("content",seo.title);
   }
   if (seo.description!="") {
     $("meta[name='description']").attr("content",seo.description);
+    $('meta[property="og:description"]').attr("content",seo.description);
   }
   if (seo.keywords!="") {
     $("meta[name='keywords']").attr("content",seo.keywords);
   }
-  
+
+  var handle_error_page=0;
+
   var page=function(){
 
     $("#wrapper-pre-loader").show();
@@ -158,6 +133,17 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
           $('.loading-container').hide();
           $('.preloader').hide();
         },500);
+    },
+    function(err){
+        handle_error_page=handle_error_page+1;
+        if (handle_error_page>3) {
+            setTimeout(function(){
+              alert("Error conection or offline!!");
+            },2000);
+        }else{
+          page();
+        }
+                  
     });
     
   }
@@ -170,7 +156,9 @@ cigarritaControllers.controller('pageCtrl',['$scope','Content','Language','$rout
 
 
 }]);
-cigarritaControllers.controller('singleCtrl',['$scope','Post','Language','$route',function($scope,Post,Language,$route){
+cigarritaControllers.controller('singleCtrl',['$scope','$rootScope','Content','Post','Language','$route','$location',function($scope,$rootScope,Content,Post,Language,$route,$location){
+
+  var pageid = $route.current.$$route.pageid;
 
   var post_page=function(){
     
@@ -183,6 +171,7 @@ cigarritaControllers.controller('singleCtrl',['$scope','Post','Language','$route
       id:$route.current.params.id
     },function(data){
       console.log(data);
+      $scope.post=data;
       setTimeout(function(){
 
         // if (!$('script[src="/themes/design/js/script.js"]').length) {
@@ -210,10 +199,42 @@ cigarritaControllers.controller('singleCtrl',['$scope','Post','Language','$route
 
   }
 
+  var handle_error_page=0;
+  var page=function(){
+    
+    var obj={
+      language:beans.readCookie('language.initial'),
+      state:1,
+      idpage:pageid,
+      is_deleted:0
+    };
+
+    $scope.page = Content.query({
+      query:JSON.stringify(obj)
+    },function(data){      
+
+    },
+    function(err){
+        handle_error_page=handle_error_page+1;
+        if (handle_error_page>3) {
+            setTimeout(function(){
+              alert("Error conection or offline!!");
+            },2000);
+        }else{
+          page();
+        }
+                  
+    });
+
+  }
+
+  page();
+
   post_page();
 
 
   $scope.$on('language.changed', function() {
+      page();
       post_page();
   });
 
