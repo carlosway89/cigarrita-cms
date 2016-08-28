@@ -62,8 +62,8 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/web/js/router.js"></script>
 <script type="text/javascript">
   
-cigarritaApp.config(['$routeProvider','$locationProvider',
-  function($routeProvider,$locationProvider) {
+cigarritaApp.config(['$routeProvider','$locationProvider','$compileProvider',
+  function($routeProvider,$locationProvider,$compileProvider) {
 
       $compileProvider.debugInfoEnabled(false);
       

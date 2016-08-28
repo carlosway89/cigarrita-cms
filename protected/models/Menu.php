@@ -55,7 +55,7 @@ class Menu extends CActiveRecord
 			array('type, language', 'length', 'max'=>10),
 			array('SEO_title, SEO_keywords, SEO_description', 'length', 'max'=>200),
 			array('source', 'safe'),
-			array('parent_id', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('parent_id', 'default', 'setOnEmpty' => true, 'value' => 0),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('idmenu,idlink, url, name, type, state, position, is_deleted, language, page, parent_id, source, hierarchy, SEO_title, SEO_description, SEO_keywords', 'safe', 'on'=>'search'),

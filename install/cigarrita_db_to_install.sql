@@ -199,6 +199,7 @@ CREATE TABLE IF NOT EXISTS `form` (
   `idform` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `subject` varchar(400) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `body` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ip_address` varchar(45) DEFAULT NULL,
   `country_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `browser` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -267,9 +268,9 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `parent_id` int(11) DEFAULT '0',
   `source` text,
   `hierarchy` int(11) NOT NULL DEFAULT '0',
-  `SEO_title` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `SEO_description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `SEO_keywords` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `SEO_title` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `SEO_description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `SEO_keywords` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `idlink` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idmenu`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
